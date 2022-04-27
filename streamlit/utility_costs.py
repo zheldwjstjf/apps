@@ -27,9 +27,9 @@ else:
 # main page
 st.header('我が家の光熱費')
 
-st.sidebar.write(111)
-url = "https://raw.github.com/zheldwjstjf/apps/blob/main/streamlit/data/utility_costs.csv"
+st.write(111)
+url = "https://github.com/zheldwjstjf/apps/blob/main/streamlit/data/utility_costs.csv"
 page = requests.get(url)
-st.sidebar.write(page.text)
-st.sidebar.write(222)
+st.write(page.text)
+st.write(222)
 
