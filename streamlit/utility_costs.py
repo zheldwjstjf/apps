@@ -57,12 +57,13 @@ csvDATA = StringIO(str(content))
 def get_utility_costs_data():
     df = pd.read_csv(csvDATA, sep=",")
     st.write(df)
-    df.set_index("項目")
+     
+    return df.set_index("項目")
 
 try:
     df = get_utility_costs_data()
     utility_costs = st.multiselect(
-        "▶︎ 項目を選んでください。", ["電 気 代", "ガ ス 代", "水 道 代"]
+        "▶︎ 項目を選んでください。", list(df.index), ["電 気 代", "ガ ス 代", "水 道 代"]
     )
 
     if not utility_costs:
