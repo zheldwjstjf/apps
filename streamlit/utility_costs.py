@@ -36,9 +36,12 @@ if req.status_code == requests.codes.ok:
     req = req.json()  # the response is a JSON
     st.write("req type : ", type(req))
     st.write("req : ", req)
-     # req is now a dict with keys: name, encoding, url, size ...
+    # req is now a dict with keys: name, encoding, url, size ...
     # and content. But it is encoded with base64.
-    content = base64.decodestring(req['content'])
+    try:
+         content = base64.decodestring(req['content'])
+    except Exception as e:
+          st.write(e)
     st.write(111)
     st.write(content)
     st.write(222)
