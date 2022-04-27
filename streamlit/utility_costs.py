@@ -34,7 +34,7 @@ def get_utility_costs_data():
     st.sidebar.write(df)
     st.sidebar.write(222)
 
-    return df.set_index("項目")
+    return df # df.set_index("項目")
 
 try:
     df = get_utility_costs_data()
