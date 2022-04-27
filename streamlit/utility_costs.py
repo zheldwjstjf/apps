@@ -49,7 +49,7 @@ if req.status_code == requests.codes.ok:
 else:
     st.write('Content was not found.')
 
-csvDATA = StringIO(content)
+csvDATA = StringIO(str(content))
 
 # @st.cache
 def get_utility_costs_data():
