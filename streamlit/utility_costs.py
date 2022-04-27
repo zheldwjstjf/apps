@@ -28,7 +28,7 @@ st.header('我が家の光熱費')
 
 # @st.cache
 def get_utility_costs_data():
-    df = pd.read_csv("https://github.com/zheldwjstjf/apps/main/streamlit/data/utility_costs.csv")
+    df = pd.read_csv("https://github.com/zheldwjstjf/apps/blob/main/streamlit/data/utility_costs.csv")
 
     st.sidebar.write(111)
     st.sidebar.write(df)
