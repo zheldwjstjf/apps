@@ -48,9 +48,11 @@ if req.status_code == requests.codes.ok:
 else:
     st.write('Content was not found.')
 
+csvDATA = StringIO(content)
+
 # @st.cache
 def get_utility_costs_data():
-    df = pd.read_csv(content)
+    df = pd.read_csv(csvDATA, sep=",")
     st.write(df)
     return df # df.set_index("項目")
 
