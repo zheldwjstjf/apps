@@ -5,6 +5,7 @@ import altair as alt
 import base64
 import requests
 import json
+from io import StringIO
 
 from urllib.error import URLError
 
