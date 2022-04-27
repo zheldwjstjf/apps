@@ -49,6 +49,8 @@ if req.status_code == requests.codes.ok:
 else:
     st.write('Content was not found.')
 
+content = content.decode('utf-8')
+
 csvDATA = StringIO(str(content))
 
 # @st.cache
