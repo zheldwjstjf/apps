@@ -50,7 +50,7 @@ else:
 
 # @st.cache
 def get_utility_costs_data():
-    df = pd.read(content)
+    df = pd.read_csv(content)
     st.write(df)
     return df # df.set_index("項目")
 
