@@ -57,7 +57,7 @@ csvDATA = StringIO(str(content))
 def get_utility_costs_data():
     df = pd.read_csv(csvDATA, sep=",")
     st.write(df)
-    return df # df.set_index("項目")
+    df.set_index("項目")
 
 try:
     df = get_utility_costs_data()
