@@ -48,3 +48,65 @@ if req.status_code == requests.codes.ok:
 else:
     st.write('Content was not found.')
 
+# @st.cache
+def get_utility_costs_data():
+    df = pd.read_csv(page.text)
+    st.sidebar.write(df)
+    return df # df.set_index("項目")
+
+try:
+    df = get_utility_costs_data()
+    utility_costs = st.multiselect(
+        "▶︎ 項目を選んでください。", list(df.index), ["電 気 代", "ガ ス 代", "水 道 代"]
+    )
+
+    if not utility_costs:
+        st.error("１つ以上の項目を選んでください。")
+    else:
+        data = df.loc[utility_costs]
+        data /= 1000000.0
+        # st.write("### 光熱費 (円)", data.sort_index())
+        st.write("###### 光熱費詳細", data)
+
+        graph_type = st.selectbox(
+            '▶︎ 金額の表示タイプを選んでください。',
+            ('個別金額', '合計金額')
+        )
+
+        if graph_type == "個別金額":
+            stack_val = False
+        elif graph_type == "合計金額":
+            stack_val = True
+        else:
+            stack_val = None
+
+        data = data.T.reset_index()
+        data = pd.melt(data, id_vars=["index"]).rename(
+            columns={"index": "年月", "value": "金額 (円)"}
+        )
+        chart = (
+            alt.Chart(data)
+            .mark_area(opacity=0.7)
+            .encode(
+                x="年月",
+                y=alt.Y("金額 (円):Q", stack=stack_val),
+                color="項目:N",
+            )
+        )
+        st.altair_chart(chart, use_container_width=True)
+except URLError as e:
+    st.error(
+        """
+        **This demo requires internet access.**
+
+        Connection error: %s
+    """
+        % e.reason
+    )
+
+
+# Streamlit widgets automatically run the script from top to bottom. Since
+# this button is not connected to any other logic, it just causes a plain
+# rerun.
+st.button("Re-run")
+
