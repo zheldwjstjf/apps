@@ -2,6 +2,7 @@ import streamlit as st
 import datetime
 import pandas as pd
 import altair as alt
+import requests
 
 from urllib.error import URLError
 
@@ -28,7 +29,10 @@ st.header('我が家の光熱費')
 
 # @st.cache
 def get_utility_costs_data():
-    df = pd.read_csv("https://raw.github.com/zheldwjstjf/apps/blob/main/streamlit/data/utility_costs.csv")
+     url = "https://raw.github.com/zheldwjstjf/apps/blob/main/streamlit/data/utility_costs.csv"
+     page = requests.get(url)
+     print page.text
+     df = pd.read_csv(page.text)
 
     st.sidebar.write(111)
     st.sidebar.write(df)
