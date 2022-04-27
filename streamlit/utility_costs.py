@@ -50,8 +50,8 @@ else:
 
 # @st.cache
 def get_utility_costs_data():
-    df = content # pd.read_csv(content)
-    st.sidebar.write(df)
+    df = pd.read(content)
+    st.write(df)
     return df # df.set_index("項目")
 
 try:
