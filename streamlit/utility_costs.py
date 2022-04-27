@@ -39,7 +39,7 @@ if req.status_code == requests.codes.ok:
     # req is now a dict with keys: name, encoding, url, size ...
     # and content. But it is encoded with base64.
     try:
-         content = base64.decodestring(req['content'])
+         content = base64.b64decode(req['content'])
     except Exception as e:
           st.write(e)
     st.write(111)
