@@ -35,9 +35,9 @@ if req.status_code == requests.codes.ok:
     # req is now a dict with keys: name, encoding, url, size ...
     # and content. But it is encoded with base64.
     content = base64.decodestring(req['content'])
+    st.write(111)
+    st.write(content)
+    st.write(222)
 else:
-    print('Content was not found.')
+    st.write('Content was not found.')
 
-st.write(111)
-st.write(content)
-st.write(222)
