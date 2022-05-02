@@ -5,12 +5,12 @@ from modules.csv_tool import CSVTool
 class SideMenu:
     def __init__(self, streamlit):
         self.st = streamlit
-        self.cSVTool = CSVTool
+        self.cSVTool = CSVTool(self.st)
 
     # ===================================
     # side bar
     # ===================================
-    def side_menu(self):
+    def side_menu(self, df):
 
         selected_date = self.st.date_input(
             "▶︎ 日付を指定してください。",
@@ -22,9 +22,6 @@ class SideMenu:
         option = self.st.selectbox(
             '▶︎ 項目を選んでください。',
             ('電 気 代', 'ガ ス 代', '水 道 代'))
-
-        # load spreadsheet with data to be annotated
-        df = self.cSVTool.load_data()
 
         if option=="電 気 代":
             row = 0

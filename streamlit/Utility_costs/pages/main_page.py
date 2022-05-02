@@ -2,25 +2,18 @@ import datetime
 import pandas as pd
 import altair as alt
 
-from modules.csv_tool import CSVTool
-
 class MainPage:
 
     def __init__(self, streamlit) -> None:
 
         self.st = streamlit
-        self.cSVTool = CSVTool
 
     # ===================================
     # main page
     # ===================================
-    def main_page(self):
+    def main_page(self, df):
 
         try:
-            # =================
-            # load data
-            df = self.cSVTool.load_data(self.st)
-
             # set index
             df = df.set_index("項目")
             # print("\n"*3 + "csv data 2 : ", df)
@@ -121,6 +114,7 @@ class MainPage:
                 # table
                 self.st.write("\n")
                 self.st.write("\n##### 光熱費金額表", table_data)
+
 
         except Exception as e:
             self.st.error(e)

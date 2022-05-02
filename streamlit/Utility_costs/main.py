@@ -3,7 +3,7 @@ import streamlit as st
 from pages.auth_page import AuthPage
 from pages.main_page import MainPage
 from pages.side_menu import SideMenu
-
+from modules.csv_tool import CSVTool
 
 class App:
 
@@ -25,13 +25,19 @@ class App:
         self.ap = AuthPage(st)
         self.sm = SideMenu(st)
         self.mp = MainPage(st)
+        self.cSVTool = CSVTool(self.st)
 
     def main(self):
 
+        # =================
         # main page title
         self.st.markdown("<h1 style='text-align: center; color: red;'>我が家の光熱費</h1>", unsafe_allow_html=True)
 
+        # =================
+        # load data
+        df = self.cSVTool.load_data()
 
+        # =================
         # side mmenu title
         st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
 
@@ -43,11 +49,11 @@ class App:
         # sidebar page : auth
         if self.ap.credent_status == True:
             # main page
-            self.mp.main_page()
+            self.mp.main_page(df)
 
             # sidebar page : add data
             with st.sidebar.expander("登録"):
-                self.sm.side_menu()
+                self.sm.side_menu(df)
         
         if self.ap.credent_status == False:
             with st.sidebar.expander("認証"):
@@ -55,14 +61,14 @@ class App:
 
             if auth_status == True:
                 # main page
-                self.mp.main_page()
+                self.mp.main_page(df)
 
                 # sidebar page : add data
                 with st.sidebar.expander("登録"):
-                    self.sm.side_menu()
+                    self.sm.side_menu(df)
 
             elif auth_status == False:
-                st.sidebar.markdown("<h3 style='text-align: center; color: red;'>認証が必要です。</h3>", unsafe_allow_html=True)
+                st.sidebar.markdown("<h3 style='text-align: left; color: red;'>認証が必要です。</h3>", unsafe_allow_html=True)
             else:
                 pass
 
