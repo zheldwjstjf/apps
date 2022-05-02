@@ -4,6 +4,7 @@ from pages.main_page import MainPage
 from pages.side_menu import SideMenu
 from modules.csv_tool import CSVTool
 
+"""
 import datetime
 import pandas as pd
 import altair as alt
@@ -18,6 +19,7 @@ from oauth2client.client import OAuth2WebServerFlow
 from oauth2client.file import Storage
 import httplib2
 from apiclient import errors
+"""
 
 class App:
 
