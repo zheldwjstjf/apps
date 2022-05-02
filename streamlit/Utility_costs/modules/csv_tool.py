@@ -14,9 +14,11 @@ class CSVTool:
         load spreadsheet with data to be annotated
         """
 
-        url = "https://api.github.com/repos/zheldwjstjf/apps/contents/utility_costs/data/utility_costs.csv"
+        url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utility_costs/data/utility_costs.csv"
         req = requests.get(url)
-        # self.st.write(req.status_code)
+        
+        self.st.error(req.status_code)
+        
         if req.status_code == requests.codes.ok:
             req = req.json()  # the response is a JSON
             # req is now a dict with keys: name, encoding, url, size ...
@@ -24,21 +26,26 @@ class CSVTool:
             try:
                 content = base64.b64decode(req['content'])
             except Exception as e:
-                self.st.error(str(e))
+                print("Exception - load-data : ", e)
             # self.st.write(content)
+
+            content = content.decode('utf-8')
+            csvDATA = StringIO(str(content))
+            df = pd.read_csv(csvDATA)
+
+            return df
         else:
-            self.st.error('Content was not found.')
+            self.st.warning('クラウドデータの取得ができませんでした。ローカルデータを取得します。')
 
-        content = content.decode('utf-8')
-        csvDATA = StringIO(str(content))
-        df = pd.read_csv(csvDATA)
-        
-        return df
+            df = pd.read_csv("data/utility_costs.csv")
+            return df
 
-    def save_input(df, row, amount, selected_date):
+
+    def save_input(self, df, row, amount, selected_date):
         """
         save input
         """
         df.at[row, selected_date] = amount
         df.to_csv("data/utility_costs.csv", index=None)
+        
         return None
