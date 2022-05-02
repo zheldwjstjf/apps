@@ -21,21 +21,21 @@ import httplib2
 from apiclient import errors
 """
 
+# ===================================
+# st config
+# ===================================
+st.set_page_config(  # Alternate names: setup_page, page, layout
+    layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
+    initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
+    page_title="我が家の光熱費",  # String or None. Strings get appended with "• Streamlit". 
+    page_icon=None,  # String, anything supported by st.image, or None.
+)
+
 class App:
 
     def __init__(self) -> None:
 
         self.st = st
-        
-        # ===================================
-        # st config
-        # ===================================
-        self.st.set_page_config(  # Alternate names: setup_page, page, layout
-            layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
-            initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
-            page_title="我が家の光熱費",  # String or None. Strings get appended with "• Streamlit". 
-            page_icon=None,  # String, anything supported by st.image, or None.
-        )
 
         #
         self.ap = AuthPage(st)
