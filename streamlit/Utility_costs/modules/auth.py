@@ -15,7 +15,9 @@ class AuthFactory:
         self.auth_url = "https://accounts.google.com/o/oauth2/auth?"
         self.response_setting = {
             "scope": "https://mail.google.com/",
-            "response_type": "code"}
+            "response_type": "code",
+            "access_type": "offline",
+            "approval_prompt": "force"}
 
     @st.cache(suppress_st_warning=True)
     def createService(self, stringio):
