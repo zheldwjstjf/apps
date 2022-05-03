@@ -11,11 +11,20 @@ import streamlit as st
 
 import os
 import flask
+import time
 
 import google.oauth2.credentials
 import google_auth_oauthlib.flow
 import googleapiclient.discovery
 
+import threading
+ 
+class Bartender:    
+     def run(self):    
+        while self._running:
+             time.sleep(0.1)
+ 
+bartender = Bartender()
 
 CLIENT_SECRETS_FILE = "client_secret.json"
 # This variable specifies the name of a file that contains the OAuth 2.0
@@ -181,4 +190,9 @@ os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 # Specify a hostname and port that are set as a valid redirect URI
 # for your API project in the Google API Console.
-app.run('localhost', 8888)
+# app.run('localhost', 8888)
+
+thread = threading.Thread(target = app.run)  
+thread.start()
+bartender.run()
+thread.join()
