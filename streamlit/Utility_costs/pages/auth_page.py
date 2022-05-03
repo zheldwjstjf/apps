@@ -12,7 +12,7 @@ class AuthPage:
 
     def auth_page(self):
 
-        if self.credent_status == True:
+        if self.credent_status != False:
             pass
 
         if self.credent_status == False:
@@ -20,14 +20,13 @@ class AuthPage:
 
             uploaded_file = self.st.file_uploader("Choose a file")
 
-            # if self.st.button("認証"):
             if uploaded_file is not None:
 
                 # To convert to a string based IO:
                 stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
                 auth_status = self.authFactory.createService(stringio)
 
-                if auth_status == True:
+                if auth_status != False:
                     self.st.write("認証されました。")
                     
                     return True
