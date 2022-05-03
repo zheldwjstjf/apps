@@ -15,9 +15,7 @@ class AuthFactory:
         self.auth_url = "https://accounts.google.com/o/oauth2/auth?"
         self.response_setting = {
             "scope": "https://mail.google.com/",
-            "response_type": "code",
-            "access_type": "offline",
-            "approval_prompt": "force"}
+            "response_type": "code"}
 
     @st.cache(suppress_st_warning=True)
     def createService(self, stringio):
@@ -32,7 +30,7 @@ class AuthFactory:
             try:
                 info = auth_info['installed']
                 flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
-                self.auth_url = flow.step1_get_authorize_url()
+                self.auth_url = flow.step1_get_authorize_url(access_type='offline')
                 
                 # ブラウザを開いて認証する
                 webbrowser.open(self.auth_url)
