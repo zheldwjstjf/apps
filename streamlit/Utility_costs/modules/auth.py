@@ -17,7 +17,7 @@ class AuthFactory:
             "scope": "https://mail.google.com/",
             "response_type": "code"}
 
-    @st.cache(suppress_st_warning=True)
+    # @st.cache(suppress_st_warning=True)
     def createService(self, stringio):
         """
         createService
@@ -29,23 +29,40 @@ class AuthFactory:
         
             try:
                 info = auth_info['installed']
-                flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
-                self.auth_url = flow.step1_get_authorize_url()
+                self.flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
+                self.auth_url = self.flow.step1_get_authorize_url()
                 
                 # ブラウザを開いて認証する
                 # webbrowser.open(self.auth_url)
                 self.st.write("auth_url: ", self.auth_url)
 
-                code = input("input code : ")
-                self.credent = flow.step2_exchange(code)
+                ppp = self.build_service()
 
-                return True
-
+                return ppp
+    
             except Exception as e:
-                print("Exception : invalid auth info : ", e)
+                print("Exception : createService : ", e)
                 
                 return False
 
         else:
             self.st.write("idが一致しません。")
             return False
+
+    def build_service(self):
+
+        code = self.st.text_input("CODE", placeholder="Paste your code here.")
+
+        # code = input("input code : ")
+        if self.st.button("認証"):          
+
+            self.credent = self.flow.step2_exchange()
+
+            http = httplib2.Http()
+            http = self.credent.authorize(http)
+
+            gmail_service = build("gmail", "v1", http=http)
+
+            self.st.write("gmail_service : ", gmail_service)
+
+            return gmail_service
