@@ -1,8 +1,7 @@
 import json
 from io import StringIO
 
-# from modules.auth import AuthFactory
-from modules import auth
+from modules.auth import AuthFactory
 
 class AuthPage:
 
