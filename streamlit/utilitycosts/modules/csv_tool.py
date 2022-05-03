@@ -14,13 +14,12 @@ class CSVTool:
         load spreadsheet with data to be annotated
         """
 
-        url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utility_costs/data/utility_costs.csv"
+        url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
         # url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/test/data/utility_costs.csv"
 
-        
         req = requests.get(url)
         
-        # self.st.error(req.status_code)
+        self.st.error(req.status_code)
         
         if req.status_code == requests.codes.ok:
             req = req.json()  # the response is a JSON
