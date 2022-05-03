@@ -33,7 +33,9 @@ class AuthFactory:
                 self.auth_url = flow.step1_get_authorize_url()
                 
                 # ブラウザを開いて認証する
-                webbrowser.open(self.auth_url)
+                # webbrowser.open(self.auth_url)
+                self.st.write("auth_url: ", self.auth_url)
+
                 code = input("input code : ")
                 self.credent = flow.step2_exchange(code)
 
