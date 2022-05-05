@@ -39,7 +39,7 @@ class CSVTool:
                 csvDATA = StringIO(str(content))
                 df = pd.read_csv(csvDATA)
 
-                self.st.warning('クラウドデータを取得しました。')
+                # self.st.warning('クラウドデータを取得しました。')
 
                 return df
             else:
