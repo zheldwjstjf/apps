@@ -29,7 +29,7 @@ class App:
 
         # =================
         # main page title
-        self.st.markdown("<h1 style='text-align: center; color: red;'>我が家の光熱費</h1>", unsafe_allow_html=True)
+        self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
 
         # =================
         # load data
