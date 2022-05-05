@@ -28,12 +28,12 @@ class App:
     def main(self):
 
         # =================
-        # load data
-        self.df = self.cSVTool.load_data()
-
-        # =================
         # main page title
         self.st.markdown("<h1 style='text-align: center; color: red;'>我が家の光熱費</h1>", unsafe_allow_html=True)
+
+        # =================
+        # load data
+        self.df = self.cSVTool.load_data()
 
         # main page
         self.mp.main_page(self.df)

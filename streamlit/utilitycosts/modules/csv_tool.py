@@ -16,38 +16,53 @@ class CSVTool:
         load spreadsheet with data to be annotated
         """
 
-        
-        req = requests.get(self.url)
-        # self.st.error(req.status_code)
-        
-        if req.status_code == requests.codes.ok:
-            req = req.json()  # the response is a JSON
-            # req is now a dict with keys: name, encoding, url, size ...
-            # and content. But it is encoded with base64.
-            try:
-                content = base64.b64decode(req['content'])
-            except Exception as e:
-                print("Exception - load-data : ", e)
-            # self.st.write(content)
-
-            content = content.decode('utf-8')
-            csvDATA = StringIO(str(content))
-            df = pd.read_csv(csvDATA)
-
-            return df
-        else:
-            self.st.warning('クラウドデータの取得ができませんでした。ローカルデータを取得します。')
-
+        try:
             df = pd.read_csv("data/utility_costs.csv")
+            self.st.warning('ローカルデータを取得しました。')
+
             return df
+        except Exception as e:
+            self.st.warning('クラウドデータを取得します。')
+
+            req = requests.get(self.url)
+            # self.st.error(req.status_code)
+            
+            if req.status_code == requests.codes.ok:
+                req = req.json()  # the response is a JSON
+                # req is now a dict with keys: name, encoding, url, size ...
+                # and content. But it is encoded with base64.
+                try:
+                    content = base64.b64decode(req['content'])
+                except Exception as e:
+                    print("Exception - load-data : ", e)
+                # self.st.write(content)
+
+                content = content.decode('utf-8')
+                csvDATA = StringIO(str(content))
+                df = pd.read_csv(csvDATA)
+
+                self.st.warning('クラウドデータを取得しました。')
+
+                return df
+            else:
+                self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
 
 
     def save_input(self, df, row, amount, selected_date):
         """
         save input
         """
-        # TODO
-        # df.at[row, selected_date] = amount
-        # df.to_csv("data/utility_costs.csv", index=None)
-        
-        return None
+        try:
+            df = pd.read_csv("data/utility_costs.csv")
+            df.at[row, selected_date] = amount
+            df.to_csv("data/utility_costs.csv", index=None)
+
+            self.st.warning('ローカルデータを変更しました。')
+
+        except Exception as e:
+            print("Exception - save input : ", e)
+            # TODO
+            # df => StringIO => content => push to github
+            # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
+            
+            self.st.warning("対応中です。2")

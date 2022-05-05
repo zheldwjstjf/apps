@@ -36,8 +36,4 @@ class SideMenu:
         # save button
         self.col1, self.col2 = self.st.columns((3,1))
         if self.col2.button("保存"):
-            # TODO
-            # self.cSVTool.save_input(df, row, int(amount), selected_date)
-            # self.col1.write("保存されました。")
-
-            self.st.warning("対応中です。")
+            self.cSVTool.save_input(df, row, int(amount), selected_date)
