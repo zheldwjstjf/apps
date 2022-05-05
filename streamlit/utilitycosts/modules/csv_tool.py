@@ -51,10 +51,18 @@ class CSVTool:
         save input
         """
         try:
+            # add input amount to selected row
             df = pd.read_csv("data/utility_costs.csv")
             df.at[row, selected_date] = amount
-            df.to_csv("data/utility_costs.csv", index=None)
 
+            # add 0 to unselected rows
+            row_list = [0,1,2]
+            row_list.pop(row)
+            for row in row_list:
+                df.at[row, selected_date] = 0
+
+            # update csv
+            df.to_csv("data/utility_costs.csv", index=None)
             self.st.warning('ローカルデータを変更しました。')
 
         except Exception as e:
