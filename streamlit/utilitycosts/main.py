@@ -45,6 +45,9 @@ class App:
         # sidebar page : add data
         with st.sidebar.expander("[ 登録 ]"):
             self.sm.side_menu(self.df)
-        
+
+        # reload
+        self.st.sidebar.button("更新")
+
 app = App()
 app.main()
