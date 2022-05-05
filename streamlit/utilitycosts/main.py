@@ -1,5 +1,4 @@
 import streamlit as st
-from io import StringIO
 
 from pages.main_page import MainPage
 from pages.side_menu import SideMenu
