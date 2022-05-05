@@ -46,7 +46,7 @@ class CSVTool:
         """
         save input
         """
-        # df.at[row, selected_date] = amount
-        # df.to_csv("data/utility_costs.csv", index=None)
+        df.at[row, selected_date] = amount
+        df.to_csv("data/utility_costs.csv", index=None)
         
         return None
