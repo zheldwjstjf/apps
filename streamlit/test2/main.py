@@ -26,6 +26,8 @@ class App:
         self.mp = MainPage(st)
         self.cSVTool = CSVTool(self.st)
 
+        print("[DEBUG] credent_status - main.py - 111 : >>> ", str(self.credent_status))
+
     def main(self):
 
         # =================
@@ -40,13 +42,16 @@ class App:
         # side mmenu title
         st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
 
+        print("[DEBUG] credent_status - main.py - 222 : >>> ", str(self.credent_status))
+        
         # sidebar page : 更新
         with st.sidebar.expander("更新"):
             with self.st.form(key='my_form'):
                 submit_button = self.st.form_submit_button(label='更新')
 
         # sidebar page : auth
-        if self.ap.credent_status == True:
+        if (self.ap.credent_status != False) and (self.ap.credent_status != None):
+            self.st.write("main.py", "111>>> ", str(self.credent_status))
             # main page
             self.mp.main_page(df)
 
@@ -54,11 +59,13 @@ class App:
             with st.sidebar.expander("登録"):
                 self.sm.side_menu(df)
         
-        if self.ap.credent_status == False:
+        elif (self.ap.credent_status == False) or (self.ap.credent_status == None):
+            self.st.write("main.py", "333>>> ", str(self.credent_status))
             with st.sidebar.expander("認証"):
                 auth_status = self.ap.auth_page()
 
             if auth_status == True:
+                self.st.write("main.py", "333>>> ", str(self.credent_status))
                 # main page
                 self.mp.main_page(df)
 
@@ -67,9 +74,16 @@ class App:
                     self.sm.side_menu(df)
 
             elif auth_status == False:
+                self.st.write("main.py", "444>>> ", str(self.credent_status))
                 st.sidebar.markdown("<h3 style='text-align: left; color: red;'>認証が必要です。</h3>", unsafe_allow_html=True)
             else:
+                self.st.write("main.py", "555>>> ", str(self.credent_status))
                 pass
+        
+        else:
+            self.st.write("main.py", "666>>> ", str(self.credent_status))
+        
+        print("[DEBUG] credent_status - main.py - 333 : >>> ", str(self.credent_status))
 
 app = App()
 app.main()
