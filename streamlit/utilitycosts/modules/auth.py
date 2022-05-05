@@ -17,7 +17,6 @@ class AuthFactory:
             "scope": "https://mail.google.com/",
             "response_type": "code"}
 
-    # @st.cache(suppress_st_warning=True)
     def createService(self, stringio):
         """
         createService
@@ -36,10 +35,25 @@ class AuthFactory:
                 # webbrowser.open(self.auth_url)
                 self.st.write("auth_url: ", self.auth_url)
 
-                ppp = self.build_service()
+                code = self.st.text_input("CODE", placeholder="Paste your code here.")
+                # code = input("input code : ")
 
-                return ppp
-    
+                print("code : ", code)
+                self.st.write("code : ", code)
+
+                if self.st.button("SUBMIT"):
+                    self.credent = self.flow.step2_exchange(code)
+                    http = httplib2.Http()
+                    http = self.credent.authorize(http)
+
+                    try:
+                        gmail_service = build("gmail", "v1", http=http)
+                        self.st.write("gmail_service : ", gmail_service)
+
+                        return True
+                    except Exception as e:
+                        return False
+
             except Exception as e:
                 print("Exception : createService : ", e)
                 
@@ -48,21 +62,3 @@ class AuthFactory:
         else:
             self.st.write("idが一致しません。")
             return False
-
-    def build_service(self):
-
-        code = self.st.text_input("CODE", placeholder="Paste your code here.")
-
-        # code = input("input code : ")
-        if self.st.button("認証"):          
-
-            self.credent = self.flow.step2_exchange()
-
-            http = httplib2.Http()
-            http = self.credent.authorize(http)
-
-            gmail_service = build("gmail", "v1", http=http)
-
-            self.st.write("gmail_service : ", gmail_service)
-
-            return gmail_service
