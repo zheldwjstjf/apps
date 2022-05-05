@@ -66,7 +66,7 @@ class CSVTool:
             self.st.warning('ローカルデータを変更しました。')
 
         except Exception as e:
-            print("Exception - save input : ", e)
+            # print("Exception - save input : ", e)
             # TODO
             # df => StringIO => content => push to github
             # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
