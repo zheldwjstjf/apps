@@ -20,8 +20,7 @@ class App:
     def __init__(self):
         self.st = st
 
-        #
-        print("[DEBUG] 00002 - def __init__(self)")
+        # =================
         self.sm = SideMenu(st)
         self.mp = MainPage(st)
         self.cSVTool = CSVTool(self.st)
