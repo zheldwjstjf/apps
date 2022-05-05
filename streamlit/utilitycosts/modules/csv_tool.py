@@ -8,14 +8,16 @@ from io import StringIO
 class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
+
+        self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
     def load_data(self):
         """
         load spreadsheet with data to be annotated
         """
 
-        url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
-        req = requests.get(url)
+        
+        req = requests.get(self.url)
         # self.st.error(req.status_code)
         
         if req.status_code == requests.codes.ok:
