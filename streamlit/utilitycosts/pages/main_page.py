@@ -22,7 +22,7 @@ class MainPage:
 
             # multiselect
             utility_costs = col3.multiselect(
-                "▶︎ 項目を選んでください。", list(df.index), ["電 気 代", "ガ ス 代", "水 道 代"],
+                "▶︎ 光熱費項目", list(df.index), ["電 気 代", "ガ ス 代", "水 道 代"],
             )
             if not utility_costs:
                 col3.error("１つ以上の項目を選んでください。")
