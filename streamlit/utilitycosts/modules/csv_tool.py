@@ -74,5 +74,6 @@ class CSVTool:
                 # df => StringIO => content => push to github
                 # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
                 pass
+                self.st.warning("登録しました。")
         else:    
             self.st.warning("管理者権限が必要です。")
