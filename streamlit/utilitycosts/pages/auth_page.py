@@ -12,9 +12,6 @@ class AuthPage:
 
     def auth_page(self):
 
-        # with self.st.form(key='my_form'):
-        # submit_button = self.st.form_submit_button(label='更新')
-
         if self.auth_status == True:
             
             return True
