@@ -49,13 +49,13 @@ class App:
             auth_status = self.ap.auth_page()
 
             if auth_status == None:
-                self.st.write("認証が必要です。")
+                self.st.write("未認証")
 
             if auth_status == True:
-                self.st.write("認証されました。")
+                self.st.write("認証済")
 
             if auth_status == False:
-                self.st.write("認証が失敗しました。")
+                self.st.write("認証失敗")
 
         # sidebar page : add data
         with st.sidebar.expander("[ 登録 ]"):
