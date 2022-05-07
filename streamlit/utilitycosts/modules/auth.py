@@ -39,11 +39,14 @@ class AuthFactory:
                 self.auth_check_result.append(False)
 
             if False in self.auth_check_result:
+                self.st.error("認証情報が一致しません。")
                 return False
             else:
                 if self.auth_check_result.count(True) == 3:
+                    self.st.success("認証情報が一致しました。")
                     return True
                 else:
+                    self.st.error("認証情報が一足りません。")
                     return False
         except:
             self.st.error("認証情報が一致しません。")

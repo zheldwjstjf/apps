@@ -47,7 +47,16 @@ class App:
         # sidebar page : auth
         with st.sidebar.expander("[ 認証 ]"):
             auth_status = self.ap.auth_page()
-        
+
+            if self.auth_status == None:
+                self.st.write("認証が必要です。")
+
+            if self.auth_status == True:
+                self.st.write("認証されました。")
+
+            if self.auth_status == False:
+                self.st.write("認証が失敗しました。")
+
         # sidebar page : add data
         with st.sidebar.expander("[ 登録 ]"):
             self.sm.side_menu(self.df, auth_status)

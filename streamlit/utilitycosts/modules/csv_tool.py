@@ -76,4 +76,4 @@ class CSVTool:
                 pass
                 self.st.warning("登録しました。")
         else:    
-            self.st.warning("管理者権限が必要です。")
+            self.st.warning("認証が必要です。")

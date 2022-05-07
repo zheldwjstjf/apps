@@ -32,13 +32,9 @@ class AuthPage:
                 self.auth_status = self.authFactory.createService(stringio)
 
                 if self.auth_status == None:
-                    self.st.write("認証が必要です。")
-                    
                     return False
 
-                if self.auth_status == True:
-                    self.st.write("認証されました。")
-                    
+                if self.auth_status == True:                    
                     return True
 
                 if self.auth_status == False:
