@@ -47,29 +47,32 @@ class CSVTool:
                 self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
 
 
-    def save_input(self, df, row, amount, selected_date):
+    def save_input(self, df, row, amount, selected_date, auth_status):
         """
         save input
         """
-        try:
-            # add input amount to selected row
-            df = pd.read_csv("data/utility_costs.csv")
-            df.at[row, selected_date] = amount
 
-            # add 0 to unselected rows
-            row_list = [0,1,2]
-            row_list.pop(row)
-            for row in row_list:
-                df.at[row, selected_date] = 0
+        if auth_status == True:
+            try:
+                # add input amount to selected row
+                df = pd.read_csv("data/utility_costs.csv")
+                df.at[row, selected_date] = amount
 
-            # update csv
-            df.to_csv("data/utility_costs.csv", index=None)
-            self.st.warning('ローカルデータを変更しました。')
+                # add 0 to unselected rows
+                row_list = [0,1,2]
+                row_list.pop(row)
+                for row in row_list:
+                    df.at[row, selected_date] = 0
 
-        except Exception as e:
-            # print("Exception - save input : ", e)
-            # TODO
-            # df => StringIO => content => push to github
-            # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
-            
+                # update csv
+                df.to_csv("data/utility_costs.csv", index=None)
+                self.st.warning('ローカルデータを変更しました。')
+
+            except Exception as e:
+                # print("Exception - save input : ", e)
+                # TODO
+                # df => StringIO => content => push to github
+                # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
+                pass
+        else:    
             self.st.warning("管理者権限が必要です。")

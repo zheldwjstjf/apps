@@ -48,19 +48,12 @@ class App:
         with st.sidebar.expander("[ 認証 ]"):
             auth_status = self.ap.auth_page()
         
-        if auth_status == True:
-            # sidebar page : add data
-            with st.sidebar.expander("[ 登録 ]"):
-                self.sm.side_menu(self.df)
+        # sidebar page : add data
+        with st.sidebar.expander("[ 登録 ]"):
+            self.sm.side_menu(self.df, auth_status)
 
-            # reload
-            self.st.sidebar.button("更新")
-        
-        if auth_status == None:
-            pass
-
-        if auth_status == False:
-            pass
+        # reload
+        self.st.sidebar.button("更新")
 
 app = App()
 app.main()

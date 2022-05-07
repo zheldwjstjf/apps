@@ -10,7 +10,7 @@ class SideMenu:
     # ===================================
     # side bar
     # ===================================
-    def side_menu(self, df):
+    def side_menu(self, df, auth_status):
 
         selected_date = self.st.date_input(
             "▶︎ 日付を指定してください。",
@@ -36,4 +36,4 @@ class SideMenu:
         # save button
         self.col1, self.col2 = self.st.columns((3,1))
         if self.col2.button("保存"):
-            self.cSVTool.save_input(df, row, int(amount), selected_date)
+            self.cSVTool.save_input(df, row, int(amount), selected_date, auth_status)
