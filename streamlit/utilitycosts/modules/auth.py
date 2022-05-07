@@ -22,28 +22,31 @@ class AuthFactory:
 
         auth_info = json.load(stringio)
 
-        if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
-            self.auth_check_result.append(True)
-        else:
-            self.auth_check_result.append(False)
-
-        if auth_info['installed']["client_id"] == self.st.secrets["client_id"]:
-            self.auth_check_result.append(True)
-        else:
-            self.auth_check_result.append(False)
-
-        if auth_info['installed']["client_secret"] == self.st.secrets["client_secret"]:
-            self.auth_check_result.append(True)
-        else:
-            self.auth_check_result.append(False)
-
-        if False in self.auth_check_result:
-            self.st.write("認証情報が一致しません。")
-            return False
-        else:
-            if self.auth_check_result.count(True) == 3:
-                self.st.write("認証情報が一致しました。")
-                return True
+        try:
+            if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
+                self.auth_check_result.append(True)
             else:
-                self.st.write("認証情報が一足りません。")
+                self.auth_check_result.append(False)
+
+            if auth_info['installed']["client_id"] == self.st.secrets["client_id"]:
+                self.auth_check_result.append(True)
+            else:
+                self.auth_check_result.append(False)
+
+            if auth_info['installed']["client_secret"] == self.st.secrets["client_secret"]:
+                self.auth_check_result.append(True)
+            else:
+                self.auth_check_result.append(False)
+
+            if False in self.auth_check_result:
+                self.st.error("認証情報が一致しません。")
                 return False
+            else:
+                if self.auth_check_result.count(True) == 3:
+                    self.st.success("認証情報が一致しました。")
+                    return True
+                else:
+                    self.st.error("認証情報が一足りません。")
+                    return False
+        except:
+            self.st.error("認証情報が一致しません。")
