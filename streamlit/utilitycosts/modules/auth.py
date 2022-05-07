@@ -50,3 +50,4 @@ class AuthFactory:
                     return False
         except:
             self.st.error("認証情報が一致しません。")
+            return False
