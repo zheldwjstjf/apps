@@ -47,6 +47,5 @@ class AuthPage:
                     return False
 
             if uploaded_file is  None:
-                    self.st.write("認証キーが選択されてません。")
-                    
-                    return False
+
+                return False
