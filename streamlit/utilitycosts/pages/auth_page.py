@@ -32,7 +32,7 @@ class AuthPage:
                 self.auth_status = self.authFactory.createService(stringio)
 
                 if self.auth_status == None:
-                    return False
+                    return None
 
                 if self.auth_status == True:                    
                     return True
