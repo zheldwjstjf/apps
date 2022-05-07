@@ -114,8 +114,7 @@ class App:
 
                 auth_info = json.load(stringio)
 
-                _client_id = "358645828252-5al16h67s91emmsub4q3gndqbgqlo6rl.apps.googleusercontent.com"
-                if auth_info['installed']["client_id"] == _client_id:
+                if auth_info['installed']["client_id"] == st.secrets["_client_id"]:
                     return True
                 else:
                     self.st.write("idが一致しません。")
