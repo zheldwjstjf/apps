@@ -3,6 +3,7 @@ import streamlit as st
 from pages.main_page import MainPage
 from pages.side_menu import SideMenu
 from modules.csv_tool import CSVTool
+from pages.auth_page import AuthPage
 
 # ===================================
 # st config
@@ -21,8 +22,10 @@ class App:
 
         # =================
         self.sm = SideMenu(st)
+        self.ap = AuthPage(st)
         self.mp = MainPage(st)
         self.cSVTool = CSVTool(self.st)
+        
 
     def main(self):
 
@@ -41,12 +44,23 @@ class App:
         # side mmenu title
         st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
 
-        # sidebar page : add data
-        with st.sidebar.expander("[ 登録 ]"):
-            self.sm.side_menu(self.df)
+        # sidebar page : auth
+        with st.sidebar.expander("[ 認証 ]"):
+            auth_status = self.ap.auth_page()
+        
+        if auth_status == True:
+            # sidebar page : add data
+            with st.sidebar.expander("[ 登録 ]"):
+                self.sm.side_menu(self.df)
 
-        # reload
-        self.st.sidebar.button("更新")
+            # reload
+            self.st.sidebar.button("更新")
+        
+        if auth_status == None:
+            pass
+
+        if auth_status == False:
+            pass
 
 app = App()
 app.main()
