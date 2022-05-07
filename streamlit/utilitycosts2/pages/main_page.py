@@ -115,6 +115,5 @@ class MainPage:
                 self.st.write("\n")
                 self.st.write("\n##### 光熱費金額表", table_data)
 
-
         except Exception as e:
             self.st.error(e)
