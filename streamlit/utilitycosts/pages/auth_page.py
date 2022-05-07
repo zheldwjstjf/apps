@@ -40,6 +40,5 @@ class AuthPage:
                 if self.auth_status == False:
                     return False
 
-            if uploaded_file is  None:
-
-                return False
+            if uploaded_file is None:
+                return None
