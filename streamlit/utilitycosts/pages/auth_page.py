@@ -20,9 +20,9 @@ class AuthPage:
             return True
 
         else:
-            self.st.markdown("<h3 style='text-align: left; color: red;'>認証キーを選択してください。</h3>", unsafe_allow_html=True)
-
-            uploaded_file = self.st.file_uploader("Choose a file")
+            if self.auth_status == None:
+                self.st.markdown("<h3 style='text-align: left; color: red;'>認証キーを選択してください。</h3>", unsafe_allow_html=True)
+                uploaded_file = self.st.file_uploader("Choose a file")
 
             # if self.st.button("認証"):
             if uploaded_file is not None:
