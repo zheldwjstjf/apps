@@ -42,8 +42,6 @@ class AuthPage:
                     return True
 
                 if self.auth_status == False:
-                    self.st.write("認証中に問題が発生しました。")
-                    
                     return False
 
             if uploaded_file is  None:
