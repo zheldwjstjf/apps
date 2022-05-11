@@ -65,7 +65,7 @@ class App:
 
         if auth_status == True:
             # main page title
-            self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
+            self.st.markdown("<h1 style='text-align: center; color: red;'>RIEKOグラフ</h1>", unsafe_allow_html=True)
 
             # main page
             self.mp.main_page(self.df)
