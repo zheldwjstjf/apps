@@ -30,12 +30,12 @@ class App:
     def main(self):
 
         # =================
-        # side mmenu title
-        st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
-
-        # =================
         # load data
         self.df = self.cSVTool.load_data()
+
+        # =================
+        # side mmenu title
+        st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
 
         # sidebar page : auth
         with st.sidebar.expander("[ 認証 ]"):
@@ -58,12 +58,22 @@ class App:
         self.st.sidebar.button("更新")
 
         # =================
-        # main page title
-        self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
-
         # main page
-        self.mp.main_page(self.df)
 
+        if auth_status == None:
+            pass
+
+        if auth_status == True:
+            pass
+
+            # main page title
+            self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
+
+            # main page
+            self.mp.main_page(self.df)
+
+        if auth_status == False:
+            pass
 
 app = App()
 app.main()
