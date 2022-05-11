@@ -42,17 +42,6 @@ class App:
 
             if auth_status == True:
 
-                # =================
-                # main page title
-                self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
-
-                # =================
-                # load data
-                self.df = self.cSVTool.load_data()
-
-                # main page
-                self.mp.main_page(self.df)
-
                 self.st.success("認証済")
 
             if auth_status == False:
@@ -64,6 +53,19 @@ class App:
 
         # reload
         self.st.sidebar.button("更新")
+
+
+        # =================
+        # main page title
+        self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
+
+        # =================
+        # load data
+        self.df = self.cSVTool.load_data()
+
+        # main page
+        self.mp.main_page(self.df)
+
 
 app = App()
 app.main()
