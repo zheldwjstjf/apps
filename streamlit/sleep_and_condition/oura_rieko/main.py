@@ -29,9 +29,6 @@ class App:
 
     def main(self):
 
-        # main page
-        self.mp.main_page(self.df)
-
         # =================
         # side mmenu title
         st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
@@ -52,6 +49,9 @@ class App:
                 # =================
                 # load data
                 self.df = self.cSVTool.load_data()
+
+                # main page
+                self.mp.main_page(self.df)
 
                 self.st.success("認証済")
 
