@@ -33,6 +33,10 @@ class App:
         # side mmenu title
         st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)
 
+        # =================
+        # load data
+        self.df = self.cSVTool.load_data()
+
         # sidebar page : auth
         with st.sidebar.expander("[ 認証 ]"):
             auth_status = self.ap.auth_page()
@@ -42,10 +46,6 @@ class App:
 
             if auth_status == True:
                 self.st.success("認証済")
-
-                # =================
-                # load data
-                self.df = self.cSVTool.load_data()
 
             if auth_status == False:
                 self.st.error("認証失敗")
