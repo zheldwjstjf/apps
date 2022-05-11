@@ -61,11 +61,9 @@ class App:
         # main page
 
         if auth_status == None:
-            pass
+            self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
 
         if auth_status == True:
-            pass
-
             # main page title
             self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
 
@@ -73,7 +71,7 @@ class App:
             self.mp.main_page(self.df)
 
         if auth_status == False:
-            pass
+            self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
 
 app = App()
 app.main()
