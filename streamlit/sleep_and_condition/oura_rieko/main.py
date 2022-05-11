@@ -41,8 +41,11 @@ class App:
                 self.st.warning("未認証")
 
             if auth_status == True:
-
                 self.st.success("認証済")
+
+                # =================
+                # load data
+                self.df = self.cSVTool.load_data()
 
             if auth_status == False:
                 self.st.error("認証失敗")
@@ -54,14 +57,9 @@ class App:
         # reload
         self.st.sidebar.button("更新")
 
-
         # =================
         # main page title
         self.st.markdown("<h1 style='text-align: center; color: red;'>光熱費がやばい！</h1>", unsafe_allow_html=True)
-
-        # =================
-        # load data
-        self.df = self.cSVTool.load_data()
 
         # main page
         self.mp.main_page(self.df)
