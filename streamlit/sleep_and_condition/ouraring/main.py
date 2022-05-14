@@ -13,6 +13,7 @@ def get_self():
     user_info = client.user_info()
     print(user_info)
 
+@st.catch()
 def getOuraClient(user):
     if user == "jack":
         client_id = st.secrets["client_id_jack"]
@@ -34,6 +35,12 @@ def getOuraClient(user):
 
     return auth_client
 
+@st.catch()
+def getSleepData(start_date):
+    sleep = client.sleep_summary(str(start_date))
+
+    return sleep
+
 
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
@@ -48,7 +55,7 @@ option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0
 
 client = getOuraClient(option)
 start_date = datetime(2022, 1, 1)
-sleep = client.sleep_summary(str(start_date))
+sleep = getSleepData(start_date)
 sleep = sleep["sleep"]
 sleep_str = str(sleep)
 sleep_str = sleep_str.replace("'", '"')
