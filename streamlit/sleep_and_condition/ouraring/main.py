@@ -13,23 +13,6 @@ def get_self():
     user_info = client.user_info()
     print(user_info)
 
-def appendFile(filename, token_dict):
-
-    basePath = os.path.dirname(os.path.abspath(__file__))
-    fullPath = os.path.join(basePath, filename)
-    with open(fullPath, "r+") as file:
-        prev = json.load(file)
-        curr = {
-            "client_id": prev.pop("client_id"),
-            "client_secret": prev.pop("client_secret"),
-            "access_token": token_dict["access_token"],
-            "refresh_token": token_dict["refresh_token"],
-            "previous": json.dumps(prev),
-        }
-        file.seek(0)
-        json.dump(curr, file)
-
-
 def getOuraClient():
     client_id = st.secrets["client_id"]
     client_secret = st.secrets["client_secret"]
