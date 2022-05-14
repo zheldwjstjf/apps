@@ -13,7 +13,7 @@ def get_self():
     user_info = client.user_info()
     print(user_info)
 
-@st.catch()
+@st.catche(suppress_st_warning=True)
 def getOuraClient(user):
     if user == "jack":
         client_id = st.secrets["client_id_jack"]
@@ -35,7 +35,7 @@ def getOuraClient(user):
 
     return auth_client
 
-@st.catch()
+@st.catche(suppress_st_warning=True)
 def getSleepData(start_date):
     sleep = client.sleep_summary(str(start_date))
 
