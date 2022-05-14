@@ -13,18 +13,6 @@ def get_self():
     user_info = client.user_info()
     print(user_info)
 
-
-def setEnvironment(envFile):
-    basePath = os.path.dirname(os.path.abspath(__file__))
-    fullPath = os.path.join(basePath, envFile)
-    with open(fullPath) as file:
-        env = json.load(file)
-        os.environ["OURA_CLIENT_ID"] = env["client_id"]
-        os.environ["OURA_CLIENT_SECRET"] = env["client_secret"]
-        os.environ["OURA_ACCESS_TOKEN"] = env["access_token"]
-        os.environ["OURA_REFRESH_TOKEN"] = env["refresh_token"]
-
-
 def appendFile(filename, token_dict):
 
     basePath = os.path.dirname(os.path.abspath(__file__))
@@ -42,19 +30,19 @@ def appendFile(filename, token_dict):
         json.dump(curr, file)
 
 
-def getOuraClient(envFile):
-    client_id = os.getenv("OURA_CLIENT_ID")
-    client_secret = os.getenv("OURA_CLIENT_SECRET")
-    access_token = os.getenv("OURA_ACCESS_TOKEN")
-    refresh_token = os.getenv("OURA_REFRESH_TOKEN")
-    refresh_callback = lambda x: appendFile(envFile, x)
+def getOuraClient():
+    client_id = st.secrets["client_id"]
+    client_secret = st.secrets["client_secret"]
+    access_token = st.secrets["access_token"]
+    refresh_token = st.secrets["refresh_token"]
+    # refresh_callback = lambda x: appendFile(envFile, x)
 
     auth_client = OuraClient(
         client_id=client_id,
         client_secret=client_secret,
         access_token=access_token,
         refresh_token=refresh_token,
-        refresh_callback=refresh_callback,
+        # refresh_callback=refresh_callback,
     )
 
     return auth_client
@@ -62,9 +50,9 @@ def getOuraClient(envFile):
 
 if __name__ == "__main__":
 
-    envFile = "token.json"
-    setEnvironment(envFile)
-    client = getOuraClient(envFile)
+    # envFile = "token.json"
+    # setEnvironment(envFile)
+    client = getOuraClient()
     start_date = datetime(2022, 1, 1)
     # print("start_date : ", start_date)
     # print("start_date type : ", type(start_date))
