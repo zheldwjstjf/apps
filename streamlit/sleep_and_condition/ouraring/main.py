@@ -71,7 +71,7 @@ key_word_list_etc = [
                     "onset_latency",
                 ]
 
-col1, col2, col3, col4 = st.columns(1,1,1,1)
+col1, col2, col3, col4 = st.columns((1,1,1,1))
 
 options_list = []
 
