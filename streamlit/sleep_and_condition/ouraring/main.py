@@ -69,12 +69,7 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     # initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
     page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
     # page_icon=None,  # String, anything supported by st.image, or None.)
+options = st.multiselect('▶︎ 選択',key_word_list, default="score")
 
-option = st.multiselect('▶︎ 選択',key_word_list, default="score")
-
-width_num = 1200
-height_num = 500
-useContainerWidth = True # False
-
-chart_data = pd.DataFrame(df, columns=[option])
-st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
+chart_data = pd.DataFrame(df, columns=[options])
+st.line_chart(chart_data)
