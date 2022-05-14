@@ -79,6 +79,7 @@ option1 = col1.multiselect('▶︎ スコア',key_word_list_score, default=None)
 if option1 != None:
     options_list = options_list.append(option1)
 
+"""
 option2 = col2.multiselect('▶︎ 時間',key_word_list_duration, default=None)
 if option2 != None:
     options_list = options_list.append(option2)
@@ -90,7 +91,7 @@ if option3 != None:
 option4 = col4.multiselect('▶︎ その他',key_word_list_etc, default=None)
 if option4 != None:
     options_list = options_list.append(option4)
-
+"""
 
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
