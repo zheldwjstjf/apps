@@ -69,6 +69,23 @@ key_word_list1 = [
                     "score_latency",
                     "score_rem",
                     "score_total",
+                    "duration",
+                    "total",
+                    "awake",
+                    "rem",
+                    "deep",
+                    "light",
+                    "midpoint_time",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
                 ]
 
 
@@ -100,10 +117,10 @@ col1, col2, col3 = st.columns((1,1,1))
 options1 = col1.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
 # st.write("options : ", options1)
 
-options2 = col2.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
+options2 = col2.multiselect('▶︎ 項目を選択',key_word_list1, default="duration")
 # st.write("options : ", options2)
 
-options3 = col3.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
+options3 = col3.multiselect('▶︎ 項目を選択',key_word_list1, default="temperature_deviation")
 # st.write("options : ", options3)
 
 chart_data = pd.DataFrame(df, columns=options1)
