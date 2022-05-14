@@ -75,19 +75,19 @@ col1, col2, col3, col4 = st.columns((1,1,1,1))
 
 options_list = []
 
-option1 = col1.multiselect('▶︎ スコア', key_word_list_score, index=0)
+option1 = col1.multiselect('▶︎ スコア',key_word_list_score)
 if option1 != None:
     options_list = options_list.append(option1)
 
-option2 = col2.multiselect('▶︎ 時間', key_word_list_duration, index=0)
+option2 = col2.multiselect('▶︎ 時間',key_word_list_duration)
 if option2 != None:
     options_list = options_list.append(option2)
 
-option3 = col3.multiselect('▶︎ 体温偏差', key_word_list_temperature, index=0)
+option3 = col3.multiselect('▶︎ 体温偏差',key_word_list_temperature)
 if option3 != None:
     options_list = options_list.append(option3)
 
-option4 = col4.multiselect('▶︎ その他', key_word_list_etc, index=0)
+option4 = col4.multiselect('▶︎ その他',key_word_list_etc)
 if option4 != None:
     options_list = options_list.append(option4)
 
