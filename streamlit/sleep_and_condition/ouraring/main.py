@@ -98,10 +98,10 @@ key_word_list3 = [
 options1 = st.multiselect('▶︎ 項目を選択',key_word_list1, default="score", key=1)
 # st.write("options : ", options1)
 
-options2 = st.multiselect('▶︎ 項目を選択',key_word_list2, default="score", key=2)
+options2 = st.multiselect('▶︎ 項目を選択',key_word_list2, default="duration", key=2)
 # st.write("options : ", options2)
 
-options3 = st.multiselect('▶︎ 項目を選択',key_word_list3, default="score", key=3)
+options3 = st.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation", key=3)
 # st.write("options : ", options3)
 
 chart_data = pd.DataFrame(df, columns=options1)
