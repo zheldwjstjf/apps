@@ -69,6 +69,7 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     # initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
     page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
     # page_icon=None,  # String, anything supported by st.image, or None.)
+)
 options = st.multiselect('▶︎ 選択',key_word_list, default="score")
 st.write("options : ", options)
 
