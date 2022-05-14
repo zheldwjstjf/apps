@@ -13,11 +13,17 @@ def get_self():
     user_info = client.user_info()
     print(user_info)
 
-def getOuraClient():
-    client_id = st.secrets["client_id_jack"]
-    client_secret = st.secrets["client_secret_jack"]
-    access_token = st.secrets["access_token_jack"]
-    refresh_token = st.secrets["refresh_token_jack"]
+def getOuraClient(user):
+    if user == "jack":
+        client_id = st.secrets["client_id_jack"]
+        client_secret = st.secrets["client_secret_jack"]
+        access_token = st.secrets["access_token_jack"]
+        refresh_token = st.secrets["refresh_token_jack"]
+    if user == "rieko":
+        client_id = st.secrets["client_id_rieko"]
+        client_secret = st.secrets["client_secret_rieko"]
+        access_token = st.secrets["access_token_rieko"]
+        refresh_token = st.secrets["refresh_token_rieko"]
 
     auth_client = OuraClient(
         client_id=client_id,
@@ -29,17 +35,16 @@ def getOuraClient():
     return auth_client
 
 
-if __name__ == "__main__":
-
-    client = getOuraClient()
-    start_date = datetime(2022, 1, 1)
-    sleep = client.sleep_summary(str(start_date))
-    sleep = sleep["sleep"]
-    sleep_str = str(sleep)
-    sleep_str = sleep_str.replace("'", '"')
+user_list = ["jack", "rieko"]
+option = st.selectbox("▶︎ ユーザをを選択", user_list)
+client = getOuraClient(option)
+start_date = datetime(2022, 1, 1)
+sleep = client.sleep_summary(str(start_date))
+sleep = sleep["sleep"]
+sleep_str = str(sleep)
+sleep_str = sleep_str.replace("'", '"')
 
 df = pd.read_json(sleep_str)
-
 
 key_word_list = [
                     "score",
@@ -70,7 +75,7 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
     # page_icon=None,  # String, anything supported by st.image, or None.)
 )
-options = st.multiselect('▶︎ 選択',key_word_list, default="score")
+options = st.multiselect('▶︎ 項目を選択',key_word_list, default="score")
 st.write("options : ", options)
 
 chart_data = pd.DataFrame(df, columns=options)
