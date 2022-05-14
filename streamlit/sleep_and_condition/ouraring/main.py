@@ -79,26 +79,7 @@ option1 = col1.multiselect('▶︎ スコア',key_word_list_score, default=None)
 if option1 != None:
     options_list = options_list.append(option1)
 
-"""
-option2 = col2.multiselect('▶︎ 時間',key_word_list_duration, default=None)
-if option2 != None:
-    options_list = options_list.append(option2)
 
-option3 = col3.multiselect('▶︎ 体温偏差',key_word_list_temperature, default=None)
-if option3 != None:
-    options_list = options_list.append(option3)
-
-option4 = col4.multiselect('▶︎ その他',key_word_list_etc, default=None)
-if option4 != None:
-    options_list = options_list.append(option4)
-"""
-
-st.set_page_config( # Alternate names: setup_page, page, layout
-    layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
-    initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
-    page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
-    # page_icon=None,  # String, anything supported by st.image, or None.
-)
 
 width_num = 1200
 height_num = 500
