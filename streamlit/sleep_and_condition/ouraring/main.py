@@ -18,14 +18,12 @@ def getOuraClient():
     client_secret = st.secrets["client_secret_jack"]
     access_token = st.secrets["access_token_jack"]
     refresh_token = st.secrets["refresh_token_jack"]
-    # refresh_callback = lambda x: appendFile(envFile, x)
 
     auth_client = OuraClient(
         client_id=client_id,
         client_secret=client_secret,
         access_token=access_token,
         refresh_token=refresh_token,
-        # refresh_callback=refresh_callback,
     )
 
     return auth_client
@@ -33,47 +31,14 @@ def getOuraClient():
 
 if __name__ == "__main__":
 
-    # envFile = "token.json"
-    # setEnvironment(envFile)
     client = getOuraClient()
     start_date = datetime(2022, 1, 1)
-    # print("start_date : ", start_date)
-    # print("start_date type : ", type(start_date))
     sleep = client.sleep_summary(str(start_date))
     sleep = sleep["sleep"]
     sleep_str = str(sleep)
     sleep_str = sleep_str.replace("'", '"')
-    print(sleep_str)
 
 df = pd.read_json(sleep_str)
-# df = pd.read_json("oura_sleep_2022-05-13T15-08-55.json")
-
-key_word_list_all = [
-                    "duration",
-                    "total",
-                    "awake",
-                    "rem",
-                    "deep",
-                    "light",
-                    "midpoint_time",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
-                    "score",
-                    "score_alignment",
-                    "score_deep",
-                    "score_disturbances",
-                    "score_efficiency",
-                    "score_latency",
-                    "score_rem",
-                    "score_total",
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "bedtime_start_delta",
-                    "bedtime_end_delta",
-                    "midpoint_at_delta",
-                    "temperature_delta"
-                ]
 
 key_word_list_score = [
                     "score",
@@ -100,6 +65,32 @@ key_word_list_temperature = [
                     "temperature_trend_deviation",
                 ]
 
+key_word_list_etc = [
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
+
+col1, col2, col3, col4 = st.columns(1,1,1,1)
+
+options_list = []
+
+option1 = col1.st.multiselect('▶︎ スコア',key_word_list_score)
+if option1 != None:
+    options_list = options_list.append(option1)
+
+option2 = col2.st.multiselect('▶︎ 時間',key_word_list_duration)
+if option2 != None:
+    options_list = options_list.append(option2)
+
+option3 = col3.st.multiselect('▶︎ 体温偏差',key_word_list_temperature)
+if option3 != None:
+    options_list = options_list.append(option3)
+
+option4 = col4.st.multiselect('▶︎ その他',key_word_list_etc)
+if option4 != None:
+    options_list = options_list.append(option4)
+
 
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
@@ -112,18 +103,5 @@ width_num = 1200
 height_num = 500
 useContainerWidth = True # False
 
-chart_data = pd.DataFrame(df, columns=["score"])
+chart_data = pd.DataFrame(df, columns=[options_list])
 st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
-
-chart_data = pd.DataFrame(df, columns=key_word_list_score)
-st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
-
-chart_data = pd.DataFrame(df, columns=key_word_list_duration)
-st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
-
-chart_data = pd.DataFrame(df, columns=key_word_list_temperature)
-st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
-
-for key_word in key_word_list_all:
-    chart_data = pd.DataFrame(df, columns=[key_word])
-    st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
