@@ -69,23 +69,6 @@ key_word_list1 = [
                     "score_latency",
                     "score_rem",
                     "score_total",
-                    "duration",
-                    "total",
-                    "awake",
-                    "rem",
-                    "deep",
-                    "light",
-                    "midpoint_time",
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
                 ]
 
 
