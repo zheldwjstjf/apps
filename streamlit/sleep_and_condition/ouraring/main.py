@@ -64,6 +64,12 @@ key_word_list = [
                 ]
 
 
+st.set_page_config( # Alternate names: setup_page, page, layout
+    layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
+    initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
+    page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
+    # page_icon=None,  # String, anything supported by st.image, or None.)
+    
 option = st.multiselect('▶︎ 選択',key_word_list, default="score")
 
 width_num = 1200
