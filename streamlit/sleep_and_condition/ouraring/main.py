@@ -36,7 +36,9 @@ def getOuraClient(user):
 
 
 user_list = ["jack", "rieko"]
-option = st.selectbox("▶︎ ユーザをを選択", user_list)
+option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
+
+
 client = getOuraClient(option)
 start_date = datetime(2022, 1, 1)
 sleep = client.sleep_summary(str(start_date))
