@@ -71,5 +71,5 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     # page_icon=None,  # String, anything supported by st.image, or None.)
 options = st.multiselect('▶︎ 選択',key_word_list, default="score")
 
-chart_data = pd.DataFrame(df, columns=[options])
+chart_data = pd.DataFrame(df, columns=options)
 st.line_chart(chart_data)
