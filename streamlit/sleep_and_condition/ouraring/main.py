@@ -14,10 +14,10 @@ def get_self():
     print(user_info)
 
 def getOuraClient():
-    client_id = st.secrets["client_id"]
-    client_secret = st.secrets["client_secret"]
-    access_token = st.secrets["access_token"]
-    refresh_token = st.secrets["refresh_token"]
+    client_id = st.secrets["client_id_jack"]
+    client_secret = st.secrets["client_secret_jack"]
+    access_token = st.secrets["access_token_jack"]
+    refresh_token = st.secrets["refresh_token_jack"]
     # refresh_callback = lambda x: appendFile(envFile, x)
 
     auth_client = OuraClient(
