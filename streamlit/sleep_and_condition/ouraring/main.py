@@ -40,50 +40,35 @@ if __name__ == "__main__":
 
 df = pd.read_json(sleep_str)
 
-key_word_list_score = [
+
+key_word_list = [
                     "score",
                     "score_deep",
                     "score_disturbances",
                     "score_efficiency",
                     "score_latency",
                     "score_rem",
-                    "score_total"
-                ]
-
-key_word_list_duration = [
+                    "score_total",
                     "duration",
                     "total",
                     "awake",
                     "rem",
                     "deep",
                     "light",
-                    "midpoint_time"
-                ]
-
-key_word_list_temperature = [
+                    "midpoint_time",
                     "temperature_deviation",
                     "temperature_trend_deviation",
-                ]
-
-key_word_list_etc = [
                     "efficiency",
                     "restless",
                     "onset_latency",
                 ]
 
-col1, col2, col3, col4 = st.columns((1,1,1,1))
 
-options_list = []
-
-option1 = col1.multiselect('▶︎ スコア',key_word_list_score, default=None)
-if option1 != None:
-    options_list = options_list.append(option1)
-
-
+option = st.multiselect('▶︎ 選択',key_word_list, default="score")
 
 width_num = 1200
 height_num = 500
 useContainerWidth = True # False
 
-chart_data = pd.DataFrame(df, columns=[options_list])
+chart_data = pd.DataFrame(df, columns=[option])
 st.line_chart(chart_data, width=width_num, height=height_num, use_container_width=useContainerWidth)
