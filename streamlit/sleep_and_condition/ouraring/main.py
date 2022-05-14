@@ -61,7 +61,7 @@ sleep_str = sleep_str.replace("'", '"')
 
 df = pd.read_json(sleep_str)
 
-key_word_list = [
+key_word_list1 = [
                     "score",
                     "score_deep",
                     "score_disturbances",
@@ -69,6 +69,10 @@ key_word_list = [
                     "score_latency",
                     "score_rem",
                     "score_total",
+                ]
+
+
+key_word_list2 = [
                     "duration",
                     "total",
                     "awake",
@@ -83,8 +87,28 @@ key_word_list = [
                     "onset_latency",
                 ]
 
-options = st.multiselect('▶︎ 項目を選択',key_word_list, default="score")
-st.write("options : ", options)
+key_word_list3 = [
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
 
-chart_data = pd.DataFrame(df, columns=options)
-st.line_chart(chart_data)
+options1 = st.multiselect('▶︎ 項目を選択',key_word_list1, default="score", key=1)
+# st.write("options : ", options1)
+
+options2 = st.multiselect('▶︎ 項目を選択',key_word_list2, default="score", key=2)
+# st.write("options : ", options2)
+
+options3 = st.multiselect('▶︎ 項目を選択',key_word_list3, default="score", key=3)
+# st.write("options : ", options3)
+
+chart_data = pd.DataFrame(df, columns=options1)
+st.line_chart(chart_data, key=1)
+
+chart_data = pd.DataFrame(df, columns=options2)
+st.line_chart(chart_data, key=2)
+
+chart_data = pd.DataFrame(df, columns=options3)
+st.line_chart(chart_data, key=3)
