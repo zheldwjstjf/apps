@@ -13,7 +13,7 @@ def get_self():
     user_info = client.user_info()
     print(user_info)
 
-@st.cache(suppress_st_warning=True)
+# @st.cache(suppress_st_warning=True)
 def getOuraClient(user):
     if user == "jack":
         client_id = st.secrets["client_id_jack"]
