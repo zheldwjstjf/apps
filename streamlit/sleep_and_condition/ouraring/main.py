@@ -3,8 +3,6 @@ import os
 from datetime import datetime
 import streamlit as st
 import pandas as pd
-import requests
-from requests_oauthlib import OAuth2Session
 
 from oura import OuraClient
 
@@ -26,29 +24,17 @@ def getOuraClient(user):
         access_token = st.secrets["access_token_rieko"]
         refresh_token = st.secrets["refresh_token_rieko"]
 
-    """
     auth_client = OuraClient(
         client_id=client_id,
         client_secret=client_secret,
         access_token=access_token,
         refresh_token=refresh_token,
     )
-    """
 
-    return access_token
+    return auth_client
 
 def getSleepData(start_date, end_date):
-    # sleep = client.sleep_summary(str(start_date), str(end_date))
-
-    sleep = requests.get('https://api.ouraring.com/v1/sleep?'
-                              'start={}&end={}&access_token={}'
-                              .format(start_date, end_date, client))
-
-    st.write(sleep)
-
-    sleep = sleep.json()
-
-    st.write(sleep)
+    sleep = client.sleep_summary(str(start_date), str(end_date))
 
     return sleep
 
@@ -69,8 +55,6 @@ option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=1
 
 
 client = getOuraClient(option)
-
-
 
 # start_date = datetime(2022, 1, 1)
 start_date = st.date_input("いつからを選択")
