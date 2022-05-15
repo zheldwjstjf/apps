@@ -26,14 +26,16 @@ def getOuraClient(user):
         access_token = st.secrets["access_token_rieko"]
         refresh_token = st.secrets["refresh_token_rieko"]
 
+    """
     auth_client = OuraClient(
         client_id=client_id,
         client_secret=client_secret,
         access_token=access_token,
         refresh_token=refresh_token,
     )
+    """
 
-    return auth_client
+    return access_token
 
 def getSleepData(start_date, end_date):
     # sleep = client.sleep_summary(str(start_date), str(end_date))
@@ -43,7 +45,7 @@ def getSleepData(start_date, end_date):
                               .format(start_date, end_date, client))
 
     st.write(sleep)
-    
+
     sleep = sleep.json()
 
     st.write(sleep)
