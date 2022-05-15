@@ -42,7 +42,11 @@ def getSleepData(start_date, end_date):
                               'start={}&end={}&access_token={}'
                               .format(start_date, end_date, client))
 
+    st.write(sleep)
+    
     sleep = sleep.json()
+
+    st.write(sleep)
 
     return sleep
 
