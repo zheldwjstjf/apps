@@ -4,6 +4,7 @@ from datetime import datetime
 import streamlit as st
 import pandas as pd
 import requests
+from requests_oauthlib import OAuth2Session
 
 from oura import OuraClient
 
@@ -37,10 +38,9 @@ def getOuraClient(user):
 def getSleepData(start_date, end_date):
     # sleep = client.sleep_summary(str(start_date), str(end_date))
 
-    oauth_token = client['oauth']['access_token']
     sleep = requests.get('https://api.ouraring.com/v1/sleep?'
                               'start={}&end={}&access_token={}'
-                              .format(start_date, end_date, oauth_token))
+                              .format(start_date, end_date, client))
 
     return sleep
 
