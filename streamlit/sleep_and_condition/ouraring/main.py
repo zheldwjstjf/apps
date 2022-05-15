@@ -6,7 +6,6 @@ import pandas as pd
 
 from oura import OuraClient
 
-
 def get_self():
     pat = os.getenv("OURA_PAT")
     client = OuraClient(personal_access_token=pat)
@@ -34,7 +33,6 @@ def getOuraClient(user):
 
     return auth_client
 
-# @st.cache(suppress_st_warning=True)
 def getSleepData(start_date):
     sleep = client.sleep_summary(str(start_date))
 
@@ -53,8 +51,12 @@ option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=1
 
 
 client = getOuraClient(option)
-start_date = datetime(2022, 1, 1)
-sleep = getSleepData(start_date)
+
+# start_date = datetime(2022, 1, 1)
+start_date = st.date_input("いつからを選択")
+end_date = st.date_input("いつまでを選択")
+
+sleep = getSleepData(start_date, end_date)
 sleep = sleep["sleep"]
 sleep_str = str(sleep)
 sleep_str = sleep_str.replace("'", '"')
