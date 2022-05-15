@@ -33,8 +33,8 @@ def getOuraClient(user):
 
     return auth_client
 
-def getSleepData(start_date):
-    sleep = client.sleep_summary(str(start_date))
+def getSleepData(start_date, end_date):
+    sleep = client.sleep_summary(str(start_date), str(end_date))
 
     return sleep
 
