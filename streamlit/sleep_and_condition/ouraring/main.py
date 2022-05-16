@@ -146,4 +146,32 @@ st.line_chart(chart_data)
 chart_data = pd.DataFrame(df, columns=options3)
 st.line_chart(chart_data)
 
-st.write("sleep : ", sleep[-1])
+all_key_word_list = [
+                    "score",
+                    "score_deep",
+                    "score_disturbances",
+                    "score_efficiency",
+                    "score_latency",
+                    "score_rem",
+                    "score_total",
+                    "duration",
+                    "total",
+                    "awake",
+                    "rem",
+                    "deep",
+                    "light",
+                    "midpoint_time",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
+
+for key_word in all_key_word_list:
+    st.write(key_word, " : ", sleep[key_word])
