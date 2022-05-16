@@ -75,7 +75,7 @@ st.set_page_config( # Alternate names: setup_page, page, layout
 )
 
 user_list = ["jack", "rieko"]
-option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
+selected_user = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
 
 startDate = st.sidebar.date_input("▶︎ いつから")
 endDate = st.sidebar.date_input("▶︎ いつまで")
@@ -89,7 +89,6 @@ key_word_list1 = [
                     "score_rem",
                     "score_total",
                 ]
-
 
 key_word_list2 = [
                     "duration",
@@ -120,8 +119,8 @@ options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, defau
 
 
 
-def main():
-    OuraSleepData.getOuraClient(option)
+def main(startDate, endDate):
+    OuraSleepData.getOuraClient(selected_user)
     sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
     sleep = sleep["sleep"]
@@ -188,4 +187,4 @@ def main():
     for key_word in key_word_list3:
         col6.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
-main()
+main(startDate, endDate)
