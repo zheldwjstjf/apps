@@ -170,7 +170,7 @@ all_key_word_list = [
 
 sleep_dict = sleep[0]
 
-st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+st.write("[DEBUG] Sleep_dict : ", sleep_dict[-1])
 
 st.write("**本日のデータ**")
 
