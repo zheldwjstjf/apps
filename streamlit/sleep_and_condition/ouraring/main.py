@@ -80,18 +80,6 @@ option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0
 startDate = st.sidebar.date_input("▶︎ いつから")
 endDate = st.sidebar.date_input("▶︎ いつまで")
 
-
-
-OuraSleepData.getOuraClient(option)
-sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
-
-sleep = sleep["sleep"]
-
-sleep_str = str(sleep)
-sleep_str = sleep_str.replace("'", '"')
-
-df = pd.read_json(sleep_str)
-
 key_word_list1 = [
                     "score",
                     "score_deep",
@@ -121,16 +109,25 @@ key_word_list3 = [
                     "onset_latency",
                 ]
 
-col1, col2, col3 = st.columns((1,1,1))
-
-options1 = col1.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
+options1 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
 # st.write("options : ", options1)
 
-options2 = col2.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
+options2 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
 # st.write("options : ", options2)
 
-options3 = col3.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
+options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
 # st.write("options : ", options3)
+
+
+OuraSleepData.getOuraClient(option)
+sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
+
+sleep = sleep["sleep"]
+
+sleep_str = str(sleep)
+sleep_str = sleep_str.replace("'", '"')
+
+df = pd.read_json(sleep_str)
 
 chart_data = pd.DataFrame(df, columns=options1)
 st.line_chart(chart_data)
