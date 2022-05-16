@@ -176,7 +176,8 @@ all_key_word_list = [
 st.write("sleep type : ", type(sleep))
 st.write("最後の日のデータ : ", sleep[-1])
 
-"""
+sleep_dict = sleep[0]
+st.write("sleep type : ", type(sleep))
+
 for key_word in all_key_word_list:
-    st.write(key_word, " : ", sleep.get(key_word))
-"""
+    st.write(key_word, " : ", sleep_dict.get(key_word))
