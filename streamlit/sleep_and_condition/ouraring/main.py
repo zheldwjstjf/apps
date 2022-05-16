@@ -58,8 +58,6 @@ class Oura_sleep_data:
 
         sleep = client.sleep_summary(str(start_date), str(end_date))
 
-        st.write("sleep : ", sleep)
-
         return sleep
 
 #########################
@@ -88,6 +86,9 @@ endDate = st.date_input("▶︎ いつまで")
 sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
 sleep = sleep["sleep"]
+
+st.write("sleep : ", sleep[0])
+
 sleep_str = str(sleep)
 sleep_str = sleep_str.replace("'", '"')
 
