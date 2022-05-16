@@ -60,67 +60,13 @@ class Oura_sleep_data:
 
         return sleep
 
-#########################
-#########################
-#########################
-
-st.set_page_config( # Alternate names: setup_page, page, layout
-    layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
-    initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
-    page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
-    # page_icon=None,  # String, anything supported by st.image, or None.)
-)
-
-user_list = ["jack", "rieko"]
-selected_user = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
-
-startDate = st.sidebar.date_input("▶︎ いつから")
-endDate = st.sidebar.date_input("▶︎ いつまで")
-
-key_word_list1 = [
-                    "score",
-                    "score_deep",
-                    "score_disturbances",
-                    "score_efficiency",
-                    "score_latency",
-                    "score_rem",
-                    "score_total",
-                ]
-
-key_word_list2 = [
-                    "duration",
-                    "total",
-                    "awake",
-                    "rem",
-                    "deep",
-                    "light",
-                    "midpoint_time",
-                ]
-
-key_word_list3 = [
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
-                ]
-
-options1 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
-# st.write("options : ", options1)
-
-options2 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
-# st.write("options : ", options2)
-
-options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
-# st.write("options : ", options3)
-
-
 
 def main(startDate, endDate):
 
     OuraSleepData = Oura_sleep_data()
-    
+
     OuraSleepData.getOuraClient(selected_user)
+    
     sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
     sleep = sleep["sleep"]
@@ -187,4 +133,62 @@ def main(startDate, endDate):
     for key_word in key_word_list3:
         col6.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
+#########################
+# streamlit
+#########################
+
+st.set_page_config( # Alternate names: setup_page, page, layout
+    layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
+    initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
+    page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
+    # page_icon=None,  # String, anything supported by st.image, or None.)
+)
+
+user_list = ["jack", "rieko"]
+selected_user = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
+
+startDate = st.sidebar.date_input("▶︎ いつから")
+endDate = st.sidebar.date_input("▶︎ いつまで")
+
+key_word_list1 = [
+                    "score",
+                    "score_deep",
+                    "score_disturbances",
+                    "score_efficiency",
+                    "score_latency",
+                    "score_rem",
+                    "score_total",
+                ]
+
+key_word_list2 = [
+                    "duration",
+                    "total",
+                    "awake",
+                    "rem",
+                    "deep",
+                    "light",
+                    "midpoint_time",
+                ]
+
+key_word_list3 = [
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
+
+options1 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
+# st.write("options : ", options1)
+
+options2 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
+# st.write("options : ", options2)
+
+options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
+# st.write("options : ", options3)
+
+
+#########################
+# call class
+#########################
 main(startDate, endDate)
