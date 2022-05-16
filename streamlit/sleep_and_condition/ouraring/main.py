@@ -172,7 +172,8 @@ sleep_dict = sleep[-1]
 
 st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
-st.write("**本日のデータ**")
+st.write("**詳細データ**")
+st.write(str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
 col4, col5, col6 = st.columns((1,1,1))
 
