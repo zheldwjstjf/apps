@@ -111,11 +111,6 @@ key_word_list2 = [
                     "deep",
                     "light",
                     "midpoint_time",
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
                 ]
 
 key_word_list3 = [
