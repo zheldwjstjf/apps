@@ -46,9 +46,11 @@ class Oura_sleep_data:
             pass
         else:
             if self.user == "rieko":
-                self.start_date = datetime(2021, 7, 2)
+                # self.start_date = datetime(2021, 7, 2)
+                self.end_date = datetime.today()
             if self.user == "jack":
-                self.start_date = datetime(2022, 1, 1)
+                # self.start_date = datetime(2022, 1, 1)
+                self.end_date = datetime.today()
 
         self.end_date = kwargs.get("endDate")
         if self.end_date != None:
