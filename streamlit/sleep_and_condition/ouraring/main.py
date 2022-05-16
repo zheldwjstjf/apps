@@ -87,8 +87,6 @@ sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
 sleep = sleep["sleep"]
 
-st.write("sleep : ", sleep[0])
-
 sleep_str = str(sleep)
 sleep_str = sleep_str.replace("'", '"')
 
@@ -147,3 +145,5 @@ st.line_chart(chart_data)
 
 chart_data = pd.DataFrame(df, columns=options3)
 st.line_chart(chart_data)
+
+st.write("sleep : ", sleep[-1])
