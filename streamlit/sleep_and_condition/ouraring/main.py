@@ -119,69 +119,73 @@ options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, defau
 # st.write("options : ", options3)
 
 
-OuraSleepData.getOuraClient(option)
-sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
-sleep = sleep["sleep"]
+def main():
+    OuraSleepData.getOuraClient(option)
+    sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
-sleep_str = str(sleep)
-sleep_str = sleep_str.replace("'", '"')
+    sleep = sleep["sleep"]
 
-df = pd.read_json(sleep_str)
+    sleep_str = str(sleep)
+    sleep_str = sleep_str.replace("'", '"')
 
-chart_data = pd.DataFrame(df, columns=options1)
-st.line_chart(chart_data)
+    df = pd.read_json(sleep_str)
 
-chart_data = pd.DataFrame(df, columns=options2)
-st.line_chart(chart_data)
+    chart_data = pd.DataFrame(df, columns=options1)
+    st.line_chart(chart_data)
 
-chart_data = pd.DataFrame(df, columns=options3)
-st.line_chart(chart_data)
+    chart_data = pd.DataFrame(df, columns=options2)
+    st.line_chart(chart_data)
 
-all_key_word_list = [
-                    "score",
-                    "score_deep",
-                    "score_disturbances",
-                    "score_efficiency",
-                    "score_latency",
-                    "score_rem",
-                    "score_total",
-                    "duration",
-                    "total",
-                    "awake",
-                    "rem",
-                    "deep",
-                    "light",
-                    "midpoint_time",
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
-                    "temperature_deviation",
-                    "temperature_trend_deviation",
-                    "efficiency",
-                    "restless",
-                    "onset_latency",
-                ]
+    chart_data = pd.DataFrame(df, columns=options3)
+    st.line_chart(chart_data)
 
-sleep_dict = sleep[-1]
+    all_key_word_list = [
+                        "score",
+                        "score_deep",
+                        "score_disturbances",
+                        "score_efficiency",
+                        "score_latency",
+                        "score_rem",
+                        "score_total",
+                        "duration",
+                        "total",
+                        "awake",
+                        "rem",
+                        "deep",
+                        "light",
+                        "midpoint_time",
+                        "temperature_deviation",
+                        "temperature_trend_deviation",
+                        "efficiency",
+                        "restless",
+                        "onset_latency",
+                        "temperature_deviation",
+                        "temperature_trend_deviation",
+                        "efficiency",
+                        "restless",
+                        "onset_latency",
+                    ]
 
-st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+    sleep_dict = sleep[-1]
 
-st.write("**詳細データ**")
-st.write(str(sleep_dict.get("summary_date")) + "の朝のデータ")
+    st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
-col4, col5, col6 = st.columns((1,1,1))
+    st.write("**詳細データ**")
+    st.write(str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
-col4.write(" ▶︎ スコア")
-for key_word in key_word_list1:
-    col4.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+    col4, col5, col6 = st.columns((1,1,1))
 
-col5.write(" ▶︎ 時間（分）")
-for key_word in key_word_list2:
-    col5.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)/60))
+    col4.write(" ▶︎ スコア")
+    for key_word in key_word_list1:
+        col4.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
-col6.write(" ▶︎ その他")
-for key_word in key_word_list3:
-    col6.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+    col5.write(" ▶︎ 時間（分）")
+    for key_word in key_word_list2:
+        col5.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)/60))
+
+    col6.write(" ▶︎ その他")
+    for key_word in key_word_list3:
+        col6.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+
+main()
