@@ -77,10 +77,12 @@ st.set_page_config( # Alternate names: setup_page, page, layout
 user_list = ["jack", "rieko"]
 option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
 
-OuraSleepData.getOuraClient(option)
+startDate = st.sidebar.date_input("▶︎ いつから")
+endDate = st.sidebar.date_input("▶︎ いつまで")
 
-startDate = st.date_input("▶︎ いつから")
-endDate = st.date_input("▶︎ いつまで")
+
+
+OuraSleepData.getOuraClient(option)
 sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
 sleep = sleep["sleep"]
