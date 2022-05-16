@@ -169,11 +169,17 @@ all_key_word_list = [
                 ]
 
 sleep_dict = sleep[0]
+
+st.write("**本日のデータ**")
+
+st.write(" ▶︎ スコア")
 for key_word in key_word_list1:
-    st.write("- ", key_word, " : ", sleep_dict.get(key_word))
+    st.write(" -", key_word, " : ", sleep_dict.get(key_word))
 
+st.write(" ▶︎ 時間（分）")
 for key_word in key_word_list2:
-    st.write("- ", key_word, " : ", sleep_dict.get(key_word)/60)
+    st.write(" -", key_word, " : ", sleep_dict.get(key_word)/60)
 
+st.write(" ▶︎ その他")
 for key_word in key_word_list3:
-    st.write("- ", key_word, " : ", sleep_dict.get(key_word))
+    st.write(" -", key_word, " : ", sleep_dict.get(key_word))
