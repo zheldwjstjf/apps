@@ -36,7 +36,7 @@ def getOuraClient(user):
 def getSleepData(start_date, end_date):
     sleep = client.sleep_summary(str(start_date), str(end_date))
 
-    st.write("sleep : ", sleep)
+    # st.write("sleep : ", sleep)
 
     return sleep
 
