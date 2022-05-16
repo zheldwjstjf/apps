@@ -170,6 +170,8 @@ all_key_word_list = [
 
 sleep_dict = sleep[0]
 
+st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+
 st.write("**本日のデータ**")
 
 col4, col5, col6 = st.columns((1,1,1))
