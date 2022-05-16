@@ -31,14 +31,14 @@ class Oura_sleep_data:
             access_token = st.secrets["access_token_rieko"]
             refresh_token = st.secrets["refresh_token_rieko"]
 
-        auth_client = OuraClient(
+        self.auth_client = OuraClient(
             client_id=client_id,
             client_secret=client_secret,
             access_token=access_token,
             refresh_token=refresh_token,
         )
 
-        return auth_client
+        return self.auth_client
 
     def getSleepData(self, *args, **kwargs):
         start_date = kwargs.get("startDate")
@@ -56,7 +56,7 @@ class Oura_sleep_data:
         else:
             end_date = datetime.today()
 
-        sleep = client.sleep_summary(str(start_date), str(end_date))
+        sleep = self.auth_client.sleep_summary(str(start_date), str(end_date))
 
         return sleep
 
@@ -77,7 +77,7 @@ st.set_page_config( # Alternate names: setup_page, page, layout
 user_list = ["jack", "rieko"]
 option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=0)
 
-client = OuraSleepData.getOuraClient(option)
+OuraSleepData.getOuraClient(option)
 
 startDate = st.date_input("▶︎ いつから")
 endDate = st.date_input("▶︎ いつまで")
