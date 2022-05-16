@@ -33,10 +33,22 @@ def getOuraClient(user):
 
     return auth_client
 
-def getSleepData(start_date, end_date):
+def getSleepData(*args, **kwargs):
+    start_date = kwargs.get("startDate")
+    if start_date != None:
+        pass
+    else:
+        start_date = datetime(2021, 7, 2)
+
+    end_date = kwargs.get("endDate")
+    if end_date != None:
+        pass
+    else:
+        end_date = datetime.today()
+
     sleep = client.sleep_summary(str(start_date), str(end_date))
 
-    st.write("sleep : ", sleep)
+    # st.write("sleep : ", sleep)
 
     return sleep
 
@@ -58,70 +70,67 @@ option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=1
 
 client = getOuraClient(option)
 
-# start_date = datetime(2022, 1, 1)
-start_date = st.date_input("▶︎ いつから")
-end_date = st.date_input("▶︎ いつまで")
+startDate = st.date_input("▶︎ いつから")
+endDate = st.date_input("▶︎ いつまで")
 
-if (start_date!=None) and (end_date!=None):
+sleep = getSleepData(start_date=startDate, end_date=endDate)
 
-    sleep = getSleepData(start_date, end_date)
+sleep = sleep["sleep"]
+sleep_str = str(sleep)
+sleep_str = sleep_str.replace("'", '"')
 
-    sleep = sleep["sleep"]
-    sleep_str = str(sleep)
-    sleep_str = sleep_str.replace("'", '"')
+df = pd.read_json(sleep_str)
 
-    df = pd.read_json(sleep_str)
-
-    key_word_list1 = [
-                        "score",
-                        "score_deep",
-                        "score_disturbances",
-                        "score_efficiency",
-                        "score_latency",
-                        "score_rem",
-                        "score_total",
-                    ]
+key_word_list1 = [
+                    "score",
+                    "score_deep",
+                    "score_disturbances",
+                    "score_efficiency",
+                    "score_latency",
+                    "score_rem",
+                    "score_total",
+                ]
 
 
-    key_word_list2 = [
-                        "duration",
-                        "total",
-                        "awake",
-                        "rem",
-                        "deep",
-                        "light",
-                        "midpoint_time",
-                        "temperature_deviation",
-                        "temperature_trend_deviation",
-                        "efficiency",
-                        "restless",
-                        "onset_latency",
-                    ]
+key_word_list2 = [
+                    "duration",
+                    "total",
+                    "awake",
+                    "rem",
+                    "deep",
+                    "light",
+                    "midpoint_time",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
 
-    key_word_list3 = [
-                        "temperature_deviation",
-                        "temperature_trend_deviation",
-                        "efficiency",
-                        "restless",
-                        "onset_latency",
-                    ]
+key_word_list3 = [
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
 
-    col1, col2, col3 = st.columns((1,1,1))
+col1, col2, col3 = st.columns((1,1,1))
 
-    options1 = col1.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
-    # st.write("options : ", options1)
+options1 = col1.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
+# st.write("options : ", options1)
 
-    options2 = col2.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
-    # st.write("options : ", options2)
+options2 = col2.multiselect('▶︎ 項目を選択',key_word_list2, default="duration")
+# st.write("options : ", options2)
 
-    options3 = col3.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
-    # st.write("options : ", options3)
+options3 = col3.multiselect('▶︎ 項目を選択',key_word_list3, default="temperature_deviation")
+# st.write("options : ", options3)
 
-    chart_data = pd.DataFrame(df, columns=options1)
-    st.line_chart(chart_data)
+chart_data = pd.DataFrame(df, columns=options1)
+st.line_chart(chart_data)
 
-    chart_data = pd.DataFrame(df, columns=options2)
-    st.line_chart(chart_data)
+chart_data = pd.DataFrame(df, columns=options2)
+st.line_chart(chart_data)
 
-    chart_data = pd.DataFrame(df, columns=options3)
-    st.line_chart(chart_data)
+chart_data = pd.DataFrame(df, columns=options3)
+st.line_chart(chart_data)
