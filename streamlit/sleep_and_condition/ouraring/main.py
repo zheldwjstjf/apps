@@ -174,14 +174,14 @@ st.write("**本日のデータ**")
 
 col4, col5, col6 = st.columns((1,1,1))
 
-with col4.write(" ▶︎ スコア"):
-    for key_word in key_word_list1:
-        st.write(" -", key_word, " : ", sleep_dict.get(key_word))
+col4.write(" ▶︎ スコア")
+for key_word in key_word_list1:
+    col4.write(" -", key_word, " : ", sleep_dict.get(key_word))
 
-with col5.write(" ▶︎ 時間（分）"):
-    for key_word in key_word_list2:
-        st.write(" -", key_word, " : ", sleep_dict.get(key_word)/60)
+col5.write(" ▶︎ 時間（分）")
+for key_word in key_word_list2:
+    col5.write(" -", key_word, " : ", sleep_dict.get(key_word)/60)
 
-with col6.write(" ▶︎ その他"):
-    for key_word in key_word_list3:
-        st.write(" -", key_word, " : ", sleep_dict.get(key_word))
+col6.write(" ▶︎ その他")
+for key_word in key_word_list3:
+    col6.write(" -", key_word, " : ", sleep_dict.get(key_word))
