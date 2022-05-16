@@ -59,8 +59,8 @@ option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=1
 client = getOuraClient(option)
 
 # start_date = datetime(2022, 1, 1)
-start_date = st.date_input("いつからを選択")
-end_date = st.date_input("いつまでを選択")
+start_date = st.date_input("▶︎ いつから")
+end_date = st.date_input("▶︎ いつまで")
 
 if (start_date!=None) and (end_date!=None):
 
