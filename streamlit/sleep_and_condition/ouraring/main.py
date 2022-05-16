@@ -89,33 +89,6 @@ def main(startDate, endDate):
     chart_data = pd.DataFrame(df, columns=options3)
     st.line_chart(chart_data)
 
-    all_key_word_list = [
-                        "score",
-                        "score_deep",
-                        "score_disturbances",
-                        "score_efficiency",
-                        "score_latency",
-                        "score_rem",
-                        "score_total",
-                        "duration",
-                        "total",
-                        "awake",
-                        "rem",
-                        "deep",
-                        "light",
-                        "midpoint_time",
-                        "temperature_deviation",
-                        "temperature_trend_deviation",
-                        "efficiency",
-                        "restless",
-                        "onset_latency",
-                        "temperature_deviation",
-                        "temperature_trend_deviation",
-                        "efficiency",
-                        "restless",
-                        "onset_latency",
-                    ]
-
     sleep_dict = sleep[-1]
 
     st.write("[DEBUG] Sleep_dict : ", sleep_dict)
@@ -182,6 +155,33 @@ key_word_list3 = [
                     "onset_latency",
                 ]
 
+all_key_word_list = [
+                    "score",
+                    "score_deep",
+                    "score_disturbances",
+                    "score_efficiency",
+                    "score_latency",
+                    "score_rem",
+                    "score_total",
+                    "duration",
+                    "total",
+                    "awake",
+                    "rem",
+                    "deep",
+                    "light",
+                    "midpoint_time",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                    "temperature_deviation",
+                    "temperature_trend_deviation",
+                    "efficiency",
+                    "restless",
+                    "onset_latency",
+                ]
+
 options1 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list1, default="score")
 # st.write("options : ", options1)
 
@@ -195,4 +195,4 @@ options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, defau
 #########################
 # call class
 #########################
-main(startDate, endDate)
+main()
