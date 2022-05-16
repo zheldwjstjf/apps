@@ -19,7 +19,7 @@ class Oura_sleep_data:
 
     def getOuraClient(self, user):
         self.user = user
-        
+
         if self.user == "jack":
             client_id = st.secrets["client_id_jack"]
             client_secret = st.secrets["client_secret_jack"]
@@ -58,7 +58,7 @@ class Oura_sleep_data:
 
         sleep = client.sleep_summary(str(start_date), str(end_date))
 
-        # st.write("sleep : ", sleep)
+        st.write("sleep : ", sleep)
 
         return sleep
 
