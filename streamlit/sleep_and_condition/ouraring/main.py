@@ -178,7 +178,7 @@ container = st.container()
 
 col4.write(" ▶︎ スコア")
 for key_word in key_word_list1:
-    container.write(" -", key_word, " : ", sleep_dict.get(key_word))
+    st.write(" -", key_word, " : ", sleep_dict.get(key_word))
 
 col5.write(" ▶︎ 時間（分）")
 for key_word in key_word_list2:
