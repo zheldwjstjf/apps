@@ -63,7 +63,7 @@ class Oura_sleep_data:
         return sleep
 
 
-def main(startDate, endDate):
+def main():
 
     OuraSleepData = Oura_sleep_data()
 
