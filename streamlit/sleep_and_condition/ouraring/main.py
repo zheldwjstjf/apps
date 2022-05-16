@@ -18,6 +18,8 @@ class Oura_sleep_data:
         print(user_info)
 
     def getOuraClient(self, user):
+        self.user = user
+        
         if self.user == "jack":
             client_id = st.secrets["client_id_jack"]
             client_secret = st.secrets["client_secret_jack"]
