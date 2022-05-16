@@ -168,9 +168,9 @@ all_key_word_list = [
                     "onset_latency",
                 ]
 
-sleep_dict = sleep[0]
+sleep_dict = sleep[-1]
 
-st.write("[DEBUG] Sleep_dict : ", sleep_dict[-1])
+st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
 st.write("**本日のデータ**")
 
