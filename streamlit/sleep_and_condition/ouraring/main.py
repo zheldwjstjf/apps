@@ -73,6 +73,8 @@ def main(startDate, endDate):
 
     sleep = sleep["sleep"]
 
+    st.write(sleep)
+
     sleep_str = str(sleep)
     sleep_str = sleep_str.replace("'", '"')
 
