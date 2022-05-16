@@ -173,11 +173,12 @@ all_key_word_list = [
                     "onset_latency",
                 ]
 
-st.write("sleep type : ", type(sleep))
-st.write("最後の日のデータ : ", sleep[-1])
-
 sleep_dict = sleep[0]
-st.write("sleep type : ", type(sleep))
+for key_word in key_word_list1:
+    st.write("- ", key_word, " : ", sleep_dict.get(key_word))
 
-for key_word in all_key_word_list:
-    st.write(key_word, " : ", sleep_dict.get(key_word))
+for key_word in key_word_list2:
+    st.write("- ", key_word, " : ", sleep_dict.get(key_word)/60)
+
+for key_word in key_word_list3:
+    st.write("- ", key_word, " : ", sleep_dict.get(key_word))
