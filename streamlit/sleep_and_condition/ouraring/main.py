@@ -177,4 +177,4 @@ st.write("最後の日のデータ : ", sleep[-1])
 
 
 for key_word in all_key_word_list:
-    st.write(key_word, " : ", sleep.get(key_word)])
+    st.write(key_word, " : ", sleep.get(key_word))
