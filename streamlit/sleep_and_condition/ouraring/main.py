@@ -64,9 +64,6 @@ class Oura_sleep_data:
 #########################
 #########################
 
-OuraSleepData = Oura_sleep_data()
-
-
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
     initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
@@ -120,6 +117,9 @@ options3 = st.sidebar.multiselect('▶︎ 項目を選択',key_word_list3, defau
 
 
 def main(startDate, endDate):
+
+    OuraSleepData = Oura_sleep_data()
+    
     OuraSleepData.getOuraClient(selected_user)
     sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
