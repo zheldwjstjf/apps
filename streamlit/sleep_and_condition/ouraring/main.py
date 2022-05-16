@@ -41,22 +41,22 @@ class Oura_sleep_data:
         return self.auth_client
 
     def getSleepData(self, *args, **kwargs):
-        start_date = kwargs.get("startDate")
-        if start_date != None:
+        self.start_date = kwargs.get("startDate")
+        if self.start_date != None:
             pass
         else:
             if self.user == "rieko":
-                start_date = datetime(2021, 7, 2)
+                self.start_date = datetime(2021, 7, 2)
             if self.user == "jack":
-                start_date = datetime(2022, 1, 1)
+                self.start_date = datetime(2022, 1, 1)
 
-        end_date = kwargs.get("endDate")
-        if end_date != None:
+        self.end_date = kwargs.get("endDate")
+        if self.end_date != None:
             pass
         else:
-            end_date = datetime.today()
+            self.end_date = datetime.today()
 
-        sleep = self.auth_client.sleep_summary(str(start_date), str(end_date))
+        sleep = self.auth_client.sleep_summary(str(self.start_date), str(self.end_date))
 
         return sleep
 
