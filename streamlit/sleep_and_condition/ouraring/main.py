@@ -146,9 +146,9 @@ class Oura_sleep_data:
 
 def main():
 
-    OuraSleepData.main_page()
-
     OuraSleepData = Oura_sleep_data()
+
+    OuraSleepData.main_page()
 
     OuraSleepData.getOuraClient(OuraSleepData.selected_user)
     
