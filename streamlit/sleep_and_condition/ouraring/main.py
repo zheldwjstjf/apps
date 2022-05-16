@@ -6,56 +6,66 @@ import pandas as pd
 
 from oura import OuraClient
 
-def get_self():
-    pat = os.getenv("OURA_PAT")
-    client = OuraClient(personal_access_token=pat)
-    user_info = client.user_info()
-    print(user_info)
+class Oura_sleep_data:
 
-def getOuraClient(user):
-    if user == "jack":
-        client_id = st.secrets["client_id_jack"]
-        client_secret = st.secrets["client_secret_jack"]
-        access_token = st.secrets["access_token_jack"]
-        refresh_token = st.secrets["refresh_token_jack"]
-    if user == "rieko":
-        client_id = st.secrets["client_id_rieko"]
-        client_secret = st.secrets["client_secret_rieko"]
-        access_token = st.secrets["access_token_rieko"]
-        refresh_token = st.secrets["refresh_token_rieko"]
-
-    auth_client = OuraClient(
-        client_id=client_id,
-        client_secret=client_secret,
-        access_token=access_token,
-        refresh_token=refresh_token,
-    )
-
-    return auth_client
-
-def getSleepData(*args, **kwargs):
-    start_date = kwargs.get("startDate")
-    if start_date != None:
+    def __init__(self) -> None:
         pass
-    else:
-        start_date = datetime(2021, 7, 2)
 
-    end_date = kwargs.get("endDate")
-    if end_date != None:
-        pass
-    else:
-        end_date = datetime.today()
+    def get_self(self):
+        pat = os.getenv("OURA_PAT")
+        client = OuraClient(personal_access_token=pat)
+        user_info = client.user_info()
+        print(user_info)
 
-    sleep = client.sleep_summary(str(start_date), str(end_date))
+    def getOuraClient(self, user):
+        if self.user == "jack":
+            client_id = st.secrets["client_id_jack"]
+            client_secret = st.secrets["client_secret_jack"]
+            access_token = st.secrets["access_token_jack"]
+            refresh_token = st.secrets["refresh_token_jack"]
+        if self.user == "rieko":
+            client_id = st.secrets["client_id_rieko"]
+            client_secret = st.secrets["client_secret_rieko"]
+            access_token = st.secrets["access_token_rieko"]
+            refresh_token = st.secrets["refresh_token_rieko"]
 
-    # st.write("sleep : ", sleep)
+        auth_client = OuraClient(
+            client_id=client_id,
+            client_secret=client_secret,
+            access_token=access_token,
+            refresh_token=refresh_token,
+        )
 
-    return sleep
+        return auth_client
 
+    def getSleepData(self, *args, **kwargs):
+        start_date = kwargs.get("startDate")
+        if start_date != None:
+            pass
+        else:
+            if self.user == "rieko":
+                start_date = datetime(2021, 7, 2)
+            if self.user == "jack":
+                start_date = datetime(2022, 1, 1)
+
+        end_date = kwargs.get("endDate")
+        if end_date != None:
+            pass
+        else:
+            end_date = datetime.today()
+
+        sleep = client.sleep_summary(str(start_date), str(end_date))
+
+        # st.write("sleep : ", sleep)
+
+        return sleep
 
 #########################
 #########################
 #########################
+
+OuraSleepData = Oura_sleep_data()
+
 
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
@@ -68,12 +78,12 @@ user_list = ["jack", "rieko"]
 option = st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=1)
 
 
-client = getOuraClient(option)
+client = OuraSleepData.getOuraClient(option)
 
 startDate = st.date_input("▶︎ いつから")
 endDate = st.date_input("▶︎ いつまで")
 
-sleep = getSleepData(start_date=startDate, end_date=endDate)
+sleep = OuraSleepData.getSleepData(start_date=startDate, end_date=endDate)
 
 sleep = sleep["sleep"]
 sleep_str = str(sleep)
