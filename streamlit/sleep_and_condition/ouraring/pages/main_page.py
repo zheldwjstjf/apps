@@ -40,12 +40,12 @@ class MainPage:
             # show data 
             sleep_dict = sleep[-1]
 
-            self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+            # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
             self.st.write("**詳細データ**")
             self.st.write(str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
-            col4, col5, col6 = st.columns((1,1,1))
+            col4, col5, col6 = self.st.columns((1,1,1))
 
             col4.write(" ▶︎ スコア")
             for key_word in key_word_list1:
