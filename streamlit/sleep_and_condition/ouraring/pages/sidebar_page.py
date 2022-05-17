@@ -32,11 +32,6 @@ class SidebarPage:
                             "deep",
                             "light",
                             "midpoint_time",
-                            "temperature_deviation",
-                            "temperature_trend_deviation",
-                            "efficiency",
-                            "restless",
-                            "onset_latency",
                         ]
 
         self.key_word_list3 = [
