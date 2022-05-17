@@ -2,7 +2,7 @@ import streamlit as st
 
 from pages.sidebar_page import SidebarPage
 from pages.main_page import MainPage
-from modules.oura_client import OuraClient
+from modules.oura_auth import OuraAuth
 from modules.oura_api import OuraApi
 
 class MyOuraApp:
@@ -15,7 +15,7 @@ class MyOuraApp:
 
         self.sidebarPage = SidebarPage(st)
         self.mainPage = MainPage(st)
-        self.ouraClient = OuraClient(st)
+        self.ouraAuth = OuraAuth(st)
         self.ouraApi = OuraApi(st)
     
     def main(self):
@@ -35,8 +35,8 @@ class MyOuraApp:
         options3 = self.sidebarPage.options3
 
         #
-        self.ouraClient.getOuraClient(user)
-        client = self.ouraClient.client
+        self.ouraAuth.getOuraClient(user)
+        client = self.ouraAuth.client
 
         #
         self.ouraApi.getSleepData(client, start_date, end_date)

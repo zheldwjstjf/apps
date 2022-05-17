@@ -1,7 +1,7 @@
 import os
 from oura import OuraClient
 
-class OuraClient:
+class OuraAuth:
     """
     - class name : OuraClient
     """
