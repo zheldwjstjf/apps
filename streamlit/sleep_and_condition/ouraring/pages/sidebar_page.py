@@ -53,9 +53,14 @@ class SidebarPage:
         self.user = self.st.sidebar.selectbox("▶︎ ユーザをを選択", user_list, index=1)
 
         # select data
-        # start_date = datetime(2022, 1, 1)
-        self.start_date = self.st.sidebar.date_input("▶︎ いつからを選択")
-        self.end_date = self.st.sidebar.date_input("▶︎ いつまでを選択")
+        if self.user == "rieko":
+            start_date = str(datetime(2021, 7, 2))
+        if self.user == "jack":
+            start_date = str(datetime(2022, 1, 1))
+        end_data = datetime.today()
+        
+        self.start_date = self.st.sidebar.date_input("▶︎ いつからを選択", value=start_date)
+        self.end_date = self.st.sidebar.date_input("▶︎ いつまでを選択", value=end_data)
 
         # select items
         self.options1 = self.st.sidebar.multiselect('▶︎ 項目を選択', self.key_word_list1, default="score")
