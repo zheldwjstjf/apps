@@ -54,8 +54,8 @@ class SidebarPage:
 
         # select data
         # start_date = datetime(2022, 1, 1)
-        self.start_date = self.st.sidebar.date_input("▶︎ いつからを選択")
-        self.end_date = self.st.sidebar.date_input("▶︎ いつまでを選択")
+        self.start_date = self.st.sidebar.date_input("▶︎ いつからを選択", value=None)
+        self.end_date = self.st.sidebar.date_input("▶︎ いつまでを選択", value=None)
 
         # select items
         self.options1 = self.st.sidebar.multiselect('▶︎ 項目を選択', self.key_word_list1, default="score")
