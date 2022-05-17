@@ -42,8 +42,7 @@ class MainPage:
 
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
-            self.st.write("**詳細データ**")
-            self.st.write(str(sleep_dict.get("summary_date")) + "の朝のデータ")
+            self.st.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
             col4, col5, col6 = self.st.columns((1,1,1))
 
