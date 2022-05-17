@@ -31,12 +31,12 @@ class OuraClient:
             access_token = self.st.secrets["access_token_rieko"]
             refresh_token = self.st.secrets["refresh_token_rieko"]
 
-        client = OuraClient(
+        self.client = OuraClient(
             client_id=client_id,
             client_secret=client_secret,
             access_token=access_token,
             refresh_token=refresh_token,
         )
 
-        return client
+        return self.client
 

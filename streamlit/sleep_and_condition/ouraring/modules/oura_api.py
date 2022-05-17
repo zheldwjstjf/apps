@@ -17,7 +17,7 @@ class OuraApi:
         - arg(s) : client, start_date, end_date
         """
         
-        sleep = client.sleep_summary(str(start_date), str(end_date))
+        self.sleep = client.sleep_summary(str(start_date), str(end_date))
         # self.st.write("sleep : ", sleep)
 
-        return sleep
+        return self.sleep
