@@ -38,6 +38,9 @@ class MyOuraApp:
         self.ouraAuth.getOuraClient(user)
         client = self.ouraAuth.client
 
+        st.write("start_date : ", start_date)
+        st.write("end_date : ", end_date)
+
         #
         self.ouraApi.getSleepData(client, start_date, end_date)
         sleep = self.ouraApi.sleep
