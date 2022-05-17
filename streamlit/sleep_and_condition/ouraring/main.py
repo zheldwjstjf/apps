@@ -43,7 +43,7 @@ class MyOuraApp:
         sleep = self.ouraApi.sleep
 
         #
-        self.mainPage.main_page(sleep, options1, options2, options3)
+        self.mainPage.main_page(sleep, start_date, end_date, options1, options2, options3)
 
 myOuraApp = MyOuraApp()
 myOuraApp.main()
