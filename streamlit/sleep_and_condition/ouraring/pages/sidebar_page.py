@@ -13,36 +13,7 @@ class SidebarPage:
 
         self.st = streamlit
 
-        self.key_word_list1 = [
-                            "score",
-                            "score_deep",
-                            "score_disturbances",
-                            "score_efficiency",
-                            "score_latency",
-                            "score_rem",
-                            "score_total",
-                        ]
-
-
-        self.key_word_list2 = [
-                            "duration",
-                            "total",
-                            "awake",
-                            "rem",
-                            "deep",
-                            "light",
-                            "midpoint_time",
-                        ]
-
-        self.key_word_list3 = [
-                            "temperature_deviation",
-                            "temperature_trend_deviation",
-                            "efficiency",
-                            "restless",
-                            "onset_latency",
-                        ]
-
-    def sidebar_page(self):
+    def sidebar_page(self, key_word_list1, key_word_list2, key_word_list3):
         """
         - method name : sidebar_page
         - arg(s) : None
@@ -63,9 +34,9 @@ class SidebarPage:
         self.end_date = self.st.sidebar.date_input("▶︎ いつまでを選択", end_data)
 
         # select items
-        self.options1 = self.st.sidebar.multiselect('▶︎ 項目を選択', self.key_word_list1, default="score")
-        self.options2 = self.st.sidebar.multiselect('▶︎ 項目を選択', self.key_word_list2, default="duration")
-        self.options3 = self.st.sidebar.multiselect('▶︎ 項目を選択', self.key_word_list3, default="temperature_deviation")
+        self.options1 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list1, default="score")
+        self.options2 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list2, default="duration")
+        self.options3 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
 
         return self.user, self.start_date, self.end_date, self.options1, self.options2, self.options3
 

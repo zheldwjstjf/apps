@@ -18,6 +18,35 @@ class MyOuraApp:
         self.ouraAuth = OuraAuth(st)
         self.ouraApi = OuraApi(st)
     
+        self.key_word_list1 = [
+                            "score",
+                            "score_deep",
+                            "score_disturbances",
+                            "score_efficiency",
+                            "score_latency",
+                            "score_rem",
+                            "score_total",
+                        ]
+
+
+        self.key_word_list2 = [
+                            "duration",
+                            "total",
+                            "awake",
+                            "rem",
+                            "deep",
+                            "light",
+                            "midpoint_time",
+                        ]
+
+        self.key_word_list3 = [
+                            "temperature_deviation",
+                            "temperature_trend_deviation",
+                            "efficiency",
+                            "restless",
+                            "onset_latency",
+                        ]
+
     def main(self):
         st.set_page_config( # Alternate names: setup_page, page, layout
             layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
@@ -25,8 +54,13 @@ class MyOuraApp:
             page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
             page_icon=None)  # String, anything supported by st.image, or None.
 
+        #
+        key_word_list1 = self.key_word_list1
+        key_word_list2 = self.key_word_list2
+        key_word_list3 = self.key_word_list3
+
         # 
-        self.sidebarPage.sidebar_page()
+        self.sidebarPage.sidebar_page(key_word_list1, key_word_list2, key_word_list3)
         user = self.sidebarPage.user
         start_date = self.sidebarPage.start_date
         end_date = self.sidebarPage.end_date
@@ -38,15 +72,18 @@ class MyOuraApp:
         self.ouraAuth.getOuraClient(user)
         client = self.ouraAuth.client
 
-        st.write("start_date : ", start_date)
-        st.write("end_date : ", end_date)
+        # st.write("[DEBUG] start_date : ", start_date)
+        # st.write("[DEBUG] end_date : ", end_date)
 
         #
         self.ouraApi.getSleepData(client, start_date, end_date)
         sleep = self.ouraApi.sleep
 
         #
-        self.mainPage.main_page(sleep, start_date, end_date, options1, options2, options3)
+        self.mainPage.main_page(sleep, 
+                                start_date, end_date, 
+                                options1, options2, options3, 
+                                key_word_list1, key_word_list2, key_word_list3)
 
 myOuraApp = MyOuraApp()
 myOuraApp.main()
