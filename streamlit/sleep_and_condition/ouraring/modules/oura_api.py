@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class OuraApi:
     """
     - class name : OuraApi
@@ -16,7 +18,17 @@ class OuraApi:
         - method name : getSleepData
         - arg(s) : client, start_date, end_date
         """
-        
+
+        if start_date != None:
+            pass
+        else:
+            start_date = datetime(2021, 7, 2)        
+
+        if end_date != None:
+            pass
+        else:
+            end_date = datetime.today()
+
         self.sleep = client.sleep_summary(str(start_date), str(end_date))
         # self.st.write("sleep : ", sleep)
 
