@@ -35,15 +35,15 @@ class MyOuraApp:
         options3 = self.sidebarPage.options3
 
         #
-        self.ouraClient(user)
+        self.ouraClient.getOuraClient(user)
         client = self.ouraClient.client
 
         #
-        self.ouraApi(client)
+        self.ouraApi.getSleepData(client, start_date, end_date)
         sleep = self.ouraApi.sleep
 
         #
-        self.mainPage.main_page(sleep, start_date, end_date, options1, options2, options3)
+        self.mainPage.main_page(sleep, options1, options2, options3)
 
 myOuraApp = MyOuraApp()
 myOuraApp.main()

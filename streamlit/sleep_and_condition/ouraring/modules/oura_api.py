@@ -11,7 +11,7 @@ class OuraApi:
 
         self.st = streamlit
 
-    def getSleepData(client, start_date, end_date):
+    def getSleepData(self, client, start_date, end_date):
         """
         - method name : getSleepData
         - arg(s) : client, start_date, end_date
