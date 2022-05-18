@@ -34,7 +34,7 @@ class SidebarPage:
         self.end_date = self.st.sidebar.date_input("▶︎ いつまでを選択", end_data)
 
         # select items
-        self.options1 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list1, default="score")
+        self.options1 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list1, default="睡眠総合スコア")
         self.options2 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list2, default="duration")
         self.options3 = self.st.sidebar.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
 
