@@ -31,6 +31,8 @@ class MainPage:
 
             sleep_str = sleep_str.replace("'", '"')
 
+            self.st.write("[DEBUG] sleep_str : ", sleep_str)            
+
             df = pd.read_json(sleep_str)
 
             # show graph
