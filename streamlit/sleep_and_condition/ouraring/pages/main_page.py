@@ -21,17 +21,17 @@ class MainPage:
             sleep = sleep["sleep"]
             sleep_str = str(sleep)
 
-            sleep_str = sleep_str.replace("score_deep", "熟睡")
-            sleep_str = sleep_str.replace("score_disturbances", "睡眠コントリビューター")
-            sleep_str = sleep_str.replace("score_efficiency", "睡眠効率")
-            sleep_str = sleep_str.replace("score_latency", "入眠潜時")
-            sleep_str = sleep_str.replace("score_rem", "レム睡眠")
-            sleep_str = sleep_str.replace("score_total", "合計睡眠")
-            sleep_str = sleep_str.replace("score", "睡眠総合スコア")
+            sleep_str = sleep_str.replace('"score_deep"', '"熟睡"')
+            sleep_str = sleep_str.replace('"score_disturbances"', '"睡眠コントリビューター"')
+            sleep_str = sleep_str.replace('"score_efficiency"', '"睡眠効率"')
+            sleep_str = sleep_str.replace('"score_latency"', '"入眠潜時"')
+            sleep_str = sleep_str.replace('"score_rem"', '"レム睡眠"')
+            sleep_str = sleep_str.replace('"score_total"', '"合計睡眠"')
+            sleep_str = sleep_str.replace('"score"', '"睡眠総合スコア"')
 
             sleep_str = sleep_str.replace("'", '"')
 
-            self.st.write("[DEBUG] sleep_str : ", sleep_str)
+            # self.st.write("[DEBUG] sleep_str : ", sleep_str)
 
             df = pd.read_json(sleep_str)
 
