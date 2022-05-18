@@ -49,10 +49,10 @@ class MainPage:
 
 
             # show data
-            sleep = exec(sleep_str)
+            sleep = eval(sleep_str)
             sleep_dict = sleep[-1]
 
-            self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+            # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
             self.st.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
