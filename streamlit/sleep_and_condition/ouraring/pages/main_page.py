@@ -29,11 +29,6 @@ class MainPage:
             sleep_str.replace("score_total", "合計睡眠")
             sleep_str.replace("score", "睡眠総合スコア")
 
-
-
-
-
-
             sleep_str = sleep_str.replace("'", '"')
 
             df = pd.read_json(sleep_str)
@@ -54,7 +49,7 @@ class MainPage:
             # show data 
             sleep_dict = sleep[-1]
 
-            # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+            self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
             self.st.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
