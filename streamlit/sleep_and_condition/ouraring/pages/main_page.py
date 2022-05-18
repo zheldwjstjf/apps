@@ -48,7 +48,8 @@ class MainPage:
             self.st.line_chart(chart_data)
 
 
-            # show data 
+            # show data
+            sleep = exec(sleep_str)
             sleep_dict = sleep[-1]
 
             self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
