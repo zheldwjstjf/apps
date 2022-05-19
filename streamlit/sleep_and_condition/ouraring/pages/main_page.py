@@ -54,21 +54,20 @@ class MainPage:
 
             # show last day data
             col1, col2, col3, col4, col5, col6, col7 = self.st.columns((1,1,1,1,1,1,1))
-            col2.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
+            col1.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
             col1, col2, col3, col4, col5, col6, col7 = self.st.columns((1,1,1,1,1,1,1))
-
-            col3.write(" ▶︎ スコア")
+            col2.write(" ▶︎ スコア")
             for key_word in key_word_list1:
-                col3.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+                col2.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
-            col5.write(" ▶︎ 時間（分）")
+            col4.write(" ▶︎ 時間（分）")
             for key_word in key_word_list2:
-                col5.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)/60))
+                col4.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)/60))
 
-            col7.write(" ▶︎ その他")
+            col6.write(" ▶︎ その他")
             for key_word in key_word_list3:
-                col7.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+                col6.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
             ##################
             # show graph
