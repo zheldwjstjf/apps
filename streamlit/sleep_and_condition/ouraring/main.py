@@ -19,22 +19,21 @@ class MyOuraApp:
         self.ouraApi = OuraApi(st)
     
         self.key_word_list1 = [
-                            "熟睡",
-                            "睡眠総合スコア",
-                            "睡眠コントリビューター",
+                            "総合スコア",
+                            "合計睡眠",
                             "睡眠効率",
                             "入眠潜時",
+                            "熟睡",
                             "レム睡眠",
-                            "合計睡眠",
-                        ]
+                         ]
 
         self.key_word_list2 = [
-                            "duration",
-                            "total",
-                            "awake",
-                            "rem",
-                            "deep",
-                            "light",
+                            "睡眠時間",
+                            "横になってた時間",
+                            "覚醒",
+                            "レム",
+                            "深い睡眠",
+                            "浅眠",
                             "midpoint_time",
                         ]
 
