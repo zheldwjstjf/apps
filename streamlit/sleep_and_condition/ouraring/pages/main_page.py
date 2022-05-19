@@ -76,6 +76,8 @@ class MainPage:
             # show graph
             ##################
 
+            self.st.empty()
+
             self.st.markdown("<h2 style='text-align: left; color: red;'> グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
             col1, col2 = self.st.columns((1.5,8.5))
