@@ -61,9 +61,6 @@ class MyOuraApp:
         user = self.sidebarPage.user
         start_date = self.sidebarPage.start_date
         end_date = self.sidebarPage.end_date
-        # options1 = self.sidebarPage.options1
-        # options2 = self.sidebarPage.options2
-        # options3 = self.sidebarPage.options3
 
         #
         self.ouraAuth.getOuraClient(user)
@@ -79,7 +76,6 @@ class MyOuraApp:
         #
         self.mainPage.main_page(sleep, 
                                 start_date, end_date, 
-                                # options1, options2, options3, 
                                 key_word_list1, key_word_list2, key_word_list3)
 
 myOuraApp = MyOuraApp()
