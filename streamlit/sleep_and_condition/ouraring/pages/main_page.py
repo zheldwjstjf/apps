@@ -77,7 +77,7 @@ class MainPage:
             # show graph
             ##################
 
-            self.st.markdown("<h1 style='text-align: center; color: red;'> Graph </h1>", unsafe_allow_html=True)
+            self.st.markdown("<h1 style='text-align: left; color: red;'> Graph </h1>", unsafe_allow_html=True)
 
             col1, col2 = self.st.columns((1.5,8.5))
             options1 = col1.multiselect('▶︎ 項目を選択', key_word_list1, default="総合スコア")
