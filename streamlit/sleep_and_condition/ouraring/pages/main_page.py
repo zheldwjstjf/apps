@@ -76,11 +76,8 @@ class MainPage:
             # show graph
             ##################
 
-            self.st.write("")
-            self.st.write("")
-            self.st.write("")
-            self.st.write("")
-            self.st.write("")
+            for i in range(5):
+                self.st.write("")
 
             self.st.markdown("<h2 style='text-align: left; color: red;'> グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
