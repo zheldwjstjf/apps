@@ -54,7 +54,8 @@ class MainPage:
 
             # show last day data
             col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
-            col1.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
+            self.st.markdown("<h1 style='text-align: center; color: red;'>" + str(sleep_dict.get("summary_date")) + "の朝のデータ" + "</h1>", unsafe_allow_html=True)
+            # col1.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
             
             duration = sleep_dict.get("横になってた時間")
@@ -75,6 +76,9 @@ class MainPage:
             ##################
             # show graph
             ##################
+
+            self.st.markdown("<h1 style='text-align: center; color: red;'> Graph </h1>", unsafe_allow_html=True)
+
             col1, col2 = self.st.columns((1.5,8.5))
             options1 = col1.multiselect('▶︎ 項目を選択', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
