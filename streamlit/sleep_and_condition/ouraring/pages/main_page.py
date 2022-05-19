@@ -28,6 +28,13 @@ class MainPage:
             sleep_str = sleep_str.replace("'score_total'", "'合計睡眠'")
             sleep_str = sleep_str.replace("'score'", "'総合スコア'")
 
+            sleep_str = sleep_str.replace("'total'", "'横になってた時間'")
+            sleep_str = sleep_str.replace("'duration'", "'睡眠時間'")
+            sleep_str = sleep_str.replace("'deep'", "'深い睡眠'")
+            sleep_str = sleep_str.replace("'rem'", "'レム'")
+            sleep_str = sleep_str.replace("'light'", "'浅眠'")
+            sleep_str = sleep_str.replace("'awake'", "'覚醒'")
+
             sleep_str = sleep_str.replace("'", '"')
 
             # self.st.write("[DEBUG] sleep_str : ", sleep_str)

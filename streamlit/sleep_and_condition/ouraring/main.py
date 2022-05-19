@@ -28,13 +28,12 @@ class MyOuraApp:
                          ]
 
         self.key_word_list2 = [
-                            "睡眠時間",
                             "横になってた時間",
-                            "覚醒",
-                            "レム",
+                            "睡眠時間",
                             "深い睡眠",
+                            "レム",
                             "浅眠",
-                            "midpoint_time",
+                            "覚醒",
                         ]
 
         self.key_word_list3 = [
