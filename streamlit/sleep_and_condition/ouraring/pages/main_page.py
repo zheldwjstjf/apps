@@ -54,7 +54,7 @@ class MainPage:
 
             # show last day data
             col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
-            self.st.markdown("<h1 style='text-align: center; color: red;'>" + str(sleep_dict.get("summary_date")) + "の朝のデータ" + "</h1>", unsafe_allow_html=True)
+            self.st.markdown("<h1 style='text-align: left; color: red;'>" + str(sleep_dict.get("summary_date")) + "の朝のデータ" + "</h1>", unsafe_allow_html=True)
             # col1.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
             
