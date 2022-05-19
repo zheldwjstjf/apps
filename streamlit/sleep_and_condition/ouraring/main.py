@@ -80,8 +80,7 @@ class MyOuraApp:
         self.mainPage.main_page(sleep, 
                                 start_date, end_date, 
                                 # options1, options2, options3, 
-                                # key_word_list1, key_word_list2, key_word_list3
-                                )
+                                key_word_list1, key_word_list2, key_word_list3)
 
 myOuraApp = MyOuraApp()
 myOuraApp.main()
