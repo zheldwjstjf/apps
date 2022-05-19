@@ -21,7 +21,9 @@ class MainPage:
             sleep = sleep["sleep"]
             sleep_str = str(sleep)
 
+            ##################
             # replace english keywords with japaense keywords
+            ##################
             sleep_str = sleep_str.replace("'score_deep'", "'熟睡'")
             sleep_str = sleep_str.replace("'score_efficiency'", "'睡眠効率'")
             sleep_str = sleep_str.replace("'score_latency'", "'入眠潜時'")
@@ -42,29 +44,15 @@ class MainPage:
 
             df = pd.read_json(sleep_str)
 
-            # show graph
-            col1, col2 = self.st.columns((1.5,8.5))
-            options1 = col1.multiselect('▶︎ 項目を選択', key_word_list1, default="総合スコア")
-            chart_data = pd.DataFrame(df, columns=options1)
-            col2.line_chart(chart_data)
-
-            col3, col4 = self.st.columns((1.5,8.5))
-            options2 = col3.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
-            chart_data = pd.DataFrame(df, columns=options2)
-            col4.line_chart(chart_data)
-
-            col5, col6 = self.st.columns((1.5,8.5))
-            options3 = col5.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
-            chart_data = pd.DataFrame(df, columns=options3)
-            col6.line_chart(chart_data)
-
-
+            ##################
             # show data
+            ##################
             sleep = eval(sleep_str)
             sleep_dict = sleep[-1]
 
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
+            # show last day data
             self.st.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
             col7, col8, col9 = self.st.columns((1,1,1))
@@ -80,3 +68,21 @@ class MainPage:
             col9.write(" ▶︎ その他")
             for key_word in key_word_list3:
                 col9.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+
+            ##################
+            # show graph
+            ##################
+            col1, col2 = self.st.columns((1.5,8.5))
+            options1 = col1.multiselect('▶︎ 項目を選択', key_word_list1, default="総合スコア")
+            chart_data = pd.DataFrame(df, columns=options1)
+            col2.line_chart(chart_data)
+
+            col3, col4 = self.st.columns((1.5,8.5))
+            options2 = col3.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
+            chart_data = pd.DataFrame(df, columns=options2)
+            col4.line_chart(chart_data)
+
+            col5, col6 = self.st.columns((1.5,8.5))
+            options3 = col5.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
+            chart_data = pd.DataFrame(df, columns=options3)
+            col6.line_chart(chart_data)
