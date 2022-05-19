@@ -53,9 +53,9 @@ class MainPage:
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
             # show last day data
-            self.st.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
-
             col7, col8, col9, col10, col11 = self.st.columns((1,1,1,1,1))
+
+            col8.write("**詳細データ** : " + str(sleep_dict.get("summary_date")) + "の朝のデータ")
 
             col8.write(" ▶︎ スコア")
             for key_word in key_word_list1:
