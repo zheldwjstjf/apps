@@ -14,7 +14,7 @@ class MainPage:
 
         self.st = streamlit
 
-    def main_page(self, sleep, start_date, end_date, options1, options2, options3, key_word_list1, key_word_list2, key_word_list3):
+    def main_page(self, sleep, start_date, end_date):
 
         if (start_date!=None) and (end_date!=None):
 
