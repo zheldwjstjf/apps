@@ -76,9 +76,9 @@ class MainPage:
             # show graph
             ##################
 
-            c = self.st.empty()
+            self.st.empty()
 
-            c.markdown("<h2 style='text-align: left; color: red;'> グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
+            self.st.markdown("<h2 style='text-align: left; color: red;'> グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
             col1, col2 = self.st.columns((1.5,8.5))
             options1 = col1.multiselect('▶︎ 項目を選択', key_word_list1, default="総合スコア")
