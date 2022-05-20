@@ -127,7 +127,7 @@ class MainPage:
 
                 col2.write(" - " + str(key_word) + " : " + str(time) + " (" + str(int((data_sec/duration)*100)) + "%)")
 
-            col3.write(" ▶︎ その他")
+            col3.write("** ▶︎ その他**")
             for key_word in key_word_list3:
                 col3.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
