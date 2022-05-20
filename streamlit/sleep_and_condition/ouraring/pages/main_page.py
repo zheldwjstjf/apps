@@ -48,8 +48,15 @@ class MainPage:
             # show data
             ##################
             sleep = eval(sleep_str)
-            sleep_dict = sleep[-1]
 
+            sleep_data_count = len(sleep)
+            date_list = []
+            for i in sleep_data_count:
+                sleep_data = sleep[i].get("summary_date")
+                self.st.write(sleep_data)
+                date_list.append(sleep_data)
+
+            sleep_dict = sleep[-1]
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
             # show last day data
