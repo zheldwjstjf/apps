@@ -107,7 +107,7 @@ class MainPage:
             for key_word in key_word_list1:
                 col1.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
-            col2.subheader(" ▶︎ 時間（Hour(s)）")
+            col2.subheader(" ▶︎ 時間")
             for key_word in key_word_list2:
                 
                 # - second
