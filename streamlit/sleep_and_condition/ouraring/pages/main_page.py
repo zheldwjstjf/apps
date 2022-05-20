@@ -14,6 +14,7 @@ class MainPage:
         """
 
         self.st = streamlit
+        self.sleep_data_selected_date_index = 0
 
     def main_page(self, sleep, start_date, end_date, key_word_list1, key_word_list2, key_word_list3):
 
@@ -57,9 +58,6 @@ class MainPage:
             chart_data = pd.DataFrame(df, columns=options1)
             col2.line_chart(chart_data)
 
-            ###
-            ###
-
             col3, col4 = self.st.columns((1.5,8.5))
             options2 = col3.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
             chart_data = pd.DataFrame(df, columns=options2)
@@ -91,9 +89,10 @@ class MainPage:
 
             col1,col2,col3 = self.st.columns((2,1,1))
             
-            selected_summary_date = col2.selectbox("", date_list, index=(sleep_data_count-1))
+            selected_summary_date = col2.selectbox("", date_list, index=(sleep_data_count-1), index=self.sleep_data_selected_date_index)
             sleep_dict_num = date_list.index(selected_summary_date)
             sleep_dict = sleep[sleep_dict_num]
+            self.sleep_data_selected_date_index = sleep_dict_num
 
             col1.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
 
