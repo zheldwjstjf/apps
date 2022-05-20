@@ -109,10 +109,21 @@ class MainPage:
 
             col2.write(" ▶︎ 時間（Hour(s)）")
             for key_word in key_word_list2:
+                
+                # - second
                 data_sec = sleep_dict.get(key_word)
+
+                # - mim
                 data_min = data_sec/60
-                # data_hour = 
-                col2.write(" - " + str(key_word) + " : " + str(data_sec/60) + " (" + str(int((data_sec/duration)*100)) + "%)")
+
+                # - hour
+                # Get hours with floor division
+                hours = data_min // 60
+                # Get additional minutes with modulus
+                minutes = data_min % 60
+                # Create time as a string
+                time = "{}:{}".format(hours, minutes)
+                col2.write(" - " + str(key_word) + " : " + str(time) + " (" + str(int((data_sec/duration)*100)) + "%)")
 
             col3.write(" ▶︎ その他")
             for key_word in key_word_list3:
