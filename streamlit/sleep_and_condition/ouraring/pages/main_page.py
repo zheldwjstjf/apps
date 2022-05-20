@@ -93,19 +93,19 @@ class MainPage:
             col1.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
 
             # show sleep date of the selected date
-            col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
+            # col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
             
             duration = sleep_dict.get("横になってた時間")
 
-            col1, col2, col3, col4 = self.st.columns((0.5,1,1.3,1))
-            col2.write(" ▶︎ スコア")
+            col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,2,1,2,1))
+            col1.write(" ▶︎ スコア")
             for key_word in key_word_list1:
-                col2.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+                col1.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
             col3.write(" ▶︎ 時間（分）")
             for key_word in key_word_list2:
                 col3.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)/60) + " (" + str(int((sleep_dict.get(key_word)/duration)*100)) + "%)")
 
-            col4.write(" ▶︎ その他")
+            col5.write(" ▶︎ その他")
             for key_word in key_word_list3:
-                col4.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+                col5.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
