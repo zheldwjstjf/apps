@@ -95,7 +95,7 @@ class MainPage:
             sleep_dict_num = date_list.index(selected_summary_date)
             sleep_dict = sleep[sleep_dict_num]
 
-            col1.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
+            col1.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + " （昨夜）</h2>", unsafe_allow_html=True)
 
             # show sleep date of the selected date
             duration = sleep_dict.get("横になってた時間")
