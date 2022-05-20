@@ -103,11 +103,11 @@ class MainPage:
             self.st.markdown("<h5 style='text-align: left; color: blue;'>" + "起床時刻 : " + str(bedtime_end) + "</h5>", unsafe_allow_html=True)
 
             col1, col2, col3, col4 = self.st.columns((2,2,2,1))
-            col1.write(" ▶︎ スコア")
+            col1.subheader(" ▶︎ スコア")
             for key_word in key_word_list1:
                 col1.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
-            col2.write(" ▶︎ 時間（Hour(s)）")
+            col2.subheader(" ▶︎ 時間（Hour(s)）")
             for key_word in key_word_list2:
                 
                 # - second
@@ -127,7 +127,7 @@ class MainPage:
 
                 col2.write(" - " + str(key_word) + " : " + str(time) + " (" + str(int((data_sec/duration)*100)) + "%)")
 
-            col3.write(" ▶︎ その他")
+            col3.subheader(" ▶︎ その他")
             for key_word in key_word_list3:
                 col3.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
 
