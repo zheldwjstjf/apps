@@ -44,6 +44,7 @@ class MainPage:
             # self.st.write("[DEBUG] sleep_str : ", sleep_str)
 
             df = pd.read_json(sleep_str)
+            df = df.set_index("summary_date")
 
 
             ##################
