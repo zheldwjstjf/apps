@@ -125,7 +125,7 @@ class MainPage:
                 seconds = (hour*3600) % 60
                 time = ("%d:%02d:%02d" % (hours, minutes, seconds))
 
-                col2.write(" - " + str(key_word) + " : " + str(time) + " (" + str(int((data_sec/duration)*100)) + "%)")
+                col2.write("** - " + str(key_word) + " : " + str(time) + " (" + str(int((data_sec/duration)*100)) + "%)**")
 
             col3.write(" ▶︎ その他")
             for key_word in key_word_list3:
