@@ -57,9 +57,6 @@ class MainPage:
             chart_data = pd.DataFrame(df, columns=options1)
             col2.line_chart(chart_data)
 
-            ###
-            ###
-
             col3, col4 = self.st.columns((1.5,8.5))
             options2 = col3.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
             chart_data = pd.DataFrame(df, columns=options2)
