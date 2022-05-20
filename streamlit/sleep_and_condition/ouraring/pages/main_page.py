@@ -120,9 +120,9 @@ class MainPage:
                 hour = data_min/60
 
                 # - time
-                hours = int(data_min)
-                minutes = (data_min*60) % 60
-                seconds = (data_min*3600) % 60
+                hours = int(hour)
+                minutes = (hour*60) % 60
+                seconds = (hour*3600) % 60
                 time = ("%d:%02d.%02d" % (hours, minutes, seconds))
 
                 col2.write(" - " + str(key_word) + " : " + str(time) + " (" + str(int((data_sec/duration)*100)) + "%)")
