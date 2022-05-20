@@ -1,0 +1,82 @@
+import streamlit as st
+
+from pages.sidebar_page import SidebarPage
+from pages.main_page import MainPage
+from modules.oura_auth import OuraAuth
+from modules.oura_api import OuraApi
+
+class MyOuraApp:
+
+    def __init__(self) -> None:
+        """
+        - method name : __init__
+        - arg(s) : None
+        """
+
+        self.sidebarPage = SidebarPage(st)
+        self.mainPage = MainPage(st)
+        self.ouraAuth = OuraAuth(st)
+        self.ouraApi = OuraApi(st)
+    
+        self.key_word_list1 = [
+                            "総合スコア",
+                            "合計睡眠",
+                            "睡眠効率",
+                            "入眠潜時",
+                            "熟睡",
+                            "レム睡眠",
+                         ]
+
+        self.key_word_list2 = [
+                            "横になってた時間",
+                            "睡眠時間",
+                            "深い睡眠",
+                            "レム",
+                            "浅眠",
+                            "覚醒",
+                        ]
+
+        self.key_word_list3 = [
+                            "temperature_deviation",
+                            "temperature_trend_deviation",
+                            "efficiency",
+                            "restless",
+                            "onset_latency",
+                        ]
+
+    def main(self):
+        st.set_page_config( # Alternate names: setup_page, page, layout
+            layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
+            initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
+            page_title="my_sleep_graph",  # String or None. Strings get appended with "• Streamlit". 
+            page_icon=None)  # String, anything supported by st.image, or None.
+
+        #
+        key_word_list1 = self.key_word_list1
+        key_word_list2 = self.key_word_list2
+        key_word_list3 = self.key_word_list3
+
+        # 
+        self.sidebarPage.sidebar_page(key_word_list1, key_word_list2, key_word_list3)
+        user = self.sidebarPage.user
+        start_date = self.sidebarPage.start_date
+        end_date = self.sidebarPage.end_date
+
+        #
+        self.ouraAuth.getOuraClient(user)
+        client = self.ouraAuth.client
+
+        # st.write("[DEBUG] start_date : ", start_date)
+        # st.write("[DEBUG] end_date : ", end_date)
+
+        #
+        self.ouraApi.getSleepData(client, start_date, end_date)
+        sleep = self.ouraApi.sleep
+
+        #
+        self.mainPage.main_page(sleep, 
+                                start_date, end_date, 
+                                key_word_list1, key_word_list2, key_word_list3)
+
+myOuraApp = MyOuraApp()
+myOuraApp.main()
