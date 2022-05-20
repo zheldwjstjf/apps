@@ -52,7 +52,7 @@ class MainPage:
 
             col1, col2 = self.st.columns((1.5,8.5))
             options1 = col1.multiselect('▶︎ 項目を選択', key_word_list1, default="総合スコア")
-            chart_data = pd.DataFrame(df, columns=options1)
+            chart_data = pd.DataFrame(df, index="selected_summary_date", columns=options1)
             col2.line_chart(chart_data)
 
             col3, col4 = self.st.columns((1.5,8.5))
