@@ -85,14 +85,16 @@ class MainPage:
             # sleep_dict = sleep[-1]
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
-            selected_summary_date = self.st.selectbox("日付を選択", date_list, index=(sleep_data_count-1))
+            col1, col2 = self.st.columns((1,1))
+            
+            selected_summary_date = col2.selectbox("日付を選択", date_list, index=(sleep_data_count-1))
             sleep_dict_num = date_list.index(selected_summary_date)
             sleep_dict = sleep[sleep_dict_num]
 
-            # show last day data
-            col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
-            self.st.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
+            col1.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
 
+            # show sleep date of the selected date
+            col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
             
             duration = sleep_dict.get("横になってた時間")
 
