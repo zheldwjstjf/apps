@@ -120,5 +120,6 @@ class MainPage:
             # raw data
             ##################
 
-            expander = self.st.expander("Raw Data")
+            col1, col2, col3 = self.st.columns((1,1,1))
+            expander = col1.expander("Raw Data")
             expander.write(sleep_dict)
