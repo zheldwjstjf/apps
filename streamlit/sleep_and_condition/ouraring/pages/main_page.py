@@ -50,7 +50,7 @@ class MainPage:
             ##################
             # show graph
             ##################
-            self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + user + "/ " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
+            self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + user.upper() + " / " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
