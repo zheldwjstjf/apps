@@ -53,7 +53,7 @@ class MainPage:
             date_list = []
             for i in range(sleep_data_count):
                 sleep_data = sleep[i].get("summary_date")
-                self.st.write(sleep_data)
+                # self.st.write(sleep_data)
                 date_list.append(sleep_data)
 
             # sleep_dict = sleep[-1]
