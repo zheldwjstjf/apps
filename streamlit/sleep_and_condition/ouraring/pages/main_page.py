@@ -104,6 +104,6 @@ class MainPage:
             for key_word in key_word_list2:
                 col3.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)/60) + " (" + str(int((sleep_dict.get(key_word)/duration)*100)) + "%)")
 
-            col5.write(" ▶︎ その他")
+            col4.write(" ▶︎ その他")
             for key_word in key_word_list3:
-                col5.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+                col4.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
