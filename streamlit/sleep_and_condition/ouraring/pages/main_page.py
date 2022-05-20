@@ -83,11 +83,7 @@ class MainPage:
             date_list = []
             for i in range(sleep_data_count):
                 sleep_data = sleep[i].get("summary_date")
-                # self.st.write(sleep_data)
                 date_list.append(sleep_data)
-
-            # sleep_dict = sleep[-1]
-            # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
             col1,col2,col3 = self.st.columns((2,1,1))
             
@@ -118,3 +114,12 @@ class MainPage:
             col3.write(" ▶︎ その他")
             for key_word in key_word_list3:
                 col3.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
+
+
+            ##################
+            # raw data
+            ##################
+
+            expander = self.st.expander("Raw Data")
+            expander.write(sleep)
+            
