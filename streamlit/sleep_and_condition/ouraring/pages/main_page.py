@@ -84,7 +84,7 @@ class MainPage:
             # sleep_dict = sleep[-1]
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
 
-            col1,col2,col3 = self.st.columns((1,1,1))
+            col1,col2,col3 = self.st.columns((2,1,1))
             
             selected_summary_date = col2.selectbox("", date_list, index=(sleep_data_count-1))
             sleep_dict_num = date_list.index(selected_summary_date)
