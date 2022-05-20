@@ -74,7 +74,7 @@ class MyOuraApp:
         sleep = self.ouraApi.sleep
 
         #
-        self.mainPage.main_page(sleep, 
+        self.mainPage.main_page(user, sleep, 
                                 start_date, end_date, 
                                 key_word_list1, key_word_list2, key_word_list3)
 

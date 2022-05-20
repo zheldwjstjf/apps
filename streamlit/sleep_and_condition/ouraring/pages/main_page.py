@@ -15,7 +15,7 @@ class MainPage:
 
         self.st = streamlit
 
-    def main_page(self, sleep, start_date, end_date, key_word_list1, key_word_list2, key_word_list3):
+    def main_page(self, user, sleep, start_date, end_date, key_word_list1, key_word_list2, key_word_list3):
 
         if (start_date!=None) and (end_date!=None):
 
@@ -50,7 +50,7 @@ class MainPage:
             ##################
             # show graph
             ##################
-            self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
+            self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + user + "/ " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
