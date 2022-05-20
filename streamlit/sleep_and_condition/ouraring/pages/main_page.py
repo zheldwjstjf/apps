@@ -58,24 +58,6 @@ class MainPage:
             col2.line_chart(chart_data)
 
             ###
-            graph_data = pd.melt(graph_data, id_vars=["index"]).rename(
-                columns={"index": "年月", "value": "金額 (円)"}
-            )
-            # write graphs
-            line = (
-                alt.Chart(graph_data
-                )
-                .mark_line(opacity=0.9)
-                .encode(
-                    x="summary_date",
-                    y=alt.Y("金額 (円):Q", stack=False),
-                    color="項目:N",
-                )
-            )
-            chart = line
-
-            self.st.altair_chart(chart, use_container_width=True)
-
             ###
 
             col3, col4 = self.st.columns((1.5,8.5))
