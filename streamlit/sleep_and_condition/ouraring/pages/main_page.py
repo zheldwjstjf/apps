@@ -93,11 +93,9 @@ class MainPage:
             col1.markdown("<h2 style='text-align: left; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
 
             # show sleep date of the selected date
-            # col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
-            
             duration = sleep_dict.get("横になってた時間")
 
-            col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,2,1,2,1))
+            col1, col2, col3, col4, col5, col6 = self.st.columns((1,1,2,1,2,1))
             col1.write(" ▶︎ スコア")
             for key_word in key_word_list1:
                 col1.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
