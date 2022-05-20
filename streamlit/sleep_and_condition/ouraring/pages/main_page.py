@@ -91,7 +91,7 @@ class MainPage:
             sleep_dict_num = date_list.index(selected_summary_date)
             sleep_dict = sleep[sleep_dict_num]
 
-            col1.markdown("<h2 style='text-align: right; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
+            col1.markdown("<h2 style='text-align: center; color: red;'>" + "睡眠データ : " + str(sleep_dict.get("summary_date")) + "</h2>", unsafe_allow_html=True)
 
             # show sleep date of the selected date
             col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
