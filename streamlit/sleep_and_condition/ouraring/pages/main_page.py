@@ -95,7 +95,7 @@ class MainPage:
             # show sleep date of the selected date
             duration = sleep_dict.get("横になってた時間")
 
-            col1, col2, col3, col4, col5, col6 = self.st.columns((1,1,2,1,2,1))
+            col1, col2, col3, col4, col5 = self.st.columns((1,1,2,2,1))
             col1.write(" ▶︎ スコア")
             for key_word in key_word_list1:
                 col1.write(" - " + str(key_word) + " : " + str(sleep_dict.get(key_word)))
