@@ -39,6 +39,10 @@ class MainPage:
             sleep_str = sleep_str.replace("'light'", "'浅眠'")
             sleep_str = sleep_str.replace("'awake'", "'覚醒'")
 
+            sleep_str = sleep_str.replace("'bedtime_start'", "'就寝時間'")
+            sleep_str = sleep_str.replace("'bedtime_end'", "'起床時間'")
+
+
             sleep_str = sleep_str.replace("'", '"')
 
             # self.st.write("[DEBUG] sleep_str : ", sleep_str)
@@ -95,6 +99,12 @@ class MainPage:
 
             # show sleep date of the selected date
             duration = sleep_dict.get("横になってた時間")
+
+            bedtime_start = sleep_dict.get("就寝時間")
+            bedtime_end = sleep_dict.get("起床時間")
+
+            self.st.write("就寝時間 :" + str(bedtime_start))
+            self.st.write("起床時間 :" + str(bedtime_end))
 
             col1, col2, col3, col4 = self.st.columns((2,2,2,1))
             col1.write(" ▶︎ スコア")
