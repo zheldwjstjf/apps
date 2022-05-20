@@ -103,8 +103,8 @@ class MainPage:
             bedtime_start = sleep_dict.get("就寝時刻")
             bedtime_end = sleep_dict.get("起床時刻")
 
-            self.st.subtitle("就寝時刻 :" + str(bedtime_start))
-            self.st.subtitle("起床時刻 :" + str(bedtime_end))
+            self.st.subheader("就寝時刻 :" + str(bedtime_start))
+            self.st.subheader("起床時刻 :" + str(bedtime_end))
 
             col1, col2, col3, col4 = self.st.columns((2,2,2,1))
             col1.write(" ▶︎ スコア")
