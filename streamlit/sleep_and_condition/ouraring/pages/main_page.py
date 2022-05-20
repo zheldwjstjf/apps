@@ -121,5 +121,4 @@ class MainPage:
             ##################
 
             expander = self.st.expander("Raw Data")
-            expander.write(sleep)
-            
+            expander.write(sleep_dict)
