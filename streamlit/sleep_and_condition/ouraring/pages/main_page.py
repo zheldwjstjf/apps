@@ -51,7 +51,7 @@ class MainPage:
 
             sleep_data_count = len(sleep)
             date_list = []
-            for i in sleep_data_count:
+            for i in range(sleep_data_count):
                 sleep_data = sleep[i].get("summary_date")
                 self.st.write(sleep_data)
                 date_list.append(sleep_data)
