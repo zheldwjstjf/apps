@@ -56,8 +56,12 @@ class MainPage:
                 self.st.write(sleep_data)
                 date_list.append(sleep_data)
 
-            sleep_dict = sleep[-1]
+            # sleep_dict = sleep[-1]
             # self.st.write("[DEBUG] Sleep_dict : ", sleep_dict)
+
+            selected_summary_date = self.st.selectbox("日付を選択", date_list, index=-1)
+            sleep_dict_num = date_list.index(selected_summary_date)
+            sleep_dict = sleep[sleep_dict_num]
 
             # show last day data
             col1, col2, col3, col4, col5, col6 = self.st.columns((2,1,1,1,1,1))
