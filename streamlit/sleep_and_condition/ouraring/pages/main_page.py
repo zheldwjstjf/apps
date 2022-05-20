@@ -103,8 +103,8 @@ class MainPage:
             bedtime_start = sleep_dict.get("就寝時刻")
             bedtime_end = sleep_dict.get("起床時刻")
 
-            self.st.markdown("<h3 style='text-align: left; color: blue;'>" + "就寝時刻 : " + str(bedtime_start) + "</h3>", unsafe_allow_html=True)
-            self.st.markdown("<h3 style='text-align: left; color: blue;'>" + "起床時刻 : " + str(bedtime_end) + "</h3>", unsafe_allow_html=True)
+            self.st.markdown("<h5 style='text-align: left; color: blue;'>" + "就寝時刻 : " + str(bedtime_start) + "</h5>", unsafe_allow_html=True)
+            self.st.markdown("<h5 style='text-align: left; color: blue;'>" + "起床時刻 : " + str(bedtime_end) + "</h5>", unsafe_allow_html=True)
 
             col1, col2, col3, col4 = self.st.columns((2,2,2,1))
             col1.write(" ▶︎ スコア")
