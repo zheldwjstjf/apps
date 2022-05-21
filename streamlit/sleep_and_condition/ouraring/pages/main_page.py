@@ -111,25 +111,26 @@ class MainPage:
             self.st.line_chart(chart_data)
 
             # 
-            chart_data = pd.DataFrame(sleep_start)
-            self.st.line_chart(chart_data)
+            # chart_data = pd.DataFrame(sleep_start)
+            # self.st.line_chart(chart_data)
 
+            #
             x = pd.DataFrame(sleep_start)
             # col3.line_chart(x)
             y = pd.DataFrame(date_list)
             # col4.line_chart(y)
 
             # data
-            # plt.scatter(x, y)
-            # plt.show()
+            plt.scatter(x, y)
+            plt.show()
 
-            fig = plt.figure(figsize=(10, 3))
-            ax = fig.add_subplot(title='simlirity')
-            ax.scatter(x,y)
-            plt.rc('font', size=4.5)
-            plt.xlabel("xlabel")
-            plt.ylabel("ylabel")
-            self.st.pyplot(fig)
+            # fig = plt.figure(figsize=(10, 3))
+            # ax = fig.add_subplot(title='simlirity')
+            # ax.scatter(x,y)
+            # plt.rc('font', size=4.5)
+            # plt.xlabel("xlabel")
+            # plt.ylabel("ylabel")
+            # self.st.pyplot(fig)
 
 
             ##################
