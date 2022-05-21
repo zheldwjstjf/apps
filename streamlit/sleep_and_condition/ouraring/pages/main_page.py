@@ -114,6 +114,10 @@ class MainPage:
             chart_data = pd.DataFrame(sleep_start)
             self.st.line_chart(chart_data)
 
+            self.st.plotly_chart(chart_data)
+
+            self.st.area_chart(chart_data)
+
 
 
             ##################
