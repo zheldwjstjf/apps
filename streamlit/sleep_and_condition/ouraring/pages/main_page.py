@@ -109,7 +109,6 @@ class MainPage:
             chart_data = pd.DataFrame(df, columns=options3)
             self.st.line_chart(chart_data)
 
-            sleep_start = sleep_start.set_index("summary_date")
             chart_data = pd.DataFrame(sleep_start)
             chart_data = chart_data.iloc[::-1]
             self.st.line_chart(chart_data)
