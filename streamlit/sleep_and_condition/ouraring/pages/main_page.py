@@ -86,8 +86,17 @@ class MainPage:
                 sleep_start.append(sleep_start_time)
 
                 # sleep_end
-                sleep_end_time = sleep[i].get("起床時刻")
+                sleep_end_date = sleep[i].get("起床時刻")
+                sleep_end_time = sleep_end_date.split("T")[1]
+                sleep_end_time = sleep_end_time.split("+")[0]
+                sleep_end_time = sleep_end_time.replace(sleep_end_time[-3:], "") #  초단위 제제거거
+                sleep_end_time = sleep_end_time.replace(sleep_end_time[-1:], "0") # 분단위 모모두  0으로 끝나게 처리
+                first_digit_of_hour = int(sleep_end_time[:1])
+                two_head_digit_of_hour = int(sleep_end_time[:2])
+
                 sleep_end.append(sleep_end_time)
+
+
 
 
             ##################
@@ -111,11 +120,11 @@ class MainPage:
 
             # 
             chart_data = pd.DataFrame(sleep_start)
-            # self.st.line_chart(chart_data)
             self.st.bar_chart(chart_data, height=300)
-            # self.st.plotly_chart(chart_data)
-            # self.st.area_chart(chart_data)
 
+            #
+            chart_data = pd.DataFrame(sleep_end)
+            self.st.bar_chart(chart_data, height=300)
 
 
             ##################
