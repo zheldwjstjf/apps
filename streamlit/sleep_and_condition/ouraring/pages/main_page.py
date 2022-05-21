@@ -110,7 +110,6 @@ class MainPage:
             self.st.line_chart(chart_data)
 
             chart_data = pd.DataFrame(sleep_start)
-            chart_data = chart_data.iloc[::-1]
             self.st.line_chart(chart_data)
 
 
