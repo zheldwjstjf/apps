@@ -75,6 +75,7 @@ class MainPage:
                 sleep_start_time = sleep_start_date.split("T")[1]
                 sleep_start_time = sleep_start_time.split("+")[0]
                 sleep_start_time = sleep_start_time.replace(sleep_start_time[-3:], "")
+                sleep_start_time = sleep_start_time.replace(sleep_start_time[-1:], "0")
                 first_digit_of_hour = int(sleep_start_time[:1])
                 two_head_digit_of_hour = int(sleep_start_time[:2])
                 if first_digit_of_hour == 0:
