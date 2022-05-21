@@ -73,7 +73,7 @@ class MainPage:
                 # sleep_start
                 sleep_start_date = sleep[i].get("就寝時刻")
                 sleep_start_time = sleep_start_date.split("T")[1]
-                sleep_start_time = sleep_start_date.split("+")[0]
+                sleep_start_time = sleep_start_time.split("+")[0]
                 sleep_start.append(sleep_start_time)
 
                 # sleep_end
