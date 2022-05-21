@@ -47,8 +47,36 @@ class MainPage:
 
             # self.st.write("[DEBUG] sleep_str : ", sleep_str)
 
+
+            ##################
+            # get df
+            ##################
             df = pd.read_json(sleep_str)
             df = df.set_index("summary_date")
+
+
+
+            ##################
+            # cooking sleep data (json)
+            ##################
+            sleep = eval(sleep_str)
+
+            sleep_data_count = len(sleep)
+            date_list = []
+            sleep_start = []
+            sleep_end = []
+            for i in range(sleep_data_count):
+                # summary_date
+                sleep_data = sleep[i].get("summary_date")
+                date_list.append(sleep_data)
+
+                # sleep_start
+                sleep_start_time = sleep[i].get("就寝時刻")
+                sleep_start.append(sleep_start_time)
+
+                # sleep_end
+                sleep_end_time = sleep[i].get("起床時刻")
+                sleep_end.append(sleep_end_time)
 
 
             ##################
@@ -70,20 +98,15 @@ class MainPage:
             chart_data = pd.DataFrame(df, columns=options3)
             self.st.line_chart(chart_data)
 
+            chart_data = pd.DataFrame(sleep_start)
+            self.st.line_chart(chart_data)
+
 
             ##################
             # show data
             ##################
             for i in range(5):
                 self.st.write("")
-
-            sleep = eval(sleep_str)
-
-            sleep_data_count = len(sleep)
-            date_list = []
-            for i in range(sleep_data_count):
-                sleep_data = sleep[i].get("summary_date")
-                date_list.append(sleep_data)
 
             col1,col2,col3 = self.st.columns((2,1,1))
             
