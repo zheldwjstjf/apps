@@ -1,7 +1,8 @@
 import json
 import pandas as pd
 import altair as alt
-import matplotlib.pyplot as plt
+import plotly.figure_factory as ff
+import plotly
 
 class MainPage:
     """
