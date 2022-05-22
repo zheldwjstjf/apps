@@ -65,6 +65,9 @@ class MainPage:
             date_list = []
             sleep_start = []
             sleep_end = []
+
+            expander_sleep_start_time = self.st.expander("[DEBUG] sleep_start_time")
+
             for i in range(sleep_data_count):
                 # summary_date
                 sleep_data = sleep[i].get("summary_date")
@@ -72,8 +75,10 @@ class MainPage:
 
                 # sleep_start
                 sleep_start_date = sleep[i].get("就寝時刻")
+                
                 sleep_start_time = sleep_start_date.split("T")[1]
-                expander = self.st.expander("[DEBUG] sleep_start_time"); expander.write(sleep_start_time)
+                expander_sleep_start_time.write(sleep_start_time)
+                
                 sleep_start_time = sleep_start_time.split("+")[0]
                 sleep_start_time = sleep_start_time.replace(sleep_start_time[-3:], "") #  초단위 제제거거
                 if int(sleep_start_time[-2:]) > 29:
