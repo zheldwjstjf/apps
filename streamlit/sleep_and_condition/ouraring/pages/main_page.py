@@ -97,7 +97,7 @@ class MainPage:
                 two_head_digit_of_hour = int(sleep_start_time[:2])
                 if first_digit_of_hour == 0:
                     two_head_digit_of_hour = two_head_digit_of_hour + 24
-                    sleep_start_time = sleep_start_time[-1:]
+                    sleep_start_time = sleep_start_time[-3:]
                     expander_sleep_start_time.write("[ 7th ] " + str(i) + " : " + str(sleep_start_time))
 
                     sleep_start_time = str(two_head_digit_of_hour) + sleep_start_time
