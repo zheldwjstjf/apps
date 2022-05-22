@@ -90,7 +90,7 @@ class MainPage:
 
                 # sleep_end
                 sleep_end_date = sleep[i].get("起床時刻")
-                sleep_end_time = sleep_start_date.split("T")[1]
+                sleep_end_time = sleep_end_date.split("T")[1]
                 sleep_end_time = sleep_end_time.split("+")[0]
                 sleep_end_time = sleep_end_time[:5] #  초단위 제제거거
                 if int(sleep_end_time[-2:]) > 29:
