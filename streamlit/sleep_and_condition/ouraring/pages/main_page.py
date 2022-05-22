@@ -111,7 +111,7 @@ class MainPage:
 
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
-            self.st.line_chart(chart_data, height=500)
+            self.st.bar_chart(chart_data, height=500)
 
             options2 = self.st.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
             chart_data = pd.DataFrame(df, columns=options2)
