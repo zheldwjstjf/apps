@@ -121,12 +121,12 @@ class MainPage:
             #
             self.st.write("▶︎ 就寝時刻")
             chart_data = pd.DataFrame(sleep_start)
-            self.st.bar_chart(chart_data, height=300)
+            self.st.bar_chart(chart_data, height=365)
 
             #
             self.st.write("▶︎ 起床時刻")
             chart_data = pd.DataFrame(sleep_end)
-            self.st.bar_chart(chart_data, height=300)
+            self.st.bar_chart(chart_data, height=365)
 
 
             ##################
