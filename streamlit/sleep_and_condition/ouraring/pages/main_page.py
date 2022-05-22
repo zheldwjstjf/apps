@@ -75,7 +75,10 @@ class MainPage:
                 sleep_start_time = sleep_start_date.split("T")[1]
                 sleep_start_time = sleep_start_time.split("+")[0]
                 sleep_start_time = sleep_start_time.replace(sleep_start_time[-3:], "") #  초단위 제제거거
-                sleep_start_time = sleep_start_time.replace(sleep_start_time[-1:], "0") # 분단위 모모두  0으로 끝나게 처리
+                if int(sleep_start_time[-3:]) > 29:
+                    sleep_start_time = sleep_start_time.replace(sleep_start_time[-3:], "30") # 분단위 모두 0으로 끝나게 처리
+                else:
+                    sleep_start_time = sleep_start_time.replace(sleep_start_time[-3:], "00") # 분단위 모두 0으로 끝나게 처리
                 first_digit_of_hour = int(sleep_start_time[:1])
                 two_head_digit_of_hour = int(sleep_start_time[:2])
                 if first_digit_of_hour == 0:
@@ -90,7 +93,7 @@ class MainPage:
                 sleep_end_time = sleep_end_date.split("T")[1]
                 sleep_end_time = sleep_end_time.split("+")[0]
                 sleep_end_time = sleep_end_time.replace(sleep_end_time[-3:], "") #  초단위 제제거거
-                sleep_end_time = sleep_end_time.replace(sleep_end_time[-1:], "0") # 분단위 모모두  0으로 끝나게 처리
+                sleep_end_time = sleep_end_time.replace(sleep_end_time[-1:], "0") # 분단위 모두 0으로 끝나게 처리
                 first_digit_of_hour = int(sleep_end_time[:1])
                 two_head_digit_of_hour = int(sleep_end_time[:2])
 
