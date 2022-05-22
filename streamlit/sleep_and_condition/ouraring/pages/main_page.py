@@ -110,7 +110,7 @@ class MainPage:
             self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
-            chart_data = pd.DataFrame(df, columns=options1, min_value=30)
+            chart_data = pd.DataFrame(df, columns=options1)
             self.st.line_chart(chart_data, height=500)
 
             options2 = self.st.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
