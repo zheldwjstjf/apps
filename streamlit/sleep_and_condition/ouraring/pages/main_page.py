@@ -119,6 +119,8 @@ class MainPage:
             self.st.line_chart(chart_data)
 
             #
+            # TODO : 날짜 리스트하고 맵핑해서, 날짜 알수 있게 할 것
+            # TODO : 시간 잘못된 거 고치기
             self.st.write("▶︎ 就寝時刻")
             chart_data = pd.DataFrame(sleep_start)
             self.st.bar_chart(chart_data, height=365)
