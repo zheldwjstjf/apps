@@ -83,7 +83,7 @@ class MainPage:
                 sleep_start_time = sleep_start_time.split("+")[0]
                 expander_sleep_start_time.write("[ 3th ] " + str(i) + " : " + str(sleep_start_time))
                 
-                if sleep_start_time != "00:00":
+                if sleep_start_time != "00:00:00":
                     sleep_start_time = sleep_start_time[:5] #  초단위 제제거거
                     expander_sleep_start_time.write("[ 4th ] " + str(i) + " : " + str(sleep_start_time))
 
