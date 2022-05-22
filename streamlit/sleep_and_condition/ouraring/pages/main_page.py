@@ -83,20 +83,25 @@ class MainPage:
                 sleep_start_time = sleep_start_time.split("+")[0]
                 expander_sleep_start_time.write("[ 3th ] " + str(i) + " : " + str(sleep_start_time))
                 
-                if sleep_start_time != "00:00:00":
-                    sleep_start_time = sleep_start_time[:5] #  초단위 제제거거
-                    expander_sleep_start_time.write("[ 4th ] " + str(i) + " : " + str(sleep_start_time))
+                sleep_start_time = sleep_start_time[:5] #  초단위 제제거거
+                expander_sleep_start_time.write("[ 4th ] " + str(i) + " : " + str(sleep_start_time))
 
                 if int(sleep_start_time[-2:]) > 29:
                     sleep_start_time = sleep_start_time.replace(sleep_start_time[-2:], "30") # 분단위 모두 0으로 끝나게 처리
+                    expander_sleep_start_time.write("[ 5th ] " + str(i) + " : " + str(sleep_start_time))
                 else:
                     sleep_start_time = sleep_start_time.replace(sleep_start_time[-2:], "00") # 분단위 모두 0으로 끝나게 처리
+                    expander_sleep_start_time.write("[ 6th ] " + str(i) + " : " + str(sleep_start_time))
+                
                 first_digit_of_hour = int(sleep_start_time[:1])
                 two_head_digit_of_hour = int(sleep_start_time[:2])
                 if first_digit_of_hour == 0:
                     two_head_digit_of_hour = two_head_digit_of_hour + 24
                     sleep_start_time = sleep_start_time.replace(sleep_start_time[:2], "")
+                    expander_sleep_start_time.write("[ 7th ] " + str(i) + " : " + str(sleep_start_time))
+
                     sleep_start_time = str(two_head_digit_of_hour) + sleep_start_time
+                    expander_sleep_start_time.write("[ 8th ] " + str(i) + " : " + str(sleep_start_time))
                     
                 sleep_start.append(sleep_start_time)
 
