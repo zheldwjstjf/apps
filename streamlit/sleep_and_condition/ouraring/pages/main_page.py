@@ -97,12 +97,6 @@ class MainPage:
                     sleep_end_time = sleep_end_time.replace(sleep_end_time[-2:], "30") # 분단위 모두 0으로 끝나게 처리
                 else:
                     sleep_end_time = sleep_end_time.replace(sleep_end_time[-2:], "00") # 분단위 모두 0으로 끝나게 처리
-                first_digit_of_hour = int(sleep_end_time[:1])
-                two_head_digit_of_hour = int(sleep_end_time[:2])
-                if first_digit_of_hour == 0:
-                    two_head_digit_of_hour = two_head_digit_of_hour + 24
-                    sleep_end_time = sleep_end_time[-3:]
-                    sleep_end_time = str(two_head_digit_of_hour) + sleep_end_time
                 sleep_end.append(sleep_end_time)
 
 
