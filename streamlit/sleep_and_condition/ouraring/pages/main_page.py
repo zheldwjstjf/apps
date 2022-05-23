@@ -111,15 +111,15 @@ class MainPage:
 
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
-            self.st.line_chart(chart_data, height=500)
+            self.st.line_chart(chart_data, height=365)
 
             options2 = self.st.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
             chart_data = pd.DataFrame(df, columns=options2)
-            self.st.line_chart(chart_data, height=500)
+            self.st.line_chart(chart_data, height=365)
 
             options3 = self.st.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
             chart_data = pd.DataFrame(df, columns=options3)
-            self.st.line_chart(chart_data, height=500)
+            self.st.line_chart(chart_data, height=365)
 
             #
             # TODO : 날짜 리스트하고 맵핑해서, 날짜 알수 있게 할 것
