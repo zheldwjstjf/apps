@@ -126,7 +126,7 @@ class MainPage:
             # TODO : 시간 잘못된 거 고치기
             self.st.write("▶︎ 就寝時刻")
             chart_data = pd.DataFrame(sleep_start)
-            self.st.line_chart(chart_data, height=365)
+            self.st.bar_chart(chart_data, height=365)
 
             #
             self.st.write("▶︎ 起床時刻")
