@@ -1,7 +1,7 @@
 import streamlit as st
 
 from pages.main_page import MainPage
-from pages.sidebar_page import SidebarPage
+from pages.sidebar import SidebarPage
 
 class MyGmailApp:
 
