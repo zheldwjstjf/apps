@@ -1,5 +1,7 @@
 import streamlit as st
 
+from pages.main_page import MainPage
+
 class MyGmailApp:
 
     def __init__(self) -> None:
@@ -7,6 +9,8 @@ class MyGmailApp:
         - method name : __init__
         - arg(s) : None
         """
+
+        self.mainPage = MainPage(st)
 
     def main(self):
         """
@@ -19,6 +23,8 @@ class MyGmailApp:
             initial_sidebar_state="collapsed",  # Can be "auto", "expanded", "collapsed"
             page_title="MyGmailApp",  # String or None. Strings get appended with "• Streamlit". 
             page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
+        
+        self.mainPage.main_page()
 
 myGmailApp = MyGmailApp()
 myGmailApp.main()
