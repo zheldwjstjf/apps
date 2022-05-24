@@ -1,6 +1,7 @@
 import streamlit as st
 
 from pages.main_page import MainPage
+from pages.sidebar_page import SidebarPage
 
 class MyGmailApp:
 
@@ -11,6 +12,7 @@ class MyGmailApp:
         """
 
         self.mainPage = MainPage(st)
+        self.sidebarPage = SidebarPage(st)
 
     def main(self):
         """
@@ -24,6 +26,11 @@ class MyGmailApp:
             page_title="MyGmailApp",  # String or None. Strings get appended with "• Streamlit". 
             page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
         
+        
+        # 
+        self.sidebarPage.sidebar_page()
+        
+        # 
         self.mainPage.main_page()
 
 myGmailApp = MyGmailApp()

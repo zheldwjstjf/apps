@@ -12,5 +12,10 @@ class MainPage:
         self.st = streamlit
 
     def main_page(self):
+        """
+        - method name : main_page
+        - arg(s) : streamlit
+        """
 
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
+        
