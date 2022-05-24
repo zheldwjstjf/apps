@@ -16,4 +16,6 @@ class SidebarPage:
         - method name : sidebar_page
         - arg(s) : None
         """
-        
+
+        # title
+        self.st.markdown("<h2 style='text-align: center; color: red;'>[ SIDE BAR ]</h2>", unsafe_allow_html=True)        
