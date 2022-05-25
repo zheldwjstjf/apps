@@ -18,4 +18,4 @@ class SidebarPage:
         """
 
         # title
-        self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ SIDE BAR ]</h1>", unsafe_allow_html=True)        
+        self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)        
