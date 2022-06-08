@@ -66,5 +66,5 @@ class MyGmailApp:
         # 
         self.mainPage.main_page()
 
-myGmailApp = MyGmailApp()
-myGmailApp.main(st)
+myGmailApp = MyGmailApp(st)
+myGmailApp.main()
