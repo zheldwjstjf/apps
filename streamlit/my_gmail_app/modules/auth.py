@@ -14,7 +14,7 @@ class AuthFactory:
         self.st = streamlit
         self.auth_check_result = []
 
-    @st.cache(suppress_st_warning=True)
+    # @st.cache(suppress_st_warning=True)
     def createService(self, stringio):
         """
         createService
