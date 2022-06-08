@@ -58,13 +58,10 @@ class MyGmailApp:
 
         if auth_status == True:
             # main page title
-            self.st.markdown("<h1 style='text-align: center; color: red;'>RIEKOグラフ</h1>", unsafe_allow_html=True)
+            self.mainPage.main_page()
 
         if auth_status == False:
-            self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
-
-        # 
-        self.mainPage.main_page()
+            self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)        
 
 myGmailApp = MyGmailApp(st)
 myGmailApp.main()
