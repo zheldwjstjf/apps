@@ -57,9 +57,6 @@ class MyGmailApp:
             # main page title
             self.st.markdown("<h1 style='text-align: center; color: red;'>RIEKOグラフ</h1>", unsafe_allow_html=True)
 
-            # main page
-            self.mp.main_page(self.df)
-
         if auth_status == False:
             self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
 
