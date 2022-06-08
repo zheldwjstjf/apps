@@ -1,3 +1,4 @@
+from asyncio.staggered import staggered_race
 import streamlit as st
 
 from pages.main_page import MainPage
@@ -15,11 +16,13 @@ st.set_page_config( # Alternate names: setup_page, page, layout
 
 class MyGmailApp:
 
-    def __init__(self) -> None:
+    def __init__(self, st) -> None:
         """
         - method name : __init__
         - arg(s) : None
         """
+
+        self.st = st
 
         self.mainPage = MainPage(st)
         self.sidebarPage = SidebarPage(st)
@@ -60,11 +63,8 @@ class MyGmailApp:
         if auth_status == False:
             self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
 
-
-
-
         # 
         self.mainPage.main_page()
 
 myGmailApp = MyGmailApp()
-myGmailApp.main()
+myGmailApp.main(st)
