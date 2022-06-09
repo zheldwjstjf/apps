@@ -55,6 +55,8 @@ class MyGmailApp:
 
         if auth_status == None:
             self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
+            htp="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/gmail_icon.png"
+            self.st.image(htp, caption= 'logo', width=350)
 
         if auth_status == True:
             # main page title
