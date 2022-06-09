@@ -26,6 +26,7 @@ class AuthPage:
                 # To convert to a string based IO:
                 stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
                 self.auth_status = self.authFactory.createService(stringio)
+                self.st.write("auth_status : ", auth_status)
 
                 if self.auth_status == None:
                     return None
