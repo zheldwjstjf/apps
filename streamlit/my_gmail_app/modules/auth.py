@@ -14,9 +14,9 @@ class AuthFactory:
         self.st = streamlit
         self.auth_check_result = []
 
-    def createService(self, stringio):
+    def createAuth(self, stringio):
         """
-        createService
+        createAuth
         """
 
         auth_info = json.load(stringio)
