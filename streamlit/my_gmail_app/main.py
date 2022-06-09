@@ -65,7 +65,9 @@ class MyGmailApp:
 
         if auth_status == False:
             self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
-            self.st.markdown("![Alt Text](https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif)")
+            # self.st.markdown("![Alt Text](https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif)")
+            htp="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif"
+            self.st.image(htp, caption= 'logo', width=350)
         
 myGmailApp = MyGmailApp(st)
 myGmailApp.main()
