@@ -20,6 +20,7 @@ class AuthFactory:
         """
 
         auth_info = json.load(stringio)
+        self.st.write("auth_info : ", auth_info)
 
         try:
             if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
