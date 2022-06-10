@@ -6,9 +6,10 @@ from pages.main_page import MainPage
 from pages.sidebar import SidebarPage
 from pages.auth_page import AuthPage
 
-ls_result =  subprocess.Popen('ls -ll', shell=True, stdout=subprocess.PIPE).stdout
-ls_result =  ls_result.read()
-st.write("ls_result : ", ls_result)
+result =  subprocess.Popen('ls -ll', shell=True, stdout=subprocess.PIPE).stdout
+result_list =  result.read().splitlines()
+for result in result_list:
+    st.write(result)
 
 # ===================================
 # st config
