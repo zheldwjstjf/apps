@@ -64,7 +64,9 @@ class AuthFactory:
         # -
         STORAGE = Storage(auth_storage_path + 'gmail.auth.storage')
         credent = STORAGE.get()
+        self.st.write(111)
         if credent is None or credent.invalid:
+            self.st.write(222)
             info = auth_info['installed']
             flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
             auth_url = flow.step1_get_authorize_url()
@@ -75,6 +77,7 @@ class AuthFactory:
             code = self.st.text_input("Gmail Service Auth code")
             credent = flow.step2_exchange(code)
             STORAGE.put(credent)
+        self.st.write(333)
         http = httplib2.Http()
         http = credent.authorize(http)
 
