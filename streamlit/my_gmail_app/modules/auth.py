@@ -99,7 +99,7 @@ class AuthFactory:
             mail_id = self.mail_id = maillist["messages"][1]['id']
 
             try:
-                content = self.service.users().messages().get(userId="me", id=mail_id).execute()
+                content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
                 mail = self.parse_mail(content)
                 self.st.write("mail : ", mail)
             except errors.HttpError as error:
