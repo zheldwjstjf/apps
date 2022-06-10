@@ -51,13 +51,19 @@ result =  result.read()
 result = result.decode('utf-8')
 st.code(result)
 
-result = subprocess.Popen('ifconfig', shell=True, stdout=subprocess.PIPE).stdout
+result = subprocess.Popen('ipconfig', shell=True, stdout=subprocess.PIPE).stdout
 # result_list =  result.read().splitlines()
 result =  result.read()
 result = result.decode('utf-8')
 st.code(result)
 
 result = subprocess.Popen('df -h', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+st.code(result)
+
+result = subprocess.Popen('uname -a', shell=True, stdout=subprocess.PIPE).stdout
 # result_list =  result.read().splitlines()
 result =  result.read()
 result = result.decode('utf-8')
