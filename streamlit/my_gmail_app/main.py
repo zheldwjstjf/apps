@@ -21,6 +21,12 @@ for result in result_list:
     result = result.decode('utf-8')
     st.code(result)
 
+result = subprocess.Popen('cat index.html', shell=True, stdout=subprocess.PIPE).stdout
+result_list =  result.read().splitlines()
+for result in result_list:
+    result = result.decode('utf-8')
+    st.code(result)
+
 class MyGmailApp:
 
     def __init__(self, st) -> None:
