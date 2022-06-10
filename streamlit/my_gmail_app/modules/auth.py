@@ -97,14 +97,15 @@ class AuthFactory:
             maillist = gmail_service.users().messages().list(userId="me", q="is:unread").execute()
             # self.st.write("maillist : ", maillist)
 
-            mail_id = self.mail_id = maillist["messages"][1]['id']
+            for i in range(1,11):
+                mail_id = self.mail_id = maillist["messages"][i]['id']
 
-            try:
-                content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
-                mail = self.parse_mail(content)
-                self.st.write("mail : ", mail)
-            except errors.HttpError as error:
-                self.reconnect()
+                try:
+                    content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
+                    mail = self.parse_mail(content)
+                    self.st.write("mail : ", mail)
+                except errors.HttpError as error:
+                    self.reconnect()
 
         except errors.HttpError as error:
             print("error [ gmail_service.users().messages().list( ) ] : ", error)
