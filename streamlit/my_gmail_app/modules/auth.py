@@ -72,7 +72,7 @@ class AuthFactory:
             # code = input("input code : ")
 
             self.st.write("auth_url : ", auth_url)
-            code = self.st.text_input()
+            code = self.st.text_input("Gmail Service Auth code")
             credent = flow.step2_exchange(code)
             STORAGE.put(credent)
         http = httplib2.Http()
