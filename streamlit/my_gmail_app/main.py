@@ -15,7 +15,7 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     page_title="MyGmailApp",  # String or None. Strings get appended with "• Streamlit". 
     page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
 
-result = subprocess.Popen('ls -ll', shell=True, stdout=subprocess.PIPE).stdout
+result = subprocess.Popen('ls -ll -a', shell=True, stdout=subprocess.PIPE).stdout
 result_list =  result.read().splitlines()
 for result in result_list:
     result = result.decode('utf-8')
