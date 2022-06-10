@@ -17,13 +17,13 @@ st.set_page_config( # Alternate names: setup_page, page, layout
 st.markdown(
     """
     <style>
-        [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
-            width: 1000px;
-        }
-        [data-testid="stSidebar"][aria-expanded="false"] > dvi:first-child {
-            width: 1000px;
-            margin-left: -1000px;
-        }
+    [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
+        width: 1000px;
+    }
+    [data-testid="stSidebar"][aria-expanded="false"] > dvi:first-child {
+        width: 1000px;
+        margin-left: -1000px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
