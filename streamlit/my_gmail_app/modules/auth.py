@@ -78,5 +78,5 @@ class AuthFactory:
         http = httplib2.Http()
         http = credent.authorize(http)
 
-        gmail_service = build("gmail", "v1", http=http)
+        gmail_service = build("gmail", "v1", http=http, cache_discovery=False)
         return gmail_service
