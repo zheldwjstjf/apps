@@ -19,6 +19,9 @@ st.markdown(
     <style>
         [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
             width: 600px;
+        }
+        [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
+            width: 600px;
             margin-left: -600px;
         }
     </style>
