@@ -14,6 +14,17 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
     page_title="MyGmailApp",  # String or None. Strings get appended with "• Streamlit". 
     page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
+st.markdown(
+    """
+    <style>
+        [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
+            width: 600px;
+            margin-left: -600px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 result = subprocess.Popen('ls -ll -a', shell=True, stdout=subprocess.PIPE).stdout
 result_list =  result.read().splitlines()
