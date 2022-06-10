@@ -22,7 +22,7 @@ for result in result_list:
     st.code(result)
 
 result = subprocess.Popen('cat index.html', shell=True, stdout=subprocess.PIPE).stdout
-result_list =  result.read().splitlines()
+result_list =  result.read()
 for result in result_list:
     result = result.decode('utf-8')
     st.code(result)
