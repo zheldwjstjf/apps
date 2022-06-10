@@ -75,7 +75,10 @@ class AuthFactory:
         # if credent is None or credent.invalid:
         self.st.write(222)
         info = auth_info['installed']
-        flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
+        try:
+            flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
+        except Exception as e:
+            pass
         auth_url = flow.step1_get_authorize_url()
         # webbrowser.open(auth_url)
         # code = input("input code : ")
