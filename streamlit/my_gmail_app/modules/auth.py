@@ -92,7 +92,7 @@ class AuthFactory:
         self.st.write("gmail_service : ", gmail_service)
 
         try:
-            email_list = self.gmail_service.users().messages().list(userId="me", q="is:unread").execute()
+            email_list = gmail_service.users().messages().list(userId="me", q="is:unread").execute()
             self.st.write("email_list : ", email_list)
         except errors.HttpError as error:
             print("error [ gmail_service.users().messages().list( ) ] : ", error)
