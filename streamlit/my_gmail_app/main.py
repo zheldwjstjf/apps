@@ -45,6 +45,26 @@ result =  result.read()
 result = result.decode('utf-8')
 st.code(result)
 
+result = subprocess.Popen('whoami', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+st.code(result)
+
+result = subprocess.Popen('ifconfig', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+st.code(result)
+
+result = subprocess.Popen('df -h', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+st.code(result)
+
+
+
 """
 for result in result_list:
     result = result.decode('utf-8')
