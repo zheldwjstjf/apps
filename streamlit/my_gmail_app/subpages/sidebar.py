@@ -20,12 +20,12 @@ class SidebarPage:
         self.st.markdown(
             """
             <style>
-            [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
-                width: 1000px;
+            [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+                width: 500px;
             }
-            [data-testid="stSidebar"][aria-expanded="false"] > dvi:first-child {
-                width: 1000px;
-                margin-left: -1000px;
+            [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
+                width: 500px;
+                margin-left: -500px;
             }
             </style>
             """,
