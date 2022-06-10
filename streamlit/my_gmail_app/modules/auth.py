@@ -103,7 +103,7 @@ class AuthFactory:
                 try:
                     content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
                     mail = self.parse_mail(content)
-                    self.st.write("mail : ", mail)
+                    self.st.write("mail : ", mail["snippet"])
                 except errors.HttpError as error:
                     self.reconnect()
 
