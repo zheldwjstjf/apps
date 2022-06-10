@@ -9,6 +9,13 @@ import httplib2
 from apiclient import errors
 import streamlit as st
 
+import base64
+from email.mime.audio import MIMEAudio
+from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 class AuthFactory:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
@@ -82,5 +89,12 @@ class AuthFactory:
         http = credent.authorize(http)
 
         gmail_service = build("gmail", "v1", http=http, cache_discovery=False)
-        self.st.write("gmail_service : ", gmail_service)        
+        self.st.write("gmail_service : ", gmail_service)
+
+        try:
+            email_list = self.gmail_service.users().messages().list(userId="me", q="is:unread").execute()
+            self.st.write("email_list : ", email_list)
+        except errors.HttpError as error:
+            print("error [ gmail_service.users().messages().list( ) ] : ", error)
+
         return gmail_service
