@@ -16,9 +16,9 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
 
 result = subprocess.Popen('ls -ll', shell=True, stdout=subprocess.PIPE).stdout
-result = result.decode('utf-8')
 result_list =  result.read().splitlines()
 for result in result_list:
+    result = result.decode('utf-8')
     st.write(result)
 
 class MyGmailApp:
