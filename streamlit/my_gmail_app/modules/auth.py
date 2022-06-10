@@ -30,20 +30,30 @@ class AuthFactory:
         self.st.write("auth_info : ", auth_info)
 
         try:
+            self.st.write('auth_info["installed"]["product_id"] : ', auth_info['installed']["product_id"])
+            self.st.write('self.st.secrets["product_id"] : ', self.st.secrets["product_id"])
             if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
                 self.auth_check_result.append(True)
             else:
                 self.auth_check_result.append(False)
 
-            if auth_info['installed']["client_id"] == self.st.secrets["client_id"]:
+            
+            self.st.write('auth_info["installed"]["client_id"] : ', auth_info["installed"]["client_id"])
+            self.st.write('self.st.secrets["client_id"] : ', self.st.secrets["client_id"])
+            if auth_info["installed"]["client_id"] == self.st.secrets["client_id"]:
                 self.auth_check_result.append(True)
             else:
                 self.auth_check_result.append(False)
 
-            if auth_info['installed']["client_secret"] == self.st.secrets["client_secret"]:
+
+            self.st.write('auth_info["installed"]["client_secret"] : ', auth_info["installed"]["client_secret"])
+            self.st.write('self.st.secrets["client_secret"] : ', self.st.secrets["client_secret"])
+            if auth_info["installed"]["client_secret"] == self.st.secrets["client_secret"]:
                 self.auth_check_result.append(True)
             else:
                 self.auth_check_result.append(False)
+
+
 
             if False in self.auth_check_result:
                 return False
