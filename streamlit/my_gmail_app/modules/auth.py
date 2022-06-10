@@ -69,8 +69,10 @@ class AuthFactory:
             flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
             auth_url = flow.step1_get_authorize_url()
             # webbrowser.open(auth_url)
+            # code = input("input code : ")
+
             self.st.write("auth_url : ", auth_url)
-            code = input("input code : ")
+            code = self.st.text_input()
             credent = flow.step2_exchange(code)
             STORAGE.put(credent)
         http = httplib2.Http()
