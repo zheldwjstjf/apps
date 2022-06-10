@@ -19,7 +19,7 @@ result = subprocess.Popen('ls -ll', shell=True, stdout=subprocess.PIPE).stdout
 result_list =  result.read().splitlines()
 for result in result_list:
     result = result.decode('utf-8')
-    st.write(result)
+    st.code(result)
 
 class MyGmailApp:
 
