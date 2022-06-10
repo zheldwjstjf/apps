@@ -19,15 +19,27 @@ result = subprocess.Popen('ls -ll -a', shell=True, stdout=subprocess.PIPE).stdou
 result_list =  result.read().splitlines()
 for result in result_list:
     result = result.decode('utf-8')
-    st.code(result)
+    # st.code(result)
 
 result = subprocess.Popen('cat index.html', shell=True, stdout=subprocess.PIPE).stdout
 # result_list =  result.read().splitlines()
 result =  result.read()
 result = result.decode('utf-8')
-st.code(result)
+# st.code(result)
 
 result = subprocess.Popen('cat .gitignore', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+# st.code(result)
+
+result = subprocess.Popen('pwd', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+st.code(result)
+
+result = subprocess.Popen('tree', shell=True, stdout=subprocess.PIPE).stdout
 # result_list =  result.read().splitlines()
 result =  result.read()
 result = result.decode('utf-8')
