@@ -17,5 +17,20 @@ class SidebarPage:
         - arg(s) : None
         """
 
+        self.st.markdown(
+            """
+            <style>
+            [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
+                width: 1000px;
+            }
+            [data-testid="stSidebar"][aria-expanded="false"] > dvi:first-child {
+                width: 1000px;
+                margin-left: -1000px;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True,
+        )
+
         # title
         self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)        
