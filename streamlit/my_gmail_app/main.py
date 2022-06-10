@@ -69,6 +69,12 @@ result =  result.read()
 result = result.decode('utf-8')
 st.code(result)
 
+result = subprocess.Popen('sudo lshw -short', shell=True, stdout=subprocess.PIPE).stdout
+# result_list =  result.read().splitlines()
+result =  result.read()
+result = result.decode('utf-8')
+st.code(result)
+
 
 
 """
