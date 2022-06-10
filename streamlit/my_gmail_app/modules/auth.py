@@ -14,6 +14,13 @@ class AuthFactory:
         self.st = streamlit
         self.auth_check_result = []
 
+        # auth_url = "https://accounts.google.com/o/oauth2/auth?"
+
+        self.response_setting = {
+            "scope": "https://mail.google.com/",
+            "response_type": "code",
+        }
+
     def createAuth(self, stringio):
         """
         createAuth
@@ -47,3 +54,26 @@ class AuthFactory:
                     return False
         except:
             return False
+
+    def createService(self, stringio):
+        # -
+
+        auth_storage_path = ""
+        auth_info = json.load(stringio)
+
+        # -
+        STORAGE = Storage(auth_storage_path + 'gmail.auth.storage')
+        credent = STORAGE.get()
+        if credent is None or credent.invalid:
+            info = auth_info['installed']
+            flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
+            auth_url = flow.step1_get_authorize_url()
+            webbrowser.open(auth_url)
+            code = input("input code : ")
+            credent = flow.step2_exchange(code)
+            STORAGE.put(credent)
+        http = httplib2.Http()
+        http = credent.authorize(http)
+
+        gmail_service = build("gmail", "v1", http=http)
+        return gmail_service
