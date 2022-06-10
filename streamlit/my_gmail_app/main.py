@@ -9,21 +9,6 @@ from subpages.auth_page import AuthPage
 # ===================================
 # st config
 # ===================================
-st.markdown(
-    """
-    <style>
-    [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
-        width: 1000px;
-    }
-    [data-testid="stSidebar"][aria-expanded="false"] > dvi:first-child {
-        width: 1000px;
-        margin-left: -1000px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
-
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
     initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
