@@ -1,9 +1,13 @@
+import os
 from asyncio.staggered import staggered_race
 import streamlit as st
 
 from pages.main_page import MainPage
 from pages.sidebar import SidebarPage
 from pages.auth_page import AuthPage
+
+ls_result = os.subprocess.check_output(['ls -ll'])
+st.write("ls_result : ", ls_result)
 
 # ===================================
 # st config
