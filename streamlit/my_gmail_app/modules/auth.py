@@ -75,43 +75,42 @@ class AuthFactory:
         # if credent is None or credent.invalid:
         self.st.write(222)
         info = auth_info['installed']
-        try:
-            flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
-        except Exception as e:
-            pass
+        flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
         auth_url = flow.step1_get_authorize_url()
         # webbrowser.open(auth_url)
         # code = input("input code : ")
 
         self.st.write("auth_url : ", auth_url)
         code = self.st.text_input("Gmail Service Auth code")
-        credent = flow.step2_exchange(code)
-        # STORAGE.put(credent)
-        self.st.write(333)
-        http = httplib2.Http()
-        http = credent.authorize(http)
 
-        # gmail_service = build("gmail", "v1", http=http, cache_discovery=False)
-        gmail_service = build("gmail", "v1", http=http)
-        self.st.write("gmail_service : ", gmail_service)
+        if self.st.button('取得'):
+            credent = flow.step2_exchange(code)
+            # STORAGE.put(credent)
+            self.st.write(333)
+            http = httplib2.Http()
+            http = credent.authorize(http)
 
-        try:
-            maillist = gmail_service.users().messages().list(userId="me", q="is:unread").execute()
-            # self.st.write("maillist : ", maillist)
-
-            mail_id = self.mail_id = maillist["messages"][1]['id']
+            # gmail_service = build("gmail", "v1", http=http, cache_discovery=False)
+            gmail_service = build("gmail", "v1", http=http)
+            self.st.write("gmail_service : ", gmail_service)
 
             try:
-                content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
-                mail = self.parse_mail(content)
-                self.st.write("mail : ", mail)
+                maillist = gmail_service.users().messages().list(userId="me", q="is:unread").execute()
+                # self.st.write("maillist : ", maillist)
+
+                mail_id = self.mail_id = maillist["messages"][1]['id']
+
+                try:
+                    content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
+                    mail = self.parse_mail(content)
+                    self.st.write("mail : ", mail)
+                except errors.HttpError as error:
+                    self.reconnect()
+
             except errors.HttpError as error:
-                self.reconnect()
+                print("error [ gmail_service.users().messages().list( ) ] : ", error)
 
-        except errors.HttpError as error:
-            print("error [ gmail_service.users().messages().list( ) ] : ", error)
-
-        return gmail_service
+            return gmail_service
 
 
     def parse_mail(self, content):
