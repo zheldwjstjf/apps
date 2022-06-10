@@ -18,11 +18,11 @@ st.markdown(
     """
     <style>
         [data-testid="stSidebar"][aria-expanded="true"] > dvi:first-child {
-            width: 600px;
+            width: 1000px;
         }
         [data-testid="stSidebar"][aria-expanded="false"] > dvi:first-child {
-            width: 600px;
-            margin-left: -600px;
+            width: 1000px;
+            margin-left: -1000px;
         }
     </style>
     """,
