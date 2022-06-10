@@ -30,9 +30,9 @@ class AuthFactory:
         self.st.write("auth_info : ", auth_info)
 
         try:
-            self.st.write('auth_info["installed"]["product_id"] : ', auth_info['installed']["product_id"])
-            self.st.write('self.st.secrets["product_id"] : ', self.st.secrets["product_id"])
-            if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
+            self.st.write('auth_info["installed"]["project_id"] : ', auth_info['installed']["project_id"])
+            self.st.write('self.st.secrets["project_id"] : ', self.st.secrets["project_id"])
+            if auth_info['installed']["project_id"] == self.st.secrets["project_id"]:
                 self.auth_check_result.append(True)
             else:
                 self.auth_check_result.append(False)
