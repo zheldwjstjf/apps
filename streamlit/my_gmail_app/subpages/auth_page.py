@@ -26,14 +26,22 @@ class AuthPage:
 
                 # To convert to a string based IO:
                 stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
-                # self.auth_status = self.authFactory.createAuth(stringio)
-                self.auth_status = self.authFactory.createService(stringio) 
 
-                if self.auth_status == None:
+                self.auth_status = self.authFactory.createAuth(stringio)
+                if self.auth_status == True:
+                    gmail_service = self.authFactory.createService(stringio) 
+
+                if self.auth_status != None:
+                    return gmail_service
+
+                elif self.auth_status == None:
                     return False
 
-                if self.auth_status != None:        
-                    return True
+                elif self.auth_status == False:
+                    return False
+                
+                else:
+                    return False
 
             if uploaded_file is None:
                 return None

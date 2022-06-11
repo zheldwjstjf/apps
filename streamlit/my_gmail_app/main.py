@@ -46,10 +46,13 @@ class MyGmailApp:
             if auth_status == None:
                 self.st.warning("未認証")
 
-            if auth_status == True:
-                self.st.success("認証済")
+            elif auth_status == False:
+                self.st.error("認証失敗")
 
-            if auth_status == False:
+            elif (auth_status != None) and (auth_status == False):
+                self.st.success("認証済")
+            
+            else:
                 self.st.error("認証失敗")
 
         # =================
@@ -61,7 +64,13 @@ class MyGmailApp:
             img="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/digital_0_1.gif"
             self.st.image(img, width=1380)
 
-        if auth_status == True:
+        elif auth_status == False:
+            self.st.markdown("<h1 style='text-align: center; color: red;'>AUTHORIZATION FAILED</h1>", unsafe_allow_html=True)
+            # self.st.markdown("![Alt Text](https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif)")
+            img="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif"
+            self.st.image(img, width=1380)
+
+        elif (auth_status != None) and (auth_status == False):
             # gmail page title
 
             def Gmail():
@@ -80,15 +89,14 @@ class MyGmailApp:
             selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
             page_names_to_funcs[selected_page]()
 
-
             # reload
             self.st.sidebar.button("更新")
 
-        if auth_status == False:
+        else:
             self.st.markdown("<h1 style='text-align: center; color: red;'>AUTHORIZATION FAILED</h1>", unsafe_allow_html=True)
             # self.st.markdown("![Alt Text](https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif)")
             img="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif"
             self.st.image(img, width=1380)
-        
+
 myGmailApp = MyGmailApp(st)
 myGmailApp.main()

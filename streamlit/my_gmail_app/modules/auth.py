@@ -115,6 +115,12 @@ class AuthFactory:
             """
 
         except errors.HttpError as error:
+            mail_id = None
             print("error [ gmail_service.users().messages().list( ) ] : ", error)
 
-        return mail_id
+        if mail_id != None:
+            return gmail_service
+        elif mail_id == None:
+            return None
+        else:
+            return False
