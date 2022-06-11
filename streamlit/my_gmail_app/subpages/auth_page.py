@@ -21,6 +21,7 @@ class AuthPage:
         else:
             if self.auth_status == None:
                 uploaded_file = self.st.file_uploader("▶︎ 認証キーを選択してください。")
+                self.st.write("[DEBUG] uploaded_file  : ", uploaded_file)
 
             # if self.st.button("認証"):
             if uploaded_file is not None:
