@@ -21,8 +21,6 @@ class AuthFactory:
         self.st = streamlit
         self.auth_check_result = []
 
-        # auth_url = "https://accounts.google.com/o/oauth2/auth?"
-
         self.response_setting = {
             "scope": "https://mail.google.com/",
             "response_type": "code",
@@ -65,7 +63,7 @@ class AuthFactory:
     def createService(self, stringio):
         # -
 
-        auth_storage_path = ""
+        auth_storage_path = "./keys/"
         auth_info = json.load(stringio)
 
         # -
