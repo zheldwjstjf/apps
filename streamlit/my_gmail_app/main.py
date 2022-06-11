@@ -74,11 +74,9 @@ class MyGmailApp:
             # gmail page title
 
             def Gmail():
-                st.sidebar.markdown("# Gmail 🎈")
                 self.gmailPage.gmail_page()
 
             def Admin():
-                st.sidebar.markdown("# Admin ❄️")
                 self.adminPage.admin_page()
 
             page_names_to_funcs = {
