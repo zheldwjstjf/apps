@@ -100,56 +100,21 @@ class AuthFactory:
         self.st.write("gmail_service : ", gmail_service)
 
         try:
-            maillist = gmail_service.users().messages().list(userId="me", q="is:unread").execute()
+            maillist = gmail_service.users().messages().list(userId="me", q="is:read").execute()
             # self.st.write("maillist : ", maillist)
+            mail_id = self.mail_id = maillist["messages"][1]['id']
+            self.st.write("mail_id : ", mail_id)
 
-            for i in range(1,11):
-                mail_id = self.mail_id = maillist["messages"][i]['id']
-
-                try:
-                    content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
-                    mail = self.parse_mail(content)
-                    self.st.write("mail : ", mail["snippet"])
-                except errors.HttpError as error:
-                    self.reconnect()
+            """
+            try:
+                content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
+                mail = self.parse_mail(content)
+                self.st.write("mail : ", mail["snippet"])
+            except errors.HttpError as error:
+                self.reconnect()
+            """
 
         except errors.HttpError as error:
             print("error [ gmail_service.users().messages().list( ) ] : ", error)
 
-        return gmail_service
-
-
-    def parse_mail(self, content):
-        """
-        parse_mail
-        """
-
-        mail = {}
-
-        if 'parts' in content['payload'].keys():
-            parts = content['payload']['parts'][0]
-            # # print("[ DEBUG 7 ] type parts : ", type(parts))
-            # print(parts)
-            if 'parts' in parts.keys():
-                try:
-                    raw_body = parts['parts'][0]['body']['data']
-                except Exception as e:
-                    raw_body = parts['parts'][0]['parts'][0]['body']['data']
-            else:
-                raw_body = parts['body']['data']
-        else:
-            raw_body = content['payload']['body']['data']
-        mail['body'] = base64.urlsafe_b64decode(raw_body).decode('utf-8')
-        mail['snippet'] = content['snippet']
-        headers = content['payload']['headers']
-        for header in headers:
-            if header['name'] == 'From':
-                mail['from'] = header['value']
-            elif header['name'] == 'To':
-                mail['to'] = header['value']
-            elif header['name'] == 'Subject':
-                mail['subject'] = header['value']
-            elif header['name'] == 'Date':
-                mail['date'] = header['value']
-
-        return mail
+        return mail_id
