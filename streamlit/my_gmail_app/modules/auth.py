@@ -64,6 +64,14 @@ class AuthFactory:
         # -
 
         auth_storage_path = "./keys/"
+        
+        # Check whether the specified path exists or not
+        isExist = os.path.exists(auth_storage_path)
+
+        if not isExist:        
+            # Create a new directory because it does not exist 
+            os.makedirs(auth_storage_path)
+
         auth_info = json.load(stringio)
 
         # -
