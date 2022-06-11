@@ -97,13 +97,13 @@ class AuthFactory:
 
         # gmail_service = build("gmail", "v1", http=http, cache_discovery=False)
         gmail_service = build("gmail", "v1", http=http)
-        self.st.write("gmail_service : ", gmail_service)
+        # self.st.write("[DEBUG] gmail_service : ", gmail_service)
 
         try:
             maillist = gmail_service.users().messages().list(userId="me", q="is:read").execute()
             # self.st.write("maillist : ", maillist)
             mail_id = self.mail_id = maillist["messages"][1]['id']
-            self.st.write("mail_id : ", mail_id)
+            # self.st.write("[DEBUG] mail_id : ", mail_id)
 
             """
             try:
