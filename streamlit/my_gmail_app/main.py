@@ -19,7 +19,7 @@ result = subprocess.Popen('ls -ll -a', shell=True, stdout=subprocess.PIPE).stdou
 result_list =  result.read().splitlines()
 for result in result_list:
     result = result.decode('utf-8')
-    # st.code(result)
+    st.code(result)
 
 result = subprocess.Popen('cat index.html', shell=True, stdout=subprocess.PIPE).stdout
 # result_list =  result.read().splitlines()
