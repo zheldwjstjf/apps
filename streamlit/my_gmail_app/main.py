@@ -4,6 +4,7 @@ import streamlit as st
 from subpages.gmail_page import GmailPage
 from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
+from subpages.admin_page import AdminPage
 
 # ===================================
 # st config
@@ -24,9 +25,10 @@ class MyGmailApp:
 
         self.st = st
 
-        self.gmailPage = GmailPage(st)
         self.sidebarPage = SidebarPage(st)
         self.ap = AuthPage(st)
+        self.gmailPage = GmailPage(st)
+        self.adminPage = AdminPage(st)        
 
     def main(self):
         """
@@ -69,8 +71,8 @@ class MyGmailApp:
                 self.gmailPage.gmail_page()
 
             def Admin():
-                st.markdown("# Admin ❄️")
                 st.sidebar.markdown("# Admin ❄️")
+                self.adminPage.admin_page()
 
             page_names_to_funcs = {
                 "Gmail": Gmail,
