@@ -41,15 +41,13 @@ class AuthPage:
                     self.auth_status = self.authFactory.createAuth(stringio)
                     if self.auth_status == True:
                         gmail_service = self.authFactory.createService(stringio2) 
-
+                        return gmail_service
+                        
                     if self.auth_status == None:
                         return False
 
                     elif self.auth_status == False:
                         return False
-
-                    elif (self.auth_status != None) and (self.auth_status == False):
-                        return gmail_service
 
                     else:
                         return False
