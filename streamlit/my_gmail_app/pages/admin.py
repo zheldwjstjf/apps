@@ -2,10 +2,6 @@ import subprocess
 from asyncio.staggered import staggered_race
 import streamlit as st
 
-from subpages.main_page import MainPage
-from subpages.sidebar import SidebarPage
-from subpages.auth_page import AuthPage
-
 # ===================================
 # st config
 # ===================================

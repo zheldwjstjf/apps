@@ -1,4 +1,4 @@
-class MainPage:
+class GmailPage:
     """
     - class name : MainPage
     """
@@ -11,7 +11,7 @@ class MainPage:
 
         self.st = streamlit
 
-    def main_page(self):
+    def gmail_page(self):
         """
         - method name : main_page
         - arg(s) : streamlit

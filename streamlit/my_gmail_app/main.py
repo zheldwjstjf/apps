@@ -1,7 +1,7 @@
 from asyncio.staggered import staggered_race
 import streamlit as st
 
-from subpages.main_page import MainPage
+from subpages.Gmail_page import GmailPage
 from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
 
@@ -24,7 +24,7 @@ class MyGmailApp:
 
         self.st = st
 
-        self.mainPage = MainPage(st)
+        self.gmailPage = GmailPage(st)
         self.sidebarPage = SidebarPage(st)
         self.ap = AuthPage(st)
 
@@ -60,8 +60,8 @@ class MyGmailApp:
             self.st.image(img, width=1380)
 
         if auth_status == True:
-            # main page title
-            self.mainPage.main_page()
+            # gmail page title
+            self.gmailPage.gmail_page()
 
             # reload
             self.st.sidebar.button("更新")
