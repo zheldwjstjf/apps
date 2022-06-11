@@ -1,7 +1,7 @@
 from asyncio.staggered import staggered_race
 import streamlit as st
 
-from subpages.Gmail_page import GmailPage
+from subpages.gmail_page import GmailPage
 from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
 
