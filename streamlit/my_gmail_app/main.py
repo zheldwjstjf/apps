@@ -65,17 +65,16 @@ class MyGmailApp:
             # gmail page title
 
             def Gmail():
-                st.markdown("# Gmail 🎈")
                 st.sidebar.markdown("# Gmail 🎈")
-                # self.gmailPage.gmail_page()
+                self.gmailPage.gmail_page()
 
             def Admin():
                 st.markdown("# Admin ❄️")
                 st.sidebar.markdown("# Admin ❄️")
 
             page_names_to_funcs = {
-                "Main Page": Gmail,
-                "Page 2": Admin,
+                "Gmail": Gmail,
+                "Admin": Admin,
             }
 
             selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
