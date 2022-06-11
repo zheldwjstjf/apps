@@ -16,6 +16,9 @@ class AdminPage:
         - arg(s) : 
         """
 
+        # title
+        self.st.markdown("<h1 style='text-align: center; color: red;'>Admin Page</h1>", unsafe_allow_html=True)
+
         result = subprocess.Popen('ls -ll -a', shell=True, stdout=subprocess.PIPE).stdout
         result_list =  result.read().splitlines()
         for result in result_list:
