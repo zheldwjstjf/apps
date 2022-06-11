@@ -57,7 +57,7 @@ class AuthFactory:
                 else:
                     return False
         except Exception as e:
-            self.st.write("Exception - createAuth : ", e)
+            # self.st.write("[DEBUG] Exception - createAuth : ", e)
             return False
 
     def createService(self, stringio):
