@@ -121,6 +121,6 @@ class AuthFactory:
         if mail_id != None:
             return gmail_service
         elif mail_id == None:
-            return None
+            return False
         else:
             return False

@@ -49,7 +49,7 @@ class MyGmailApp:
             elif auth_status == False:
                 self.st.error("認証失敗")
 
-            elif (auth_status != None) and (auth_status == False):
+            elif (auth_status != None) and (auth_status != False):
                 self.st.success("認証済")
             
             else:
@@ -70,7 +70,7 @@ class MyGmailApp:
             img="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif"
             self.st.image(img, width=1380)
 
-        elif (auth_status != None) and (auth_status == False):
+        elif (auth_status != None) and (auth_status != False):
             # gmail page title
 
             def Gmail():
