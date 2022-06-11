@@ -30,13 +30,10 @@ class AuthPage:
                 self.auth_status = self.authFactory.createService(stringio) 
 
                 if self.auth_status == None:
-                    return None
-
-                if self.auth_status == True:        
-                    return True
-
-                if self.auth_status == False:
                     return False
+
+                if self.auth_status != None:        
+                    return True
 
             if uploaded_file is None:
                 return None
