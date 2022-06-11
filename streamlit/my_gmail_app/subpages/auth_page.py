@@ -1,6 +1,7 @@
 import json
 from io import StringIO
 import importlib
+import copy
 
 from modules.auth import AuthFactory
 
@@ -26,10 +27,11 @@ class AuthPage:
 
                 # To convert to a string based IO:
                 stringio = StringIO(uploaded_file.getvalue().decode("utf-8"))
+                stringio2 = copy.copy(stringio)
 
                 self.auth_status = self.authFactory.createAuth(stringio)
                 if self.auth_status == True:
-                    gmail_service = self.authFactory.createService(stringio) 
+                    gmail_service = self.authFactory.createService(stringio2) 
 
                 if self.auth_status != None:
                     return gmail_service
