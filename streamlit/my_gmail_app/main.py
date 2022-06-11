@@ -61,7 +61,24 @@ class MyGmailApp:
 
         if auth_status == True:
             # gmail page title
-            self.gmailPage.gmail_page()
+
+            def Gmail():
+                st.markdown("# Gmail 🎈")
+                st.sidebar.markdown("# Gmail 🎈")
+                # self.gmailPage.gmail_page()
+
+            def Admin():
+                st.markdown("# Admin ❄️")
+                st.sidebar.markdown("# Admin ❄️")
+
+            page_names_to_funcs = {
+                "Main Page": Gmail,
+                "Page 2": Admin,
+            }
+
+            selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
+            page_names_to_funcs[selected_page]()
+
 
             # reload
             self.st.sidebar.button("更新")
