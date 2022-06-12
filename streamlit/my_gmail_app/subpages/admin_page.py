@@ -35,13 +35,13 @@ class AdminPage:
                 output, err = result.communicate()
                 
                 # output
-                output = output.decode('utf-8')
-                output =  output.read()
+                # output = output.decode('utf-8')
+                # output =  output.read()
                 col1.code(output)
 
                 # err
-                err = err.decode('utf-8')
-                err =  err.read()
+                # err = err.decode('utf-8')
+                # err =  err.read()
                 col1.code(err)
 
 
@@ -55,13 +55,13 @@ class AdminPage:
                 output, err = result.communicate()
 
                 # output
-                output = output.decode('utf-8')
-                output =  output.read()
+                # output = output.decode('utf-8')
+                # output =  output.read()
                 col2.code(output)
 
                 # err
-                err = err.decode('utf-8')
-                err =  err.read()
+                # err = err.decode('utf-8')
+                # err =  err.read()
                 col2.code(err)
 
 
