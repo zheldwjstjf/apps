@@ -1,4 +1,3 @@
-# import datetime
 import os
 import time
 
@@ -40,9 +39,7 @@ class SidebarPage:
         os.environ['TZ'] = 'Japan'
         time.tzset()
         t = time.localtime()
-        current_time = time.strftime("%Y-%m-%d-%H:%M:%S", t)
-        # print(current_time)
+        current_time = time.strftime("%Y-%m-%d %H:%M:%S", t)
 
-        # load_time = datetime.datetime.now()
-        self.st.sidebar.info("Updated at : " + str(current_time))
+        self.st.sidebar.info("Updated at :  " + str(current_time))
         self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)        
