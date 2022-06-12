@@ -36,5 +36,5 @@ class SidebarPage:
 
         # title
         load_time = datetime.datetime.now()
-        self.st.code(load_time)
+        self.st.sidebar.code(load_time)
         self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)        
