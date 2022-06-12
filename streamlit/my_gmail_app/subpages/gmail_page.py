@@ -41,7 +41,7 @@ class GmailPage:
 
             self.query_is = selected_query_is_key + ":" + selected_query_is_val
         
-        self.query = "from: editor1@kdnuggets.com" # self.query_is
+        self.query = "from:zzz@zzz.com" # self.query_is
 
         if self.st.button("更新", key=1):
         
