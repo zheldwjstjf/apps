@@ -1,3 +1,5 @@
+import datetime
+
 class SidebarPage:
     """
     - class name : SidebarPage
@@ -33,4 +35,5 @@ class SidebarPage:
         )
 
         # title
+        datetime.datetime.now()
         self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)        
