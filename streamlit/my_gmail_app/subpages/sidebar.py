@@ -1,4 +1,5 @@
 # import datetime
+import os
 import time
 
 class SidebarPage:
@@ -36,6 +37,8 @@ class SidebarPage:
         )
 
         # title
+        os.environ['TZ'] = 'Egypt'
+        time.tzset()
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
         # print(current_time)
