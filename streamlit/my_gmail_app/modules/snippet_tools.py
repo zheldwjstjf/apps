@@ -4,7 +4,7 @@ class SnippetTools:
         self.st = streamlit
 
     def image_alignment(self, img_path, img_width):
-        col1, col2, col3 = self.st.beta_columns([1,6,1])
+        col1, col2, col3 = self.st.columns([0,6,0])
 
         with col1:
             self.st.write("")
