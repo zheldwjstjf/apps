@@ -24,6 +24,10 @@ class GmailPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
 
-        maillist = self.gmail_api.getMailList("me", "is:unread")
+        user = "me"
+        query = "is:unread"
+
+        maillist = self.gmail_api.getMailList(user, query)
         self.result_count = maillist['resultSizeEstimate']
-        self.st.write(">>> Total result count : " + str(self.result_count))
+        self.st.write("取得条件 : " + query)
+        self.st.write("取得件数 : " + str(self.result_count) + " 件")
