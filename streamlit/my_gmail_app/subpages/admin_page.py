@@ -31,7 +31,7 @@ class AdminPage:
             if commandLine == None:
                 pass
             else:
-                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE)
                 output, err = result.communicate()
                 
                 # output
@@ -51,7 +51,7 @@ class AdminPage:
             if commandLine == None:
                 pass
             else:
-                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE)
                 output, err = result.communicate()
 
                 # output                
