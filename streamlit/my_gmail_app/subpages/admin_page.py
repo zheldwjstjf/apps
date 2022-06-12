@@ -35,13 +35,13 @@ class AdminPage:
                 output, err = result.communicate()
                 
                 # output
-                output = output.decode('utf-8')
                 output =  output.read()
+                output = output.decode('utf-8')
                 col1.code(output)
 
                 # err
-                err = err.decode('utf-8')
                 err =  err.read()
+                err = err.decode('utf-8')
                 col1.code(err)
 
 
@@ -54,14 +54,14 @@ class AdminPage:
                 result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE)
                 output, err = result.communicate()
 
-                # output
-                output = output.decode('utf-8')
+                # output                
                 output =  output.read()
+                output = output.decode('utf-8')
                 col2.code(output)
 
                 # err
-                err = err.decode('utf-8')
                 err =  err.read()
+                err = err.decode('utf-8')
                 col2.code(err)
 
 
