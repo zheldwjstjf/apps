@@ -45,7 +45,7 @@ class GmailPage:
         
         self.query = self.query_is
 
-        if self.st.button("更新", key=1):
+        if self.st.button("取得", key=1):
         
             # call get_list
             self.get_list()
