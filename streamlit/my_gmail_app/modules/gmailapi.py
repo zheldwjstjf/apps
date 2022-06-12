@@ -22,7 +22,8 @@ from email.mime.text import MIMEText
 
 class GmailApi():
 
-    def __init__(self, service):
+    def __init__(self, streamlit, service):
+        self.st = streamlit
         self.service = service
 
     def sendMessage(self, user, message):
@@ -59,6 +60,7 @@ class GmailApi():
               }
         '''
         try:
+            self.st.write("[DEBUG] Query in getMailList method : ", qu)
             return self.service.users().messages().list(userId=user, q=qu).execute()
         except errors.HttpError as error:
             print("error [ service.users().messages().list( ) ] : ", error)

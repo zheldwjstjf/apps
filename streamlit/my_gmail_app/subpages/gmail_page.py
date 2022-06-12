@@ -13,7 +13,7 @@ class GmailPage:
 
         self.st = streamlit
         self.gmail_auth = gmail_auth
-        self.gmail_api = GmailApi(self.gmail_auth)
+        self.gmail_api = GmailApi(self.st, self.gmail_auth)
 
     def gmail_page(self):
         """
@@ -49,7 +49,7 @@ class GmailPage:
             self.get_list()
 
     def get_list(self):
-        maillist = self.gmail_api.getMailList(self.user, self.query)
+        maillist = self.gmail_api.getMailList(self.st, self.user, self.query)
         self.result_count = maillist['resultSizeEstimate']
         self.st.write("取得条件 : " + self.query)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
