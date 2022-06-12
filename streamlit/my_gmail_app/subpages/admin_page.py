@@ -49,7 +49,7 @@ class AdminPage:
 
         with self.st.expander("Streamlit Server Log"):
 
-            line_num = self.st.st.number_input("Enter the maximum number of log lines (up to 100 lines)", min_value=1, max_value=100)
+            line_num = self.st.number_input("Enter the maximum number of log lines (up to 100 lines)", min_value=1, max_value=100)
             commandLine = "tail -" + str(line_num) + " /app/app.log"
 
             if commandLine == None:
