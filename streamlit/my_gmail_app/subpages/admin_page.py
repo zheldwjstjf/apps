@@ -21,19 +21,10 @@ class AdminPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>Admin Page</h1>", unsafe_allow_html=True)
 
+        col1, col2 = self.st.columns((1,1))
+        
         # input command line
-        commandLine = self.st.text_input("Input Command Line")
-
-        # select command line
-
-        """
-        # run command line
-        result = subprocess.Popen('ls -ll -a', shell=True, stdout=subprocess.PIPE).stdout
-        result_list =  result.read().splitlines()
-        for result in result_list:
-            result = result.decode('utf-8')
-            self.st.code(result)
-        """
+        commandLine = col1.text_input("Input Command Line")
 
         if commandLine == None:
             pass
@@ -42,7 +33,20 @@ class AdminPage:
             # result_list =  result.read().splitlines()
             result =  result.read()
             result = result.decode('utf-8')
-            self.st.code(result)
+            col1.code(result)
+
+        # input command line
+        commandLine = col2.text_input("Input Command Line")
+
+        if commandLine == None:
+            pass
+        else:
+            result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+            # result_list =  result.read().splitlines()
+            result =  result.read()
+            result = result.decode('utf-8')
+            col2.code(result)
+
 
         """
         result = subprocess.Popen('cat .gitignore', shell=True, stdout=subprocess.PIPE).stdout
