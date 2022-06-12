@@ -41,7 +41,7 @@ class GmailPage:
 
             self.query_is = selected_query_is_key + ":" + selected_query_is_val
         
-        self.query = "is:starred" # self.query_is
+        self.query = self.query_is
 
         if self.st.button("更新", key=1):
         
