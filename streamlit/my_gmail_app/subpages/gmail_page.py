@@ -26,20 +26,22 @@ class GmailPage:
 
         self.user = "me"
 
+        
+        col1, col2 = self.st.columns((1,1))
+
         # get query
         query_is_key_list = [
                 "is"
             ]
-        selected_query_is_key = self.st.selectbox("Select Query Key", query_is_key_list)
+        selected_query_is_key = col1.selectbox("Select Query Key", query_is_key_list)
 
-        if selected_query_is_key == "is":
-            query_is_val_list = [
-                    "read",
-                    "unread"
-                ]
-            selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list)
+        query_is_val_list = [
+                "read",
+                "unread"
+            ]
+        selected_query_is_val = col2.selectbox("Select Query Value", query_is_val_list)
 
-            self.query_is = selected_query_is_key + ":" + selected_query_is_val
+        self.query_is = selected_query_is_key + ":" + selected_query_is_val
         
         self.query = self.query_is
 
@@ -50,7 +52,7 @@ class GmailPage:
 
     def get_list(self):
         maillist = self.gmail_api.getMailList(self.user, self.query)
-        self.st.write("maillist : ", maillist)
+        # self.st.write("maillist : ", maillist)
         self.result_count = len(maillist["messages"])
         self.st.write("取得条件 : " + self.query)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
