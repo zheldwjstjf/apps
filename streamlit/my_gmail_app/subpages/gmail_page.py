@@ -37,7 +37,9 @@ class GmailPage:
 
         query_is_val_list = [
                 "read",
-                "unread"
+                "unread",
+                "starred",
+                "snoozed",
             ]
         selected_query_is_val = col2.selectbox("Select Query Value", query_is_val_list)
 
