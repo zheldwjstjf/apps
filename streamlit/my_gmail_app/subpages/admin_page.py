@@ -16,6 +16,8 @@ class AdminPage:
         - arg(s) : 
         """
 
+        commandLine = None
+
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>Admin Page</h1>", unsafe_allow_html=True)
 
@@ -33,12 +35,14 @@ class AdminPage:
             self.st.code(result)
         """
 
-        if self.st.button('Run'):
+        if commandLine == None:
+            pass
+        else:
             result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
             # result_list =  result.read().splitlines()
             result =  result.read()
             result = result.decode('utf-8')
-            # self.st.code(result)
+            self.st.code(result)
 
         """
         result = subprocess.Popen('cat .gitignore', shell=True, stdout=subprocess.PIPE).stdout
