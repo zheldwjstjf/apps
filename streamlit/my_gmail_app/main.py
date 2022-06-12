@@ -43,15 +43,15 @@ class MyGmailApp:
 
         # sidebar page : auth
         with st.sidebar.expander("[ 認証 ]"):
-            auth_result = self.ap.auth_page()
+            self.auth_result = self.ap.auth_page()
 
-            if auth_result == None:
+            if self.auth_result == None:
                 self.st.warning("未認証")
 
-            elif auth_result == False:
+            elif self.auth_result == False:
                 self.st.error("認証失敗")
 
-            elif (auth_result != None) and (auth_result != False):
+            elif (self.auth_result != None) and (self.auth_result != False):
                 self.st.success("認証済")
             
             else:
@@ -60,17 +60,17 @@ class MyGmailApp:
         # =================
         # main page
 
-        if auth_result == None:
+        if self.auth_result == None:
             # self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
             img_path="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif"
             self.snippetTools.image_alignment(img_path, 1330)
 
-        elif auth_result == False:
+        elif self.auth_result == False:
             self.st.markdown("<h1 style='text-align: center; color: red;'>AUTHORIZATION FAILED</h1>", unsafe_allow_html=True)
             img_path="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/digital_0_1.gif"
             self.snippetTools.image_alignment(img_path, 1380)
 
-        elif (auth_result != None) and (auth_result != False):
+        elif (self.auth_result != None) and (self.auth_result != False):
             # gmail page title
 
             def Gmail():
