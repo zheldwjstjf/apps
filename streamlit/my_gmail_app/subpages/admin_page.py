@@ -30,8 +30,10 @@ class AdminPage:
             if commandLine == None:
                 pass
             else:
-                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
-                # result_list =  result.read().splitlines()
+                try:
+                    result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                except Exception as e:
+                    result = str(e)
                 result =  result.read()
                 result = result.decode('utf-8')
                 col1.code(result)
@@ -42,8 +44,10 @@ class AdminPage:
             if commandLine == None:
                 pass
             else:
-                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
-                # result_list =  result.read().splitlines()
+                try:
+                    result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                except Exception as e:
+                    result = str(e)
                 result =  result.read()
                 result = result.decode('utf-8')
                 col2.code(result)
