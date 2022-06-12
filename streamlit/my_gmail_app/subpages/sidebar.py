@@ -37,7 +37,7 @@ class SidebarPage:
         )
 
         # title
-        os.environ['TZ'] = 'Egypt'
+        os.environ['TZ'] = 'Japan'
         time.tzset()
         t = time.localtime()
         current_time = time.strftime("%H:%M:%S", t)
