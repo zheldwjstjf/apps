@@ -43,7 +43,7 @@ class GmailPage:
         
         self.query = self.query_is
 
-        if self.st.sidebar.button("更新"):
+        if self.st.button("更新"):
         
             # call get_list
             self.get_list()
