@@ -16,36 +16,37 @@ class AdminPage:
         - arg(s) : 
         """
 
-        commandLine = None
-
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>Admin Page</h1>", unsafe_allow_html=True)
 
-        col1, col2 = self.st.columns((1,1))
-        
-        # input command line
-        commandLine = col1.text_input("Terminal 1", placeholder="Type command line here", key=1)
+        with self.st.expander("See explanation"):
 
-        if commandLine == None:
-            pass
-        else:
-            result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
-            # result_list =  result.read().splitlines()
-            result =  result.read()
-            result = result.decode('utf-8')
-            col1.code(result)
+            commandLine = None
+            col1, col2 = self.st.columns((1,1))
+            
+            # input command line
+            commandLine = col1.text_input("Terminal 1", placeholder="Type command line here", key=1)
 
-        # input command line
-        commandLine = col2.text_input("Terminal 2", placeholder="Type command line here", key=2)
+            if commandLine == None:
+                pass
+            else:
+                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                # result_list =  result.read().splitlines()
+                result =  result.read()
+                result = result.decode('utf-8')
+                col1.code(result)
 
-        if commandLine == None:
-            pass
-        else:
-            result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
-            # result_list =  result.read().splitlines()
-            result =  result.read()
-            result = result.decode('utf-8')
-            col2.code(result)
+            # input command line
+            commandLine = col2.text_input("Terminal 2", placeholder="Type command line here", key=2)
+
+            if commandLine == None:
+                pass
+            else:
+                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                # result_list =  result.read().splitlines()
+                result =  result.read()
+                result = result.decode('utf-8')
+                col2.code(result)
 
 
         """
