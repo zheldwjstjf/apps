@@ -25,7 +25,21 @@ class GmailPage:
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
 
         self.user = "me"
-        self.query = "is:unread"
+
+        # get query
+        query_key_list = [
+            "is"
+        ]
+        selected_query_key = self.st.st.selectbox("Select Query Key", query_key_list)
+
+        query_val_list = [
+            "unread"
+        ]
+        selected_query_val = self.st.st.selectbox("Select Query Value", query_key_list)
+
+        self.query = selected_query_key + ":" + selected_query_val
+        
+        # call get_list
         self.get_list()
 
     def get_list(self):
