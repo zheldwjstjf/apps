@@ -9,13 +9,6 @@ import httplib2
 from apiclient import errors
 import streamlit as st
 
-import base64
-from email.mime.audio import MIMEAudio
-from email.mime.base import MIMEBase
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
 class AuthFactory:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
