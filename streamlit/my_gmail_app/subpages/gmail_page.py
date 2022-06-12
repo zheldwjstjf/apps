@@ -5,15 +5,15 @@ class GmailPage:
     - class name : MainPage
     """
 
-    def __init__(self, streamlit, gmail_auth) -> None:
+    def __init__(self, streamlit, service) -> None:
         """
         - method name : __init__
         - arg(s) : streamlit
         """
 
         self.st = streamlit
-        self.gmail_auth = gmail_auth
-        self.gmail_api = GmailApi(self.st, self.gmail_auth)
+        self.service = service
+        self.gmail_api = GmailApi(self.st, self.service)
 
     def gmail_page(self):
         """
