@@ -42,9 +42,11 @@ class GmailPage:
             self.query_is = selected_query_is_key + ":" + selected_query_is_val
         
         self.query = self.query_is
+
+        if self.st.sidebar.button("更新"):
         
-        # call get_list
-        self.get_list()
+            # call get_list
+            self.get_list()
 
     def get_list(self):
         maillist = self.gmail_api.getMailList(self.user, self.query)
