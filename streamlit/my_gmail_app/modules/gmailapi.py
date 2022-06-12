@@ -20,42 +20,10 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-import importlib
-
-# --------------------
-# config
-# --------------------
-import config.consts
-importlib.reload(config.consts)
-from config.consts import account
-from config.consts import target_emailfrom
-from config.consts import key_path
-from config.consts import auth_storage_path
-from config.consts import storage_db_file
-from config.consts import tmp_save_mailtext_path
-
-
-
-auth_url = "https://accounts.google.com/o/oauth2/auth?"
-
-response_setting = {
-    "scope": "https://mail.google.com/",
-    "response_type": "code",
-}
-
-
 class GmailApi():
-    def __init__(self, auth_info):
-        self.auth_info = auth_info
-        self.service = GmailServiceFactory().createService(self.auth_info)
-        
-    def reconnect(self):
-        '''サーバーにアクセスして認証をもう一度行う
-        '''
-        try:
-            self.service = GmailServiceFactory().createService(self.auth_info)
-        except errors.HttpError as error:
-            pass
+
+    def __init__(self, gmail_auth):
+        self.gmail_auth = gmail_auth
 
     def sendMessage(self, user, message):
         """メールを送信します。messageの作り方はcreateMesage関数を参照
@@ -94,7 +62,6 @@ class GmailApi():
             return self.service.users().messages().list(userId=user, q=qu).execute()
         except errors.HttpError as error:
             print("error [ service.users().messages().list( ) ] : ", error)
-            self.reconnect()
 
     def getMailContent(self, user, i):
         """指定したメールのIDからメールの内容を取得します。
@@ -108,7 +75,7 @@ class GmailApi():
         try:
             return self.service.users().messages().get(userId=user, id=i).execute()
         except errors.HttpError as error:
-            self.reconnect()
+            pass
 
     def archiveMail(self, user, i):
         """
@@ -231,19 +198,19 @@ class GmailApi():
             content = self.getMailContent(user, i)
             return ([header for header in content["payload"]["headers"] if header["name"] == key])[0]["value"]
         except errors.HttpError as error:
-            self.reconnect()
+            pass
 
     def getMailFrom(self, user, i):
         try:
             return self.expMailContents(user, i, "From")
         except errors.HttpError as error:
-            self.reconnect()
+            pass
 
     def getMailSubject(self, user, i):
         try:
             return self.expMailContents(user, i, "Subject")
         except errors.HttpError as error:
-            self.reconnect()
+            pass
 
     def getLabelList(self, user):
         gmail_label_dict_list = []
@@ -259,7 +226,7 @@ class GmailApi():
             return gmail_label_dict_list
         except errors.HttpError as error:
             print("error : ", error)
-            self.reconnect()
+            pass
 
     def createLabel(self, user, query):
         try:
@@ -267,7 +234,7 @@ class GmailApi():
 
         except errors.HttpError as error:
             print("error : ", error)
-            self.reconnect()
+            pass
 
     def updateLabel(self, user):
         try:
@@ -279,41 +246,4 @@ class GmailApi():
             # self.service.users().labels().update(body=query).execute() # 403 # user == account
         except errors.HttpError as error:
             print("error : ", error)
-            self.reconnect()
-
-
-
-
-
-
-
-
-class GmailServiceFactory():
-
-    def createService(self, auth_info):
-        # -
-        import config.consts
-        importlib.reload(config.consts)
-        from config.consts import account
-        from config.consts import target_emailfrom
-        from config.consts import key_path
-        from config.consts import auth_storage_path
-        from config.consts import storage_db_file
-        from config.consts import tmp_save_mailtext_path
-
-        # -
-        STORAGE = Storage(auth_storage_path + 'gmail.auth.storage')
-        credent = STORAGE.get()
-        if credent is None or credent.invalid:
-            info = auth_info['installed']
-            flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], response_setting["scope"], info["redirect_uris"][0])
-            auth_url = flow.step1_get_authorize_url()
-            webbrowser.open(auth_url)
-            code = input("input code : ")
-            credent = flow.step2_exchange(code)
-            STORAGE.put(credent)
-        http = httplib2.Http()
-        http = credent.authorize(http)
-
-        gmail_service = build("gmail", "v1", http=http)
-        return gmail_service
+            pass

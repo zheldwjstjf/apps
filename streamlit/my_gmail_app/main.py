@@ -28,7 +28,6 @@ class MyGmailApp:
 
         self.sidebarPage = SidebarPage(st)
         self.ap = AuthPage(st)
-        self.gmailPage = GmailPage(st)
         self.adminPage = AdminPage(st)
         self.snippetTools = SnippetTools(st)
 
@@ -74,6 +73,7 @@ class MyGmailApp:
             # gmail page title
 
             def Gmail():
+                self.gmailPage = GmailPage(st, self.auth_result)
                 self.gmailPage.gmail_page()
 
             def Admin():
