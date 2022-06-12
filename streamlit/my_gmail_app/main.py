@@ -63,7 +63,7 @@ class MyGmailApp:
         if auth_status == None:
             # self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
             img_path="https://raw.githubusercontent.com/zheldwjstjf/apps/dev/streamlit/my_gmail_app/resources/locked.gif"
-            self.snippetTools.image_alignment(img_path, 1380)
+            self.snippetTools.image_alignment(img_path, 1330)
 
         elif auth_status == False:
             self.st.markdown("<h1 style='text-align: center; color: red;'>AUTHORIZATION FAILED</h1>", unsafe_allow_html=True)
