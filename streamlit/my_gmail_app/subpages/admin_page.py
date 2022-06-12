@@ -30,19 +30,13 @@ class AdminPage:
             if commandLine == None:
                 pass
             else:
-                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
-                output, err = result.communicate()
-                
-                # output
-                output =  output.read()
-                output = output.decode('utf-8')
-                col1.code(output)
-
-                # err
-                err =  err.read()
-                err = err.decode('utf-8')
-                col1.code(err)
-
+                try:
+                    result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                except Exception as e:
+                    result = str(e)
+                result =  result.read()
+                result = result.decode('utf-8')
+                col1.code(result)
 
             # input command line
             commandLine = col2.text_input("Terminal 2", placeholder="Type command line here", key=2)
@@ -50,18 +44,13 @@ class AdminPage:
             if commandLine == None:
                 pass
             else:
-                result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
-                output, err = result.communicate()
-
-                # output                
-                output =  output.read()
-                output = output.decode('utf-8')
-                col2.code(output)
-
-                # err
-                err =  err.read()
-                err = err.decode('utf-8')
-                col2.code(err)
+                try:
+                    result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                except Exception as e:
+                    result = str(e)
+                result =  result.read()
+                result = result.decode('utf-8')
+                col2.code(result)
 
 
         """
