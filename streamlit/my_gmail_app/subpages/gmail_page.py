@@ -26,9 +26,9 @@ class GmailPage:
 
         self.user = "me"
 
-
-        #        
+        
         col1, col2 = self.st.columns((1,1))
+
         # get query
         query_is_key_list = [
                 "is"
@@ -42,29 +42,10 @@ class GmailPage:
         selected_query_is_val = col2.selectbox("Select Query Value", query_is_val_list)
 
         self.query_is = selected_query_is_key + ":" + selected_query_is_val
-
-
-        #        
-        col1, col2 = self.st.columns((1,1))
-        # get query
-        query_subject_key_list = [
-                "is"
-            ]
-        selected_query_subject_key = col1.selectbox("Select Query Key", query_subject_key_list)
-
-        query_subjects_val_list = [
-                "read",
-                "unread"
-            ]
-        selected_query_subject_val = col2.selectbox("Select Query Value", query_subject_val_list)
-
-        self.query_subject = selected_query_subject_key + ":" + selected_query_subject_val
-
-
-        #
+        
         self.query = self.query_is
 
-        if self.st.button("取得", key=1):
+        if self.st.button("更新", key=1):
         
             # call get_list
             self.get_list()
