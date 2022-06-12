@@ -56,10 +56,10 @@ class AdminPage:
                 pass
             else:
                 result = subprocess.Popen(commandLine, shell=True, stdout=subprocess.PIPE).stdout
+                result = result.decode('utf-8')
                 result_list =  result.read().splitlines()
                 for result in result_list:
                     result =  result.read()
-                    result = result.decode('utf-8')
                     self.st.code(result)
 
 
