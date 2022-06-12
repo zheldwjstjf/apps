@@ -15,7 +15,7 @@ class SnippetTools:
             # self.st.image(img, width=img_width)
             
             #
-            self.st.markdown("![Alt Text]('"+img+"')")
+            self.st.markdown("![Alt Text](img)")
 
         with col3:
             self.st.write("")
