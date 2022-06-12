@@ -24,7 +24,7 @@ class AdminPage:
         col1, col2 = self.st.columns((1,1))
         
         # input command line
-        commandLine = col1.text_input("Input Command Line")
+        commandLine = col1.text_input("Input Command Line", id="cmd_input_1")
 
         if commandLine == None:
             pass
@@ -36,7 +36,7 @@ class AdminPage:
             col1.code(result)
 
         # input command line
-        commandLine = col2.text_input("Input Command Line")
+        commandLine = col2.text_input("Input Command Line", id="cmd_input_2")
 
         if commandLine == None:
             pass
