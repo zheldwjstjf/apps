@@ -1,4 +1,5 @@
-import datetime
+# import datetime
+import time
 
 class SidebarPage:
     """
@@ -35,6 +36,10 @@ class SidebarPage:
         )
 
         # title
-        load_time = datetime.datetime.now()
-        self.st.sidebar.info("Updated at : " + str(load_time))
+        t = time.localtime()
+        current_time = time.strftime("%H:%M:%S", t)
+        # print(current_time)
+
+        # load_time = datetime.datetime.now()
+        self.st.sidebar.info("Updated at : " + str(current_time))
         self.st.sidebar.markdown("<h1 style='text-align: center; color: red;'>[ S I D E - M E N U ]</h1>", unsafe_allow_html=True)        
