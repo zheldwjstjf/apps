@@ -81,10 +81,14 @@ class AuthFactory:
             info = auth_info['installed']
             flow = OAuth2WebServerFlow(info["client_id"], info["client_secret"], self.response_setting["scope"], info["redirect_uris"][0])
             auth_url = flow.step1_get_authorize_url()
+
+            # streamlist cloud에서는 사용할 수 없어
             # webbrowser.open(auth_url)
             # code = input("input code : ")
 
+            # URL을 화면에 표시해서 클릭해서 연다
             self.st.write("auth_url : ", auth_url)
+            # 획득한 code를 입력해서 건네준다
             code = self.st.text_input("Gmail Service Auth code")
 
             credent = flow.step2_exchange(code)
@@ -101,15 +105,6 @@ class AuthFactory:
             # self.st.write("maillist : ", maillist)
             mail_id = self.mail_id = maillist["messages"][1]['id']
             # self.st.write("[DEBUG] mail_id : ", mail_id)
-
-            """
-            try:
-                content = gmail_service.users().messages().get(userId="me", id=mail_id).execute()
-                mail = self.parse_mail(content)
-                self.st.write("mail : ", mail["snippet"])
-            except errors.HttpError as error:
-                self.reconnect()
-            """
 
         except errors.HttpError as error:
             mail_id = None
