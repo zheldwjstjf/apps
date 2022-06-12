@@ -12,10 +12,7 @@ class SnippetTools:
         with col2:
             #
             img=img_path
-            # self.st.image(img, width=img_width)
+            self.st.image(img, width=img_width)
             
-            #
-            self.st.markdown("![Alt Text](img_path)")
-
         with col3:
             self.st.write("")
