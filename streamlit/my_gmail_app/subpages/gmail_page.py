@@ -27,17 +27,21 @@ class GmailPage:
         self.user = "me"
 
         # get query
-        query_key_list = [
-            "is"
-        ]
-        selected_query_key = self.st.st.selectbox("Select Query Key", query_key_list)
+        query_is_key_list = [
+                "is"
+            ]
+        selected_query_is_key = self.st.selectbox("Select Query Key", query_is_key_list)
 
-        query_val_list = [
-            "unread"
-        ]
-        selected_query_val = self.st.st.selectbox("Select Query Value", query_key_list)
+        if selected_query_is_key == "is":
+            query_is_val_list = [
+                    "read",
+                    "unread"
+                ]
+            selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list)
 
-        self.query = selected_query_key + ":" + selected_query_val
+            self.query_is = selected_query_is_key + ":" + selected_query_is_val
+        
+        self.query = self.query_is
         
         # call get_list
         self.get_list()
