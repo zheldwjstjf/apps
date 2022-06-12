@@ -40,7 +40,7 @@ class SidebarPage:
         os.environ['TZ'] = 'Japan'
         time.tzset()
         t = time.localtime()
-        current_time = time.strftime("%Y-%D-%H:%M:%S", t)
+        current_time = time.strftime("%Y-%m-%d-%H:%M:%S", t)
         # print(current_time)
 
         # load_time = datetime.datetime.now()
