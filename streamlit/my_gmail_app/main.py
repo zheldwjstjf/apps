@@ -73,7 +73,8 @@ class MyGmailApp:
             # gmail page title
 
             def Gmail():
-                self.gmailPage = GmailPage(st, self.auth_result)
+                service = self.auth_result
+                self.gmailPage = GmailPage(st, service)
                 self.gmailPage.gmail_page()
 
             def Admin():

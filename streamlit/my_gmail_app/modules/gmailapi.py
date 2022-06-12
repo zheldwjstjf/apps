@@ -22,8 +22,8 @@ from email.mime.text import MIMEText
 
 class GmailApi():
 
-    def __init__(self, gmail_auth):
-        self.gmail_auth = gmail_auth
+    def __init__(self, service):
+        self.service = service
 
     def sendMessage(self, user, message):
         """メールを送信します。messageの作り方はcreateMesage関数を参照
