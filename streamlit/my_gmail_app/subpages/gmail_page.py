@@ -1,5 +1,4 @@
 from modules.gmailapi import GmailApi
-email_list = [111,222]
 
 class GmailPage:
     """
@@ -17,7 +16,6 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
-        self.email_list = email_list
 
     def gmail_page(self):
         """
@@ -36,38 +34,9 @@ class GmailPage:
             self.st.subheader("▶︎ Select Priority Label")
             self.priority_label = self.get_priority_label()
 
-        #
-        col1, col2 = self.st.columns((1,1))
-
-        if self.priority_label == "High":
-            email_list_high = [
-                    "All High priority email",
-                    "editor1@kdnuggets.com",
-                    "weekly@raspberrypi.com",
-                    "noreply@medium.com",
-                    "no-reply@m.ouraring.com",
-                ]
-            self.email_list = self.email_list.extend(email_list_high)
-
-        if self.priority_label == "Medium":
-            email_list_medium = [
-                    "All Medium priority email",
-                    "change@f.change.org",
-                    "no-reply@sender.skyscanner.com",
-                ]
-            self.email_list = self.email_list.extend(email_list_medium)
-
-        if self.priority_label == "Low":
-            email_list_low = [
-                    "All Low priority email",
-                    "reminders@facebookmail.com",
-                    "noreply@uber.com",
-                ]
-            self.email_list = self.email_list.extend(email_list_low)
-
         # select email
         self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from()
+        self.query_froms = self.get_query_from(self.priority_label)
         self.query = self.query + self.query_from + " "
 
         # get query
@@ -137,17 +106,44 @@ class GmailPage:
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
 
-    def get_query_from(self):
+    def get_query_from(self, priority_label):
 
+        self.priority_label = priority_label
+        
+        #
         col1, col2 = self.st.columns((1,1))
 
-        selected_query_from_val = col1.selectbox("Select Email", self.email_list, key="from")
-        selected_query_from_val = str(selected_query_from_val)
+        if self.priority_label == "High":
+
+            email_list = [
+                    "All High priority email",
+                    "editor1@kdnuggets.com",
+                    "weekly@raspberrypi.com",
+                    "noreply@medium.com",
+                    "no-reply@m.ouraring.com",
+                ]
+
+        if self.priority_label == "High":
+
+            email_list = [
+                    "All Medium priority email",
+                    "change@f.change.org",
+                    "no-reply@sender.skyscanner.com",
+                ]
+
+        if self.priority_label == "High":
+
+            email_list = [
+                    "All Low priority email",
+                    "reminders@facebookmail.com",
+                    "noreply@uber.com",
+                ]
+
+        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
         self.query_from = "from:" + selected_query_from_val
 
-        #
         selected_email_info_list = [
             "概要",
             "Email",
@@ -158,6 +154,7 @@ class GmailPage:
         selected_info_itme = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info")
 
         # 
+        col1, col2 = self.st.columns((1,1))
         col2.write("INFO : " + str(selected_info_itme))
         col2.code(selected_info_itme)
 
