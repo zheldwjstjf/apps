@@ -67,7 +67,15 @@ class GmailPage:
             ]
         selected_query_from_val = col1.selectbox("Select Query Value", query_from_val_list, key="from")
         self.query_from = "from:" + selected_query_from_val
-        col2.code("Selected : " + selected_query_from_val)
+
+        selected_email_info_list = [
+            "info1",
+            "info2",
+            "info3",
+        ]        
+        self.query_from = "from:" + selected_query_from_val
+
+        selected_query_from_val = col1.selectbox("Select Query Value", selected_email_info_list, key="email_info")
 
         return self.query_from
 
