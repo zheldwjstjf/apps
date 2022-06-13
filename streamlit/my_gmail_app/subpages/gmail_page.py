@@ -65,7 +65,7 @@ class GmailPage:
                 "noreply@medium.com",
                 "no-reply@m.ouraring.com",
             ]
-        selected_query_from_val = col1.selectbox("Select Query Value", query_from_val_list, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", query_from_val_list, key="from")
         self.query_from = "from:" + selected_query_from_val
 
         selected_email_info_list = [
