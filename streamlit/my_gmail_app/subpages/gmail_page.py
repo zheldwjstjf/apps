@@ -51,11 +51,9 @@ class GmailPage:
                 ]
             selected_query_keys = self.st.multiselect("主なQuery", query_key_list, key="main")
 
-            col3, col4 = self.st.columns((3,4))
-            with col3:
-                if "is" in selected_query_keys:
-                    self.query_is = self.get_query_is()
-                    self.query = self.query + self.query_is + " "
+            if "is" in selected_query_keys:
+                self.query_is = self.get_query_is()
+                self.query = self.query + self.query_is + " "
 
         with col2:
             query_key_list = [
