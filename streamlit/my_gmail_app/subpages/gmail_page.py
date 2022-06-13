@@ -37,12 +37,12 @@ class GmailPage:
 
 
         # get query
-        self.st.subheader("▶︎ Query設定")
+        self.st.subheader("Query設定")
 
         col1, col2 = self.st.columns((1,1))
 
         with col1:
-            self.st.subheader("▶︎ 主なQuery")
+            self.st.write("▶︎ 主なQuery")
 
             query_key_list = [
                     "is",
@@ -55,7 +55,7 @@ class GmailPage:
                 self.query = self.query + self.query_is + " "
 
         with col2:
-            self.st.subheader("▶︎ その他のQuery")
+            self.st.write("その他のQuery")
 
             query_key_list = [
                     "is",
