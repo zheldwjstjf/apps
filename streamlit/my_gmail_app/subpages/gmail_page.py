@@ -1,4 +1,5 @@
 from modules.gmailapi import GmailApi
+email_list = []
 
 class GmailPage:
     """
@@ -16,7 +17,7 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
-        self.email_list = []
+        self.email_list = email_list
 
     def gmail_page(self):
         """
