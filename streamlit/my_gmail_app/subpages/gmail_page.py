@@ -45,7 +45,7 @@ class GmailPage:
             self.query = self.query + self.query_from + " "
 
         # final query
-        self.st.write("取得条件 : " + self.query)
+        self.st.write("- 取得 Query : " + self.query)
 
         # call get_list() with query
         if self.st.button("取得", key=1):
