@@ -35,9 +35,38 @@ class GmailPage:
             self.st.subheader("▶︎ Select Priority Label")
             self.priority_label = self.get_priority_label()
 
+        #
+        col1, col2 = self.st.columns((1,1))
+
+        if self.priority_label == "High":
+            email_list_high = [
+                    "All High priority email",
+                    "editor1@kdnuggets.com",
+                    "weekly@raspberrypi.com",
+                    "noreply@medium.com",
+                    "no-reply@m.ouraring.com",
+                ]
+            self.email_list = self.email_list + email_list_high
+
+        if self.priority_label == "High":
+            email_list_medium = [
+                    "All Medium priority email",
+                    "change@f.change.org",
+                    "no-reply@sender.skyscanner.com",
+                ]
+            self.email_list = self.email_list + email_list_medium
+
+        if self.priority_label == "High":
+            email_list_low = [
+                    "All Low priority email",
+                    "reminders@facebookmail.com",
+                    "noreply@uber.com",
+                ]
+            self.email_list = self.email_list + email_list_low
+
         # select email
         self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label)
+        self.query_froms = self.get_query_from()
         self.query = self.query + self.query_from + " "
 
         # get query
@@ -107,38 +136,7 @@ class GmailPage:
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
 
-    def get_query_from(self, priority_label):
-
-        self.priority_label = priority_label
-        
-        #
-        col1, col2 = self.st.columns((1,1))
-
-        if self.priority_label == "High":
-            email_list_high = [
-                    "All High priority email",
-                    "editor1@kdnuggets.com",
-                    "weekly@raspberrypi.com",
-                    "noreply@medium.com",
-                    "no-reply@m.ouraring.com",
-                ]
-            self.email_list = self.email_list + email_list_high
-
-        if self.priority_label == "High":
-            email_list_medium = [
-                    "All Medium priority email",
-                    "change@f.change.org",
-                    "no-reply@sender.skyscanner.com",
-                ]
-            self.email_list = self.email_list + email_list_medium
-
-        if self.priority_label == "High":
-            email_list_low = [
-                    "All Low priority email",
-                    "reminders@facebookmail.com",
-                    "noreply@uber.com",
-                ]
-            self.email_list = self.email_list + email_list_low
+    def get_query_from(self):
 
         selected_query_from_val = col1.selectbox("Select Email", self.email_list, key="from")
         selected_query_from_val = str(selected_query_from_val)
