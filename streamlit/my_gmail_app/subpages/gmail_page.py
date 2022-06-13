@@ -90,7 +90,7 @@ class GmailPage:
     def get_priority_label(self):
         priority_label_list = [
             "High",
-            "Medium"
+            "Medium",
             "Low"
         ]
         selected_priority = self.st.selectbox("Select Email", priority_label_list, key="priority")
