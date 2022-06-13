@@ -85,7 +85,7 @@ class GmailPage:
 
         # 
         col1, col2 = self.st.columns((1,1))
-        col2.write("INFO")
+        col2.write("INFO : ", selected_query_from_val)
         col2.code(selected_query_from_val)
 
         return self.query_from
