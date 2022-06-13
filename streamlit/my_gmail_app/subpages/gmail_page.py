@@ -35,8 +35,9 @@ class GmailPage:
             self.priority_label = self.get_priority_label()
 
         # select email
+        email_list = []
         self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label)
+        self.query_froms = self.get_query_from(email_list, self.priority_label)
         self.query = self.query + self.query_from + " "
 
         # get query
@@ -106,7 +107,7 @@ class GmailPage:
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
 
-    def get_query_from(self, priority_label):
+    def get_query_from(self, email_list, priority_label):
 
         self.priority_label = priority_label
         
