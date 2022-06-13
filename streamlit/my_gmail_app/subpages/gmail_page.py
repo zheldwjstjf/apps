@@ -93,6 +93,9 @@ class GmailPage:
             "Medium"
             "Low"
         ]
+        selected_priority = self.st.selectbox("Select Email", priority_label_list, key="priority")
+
+        return selected_priority     
 
 
     def get_list(self):
