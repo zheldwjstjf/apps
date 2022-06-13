@@ -44,7 +44,10 @@ class GmailPage:
         with col1:
             query_key_list = [
                     "is",
-                    "ppp"
+                    "subject",
+                    "to",
+                    "has",
+                    "label"
                 ]
             selected_query_keys = self.st.multiselect("主なQuery", query_key_list, key="main")
 
@@ -54,14 +57,18 @@ class GmailPage:
 
         with col2:
             query_key_list = [
-                    "is",
-                    "ppp"
+                    "after",
+                    "before",
+                    "older",
+                    "newer",
+                    "older_than",
+                    "newer_than"
                 ]
             selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
 
             if "is" in selected_query_keys:
-                self.query_is = self.get_query_is()
-                self.query = self.query + self.query_is + " "
+                self.query_newer_than = self.get_query_newer_than()
+                self.query = self.query + self.query_newer_than + " "
 
         with col1:
 
@@ -123,4 +130,37 @@ class GmailPage:
 
         return self.query_is
 
+    def get_query_newer_than(self):
+        query_newer_than_val_list = [
+                "1d",
+                "2d",
+                "3d",
+                "4d",
+                "5d",
+                "6d",
+                "7d",
+                "10d",
+                "15d",
+                "20d",
+                "1m",
+                "2m",
+                "3m",
+                "4m",
+                "5m",
+                "6m",
+                "7m",
+                "8m",
+                "9m",
+                "10m",
+                "11m",
+                "1y",
+                "2y",
+                "3y",
+                "4y",
+                "5y",
+            ]
+        selected_query_newer_than_val = self.st.selectbox("Select Query Value", query_newer_than_val_list, key="is")
+        self.query_newer_than = "is:" + selected_query_newer_than_val
+
+        return self.query_newer_than
 
