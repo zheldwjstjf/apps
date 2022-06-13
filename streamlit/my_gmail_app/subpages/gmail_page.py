@@ -44,7 +44,7 @@ class GmailPage:
             self.query = self.query + self.query_is + " "
 
         # final query
-        self.st.write("- 取得 Query : " + self.query)
+        self.st.subheader("- 取得 Query : " + self.query)
 
         # call get_list() with query
         if self.st.button("取得", key=1):
@@ -76,6 +76,9 @@ class GmailPage:
         self.query_from = "from:" + selected_query_from_val
 
         selected_query_from_val = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info")
+
+        self.st.subheader("- INFO")
+        self.st.code(selected_query_from_val)
 
         return self.query_from
 
