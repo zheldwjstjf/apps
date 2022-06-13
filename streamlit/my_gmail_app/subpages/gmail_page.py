@@ -16,6 +16,7 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
+        self.email_list = []
 
     def gmail_page(self):
         """
@@ -35,9 +36,8 @@ class GmailPage:
             self.priority_label = self.get_priority_label()
 
         # select email
-        email_list = []
         self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(email_list, self.priority_label)
+        self.query_froms = self.get_query_from(self.priority_label)
         self.query = self.query + self.query_from + " "
 
         # get query
@@ -107,7 +107,7 @@ class GmailPage:
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
 
-    def get_query_from(self, email_list, priority_label):
+    def get_query_from(self, priority_label):
 
         self.priority_label = priority_label
         
@@ -122,7 +122,7 @@ class GmailPage:
                     "noreply@medium.com",
                     "no-reply@m.ouraring.com",
                 ]
-            email_list = email_list + email_list_high
+            self.email_list = self.email_list + email_list_high
 
         if self.priority_label == "High":
             email_list_medium = [
@@ -130,7 +130,7 @@ class GmailPage:
                     "change@f.change.org",
                     "no-reply@sender.skyscanner.com",
                 ]
-            email_list = email_list + email_list_medium
+            self.email_list = self.email_list + email_list_medium
 
         if self.priority_label == "High":
             email_list_low = [
@@ -138,9 +138,9 @@ class GmailPage:
                     "reminders@facebookmail.com",
                     "noreply@uber.com",
                 ]
-            email_list = email_list + email_list_low
+            self.email_list = self.email_list + email_list_low
 
-        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", self.email_list, key="from")
         selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
