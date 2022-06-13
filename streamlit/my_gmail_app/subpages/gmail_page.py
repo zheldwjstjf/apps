@@ -34,6 +34,8 @@ class GmailPage:
         self.query = self.query + self.query_from + " "
 
         # get query
+        self.st.subheader("▶︎ Query設定 : " + self.query)
+
         query_key_list = [
                 "is",
                 "ppp"
@@ -45,7 +47,7 @@ class GmailPage:
             self.query = self.query + self.query_is + " "
 
         # final query
-        self.st.subheader("▶︎ 取得 Query : " + self.query)
+        self.st.code("- Query : " + self.query)
 
         # call get_list() with query
         if self.st.button("取得", key=1):
