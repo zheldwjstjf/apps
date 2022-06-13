@@ -54,11 +54,6 @@ class GmailPage:
             # final query
             self.st.code("Query : " + self.query)
 
-            # call get_list() with query
-            self.st.subheader("▶︎ Email取得")
-            if self.st.button("取得", key="main"):
-                self.get_list()
-
         with col2:
             self.st.subheader("▶︎ Sub Query設定")
 
@@ -72,13 +67,14 @@ class GmailPage:
                 self.query_is = self.get_query_is()
                 self.query = self.query + self.query_is + " "
 
-            # final query
-            self.st.code("Query : " + self.query)
 
-            # call get_list() with query
-            self.st.subheader("▶︎ Email取得")
-            if self.st.button("取得", key="sub"):
-                self.get_list()
+        # final query
+        self.st.code("Query : " + self.query)
+
+        # call get_list() with query
+        self.st.subheader("▶︎ Email取得")
+        if self.st.button("取得", key="get_list"):
+            self.get_list()
 
 
     def get_list(self):
