@@ -149,6 +149,7 @@ class GmailPage:
             selected_query_from_val = ""
         self.query_from = "from:" + selected_query_from_val
 
+        #
         selected_email_info_list = [
             "概要",
             "Email",
