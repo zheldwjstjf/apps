@@ -29,16 +29,15 @@ class GmailPage:
         self.user = "me"
 
         # get query
-        query_key_list = [
-                "is",
-                "from"
-            ]
-        selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list)
+        self.query_froms = self.get_query_from()
+        self.query = self.query + self.query_from + " "
 
         # get query
-        if "from" in selected_query_keys:
-            self.query_froms = self.get_query_from()
-            self.query = self.query + self.query_from + " "
+        query_key_list = [
+                "is",
+                "ppp"
+            ]
+        selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list)
 
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
