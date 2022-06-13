@@ -28,8 +28,19 @@ class GmailPage:
 
         self.user = "me"
 
-        self.query_is = self.get_query_is()
-        if  self.query_is != None:
+        # get query
+        query_key_list = [
+                "is",
+                "from"
+            ]
+        selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list)
+
+        if "is" in selected_query_keys:
+            self.query_is = self.get_query_is()
+            self.query = self.query + self.query_is
+
+        if "from" in selected_query_keys:
+            self.query_is = self.get_query_is()
             self.query = self.query + self.query_is
 
         if self.st.button("取得", key=1):
@@ -39,18 +50,12 @@ class GmailPage:
     def get_list(self):
         maillist = self.gmail_api.getMailList(self.user, self.query)
         self.result_count = len(maillist["messages"])
-        self.st.write("取得条件 : " + self.query)
+        self.st.write("取得条件 : " + self.query_is)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
 
     def get_query_is(self):
         col1, col2 = self.st.columns((1,1))
-
-        # get query
-        query_is_key_list = [
-                "is"
-            ]
-        selected_query_is_key = col1.selectbox("Select Query Key", query_is_key_list)
 
         query_is_val_list = [
                 "read",
@@ -58,8 +63,8 @@ class GmailPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = col2.selectbox("Select Query Value", query_is_val_list)
-
-        self.query_is = selected_query_is_key + ":" + selected_query_is_val
+        selected_query_is_val = col1.selectbox("Select Query Value", query_is_val_list)
+        self.query_is = "is:" + selected_query_is_val
+        col2.code("Selected : " + self.query_is)
 
         return self.query_is
