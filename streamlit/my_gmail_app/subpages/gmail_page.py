@@ -61,6 +61,8 @@ class GmailPage:
         self.st.write("[DEBUG] maillist : ", maillist)        
 
     def get_query_from(self):
+        
+        #
         col1, col2 = self.st.columns((1,1))
 
         query_from_val_list = [
@@ -81,8 +83,10 @@ class GmailPage:
 
         selected_query_from_val = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info")
 
-        self.st.code("INFO")
-        self.st.code(selected_query_from_val)
+        # 
+        col1, col2 = self.st.columns((1,1))
+        col2.write("INFO")
+        col2.code(selected_query_from_val)
 
         return self.query_from
 
