@@ -16,7 +16,11 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
-        self.email_list = []
+        self.email_list = [
+                            "111@111",
+                            "111@222",
+                            "111@333"
+                            ]
 
     def gmail_page(self):
         """
