@@ -37,31 +37,27 @@ class GmailPage:
 
 
         # get query
-        self.st.subheader("Query設定")
+        self.st.subheader("▶︎ Query設定")
 
         col1, col2 = self.st.columns((1,1))
 
         with col1:
-            self.st.write("▶︎ 主なQuery")
-
             query_key_list = [
                     "is",
                     "ppp"
                 ]
-            selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list, key="main")
+            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, key="main")
 
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
                 self.query = self.query + self.query_is + " "
 
         with col2:
-            self.st.write("その他のQuery")
-
             query_key_list = [
                     "is",
                     "ppp"
                 ]
-            selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list, key="sub")
+            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
 
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
