@@ -112,17 +112,14 @@ class GmailPage:
         return self.query_from
 
     def get_query_is(self):
-        col1, col2 = self.st.columns((1,1))
-
         query_is_val_list = [
                 "read",
                 "unread",
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = col1.selectbox("Select Query Value", query_is_val_list, key="is")
+        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, key="is")
         self.query_is = "is:" + selected_query_is_val
-        col2.code("Selected : " + selected_query_is_val)
 
         return self.query_is
 
