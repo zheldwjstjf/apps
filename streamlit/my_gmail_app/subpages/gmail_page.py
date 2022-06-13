@@ -37,11 +37,11 @@ class GmailPage:
 
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
-            self.query = self.query + self.query_is
+            self.query = self.query + self.query_is + " "
 
         if "from" in selected_query_keys:
             self.query_froms = self.get_query_from()
-            self.query = self.query + self.query_from
+            self.query = self.query + self.query_from + " "
 
         if self.st.button("取得", key=1):
             # call get_list
@@ -74,7 +74,7 @@ class GmailPage:
 
         query_from_val_list = [
                 "editor1@kdnuggets.com",
-                "<weekly@raspberrypi.com",
+                "weekly@raspberrypi.com",
                 "noreply@medium.com",
                 "no-reply@m.ouraring.com",
             ]
