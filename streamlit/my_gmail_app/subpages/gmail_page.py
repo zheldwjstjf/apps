@@ -55,6 +55,10 @@ class GmailPage:
                 self.query_is = self.get_query_is()
                 self.query = self.query + self.query_is + " "
 
+            if "subject" in selected_query_keys:
+                self.query_subject = self.get_query_subject()
+                self.query = self.query + self.query_subject + " "
+
         with col2:
             query_key_list = [
                     "after",
@@ -129,6 +133,12 @@ class GmailPage:
         self.query_is = "is:" + selected_query_is_val
 
         return self.query_is
+
+    def get_query_subject(self):
+        selected_query_subject_val = self.st.text_input("", placeholder="ここに入力")
+        self.query_subject = "is:" + selected_query_subject_val
+
+        return self.query_subject
 
     def get_query_newer_than(self):
         query_newer_than_val_list = [
