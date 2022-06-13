@@ -36,13 +36,13 @@ class GmailPage:
         selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list)
 
         # get query
-        if "is" in selected_query_keys:
-            self.query_is = self.get_query_is()
-            self.query = self.query + self.query_is + " "
-
         if "from" in selected_query_keys:
             self.query_froms = self.get_query_from()
             self.query = self.query + self.query_from + " "
+
+        if "is" in selected_query_keys:
+            self.query_is = self.get_query_is()
+            self.query = self.query + self.query_is + " "
 
         # final query
         self.st.write("- 取得 Query : " + self.query)
@@ -56,6 +56,21 @@ class GmailPage:
         self.result_count = len(maillist["messages"])
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
+
+    def get_query_from(self):
+        col1, col2 = self.st.columns((1,1))
+
+        query_from_val_list = [
+                "editor1@kdnuggets.com",
+                "weekly@raspberrypi.com",
+                "noreply@medium.com",
+                "no-reply@m.ouraring.com",
+            ]
+        selected_query_from_val = col1.selectbox("Select Query Value", query_from_val_list, key="from")
+        self.query_from = "from:" + selected_query_from_val
+        col2.code("Selected : " + selected_query_from_val)
+
+        return self.query_from
 
     def get_query_is(self):
         col1, col2 = self.st.columns((1,1))
@@ -72,17 +87,4 @@ class GmailPage:
 
         return self.query_is
 
-    def get_query_from(self):
-        col1, col2 = self.st.columns((1,1))
 
-        query_from_val_list = [
-                "editor1@kdnuggets.com",
-                "weekly@raspberrypi.com",
-                "noreply@medium.com",
-                "no-reply@m.ouraring.com",
-            ]
-        selected_query_from_val = col1.selectbox("Select Query Value", query_from_val_list, key="from")
-        self.query_from = "from:" + selected_query_from_val
-        col2.code("Selected : " + selected_query_from_val)
-
-        return self.query_from
