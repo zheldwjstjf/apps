@@ -40,8 +40,8 @@ class GmailPage:
             self.query = self.query + self.query_is
 
         if "from" in selected_query_keys:
-            self.query_is = self.get_query_is()
-            self.query = self.query + self.query_is
+            self.query_froms = self.get_query_from()
+            self.query = self.query + self.query_from
 
         if self.st.button("取得", key=1):
             # call get_list
@@ -63,8 +63,23 @@ class GmailPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = col1.selectbox("Select Query Value", query_is_val_list)
+        selected_query_is_val = col1.selectbox("Select Query Value", query_is_val_list, key="is")
         self.query_is = "is:" + selected_query_is_val
         col2.code("Selected : " + self.query_is)
 
         return self.query_is
+
+    def get_query_from(self):
+        col1, col2 = self.st.columns((1,1))
+
+        query_from_val_list = [
+                "editor1@kdnuggets.com",
+                "<weekly@raspberrypi.com",
+                "noreply@medium.com",
+                "no-reply@m.ouraring.com",
+            ]
+        selected_query_from_val = col1.selectbox("Select Query Value", query_from_val_list, key="from")
+        self.query_from = "from:" + selected_query_from_val
+        col2.code("Selected : " + self.query_from)
+
+        return self.query_from
