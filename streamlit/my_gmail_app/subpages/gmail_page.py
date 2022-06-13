@@ -52,7 +52,7 @@ class GmailPage:
                 ]
             self.email_list = self.email_list + email_list_high
 
-        if self.priority_label == "High":
+        if self.priority_label == "Medium":
             email_list_medium = [
                     "All Medium priority email",
                     "change@f.change.org",
@@ -60,7 +60,7 @@ class GmailPage:
                 ]
             self.email_list = self.email_list + email_list_medium
 
-        if self.priority_label == "High":
+        if self.priority_label == "Low":
             email_list_low = [
                     "All Low priority email",
                     "reminders@facebookmail.com",
