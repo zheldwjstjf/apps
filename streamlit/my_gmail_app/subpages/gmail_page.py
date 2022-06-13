@@ -1,5 +1,5 @@
 from modules.gmailapi import GmailApi
-email_list = []
+email_list = [111,222]
 
 class GmailPage:
     """
