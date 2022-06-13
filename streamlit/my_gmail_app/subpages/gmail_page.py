@@ -33,26 +33,53 @@ class GmailPage:
         self.query_froms = self.get_query_from()
         self.query = self.query + self.query_from + " "
 
+
+        col1, col2 = self.st.columns((1,1))
+
         # get query
-        self.st.subheader("▶︎ Query設定")
 
-        query_key_list = [
-                "is",
-                "ppp"
-            ]
-        selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list)
+        with col1:
+            self.st.subheader("▶︎ Main Query設定")
 
-        if "is" in selected_query_keys:
-            self.query_is = self.get_query_is()
-            self.query = self.query + self.query_is + " "
+            query_key_list = [
+                    "is",
+                    "ppp"
+                ]
+            selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list, key="main")
 
-        # final query
-        self.st.code("Query : " + self.query)
+            if "is" in selected_query_keys:
+                self.query_is = self.get_query_is()
+                self.query = self.query + self.query_is + " "
 
-        # call get_list() with query
-        self.st.subheader("▶︎ Email取得")
-        if self.st.button("取得", key=1):
-            self.get_list()
+            # final query
+            self.st.code("Query : " + self.query)
+
+            # call get_list() with query
+            self.st.subheader("▶︎ Email取得")
+            if self.st.button("取得", key="main"):
+                self.get_list()
+
+        with col2:
+            self.st.subheader("▶︎ Sub Query設定")
+
+            query_key_list = [
+                    "is",
+                    "ppp"
+                ]
+            selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list, key="sub")
+
+            if "is" in selected_query_keys:
+                self.query_is = self.get_query_is()
+                self.query = self.query + self.query_is + " "
+
+            # final query
+            self.st.code("Query : " + self.query)
+
+            # call get_list() with query
+            self.st.subheader("▶︎ Email取得")
+            if self.st.button("取得", key="sub"):
+                self.get_list()
+
 
     def get_list(self):
         maillist = self.gmail_api.getMailList(self.user, self.query)
@@ -75,9 +102,9 @@ class GmailPage:
         self.query_from = "from:" + selected_query_from_val
 
         selected_email_info_list = [
-            "info1",
-            "info2",
-            "info3",
+            "概要",
+            "Email",
+            "Site",
         ]        
         self.query_from = "from:" + selected_query_from_val
 
