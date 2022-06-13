@@ -145,6 +145,7 @@ class GmailPage:
             email_list = email_list + email_list_low
 
         selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
+        selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
         self.query_from = "from:" + selected_query_from_val
