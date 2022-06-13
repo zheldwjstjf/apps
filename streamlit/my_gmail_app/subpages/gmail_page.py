@@ -35,6 +35,7 @@ class GmailPage:
             ]
         selected_query_keys = self.st.multiselect("Select Query Keys", query_key_list)
 
+        # get query
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
             self.query = self.query + self.query_is + " "
@@ -43,14 +44,16 @@ class GmailPage:
             self.query_froms = self.get_query_from()
             self.query = self.query + self.query_from + " "
 
+        # final query
+        self.st.write("取得条件 : " + self.query_is)
+
+        # call get_list() with query
         if self.st.button("取得", key=1):
-            # call get_list
             self.get_list()
 
     def get_list(self):
         maillist = self.gmail_api.getMailList(self.user, self.query)
         self.result_count = len(maillist["messages"])
-        self.st.write("取得条件 : " + self.query_is)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", maillist)        
 
