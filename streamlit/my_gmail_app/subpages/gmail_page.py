@@ -15,6 +15,8 @@ class GmailPage:
         self.service = service
         self.gmail_api = GmailApi(self.st, self.service)
 
+        self.query = ""
+
     def gmail_page(self):
         """
         - method name : main_page
@@ -26,7 +28,22 @@ class GmailPage:
 
         self.user = "me"
 
-        
+        self.query_is = self.get_query_is()
+        if  self.query_is != None:
+            self.query = self.query + self.query_is
+
+        if self.st.button("取得", key=1):
+            # call get_list
+            self.get_list()
+
+    def get_list(self):
+        maillist = self.gmail_api.getMailList(self.user, self.query)
+        self.result_count = len(maillist["messages"])
+        self.st.write("取得条件 : " + self.query)
+        self.st.write("取得件数 : " + str(self.result_count) + " 件")
+        self.st.write("[DEBUG] maillist : ", maillist)        
+
+    def get_query_is(self):
         col1, col2 = self.st.columns((1,1))
 
         # get query
@@ -44,17 +61,5 @@ class GmailPage:
         selected_query_is_val = col2.selectbox("Select Query Value", query_is_val_list)
 
         self.query_is = selected_query_is_key + ":" + selected_query_is_val
-        
-        self.query = self.query_is
 
-        if self.st.button("取得", key=1):
-        
-            # call get_list
-            self.get_list()
-
-    def get_list(self):
-        maillist = self.gmail_api.getMailList(self.user, self.query)
-        self.result_count = len(maillist["messages"])
-        self.st.write("取得条件 : " + self.query)
-        self.st.write("取得件数 : " + str(self.result_count) + " 件")
-        self.st.write("[DEBUG] maillist : ", maillist)        
+        return self.query_is
