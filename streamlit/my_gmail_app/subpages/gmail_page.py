@@ -29,8 +29,10 @@ class GmailPage:
         self.user = "me"
 
         # select priority label
-        self.st.subheader("▶︎ Select Priority Label")
-        self.priority_label = self.get_priority_label()
+        col1, col2 = self.st.columns((1,1))
+        with col1:
+            self.st.subheader("▶︎ Select Priority Label")
+            self.priority_label = self.get_priority_label()
 
         # select email
         self.st.subheader("▶︎ Select Email")
