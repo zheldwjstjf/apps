@@ -136,7 +136,7 @@ class GmailPage:
 
     def get_query_subject(self):
         selected_query_subject_val = self.st.text_input("", placeholder="ここに入力")
-        self.query_subject = "is:" + selected_query_subject_val
+        self.query_subject = "subject:" + selected_query_subject_val
 
         return self.query_subject
 
