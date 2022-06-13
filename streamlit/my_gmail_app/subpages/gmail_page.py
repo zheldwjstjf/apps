@@ -16,6 +16,7 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
+        self.email_list = []
 
     def gmail_page(self):
         """
@@ -115,7 +116,7 @@ class GmailPage:
 
         if self.priority_label == "High":
 
-            email_list = [
+            self.email_list = [
                     "All High priority email",
                     "editor1@kdnuggets.com",
                     "weekly@raspberrypi.com",
@@ -125,7 +126,7 @@ class GmailPage:
 
         if self.priority_label == "High":
 
-            email_list = [
+            self.email_list = [
                     "All Medium priority email",
                     "change@f.change.org",
                     "no-reply@sender.skyscanner.com",
@@ -133,13 +134,13 @@ class GmailPage:
 
         if self.priority_label == "High":
 
-            email_list = [
+            self.email_list = [
                     "All Low priority email",
                     "reminders@facebookmail.com",
                     "noreply@uber.com",
                 ]
 
-        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", self.email_list, key="from")
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
         self.query_from = "from:" + selected_query_from_val
