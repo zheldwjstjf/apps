@@ -16,7 +16,6 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
-        self.email_list = []
 
     def gmail_page(self):
         """
@@ -113,34 +112,21 @@ class GmailPage:
         
         #
         col1, col2 = self.st.columns((1,1))
+        email_list = [
+                "All High priority email",
+                "editor1@kdnuggets.com",
+                "weekly@raspberrypi.com",
+                "noreply@medium.com",
+                "no-reply@m.ouraring.com",
+                "All Medium priority email",
+                "change@f.change.org",
+                "no-reply@sender.skyscanner.com",
+                "All Low priority email",
+                "reminders@facebookmail.com",
+                "noreply@uber.com",
+            ]
 
-        if self.priority_label == "High":
-
-            self.email_list = [
-                    "All High priority email",
-                    "editor1@kdnuggets.com",
-                    "weekly@raspberrypi.com",
-                    "noreply@medium.com",
-                    "no-reply@m.ouraring.com",
-                ]
-
-        if self.priority_label == "High":
-
-            self.email_list = [
-                    "All Medium priority email",
-                    "change@f.change.org",
-                    "no-reply@sender.skyscanner.com",
-                ]
-
-        if self.priority_label == "High":
-
-            self.email_list = [
-                    "All Low priority email",
-                    "reminders@facebookmail.com",
-                    "noreply@uber.com",
-                ]
-
-        selected_query_from_val = col1.selectbox("Select Email", self.email_list, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
         selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
