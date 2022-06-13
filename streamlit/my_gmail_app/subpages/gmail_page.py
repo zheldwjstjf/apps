@@ -98,12 +98,15 @@ class GmailPage:
         col1, col2 = self.st.columns((1,1))
 
         query_from_val_list = [
+                "すべてのメール",
                 "editor1@kdnuggets.com",
                 "weekly@raspberrypi.com",
                 "noreply@medium.com",
                 "no-reply@m.ouraring.com",
             ]
         selected_query_from_val = col1.selectbox("Select Email", query_from_val_list, key="from")
+        if "@" not in selected_query_from_val:
+            selected_query_from_val = ""
         self.query_from = "from:" + selected_query_from_val
 
         selected_email_info_list = [
