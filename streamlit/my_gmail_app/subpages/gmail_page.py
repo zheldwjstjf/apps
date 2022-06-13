@@ -50,6 +50,7 @@ class GmailPage:
         self.st.code("Query : " + self.query)
 
         # call get_list() with query
+        self.st.subheader("▶︎ Email取得")
         if self.st.button("取得", key=1):
             self.get_list()
 
