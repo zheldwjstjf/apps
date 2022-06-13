@@ -138,6 +138,8 @@ class GmailPage:
 
     def get_query_from(self):
 
+        col1, col2 = self.st.columns((1,1))
+
         selected_query_from_val = col1.selectbox("Select Email", self.email_list, key="from")
         selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
@@ -155,7 +157,6 @@ class GmailPage:
         selected_info_itme = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info")
 
         # 
-        col1, col2 = self.st.columns((1,1))
         col2.write("INFO : " + str(selected_info_itme))
         col2.code(selected_info_itme)
 
