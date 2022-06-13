@@ -16,11 +16,7 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
-        self.email_list = [
-                            "111@111",
-                            "111@222",
-                            "111@333"
-                            ]
+        self.email_list = []
 
     def gmail_page(self):
         """
@@ -50,7 +46,7 @@ class GmailPage:
                     "noreply@medium.com",
                     "no-reply@m.ouraring.com",
                 ]
-            self.email_list = self.email_list + email_list_high
+            self.email_list = self.email_list.extend(email_list_high)
 
         if self.priority_label == "Medium":
             email_list_medium = [
@@ -58,7 +54,7 @@ class GmailPage:
                     "change@f.change.org",
                     "no-reply@sender.skyscanner.com",
                 ]
-            self.email_list = self.email_list + email_list_medium
+            self.email_list = self.email_list.extend(email_list_medium)
 
         if self.priority_label == "Low":
             email_list_low = [
@@ -66,7 +62,7 @@ class GmailPage:
                     "reminders@facebookmail.com",
                     "noreply@uber.com",
                 ]
-            self.email_list = self.email_list + email_list_low
+            self.email_list = self.email_list.extend(email_list_low)
 
         # select email
         self.st.subheader("▶︎ Select Email")
