@@ -28,13 +28,14 @@ class GmailPage:
 
         self.user = "me"
 
+        # select priority label
+        self.st.subheader("▶︎ Select Priority Label")
+        self.priority_label = self.get_priority_label()
+
         # select email
         self.st.subheader("▶︎ Select Email")
         self.query_froms = self.get_query_from()
         self.query = self.query + self.query_from + " "
-
-
-
 
         # get query
         self.st.subheader("▶︎ Query設定")
@@ -84,6 +85,14 @@ class GmailPage:
 
             if self.st.button("取得", key="get_list"):
                 self.get_list()
+
+
+    def get_priority_label(self):
+        priority_label_list = [
+            "High",
+            "Medium"
+            "Low"
+        ]
 
 
     def get_list(self):
