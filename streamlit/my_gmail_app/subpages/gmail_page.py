@@ -108,8 +108,6 @@ class GmailPage:
 
     def get_query_from(self, priority_label):
 
-        email_list = []
-
         self.priority_label = priority_label
         
         #
@@ -123,7 +121,6 @@ class GmailPage:
                     "noreply@medium.com",
                     "no-reply@m.ouraring.com",
                 ]
-            
             email_list = email_list + email_list_high
 
         if self.priority_label == "High":
@@ -132,7 +129,6 @@ class GmailPage:
                     "change@f.change.org",
                     "no-reply@sender.skyscanner.com",
                 ]
-            
             email_list = email_list + email_list_medium
 
         if self.priority_label == "High":
@@ -141,7 +137,6 @@ class GmailPage:
                     "reminders@facebookmail.com",
                     "noreply@uber.com",
                 ]
-            
             email_list = email_list + email_list_low
 
         selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
