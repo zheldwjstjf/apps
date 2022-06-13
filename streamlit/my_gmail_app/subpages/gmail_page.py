@@ -34,7 +34,7 @@ class GmailPage:
         self.query = self.query + self.query_from + " "
 
         # get query
-        self.st.subheader("▶︎ Query設定 : " + self.query)
+        self.st.subheader("▶︎ Query設定")
 
         query_key_list = [
                 "is",
