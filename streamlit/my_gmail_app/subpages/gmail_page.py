@@ -66,7 +66,7 @@ class GmailPage:
                 ]
             selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
 
-            if "is" in selected_query_keys:
+            if "newer_than" in selected_query_keys:
                 self.query_newer_than = self.get_query_newer_than()
                 self.query = self.query + self.query_newer_than + " "
 
@@ -159,8 +159,8 @@ class GmailPage:
                 "4y",
                 "5y",
             ]
-        selected_query_newer_than_val = self.st.selectbox("Select Query Value", query_newer_than_val_list, key="is")
-        self.query_newer_than = "is:" + selected_query_newer_than_val
+        selected_query_newer_than_val = self.st.selectbox("Select Query Value", query_newer_than_val_list, key="newer_than")
+        self.query_newer_than = "newer_than:" + selected_query_newer_than_val
 
         return self.query_newer_than
 
