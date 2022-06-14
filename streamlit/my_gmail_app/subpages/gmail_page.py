@@ -98,8 +98,8 @@ class GmailPage:
             if self.st.button("取得", key="get_list"):
                 self.maillist = self.get_list()
             
-            # get_mail_contents 
-            self.get_mail_content(self.maillist)
+                # get_mail_contents 
+                self.get_mail_content(self.maillist)
 
     def get_priority_label(self):
 
