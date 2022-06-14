@@ -96,10 +96,10 @@ class GmailPage:
 
         with col1:
             if self.st.button("取得", key="get_list"):
-                self.get_list()
+                self.maillist = self.get_list()
             
             # get_mail_contents 
-            self.get_mail_content()
+            self.get_mail_content(self.maillist)
 
     def get_priority_label(self):
 
@@ -116,7 +116,10 @@ class GmailPage:
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
         self.result_count = len(self.maillist["messages"])
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
-        # self.st.write("[DEBUG] maillist : ", self.maillist)        
+        # self.st.write("[DEBUG] maillist : ", self.maillist)
+
+        return self.maillist
+    
 
     def get_query_from(self, priority_label):
 
@@ -215,9 +218,10 @@ class GmailPage:
         return self.query_newer_than
 
 
-    def get_mail_content(self):
+    def get_mail_content(self, maillist):
+
         for i in range(self.fetching_count):
-            self.mail_id = self.mail_id = self.maillist["messages"][1]['id']
+            self.mail_id = self.mail_id = maillist["messages"][i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
 
             mail = self.parse_mail()
