@@ -95,7 +95,7 @@ class AuthFactory:
 
         try:
             maillist = gmail_service.users().messages().list(userId="me", q="is:read").execute()
-            self.st.write("maillist : ", maillist)
+            # self.st.write("maillist : ", maillist)
             mail_id = self.mail_id = maillist["messages"][1]['id']
             # self.st.write("[DEBUG] mail_id : ", mail_id)
 
