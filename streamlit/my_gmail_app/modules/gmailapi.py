@@ -60,7 +60,7 @@ class GmailApi():
               }
         '''
         try:
-            self.st.write("[DEBUG] Query in getMailList method : ", qu)
+            # self.st.write("[DEBUG] Query in getMailList method : ", qu)
             return self.service.users().messages().list(userId=user, q=qu).execute()
         except errors.HttpError as error:
             print("error [ service.users().messages().list( ) ] : ", error)
