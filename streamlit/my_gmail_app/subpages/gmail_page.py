@@ -92,7 +92,7 @@ class GmailPage:
             self.st.code("Query : " + self.query)
 
         with col2:
-            self.fetching_count = self.st.number_input("最大取得件数 (上限100)", min_value=1, max_value=100)
+            self.fetching_count = int(self.st.number_input("最大取得件数 (上限100)", min_value=1, max_value=100))
 
         with col1:
             if self.st.button("取得", key="get_list"):
