@@ -78,7 +78,6 @@ class GmailPage:
                 self.query = self.query + self.query_newer_than + " "
 
         with col1:
-
             # call get_list() with query
             self.st.subheader("▶︎ Email取得")
 
@@ -88,8 +87,12 @@ class GmailPage:
             if self.st.button("取得", key="get_list"):
                 self.get_list()
 
+        with col2:
+            self.fetching_count = self.st.number_input("取得件数 (最大100件)", min_value=1, max_value=100)
+
 
     def get_priority_label(self):
+
         priority_label_list = [
             "High",
             "Medium",
@@ -98,7 +101,6 @@ class GmailPage:
         selected_priority = self.st.multiselect("Select Email", priority_label_list, key="priority")
 
         return selected_priority     
-
 
     def get_list(self):
         maillist = self.gmail_api.getMailList(self.user, self.query)
@@ -112,6 +114,8 @@ class GmailPage:
         
         #
         col1, col2 = self.st.columns((1,1))
+
+        # TODO 데이터베이스에서 가져오도록 할 것
         email_list = [
                 "All High priority email",
                 "editor1@kdnuggets.com",
@@ -200,3 +204,6 @@ class GmailPage:
 
         return self.query_newer_than
 
+
+    def get_mail_contents(self):
+        pass
