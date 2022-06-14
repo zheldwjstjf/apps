@@ -94,6 +94,7 @@ class GmailPage:
         with col2:
             self.fetching_count = int(self.st.number_input("最大取得件数 (上限100)", min_value=1, max_value=100))
 
+
         with col1:
             if self.st.button("取得", key="get_list"):
                 self.maillist = self.get_list()
@@ -219,6 +220,15 @@ class GmailPage:
 
 
     def get_mail_content(self, maillist):
+
+        if self.result_count > self.fetching_count:
+            pass
+        elif self.result_count > self.fetching_count:
+            pass
+        elif self.result_count < self.fetching_count:
+            self.fetching_count == self.result_count
+        else:
+            self.result_count = 1
 
         for i in range(self.fetching_count):
             self.mail_id = self.mail_id = maillist["messages"][i]['id']
