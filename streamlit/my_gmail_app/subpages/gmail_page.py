@@ -1,5 +1,12 @@
 from modules.gmailapi import GmailApi
 
+import base64
+from email.mime.audio import MIMEAudio
+from email.mime.base import MIMEBase
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 class GmailPage:
     """
     - class name : MainPage
@@ -88,8 +95,10 @@ class GmailPage:
                 self.get_list()
 
         with col2:
-            self.fetching_count = self.st.number_input("取得件数 (最大100件)", min_value=1, max_value=100)
-
+            self.fetching_count = self.st.number_input("最大取得件数 (上限100)", min_value=1, max_value=100)
+            
+            # get_mail_contents 
+            self.get_mail_content()
 
     def get_priority_label(self):
 
@@ -103,10 +112,10 @@ class GmailPage:
         return selected_priority     
 
     def get_list(self):
-        maillist = self.gmail_api.getMailList(self.user, self.query)
-        self.result_count = len(maillist["messages"])
+        self.maillist = self.gmail_api.getMailList(self.user, self.query)
+        self.result_count = len(self.maillist["messages"])
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
-        self.st.write("[DEBUG] maillist : ", maillist)        
+        # self.st.write("[DEBUG] maillist : ", self.maillist)        
 
     def get_query_from(self, priority_label):
 
@@ -205,5 +214,61 @@ class GmailPage:
         return self.query_newer_than
 
 
-    def get_mail_contents(self):
-        pass
+    def get_mail_content(self):
+        for i in self.fetching_count:
+            self.mail_id = self.mail_id = self.maillist["messages"][1]['id']
+            self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
+
+            mail = self.parse_mail()
+
+            mail_subject = mail['subject']
+            mail_date = mail['date']
+            mail_from = mail['from']
+            mail_to = mail['to']            
+            mail_snippet = mail['snippet']
+            mail_body = mail['body']
+
+            self.st.write("mail_subject : ", mail_subject)
+            self.st.write("mail_date : ", mail_date)
+            self.st.write("mail_from : ", mail_from)
+            self.st.write("mail_to : ", mail_to)
+            self.st.write("mail_snippet : ", mail_snippet)
+            self.st.write("mail_body : ", mail_body)
+
+            if self.st.button("NEXT", key="get_next_mail_content"):
+                pass
+
+    def parse_mail(self):
+        content = self.mail_content
+
+        mail = {}
+
+        if 'parts' in content['payload'].keys():
+            parts = content['payload']['parts'][0]
+            # # print("[ DEBUG 7 ] type parts : ", type(parts))
+            # print(parts)
+            if 'parts' in parts.keys():
+                try:
+                    raw_body = parts['parts'][0]['body']['data']
+                except Exception as e:
+                    raw_body = parts['parts'][0]['parts'][0]['body']['data']
+            else:
+                raw_body = parts['body']['data']
+        else:
+            raw_body = content['payload']['body']['data']
+        mail['body'] = base64.urlsafe_b64decode(raw_body).decode('utf-8')
+        mail['snippet'] = content['snippet']
+        headers = content['payload']['headers']
+        for header in headers:
+            if header['name'] == 'From':
+                mail['from'] = header['value']
+            elif header['name'] == 'To':
+                mail['to'] = header['value']
+            elif header['name'] == 'Subject':
+                mail['subject'] = header['value']
+            elif header['name'] == 'Date':
+                mail['date'] = header['value']
+
+        self.mail = mail
+        return self.mail
+
