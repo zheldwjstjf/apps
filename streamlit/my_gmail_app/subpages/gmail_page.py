@@ -231,6 +231,7 @@ class GmailPage:
             self.result_count = 1
 
         for i in range(self.fetching_count):
+            
             self.mail_id = self.mail_id = maillist["messages"][i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
 
