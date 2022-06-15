@@ -59,7 +59,7 @@ class GmailApi():
                   },,,,
               }
         '''
-        messages = []
+        maillist = []
 
         try:
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
@@ -67,7 +67,7 @@ class GmailApi():
 
             result = self.service.users().messages().list(userId=user, q=qu).execute()
             if 'messages' in result:
-                messages.extend(result['messages'])
+                maillist.extend(result['messages'])
             
             self.st.subheader("▶︎ Crawling Email ID Progress")
             getMailList_progress_bar = self.st.progress(0)
@@ -77,16 +77,16 @@ class GmailApi():
                 page_token = result['nextPageToken']
                 result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
                 if 'messages' in result:
-                    messages.extend(result['messages'])
+                    maillist.extend(result['messages'])
 
                 count = count + 1
 
                 try:
                     getMailList_progress_bar.progress((count)/len(result['messages']))
                 except Exception as e:
-                    pass
+                    self.st.error("Exception - getMailList_progress_bar" + str(e))
 
-            return messages
+            return maillist
 
         except errors.HttpError as error:
             print("error [ service.users().messages().list( ) ] : ", error)
