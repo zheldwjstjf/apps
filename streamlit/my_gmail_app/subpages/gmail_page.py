@@ -258,9 +258,6 @@ class GmailPage:
             self.st.write("mail_snippet : ", mail_snippet)
             self.st.write("mail_body : ", mail_body)
 
-            if self.st.button("NEXT", key="get_next_mail_content_" + str(i)):
-                pass
-
     def craw_email_address(self, maillist):
 
         if self.result_count > self.fetching_count:
