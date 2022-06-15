@@ -95,6 +95,7 @@ class GmailCrawlingPage:
             self.result_count = 1
           
         self.st.subheader("▶︎ Email Crawling Progress")
+        latest_iteration = self.st.empty()
         craw_email_address_progress_bar = self.st.progress(0)
         
         for i in range(self.fetching_count):
@@ -114,6 +115,7 @@ class GmailCrawlingPage:
             except Exception as e:
                 pass
 
+            latest_iteration.text(f'{((i+1)/self.fetching_count)*100} %')
             craw_email_address_progress_bar.progress((i+1)/self.fetching_count)
 
         mail_list_uniq = list(set(mail_list))
