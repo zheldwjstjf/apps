@@ -60,10 +60,12 @@ class GmailApi():
               }
         '''
         messages = []
-        
+
         try:
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
             # return self.service.users().messages().list(userId=user, q=qu).execute()
+
+            result = self.service.users().messages().list(userId='me',q=query).execute()
             if 'messages' in result:
                 messages.extend(result['messages'])
             while 'nextPageToken' in result:
