@@ -92,14 +92,15 @@ class GmailCrawlingPage:
             try:
                 self.mail_id = self.mail_id = maillist[i]['id']
                 self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
+
+                mail = self.parse_mail()
+                mail_from = mail['from']
+
+                if mail_from not in mail_list:
+                    mail_list.append(mail_from)
+
             except Exception as e:
                 pass
-
-            mail = self.parse_mail()
-            mail_from = mail['from']
-
-            if mail_from not in mail_list:
-                mail_list.append(mail_from)
 
             my_bar.progress((i+1)/self.fetching_count)
 
