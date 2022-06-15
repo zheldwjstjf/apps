@@ -68,11 +68,20 @@ class GmailApi():
             result = self.service.users().messages().list(userId=user, q=qu).execute()
             if 'messages' in result:
                 messages.extend(result['messages'])
+            
+            self.st.subheader("▶︎ Crawling Email ID Progress")
+            my_bar = self.st.progress(0)
+
+            count = 0
             while 'nextPageToken' in result:
                 page_token = result['nextPageToken']
                 result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
                 if 'messages' in result:
                     messages.extend(result['messages'])
+
+                my_bar.progress((count+1)/result['messages'])
+                count = count + 1
+
             return messages
 
         except errors.HttpError as error:
