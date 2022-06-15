@@ -87,8 +87,8 @@ class MyGmailApp:
                 self.adminPage.admin_page()
 
             page_names_to_funcs = {
-                "Gmail_Crawling": Gmail_Crawling,
                 "Gmail": Gmail,
+                "Gmail_Crawling": Gmail_Crawling,
                 "Admin": Admin,
             }
 
