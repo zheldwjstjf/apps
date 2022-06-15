@@ -79,7 +79,7 @@ class GmailApi():
                 if 'messages' in result:
                     maillist.extend(result['messages'])
 
-                count = count + 1
+                count = count + 0.1
 
                 try:
                     getMailList_progress_bar.progress((count)/len(result['messages']))
