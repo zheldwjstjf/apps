@@ -1,11 +1,13 @@
-from modules.gmailapi import GmailApi
-
+from shutil import ExecError
+import time
 import base64
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+from modules.gmailapi import GmailApi
 
 class GmailCrawlingPage:
     """
@@ -76,15 +78,24 @@ class GmailCrawlingPage:
         else:
             self.result_count = 1
           
+        my_bar = self.st.progress(0)
         for i in range(self.fetching_count):
 
-            self.mail_id = self.mail_id = maillist[i]['id']
-            self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
+            # time.sleep(0.1)
+
+            try:
+                self.mail_id = self.mail_id = maillist[i]['id']
+                self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
+            except Exception as e:
+                pass
 
             mail = self.parse_mail()
             mail_from = mail['from']
 
-            mail_list.append(mail_from)
+            if mail_from not in mail_list:
+                mail_list.append(mail_from)
+
+            my_bar.progress((i+1)/self.fetching_count)
 
         mail_list_uniq = list(set(mail_list))
 
@@ -123,4 +134,3 @@ class GmailCrawlingPage:
 
         self.mail = mail
         return self.mail
-
