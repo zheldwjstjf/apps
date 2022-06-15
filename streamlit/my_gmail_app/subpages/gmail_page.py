@@ -152,9 +152,9 @@ class GmailPage:
 
         selected_email_info_list = [
             "[ TODO ] 메일 제목의 주요 키워드（시각화 ）",
-            "[ TODO ] 선택한 메일주소에서 발송된 메일 본문의 주요 키워드（시각화 ）",
-            "[ TODO ] 선택한 메일주소에서 발송된 시각",
-            "[ TODO ] 선택한 메일주소에서 발송 빈도",
+            "[ TODO ] 메일 본문의 주요 키워드（시각화 ）",
+            "[ TODO ] 메일 발송 시각 분포",
+            "[ TODO ] 메일 발송 빈도",
         ]        
         self.query_from = "from:" + selected_query_from_val
 
