@@ -35,22 +35,29 @@ class GmailCrawlingPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>GMAIL Crawling Page</h1>", unsafe_allow_html=True)
 
-        #
-        self.maillist = self.get_list()
+        # すでに読んでるメールを取得
+        maillist = self.get_list()
+        # self.st.write("[DEBUG] maillist : ", self.maillist)
+        self.result_count = len(self.maillist)
+        self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
 
-        # select email
-        mail_list_uniq = self.craw_email_address(self.maillist)
+        # ユニークなメールアドレスを取得
+        mail_list_uniq = self.craw_email_address(maillist)
 
-        self.st.subheader("▶︎ Crawled Email")
-        selected_email = self.st.selectbox("Select Email", mail_list_uniq, key="crawled_email_list")
+        # 取得したユニークなメールアドレスの件数
+        self.st.subheader("▶︎ Crawled Email Address Count")
+        uniq_mail_count = len(mail_list_uniq)
+        self.st.write("取得したメールアドレスの件数 : " + str(uniq_mail_count) + " 件")
 
-        self.st.write("selected_email : ", selected_email)
+        # 取得したユニークなメールアドレス
+        self.st.subheader("▶︎ Crawled Email Address")
+        count = 0
+        for email_address in mail_list_uniq:
+            self.st.write("[ " + str(count+1) + " ] " + email_address)
+            count = count + 1
 
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
-        # self.st.write("[DEBUG] maillist : ", self.maillist)
-        self.result_count = len(self.maillist)
-        self.st.write("取得件数 : " + str(self.result_count) + " 件")
 
         return self.maillist
 
