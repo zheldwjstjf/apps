@@ -23,6 +23,7 @@ class GmailPage:
         self.gmail_api = GmailApi(self.st, self.service)
 
         self.query = ""
+        self.maillist = None
 
     def gmail_page(self):
         """
@@ -43,7 +44,10 @@ class GmailPage:
 
         # select email
 
-        mail_list_uniq = self.craw_email_address()
+        if self.maillist != None:
+            mail_list_uniq = self.craw_email_address(self.maillist)
+        else:
+            pass
 
         self.st.subheader("▶︎ Select Email")
         self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
