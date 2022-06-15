@@ -6,6 +6,7 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+import streamlit as st
 
 from modules.gmailapi import GmailApi
 
@@ -62,6 +63,7 @@ class GmailCrawlingPage:
                 self.st.write("[ " + str(count+1) + " ] " + email_address)
                 count = count + 1
 
+    @st.cache(suppress_st_warning=True)
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
 
