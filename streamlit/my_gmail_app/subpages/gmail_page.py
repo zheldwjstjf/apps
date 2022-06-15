@@ -117,7 +117,7 @@ class GmailPage:
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
         self.result_count = len(self.maillist)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
-        self.st.write("[DEBUG] maillist : ", self.maillist)
+        # self.st.write("[DEBUG] maillist : ", self.maillist)
 
         return self.maillist
     
