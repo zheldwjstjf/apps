@@ -95,12 +95,12 @@ class GmailPage:
             self.fetching_count = int(self.st.number_input("最大取得件数 (上限100)", min_value=1, max_value=100))
 
 
-        with col1:
-            if self.st.button("取得", key="get_list"):
-                self.maillist = self.get_list()
-            
-                # get_mail_contents 
-                self.get_mail_content(self.maillist)
+        # with col1:
+        if self.st.button("取得", key="get_list"):
+            self.maillist = self.get_list()
+        
+            # get_mail_contents 
+            self.get_mail_content(self.maillist)
 
     def get_priority_label(self):
 
@@ -259,41 +259,6 @@ class GmailPage:
             self.st.write("mail_to : ", mail_to)
             self.st.write("mail_snippet : ", mail_snippet)
             self.st.write("mail_body : ", mail_body)
-
-    def craw_email_address(self, maillist):
-
-        if self.result_count > self.fetching_count:
-            pass
-        elif self.result_count > self.fetching_count:
-            pass
-        elif self.result_count < self.fetching_count:
-            self.fetching_count == self.result_count
-        else:
-            self.result_count = 1
-          
-        for i in range(self.fetching_count):
-
-            self.mail_id = self.mail_id = maillist[i]['id']
-            self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
-
-            mail = self.parse_mail()
-
-            mail_subject = mail['subject']
-            mail_date = mail['date']
-            mail_from = mail['from']
-            mail_to = mail['to']            
-            mail_snippet = mail['snippet']
-            mail_body = mail['body']
-
-            self.st.write("mail_subject : ", mail_subject)
-            self.st.write("mail_date : ", mail_date)
-            self.st.write("mail_from : ", mail_from)
-            self.st.write("mail_to : ", mail_to)
-            self.st.write("mail_snippet : ", mail_snippet)
-            self.st.write("mail_body : ", mail_body)
-
-            if self.st.button("NEXT", key="get_next_mail_content_" + str(i)):
-                pass
 
     def parse_mail(self):
         content = self.mail_content
