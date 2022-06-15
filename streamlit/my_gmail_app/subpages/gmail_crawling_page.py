@@ -38,24 +38,22 @@ class GmailCrawlingPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>Gmail Crawling Page</h1>", unsafe_allow_html=True)
 
-        self.st.write("---")
-
-        # すでに読んでるメールを取得
-        col1, col2 = self.st.columns((1,1))
-        with col1:
-            maillist = self.get_list()
-        with col2:
-            self.st.subheader("▶︎ Fatched Email ID Count")
-            self.result_count = len(self.maillist)
-            self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
-
-        self.st.write("---")
-
         # Set Email Crawling Count
         self.st.subheader("▶︎ Set Email Crawling Count")
         self.fetching_count = int(self.st.number_input("", min_value=1))
 
         if self.st.button("取得", key="get_list"):
+
+            self.st.write("---")
+
+            # すでに読んでるメールを取得
+            col1, col2 = self.st.columns((1,1))
+            with col1:
+                maillist = self.get_list()
+            with col2:
+                self.st.subheader("▶︎ Fatched Email ID Count")
+                self.result_count = len(self.maillist)
+                self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
 
             self.st.write("---")
 
