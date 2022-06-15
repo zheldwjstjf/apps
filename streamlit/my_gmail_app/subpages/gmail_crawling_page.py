@@ -67,6 +67,7 @@ class GmailCrawlingPage:
                 self.st.write("取得したメールアドレスの件数 : " + str(uniq_mail_count) + " 件")
 
             # 取得したユニークなメールアドレス
+            self.st.write("---")
             self.st.subheader("▶︎ Crawled Email Address")
             count = 0
             for email_address in mail_list_uniq:
