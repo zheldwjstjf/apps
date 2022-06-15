@@ -57,6 +57,9 @@ class MyGmailApp:
             else:
                 self.st.error("認証失敗")
 
+            self.st.sidebar.info("[ TODO ] 認証した時刻")
+            self.st.sidebar.info("[ TODO ] 認証切れた時刻")
+
         # =================
         # main page
 
