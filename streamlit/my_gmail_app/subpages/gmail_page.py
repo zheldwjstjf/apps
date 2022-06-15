@@ -115,7 +115,7 @@ class GmailPage:
 
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
-        self.result_count = len(self.maillist["messages"])
+        self.result_count = len(self.maillist)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         self.st.write("[DEBUG] maillist : ", self.maillist)
 
@@ -239,7 +239,7 @@ class GmailPage:
           
         for i in range(self.fetching_count):
 
-            self.mail_id = self.mail_id = maillist["messages"][i]['id']
+            self.mail_id = self.mail_id = maillist[i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
 
             mail = self.parse_mail()
@@ -271,7 +271,7 @@ class GmailPage:
           
         for i in range(self.fetching_count):
 
-            self.mail_id = self.mail_id = maillist["messages"][i]['id']
+            self.mail_id = self.mail_id = maillist[i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
 
             mail = self.parse_mail()
