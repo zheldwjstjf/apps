@@ -44,15 +44,13 @@ class GmailCrawlingPage:
         if self.st.button("取得", key="get_list"):
 
             # すでに読んでるメールを取得
-            maillist = self.get_list()
-            
             col1, col2 = self.st.columns((1,1))
             with col1:
-                self.st.subheader("▶︎ Crawled Email ID Count")
-                self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
-                self.result_count = len(self.maillist)
+                maillist = self.get_list()
             with col2:
-                pass
+                self.st.subheader("▶︎ Crawled Email ID Count")
+                self.result_count = len(self.maillist)
+                self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
 
             # ユニークなメールアドレスを取得
             with col1:
