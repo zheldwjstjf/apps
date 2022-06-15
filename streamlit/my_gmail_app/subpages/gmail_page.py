@@ -67,6 +67,8 @@ class GmailPage:
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
                 self.query = self.query + self.query_is + " "
+            else:
+                self.query = "is:read"
 
             if "subject" in selected_query_keys:
                 self.query_subject = self.get_query_subject()
