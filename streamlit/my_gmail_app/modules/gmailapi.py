@@ -70,7 +70,7 @@ class GmailApi():
                 messages.extend(result['messages'])
             
             self.st.subheader("▶︎ Crawling Email ID Progress")
-            my_bar = self.st.progress(0)
+            getMailList_progress_bar = self.st.progress(0)
 
             count = 0
             while 'nextPageToken' in result:
@@ -80,8 +80,9 @@ class GmailApi():
                     messages.extend(result['messages'])
 
                 count = count + 1
+
                 try:
-                    my_bar.progress((count)/len(result['messages']))
+                    getMailList_progress_bar.progress((count)/len(result['messages']))
                 except Exception as e:
                     pass
 
