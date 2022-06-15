@@ -33,7 +33,7 @@ class GmailCrawlingPage:
         """
 
         # title
-        self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
+        self.st.markdown("<h1 style='text-align: center; color: red;'>GMAIL Crawling Page</h1>", unsafe_allow_html=True)
 
         ######################################
         self.maillist = self.get_list()
