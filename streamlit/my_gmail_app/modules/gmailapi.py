@@ -80,8 +80,10 @@ class GmailApi():
                     messages.extend(result['messages'])
 
                 count = count + 1
-                
-                my_bar.progress((count)/len(result['messages']))
+                try:
+                    my_bar.progress((count)/len(result['messages']))
+                except Exception as e:
+                    pass
 
             return messages
 
