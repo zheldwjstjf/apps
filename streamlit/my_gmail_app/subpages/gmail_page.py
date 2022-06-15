@@ -22,9 +22,7 @@ class GmailPage:
         self.service = service
         self.gmail_api = GmailApi(self.st, self.service)
 
-        self.user = "me"
-        self.query = "is:read"
-        self.fetching_count = 100
+        self.query = ""
 
     def gmail_page(self):
         """
@@ -35,8 +33,7 @@ class GmailPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
 
-        ######################################
-        self.maillist = self.get_list()
+        self.user = "me"
 
         # select priority label
         col1, col2 = self.st.columns((1,1))
@@ -45,18 +42,12 @@ class GmailPage:
             self.priority_label = self.get_priority_label()
 
         # select email
-        mail_list_uniq = self.craw_email_address(self.maillist)
-
         self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
+        self.query_froms = self.get_query_from(self.priority_label)
         self.query = self.query + self.query_from + " "
 
-
-        ######################################
         # get query
         self.st.subheader("▶︎ Query設定")
-        self.query = ""
-        self.fetching_count = 1
 
         col1, col2 = self.st.columns((1,1))
 
@@ -73,8 +64,6 @@ class GmailPage:
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
                 self.query = self.query + self.query_is + " "
-            else:
-                self.query = "is:read"
 
             if "subject" in selected_query_keys:
                 self.query_subject = self.get_query_subject()
@@ -133,7 +122,7 @@ class GmailPage:
         return self.maillist
     
 
-    def get_query_from(self, priority_label, mail_list_uniq):
+    def get_query_from(self, priority_label):
 
         self.priority_label = priority_label
         
@@ -155,7 +144,7 @@ class GmailPage:
                 "noreply@uber.com",
             ]
 
-        selected_query_from_val = col1.selectbox("Select Email", mail_list_uniq, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
         selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
@@ -269,9 +258,10 @@ class GmailPage:
             self.st.write("mail_snippet : ", mail_snippet)
             self.st.write("mail_body : ", mail_body)
 
-    def craw_email_address(self, maillist):
+            if self.st.button("NEXT", key="get_next_mail_content_" + str(i)):
+                pass
 
-        mail_list = []
+    def craw_email_address(self, maillist):
 
         if self.result_count > self.fetching_count:
             pass
@@ -288,15 +278,23 @@ class GmailPage:
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
 
             mail = self.parse_mail()
+
+            mail_subject = mail['subject']
+            mail_date = mail['date']
             mail_from = mail['from']
+            mail_to = mail['to']            
+            mail_snippet = mail['snippet']
+            mail_body = mail['body']
 
-            mail_list.append(mail_from)
+            self.st.write("mail_subject : ", mail_subject)
+            self.st.write("mail_date : ", mail_date)
+            self.st.write("mail_from : ", mail_from)
+            self.st.write("mail_to : ", mail_to)
+            self.st.write("mail_snippet : ", mail_snippet)
+            self.st.write("mail_body : ", mail_body)
 
-        mail_list_uniq = list(set(mail_list))
-
-        return mail_list_uniq
-
-
+            if self.st.button("NEXT", key="get_next_mail_content_" + str(i)):
+                pass
 
     def parse_mail(self):
         content = self.mail_content
