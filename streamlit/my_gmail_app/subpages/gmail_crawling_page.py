@@ -37,7 +37,7 @@ class GmailCrawlingPage:
 
         # すでに読んでるメールを取得
         maillist = self.get_list()
-        # self.st.write("[DEBUG] maillist : ", self.maillist)
+        self.st.subheader("▶︎ Crawled Email Count")
         self.result_count = len(self.maillist)
         self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
 
@@ -66,7 +66,7 @@ class GmailCrawlingPage:
         mail_list = []
 
         if self.result_count > self.fetching_count:
-            pass
+            self.fetching_count == self.result_count
         elif self.result_count > self.fetching_count:
             pass
         elif self.result_count < self.fetching_count:
