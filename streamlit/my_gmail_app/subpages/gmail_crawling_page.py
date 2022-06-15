@@ -41,9 +41,10 @@ class GmailCrawlingPage:
         # select email
         mail_list_uniq = self.craw_email_address(self.maillist)
 
-        self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
-        self.query = self.query + self.query_from + " "
+        self.st.subheader("▶︎ Crawled Email")
+        selected_email = self.st.selectbox("Select Email", mail_list_uniq, key="from")
+
+        self.st.write("selected_email : ", selected_email)
 
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
