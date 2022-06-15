@@ -79,7 +79,7 @@ class GmailApi():
                 if 'messages' in result:
                     messages.extend(result['messages'])
 
-                my_bar.progress((count+1)/len(result['messages']))
+                my_bar.progress((count)/len(result['messages']))
                 count = count + 1
 
             return messages
