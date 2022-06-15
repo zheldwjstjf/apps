@@ -72,7 +72,7 @@ class GmailApi():
             self.st.subheader("▶︎ Crawling Email ID Progress")
             getMailList_progress_bar = self.st.progress(0)
 
-            fetched_email_id_count = len(result['messages']
+            fetched_email_id_count = len(result['messages'])
             self.st.write("fetched_email_id_count : " + str(fetched_email_id_count))
 
             count = 0
