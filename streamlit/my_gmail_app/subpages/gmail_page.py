@@ -251,7 +251,7 @@ class GmailPage:
             mail_snippet = mail['snippet']
             mail_body = mail['body']
 
-            self.st.subheader("▶︎ str(i+1) 件明")
+            self.st.subheader("\n\n\n▶︎ str(i+1) 件明")
             self.st.write("mail_subject : ", mail_subject)
             self.st.write("mail_date : ", mail_date)
             self.st.write("mail_from : ", mail_from)
