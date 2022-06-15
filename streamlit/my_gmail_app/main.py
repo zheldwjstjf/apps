@@ -2,6 +2,7 @@ from asyncio.staggered import staggered_race
 import streamlit as st
 
 from subpages.gmail_page import GmailPage
+from subpages.gmail_crawling_page import GmailCrawlingPage
 from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
 from subpages.admin_page import AdminPage
@@ -77,11 +78,17 @@ class MyGmailApp:
                 self.gmailPage = GmailPage(st, service)
                 self.gmailPage.gmail_page()
 
+            def Gmail_Crawling():
+                service = self.auth_result
+                self.gmailCrawlingPage = GmailCrawlingPage(st, service)
+                self.gmailCrawlingPage.gmail_crawling_page()
+
             def Admin():
                 self.adminPage.admin_page()
 
             page_names_to_funcs = {
                 "Gmail": Gmail,
+                "Gmail_Crawling": Gmail_Crawling,
                 "Admin": Admin,
             }
 
