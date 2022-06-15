@@ -70,7 +70,7 @@ class GmailApi():
                 maillist.extend(result['messages'])
                 maillist_count_1st = len(maillist)
             
-            self.st.write("▶︎ Fetching Email ID Progress")
+            self.st.write("- Fetching Email ID Progress")
             getMailList_progress_bar = self.st.progress(0)
 
             count = 0
