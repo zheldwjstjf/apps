@@ -42,8 +42,11 @@ class GmailPage:
             self.priority_label = self.get_priority_label()
 
         # select email
+
+        mail_list_uniq = self.craw_email_address()
+
         self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label)
+        self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
         self.query = self.query + self.query_from + " "
 
         # get query
@@ -122,7 +125,7 @@ class GmailPage:
         return self.maillist
     
 
-    def get_query_from(self, priority_label):
+    def get_query_from(self, priority_label, mail_list_uniq):
 
         self.priority_label = priority_label
         
@@ -144,7 +147,7 @@ class GmailPage:
                 "noreply@uber.com",
             ]
 
-        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", mail_list_uniq, key="from")
         selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
@@ -260,6 +263,35 @@ class GmailPage:
 
             if self.st.button("NEXT", key="get_next_mail_content_" + str(i)):
                 pass
+
+    def craw_email_address(self, maillist):
+
+        mail_list = []
+
+        if self.result_count > self.fetching_count:
+            pass
+        elif self.result_count > self.fetching_count:
+            pass
+        elif self.result_count < self.fetching_count:
+            self.fetching_count == self.result_count
+        else:
+            self.result_count = 1
+          
+        for i in range(self.fetching_count):
+
+            self.mail_id = self.mail_id = maillist["messages"][i]['id']
+            self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
+
+            mail = self.parse_mail()
+            mail_from = mail['from']
+
+            mail_list.append(mail_from)
+
+        mail_list_uniq = list(set(mail_list))
+
+        return mail_list_uniq
+
+
 
     def parse_mail(self):
         content = self.mail_content
