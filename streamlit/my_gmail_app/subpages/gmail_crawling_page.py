@@ -63,7 +63,6 @@ class GmailCrawlingPage:
                 self.st.write("[ " + str(count+1) + " ] " + email_address)
                 count = count + 1
 
-    @st.cache(suppress_st_warning=True)
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
 
