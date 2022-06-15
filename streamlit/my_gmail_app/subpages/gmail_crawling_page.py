@@ -38,6 +38,7 @@ class GmailCrawlingPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>Gmail Crawling Page</h1>", unsafe_allow_html=True)
 
+        self.st.subheader("▶︎ Set Email Adress Crawling Count")
         self.fetching_count = int(self.st.number_input("", min_value=1))
 
         if self.st.button("取得", key="get_list"):
@@ -83,7 +84,9 @@ class GmailCrawlingPage:
         else:
             self.result_count = 1
           
+        self.st.subheader("▶︎ Email Crawling Progress")
         my_bar = self.st.progress(0)
+        
         for i in range(self.fetching_count):
 
             # time.sleep(0.1)
