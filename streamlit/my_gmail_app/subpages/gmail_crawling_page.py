@@ -42,7 +42,7 @@ class GmailCrawlingPage:
         mail_list_uniq = self.craw_email_address(self.maillist)
 
         self.st.subheader("▶︎ Crawled Email")
-        selected_email = self.st.selectbox("Select Email", mail_list_uniq, key="from")
+        selected_email = self.st.selectbox("Select Email", mail_list_uniq, key="crawled_email_list")
 
         self.st.write("selected_email : ", selected_email)
 
