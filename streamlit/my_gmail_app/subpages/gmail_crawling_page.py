@@ -38,30 +38,34 @@ class GmailCrawlingPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>Gmail Crawling Page</h1>", unsafe_allow_html=True)
 
-        self.st.subheader("▶︎ Set Email Adress Crawling Count")
+        self.st.write("---")
+
+        # すでに読んでるメールを取得
+        col1, col2 = self.st.columns((1,1))
+        with col1:
+            maillist = self.get_list()
+        with col2:
+            self.st.subheader("▶︎ Fatched Email ID Count")
+            self.result_count = len(self.maillist)
+            self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
+
+        self.st.write("---")
+
+        # Set Email Crawling Count
+        self.st.subheader("▶︎ Set Email Crawling Count")
         self.fetching_count = int(self.st.number_input("", min_value=1))
 
         if self.st.button("取得", key="get_list"):
 
-            # すでに読んでるメールを取得
-            col1, col2 = self.st.columns((1,1))
-            with col1:
-                self.st.write("---")
-                maillist = self.get_list()
-            with col2:
-                self.st.write("---")
-                self.st.subheader("▶︎ Crawled Email ID Count")
-                self.result_count = len(self.maillist)
-                self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
+            self.st.write("---")
 
             # ユニークなメールアドレスを取得
-            with col1:
-                self.st.write("---")
+            col3, col4 = self.st.columns((1,1))
+            with col3:
                 mail_list_uniq = self.craw_email_address(maillist, self.result_count)
 
             # 取得したユニークなメールアドレスの件数
-            with col2:
-                self.st.write("---")
+            with col4:
                 self.st.subheader("▶︎ Crawled Email Address Count")
                 uniq_mail_count = len(mail_list_uniq)
                 self.st.write("取得したメールアドレスの件数 : " + str(uniq_mail_count) + " 件")
