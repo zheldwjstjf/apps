@@ -22,8 +22,7 @@ class GmailPage:
         self.service = service
         self.gmail_api = GmailApi(self.st, self.service)
 
-        self.query = ""
-        self.maillist = None
+        self.query = "is:read"
 
     def gmail_page(self):
         """
@@ -35,6 +34,7 @@ class GmailPage:
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
 
         self.user = "me"
+        self.maillist = self.get_list()
 
         # select priority label
         col1, col2 = self.st.columns((1,1))
@@ -43,19 +43,15 @@ class GmailPage:
             self.priority_label = self.get_priority_label()
 
         # select email
+        mail_list_uniq = self.craw_email_address(self.maillist)
 
-        if self.maillist != None:
-            mail_list_uniq = self.craw_email_address(self.maillist)
-
-            self.st.subheader("▶︎ Select Email")
-            self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
-            self.query = self.query + self.query_from + " "
-
-        else:
-            pass
+        self.st.subheader("▶︎ Select Email")
+        self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
+        self.query = self.query + self.query_from + " "
 
         # get query
         self.st.subheader("▶︎ Query設定")
+        self.query = ""
 
         col1, col2 = self.st.columns((1,1))
 
