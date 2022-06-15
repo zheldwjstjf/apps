@@ -47,9 +47,9 @@ class GmailCrawlingPage:
 
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
+        self.st.write("[DEBUG] maillist : ", self.maillist)
         self.result_count = len(self.maillist["messages"])
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
-        # self.st.write("[DEBUG] maillist : ", self.maillist)
 
         return self.maillist
 
