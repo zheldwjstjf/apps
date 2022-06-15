@@ -59,9 +59,20 @@ class GmailApi():
                   },,,,
               }
         '''
+        messages = []
+        
         try:
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
-            return self.service.users().messages().list(userId=user, q=qu).execute()
+            # return self.service.users().messages().list(userId=user, q=qu).execute()
+            if 'messages' in result:
+                messages.extend(result['messages'])
+            while 'nextPageToken' in result:
+                page_token = result['nextPageToken']
+                result = self.service.users().messages().list(userId='me',q=qu, pageToken=page_token).execute()
+                if 'messages' in result:
+                    messages.extend(result['messages'])
+            return messages
+
         except errors.HttpError as error:
             print("error [ service.users().messages().list( ) ] : ", error)
 
