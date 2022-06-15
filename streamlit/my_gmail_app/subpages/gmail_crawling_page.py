@@ -42,7 +42,7 @@ class GmailCrawlingPage:
         self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
 
         # ユニークなメールアドレスを取得
-        mail_list_uniq = self.craw_email_address(maillist)
+        mail_list_uniq = self.craw_email_address(maillist, self.result_count)
 
         # 取得したユニークなメールアドレスの件数
         self.st.subheader("▶︎ Crawled Email Address Count")
@@ -61,16 +61,18 @@ class GmailCrawlingPage:
 
         return self.maillist
 
-    def craw_email_address(self, maillist):
+    def craw_email_address(self, maillist, result_count):
+
+        self.result_count = result_count
 
         mail_list = []
 
         if self.result_count > self.fetching_count:
-            self.fetching_count == self.result_count
-        elif self.result_count > self.fetching_count:
+            self.fetching_count = self.result_count
+        elif self.result_count == self.fetching_count:
             pass
         elif self.result_count < self.fetching_count:
-            self.fetching_count == self.result_count
+            self.fetching_count = self.result_count
         else:
             self.result_count = 1
           
