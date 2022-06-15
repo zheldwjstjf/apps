@@ -46,12 +46,13 @@ class GmailPage:
 
         if self.maillist != None:
             mail_list_uniq = self.craw_email_address(self.maillist)
+
+            self.st.subheader("▶︎ Select Email")
+            self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
+            self.query = self.query + self.query_from + " "
+
         else:
             pass
-
-        self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label, mail_list_uniq)
-        self.query = self.query + self.query_from + " "
 
         # get query
         self.st.subheader("▶︎ Query設定")
