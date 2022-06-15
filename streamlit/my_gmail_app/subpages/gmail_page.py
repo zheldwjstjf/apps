@@ -230,7 +230,14 @@ class GmailPage:
         else:
             self.result_count = 1
 
-        for i in range(self.fetching_count):
+        
+        # TODO
+        # for loop 대신에, 
+        # id / title만 먼저 가져와서 리스트 가져와서 -> 셀렉트 박스 만들어서
+        # 셀렉트 박스에서 하나의 [id / title]를 선택하면 -> 스닛핏 또는 본문 볼 수 있게 하고
+        #  스닛핏 또는 본문을 본다음에 -> 개요 정보 입력/업데이터 / 삭제 / 쓰레기토응로 / 본문내용 저장 등등 할수 있게 한다
+          
+        for i in range(self.fetching_count-1):
 
             self.mail_id = self.mail_id = maillist["messages"][i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
