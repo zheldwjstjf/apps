@@ -84,7 +84,7 @@ class GmailApi():
                 except Exception as e:
                     self.st.error("Exception - getMailList_progress_bar" + str(e))
                 
-                count = count + 100
+                count = count + len(result['messages'])
 
             return maillist
 
