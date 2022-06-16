@@ -323,7 +323,9 @@ class GmailPage:
 
             for foo in range(3):
                 self.st.write("---")
-            
+
+            self.st.subheader("▶︎ " + str(i+1) + " 件目")
+
             # TODO
             self.st.warning("""
             여기에\n
@@ -331,8 +333,6 @@ class GmailPage:
             본문 텍스트에 출현한 키워드의\n
             출현 빈도 시각화 이미지를 뿌려 줄 것
             """)
-
-            self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
             col1, col2 = self.st.columns((1,1))
 
