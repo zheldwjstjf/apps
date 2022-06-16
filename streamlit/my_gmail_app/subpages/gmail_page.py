@@ -243,6 +243,9 @@ class GmailPage:
             self.mail_id = self.mail_id = maillist[i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
 
+            # - do mail as read
+            self.gmail_api.markMailAsRead(self.user, self.mail_id)            
+
             mail = self.parse_mail()
 
             mail_subject = mail['subject']
