@@ -257,12 +257,12 @@ class GmailPage:
 
             self.st.write("---")
             self.st.write("▶︎ " + str(i+1) + " 件目")
-            self.st.write("mail_subject : ", mail_subject)
-            self.st.write("mail_date : ", mail_date)
-            self.st.write("mail_from : ", mail_from)
-            self.st.write("mail_to : ", mail_to)
-            self.st.write("mail_snippet : ", mail_snippet)
-            self.st.write("mail_body : ", mail_body)
+            self.st.write("- mail_subject : \n", mail_subject)
+            self.st.write("- mail_date : \n", mail_date)
+            self.st.write("- mail_from : \n", mail_from)
+            self.st.write("- mail_to : \n", mail_to)
+            self.st.write("- mail_snippet : \n", mail_snippet)
+            self.st.write("- mail_body : \n", mail_body)
 
     def parse_mail(self):
         content = self.mail_content
