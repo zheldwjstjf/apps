@@ -332,15 +332,17 @@ class GmailPage:
             출현 빈도 시각화 이미지를 뿌려 줄 것
             """)
 
+            self.st.subheader("▶︎ " + str(i+1) + " 件目")
+
             col1, col2 = self.st.columns((1,1))
 
             with col1:
-                self.st.write("▶︎ " + str(i+1) + " 件目")
+                
                 self.st.subheader("● mail_subject : \n"); self.st.info(mail_subject)
-                self.st.subheader("● mail_date : \n" + mail_date)
-                self.st.subheader("● mail_from : \n" + mail_from)
-                self.st.subheader("● mail_to : \n" + mail_to)
-                self.st.subheader("● mail_snippet : \n" + mail_snippet)
+                self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
+                self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
+                self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
+                self.st.subheader("● mail_snippet : \n"); self.st.info(mail_snippet)
 
             with col2:
                 self.st.subheader("● mail_body : \n")
