@@ -250,12 +250,36 @@ class GmailPage:
 
             mail = self.parse_mail()
 
-            mail_subject = mail['subject']
-            mail_date = mail['date']
-            mail_from = mail['from']
-            mail_to = mail['to']            
-            mail_snippet = mail['snippet']
-            mail_body = mail['body']
+            try:
+                mail_subject = mail['subject']
+            except Exception as e:
+                self.st.error("Exception- mail['subject'] : " + "e")
+
+            try:
+                mail_date = mail['date']
+            except Exception as e:
+                self.st.error("Exception- mail['date'] : " + "e")
+
+            try:
+                mail_from = mail['from']
+            except Exception as e:
+                self.st.error("Exception- mail['from'] : " + "e")
+
+            try:
+                mail_to = mail['to']
+            except Exception as e:
+                self.st.error("Exception- mail['to'] : " + "e")
+
+            try:
+                mail_snippet = mail['snippet']
+            except Exception as e:
+                self.st.error("Exception- mail['snippet'] : " + "e")
+
+            try:
+                mail_body = mail['body']
+            except Exception as e:
+                self.st.error("Exception- mail['body'] : " + "e")
+
 
             for foo in range(5):
                 self.st.write("---")
@@ -264,7 +288,7 @@ class GmailPage:
             self.st.write("- mail_date : \n", mail_date)
             self.st.write("- mail_from : \n", mail_from)
             self.st.write("- mail_to : \n", mail_to)
-            self.st.write("- mail_snippet : \n", mail_snippet)
+            self.st.subheader("- mail_snippet : \n" + mail_snippet)
             self.st.write("- mail_body : \n")
             self.st.write("---")
             if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
