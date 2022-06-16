@@ -336,7 +336,7 @@ class GmailPage:
 
             with col1:
                 self.st.write("▶︎ " + str(i+1) + " 件目")
-                self.st.subheader("● mail_subject : \n" + mail_subject)
+                self.st.subheader("● mail_subject : \n"); self.st.code(mail_subject)
                 self.st.subheader("● mail_date : \n" + mail_date)
                 self.st.subheader("● mail_from : \n" + mail_from)
                 self.st.subheader("● mail_to : \n" + mail_to)
