@@ -86,6 +86,11 @@ class GmailPage:
                 self.query_newer_than = self.get_query_newer_than()
                 self.query = self.query + self.query_newer_than + " "
 
+            if "older_than" in selected_query_keys:
+                self.query_older_than = self.get_query_older_than()
+                self.query = self.query + self.query_older_than + " "
+
+
         with col1:
             # call get_list() with query
             self.st.subheader("▶︎ Email取得")
@@ -220,6 +225,41 @@ class GmailPage:
         self.query_newer_than = "newer_than:" + selected_query_newer_than_val
 
         return self.query_newer_than
+
+
+    def get_query_older_than(self):
+        query_older_than_val_list = [
+                "1d",
+                "2d",
+                "3d",
+                "4d",
+                "5d",
+                "6d",
+                "7d",
+                "10d",
+                "15d",
+                "20d",
+                "1m",
+                "2m",
+                "3m",
+                "4m",
+                "5m",
+                "6m",
+                "7m",
+                "8m",
+                "9m",
+                "10m",
+                "11m",
+                "1y",
+                "2y",
+                "3y",
+                "4y",
+                "5y",
+            ]
+        selected_query_older_than_val = self.st.selectbox("Select Query Value", query_older_than_val_list, key="older_than")
+        self.query_older_than = "older_than:" + selected_query_older_than_val
+
+        return self.query_older_than
 
 
     def get_mail_content(self, maillist):
