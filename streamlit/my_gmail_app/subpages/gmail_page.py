@@ -325,7 +325,7 @@ class GmailPage:
                 self.st.write("---")
             
             # TODO
-            self.st.info("""
+            self.st.warning("""
             여기에\n
             해당 메일에서 지금까지 보내온 메일의\n 
             본문 텍스트에 출현한 키워드의\n
@@ -336,7 +336,7 @@ class GmailPage:
 
             with col1:
                 self.st.write("▶︎ " + str(i+1) + " 件目")
-                self.st.subheader("● mail_subject : \n"); self.st.code(mail_subject)
+                self.st.subheader("● mail_subject : \n"); self.st.info(mail_subject)
                 self.st.subheader("● mail_date : \n" + mail_date)
                 self.st.subheader("● mail_from : \n" + mail_from)
                 self.st.subheader("● mail_to : \n" + mail_to)
