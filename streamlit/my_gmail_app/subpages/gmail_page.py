@@ -338,11 +338,11 @@ class GmailPage:
 
             with col1:
                 
-                self.st.subheader("● mail_subject : \n"); self.st.info(mail_subject)
+                self.st.subheader("● mail_subject : \n"); self.st.error(mail_subject)
                 self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
                 self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
                 self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
-                self.st.subheader("● mail_snippet : \n"); self.st.info(mail_snippet)
+                self.st.subheader("● mail_snippet : \n"); self.st.error(mail_snippet)
 
             with col2:
                 self.st.subheader("● mail_body : \n")
