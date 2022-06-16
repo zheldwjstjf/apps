@@ -325,7 +325,7 @@ class GmailPage:
                 self.st.write("---")
             
             # TODO
-            self.st.write("""
+            self.st.info("""
             여기에\n
             해당 메일에서 지금까지 보내온 메일의\n 
             본문 텍스트에 출현한 키워드의\n
