@@ -267,9 +267,12 @@ class GmailPage:
             self.st.write("- mail_snippet : \n", mail_snippet)
             self.st.write("- mail_body : \n")
             self.st.write("---")
-            self.st.write(mail_body)
+            if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body):
+                components.html(mail_body, height=1000)
+            else:
+                self.st.write(mail_body)
             self.st.write("---")
-            components.html(mail_body, height=1000)
+
 
     def parse_mail(self):
         content = self.mail_content
