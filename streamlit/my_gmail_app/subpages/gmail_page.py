@@ -255,7 +255,7 @@ class GmailPage:
             mail_snippet = mail['snippet']
             mail_body = mail['body']
 
-            for i in range(5):
+            for foo in range(5):
                 self.st.write("---")
             self.st.write("▶︎ " + str(i+1) + " 件目")
             self.st.write("- mail_subject : \n", mail_subject)
