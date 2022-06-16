@@ -286,9 +286,9 @@ class GmailPage:
             self.st.write("▶︎ " + str(i+1) + " 件目")
             self.st.write("- mail_subject : \n", mail_subject)
             self.st.write("- mail_date : \n", mail_date)
-            self.st.subheader("- mail_from : \n", mail_from)
+            self.st.subheader("● mail_from : \n" + mail_from)
             self.st.write("- mail_to : \n", mail_to)
-            self.st.subheader("- mail_snippet : \n" + mail_snippet)
+            self.st.subheader("● mail_snippet : \n" + mail_snippet)
             self.st.write("- mail_body : \n")
             self.st.write("---")
             if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
