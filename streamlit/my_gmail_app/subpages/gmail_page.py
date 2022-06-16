@@ -94,7 +94,7 @@ class GmailPage:
             self.st.code("Query : " + self.query)
 
             # select fetch count
-            self.fetching_count = int(self.st.number_input("最大取得件数 (上限100)", min_value=1, max_value=100))
+            self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
 
 
         # with col1:
