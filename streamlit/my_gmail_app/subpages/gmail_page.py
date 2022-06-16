@@ -321,8 +321,16 @@ class GmailPage:
                 self.st.error("Exception- mail['body'] : " + "e")
 
 
-            for foo in range(5):
+            for foo in range(3):
                 self.st.write("---")
+            
+            # TODO
+            """
+            여기에 
+            해당 메일에서 지금까지 보내온 메일의 
+            본문 텍스트에 출현한 키워드의 
+            출현 빈도 시각화 이미지를 뿌려 줄 것
+            """
 
             col1, col2 = self.st.columns((1,1))
 
