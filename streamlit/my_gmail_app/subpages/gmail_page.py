@@ -336,7 +336,6 @@ class GmailPage:
 
             with col2:
                 self.st.write("- mail_body : \n")
-                self.st.write("---")
                 if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
                     components.html(mail_body, height=4300)
                 else:
