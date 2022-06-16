@@ -7,6 +7,8 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+import streamlit.components.v1 as components
+
 class GmailPage:
     """
     - class name : MainPage
@@ -264,6 +266,7 @@ class GmailPage:
             self.st.write("- mail_to : \n", mail_to)
             self.st.write("- mail_snippet : \n", mail_snippet)
             self.st.write("- mail_body : \n", mail_body)
+            components.html("- mail_body : \n", mail_body)
 
     def parse_mail(self):
         content = self.mail_content
