@@ -44,8 +44,7 @@ class GmailCrawlingPage:
 
         if self.st.button("取得", key="get_list"):
 
-            for i in range(5):
-                self.st.write("---")
+            self.st.write("---")
 
             # すでに読んでるメールを取得
             col1, col2 = self.st.columns((1,1))
@@ -56,8 +55,7 @@ class GmailCrawlingPage:
                 self.result_count = len(self.maillist)
                 self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
 
-            for i in range(5):
-                self.st.write("---")
+            self.st.write("---")
 
             # ユニークなメールアドレスを取得
             col3, col4 = self.st.columns((1,1))
@@ -71,8 +69,7 @@ class GmailCrawlingPage:
                 self.st.write("取得したメールアドレスの件数 : " + str(uniq_mail_count) + " 件")
 
             # 取得したユニークなメールアドレス
-            for i in range(5):
-                self.st.write("---")
+            self.st.write("---")
             self.st.subheader("▶︎ Crawled Email Address")
             count = 0
             for email_address in mail_list_uniq:
