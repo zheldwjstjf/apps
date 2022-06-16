@@ -265,8 +265,8 @@ class GmailPage:
             self.st.write("- mail_from : \n", mail_from)
             self.st.write("- mail_to : \n", mail_to)
             self.st.write("- mail_snippet : \n", mail_snippet)
-            self.st.write("- mail_body : \n", mail_body)
-            components.html("- mail_body : \n", mail_body)
+            # self.st.write("- mail_body : \n", mail_body)
+            components.html("- mail_body : \n", str(mail_body))
 
     def parse_mail(self):
         content = self.mail_content
