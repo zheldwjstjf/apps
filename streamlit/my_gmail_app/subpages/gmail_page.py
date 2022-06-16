@@ -320,12 +320,8 @@ class GmailPage:
             except Exception as e:
                 self.st.error("Exception- mail['body'] : " + "e")
 
-
-            for foo in range(3):
-                self.st.write("---")
-
+            self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
-
             # TODO
             self.st.warning("""
             여기에\n
