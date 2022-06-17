@@ -13,10 +13,11 @@ class VisualizationTool:
         mytext = """
         Russian President Vladimir Putin has declared the end of "the era of the unipolar world" in a combative speech that lambasted Western countries at the St. Petersburg International Economic Forum on Friday.
         """
-        
+
         stopwords = STOPWORDS
         wordcloud = WordCloud(stopwords=stopwords, background_color="white", max_words=50).generate(mytext)
         rcParams['figure.figsize'] = 100, 200
         plt.imshow(wordcloud)
         plt.axis("off")
-        plt.show()
+        fig = plt.figure(figsize=(100,200))
+        self.st.pyplot(fig)
