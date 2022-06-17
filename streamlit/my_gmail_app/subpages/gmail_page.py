@@ -1,4 +1,5 @@
 from modules.gmailapi import GmailApi
+from modules.visualization_tool import VisualizationTool
 
 import base64
 from email.mime.audio import MIMEAudio
@@ -34,6 +35,9 @@ class GmailPage:
 
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
+
+        visualizationTool = VisualizationTool()
+        visualizationTool.wordcloud()
 
         self.user = "me"
 
