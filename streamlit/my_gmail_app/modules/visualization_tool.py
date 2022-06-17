@@ -24,14 +24,15 @@ class VisualizationTool:
         # self.st.pyplot(fig)
 
         # 
-        img_path = "/app/apps/images/result.png"
+        img_folder_path = "/app/apps/images/"
         # Check whether the specified path exists or not
-        isExist = os.path.exists(img_path)
+        isExist = os.path.exists(img_folder_path)
 
         if not isExist:        
             # Create a new directory because it does not exist 
-            os.makedirs(img_path)
+            os.makedirs(img_folder_path)
 
         # 
-        wordcloud.to_file(img_path)
-        self.snippetTools.image_alignment(img_path, 500)
+        img_file_path = img_folder_path + "result.png"
+        wordcloud.to_file(img_file_path)
+        self.snippetTools.image_alignment(img_file_path, 500)
