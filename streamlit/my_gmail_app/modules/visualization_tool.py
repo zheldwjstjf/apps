@@ -29,7 +29,7 @@ class VisualizationTool:
             self.st.error("Exception : " + str(e))
 
         try:
-            self.st.image(img_file_path, width=500)
+            self.st.image(img_file_path, width=700)
         except Exception as e:
             self.st.error("Exception : " + str(e))
 
