@@ -9,6 +9,7 @@ from modules.snippet_tools import SnippetTools
 class VisualizationTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
+        self.snippetTools = SnippetTools(st)
 
     def wordcloud(self):
 
