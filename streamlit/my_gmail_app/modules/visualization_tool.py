@@ -22,4 +22,4 @@ class VisualizationTool:
         plt.imshow(wordcloud)
         plt.axis("off")
         
-        self.st.pyplot(fig)
+        # self.st.pyplot(fig)
