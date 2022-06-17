@@ -325,22 +325,37 @@ class GmailPage:
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
+            
+            # wordcloud
+            col5, col6 = self.st.columns((1,1))
+
             # wordcloud - mail_from
-            self.st.write("---")
-            self.visualizationTool.wordcloud(mail_from)
+            with col5:
+                self.st.write("---")
+                self.visualizationTool.wordcloud(mail_from)
 
             # wordcloud - mail_subject
-            self.st.write("---")
-            self.visualizationTool.wordcloud(mail_subject)
+            with col6:
+                self.st.write("---")
+                self.visualizationTool.wordcloud(mail_subject)
 
-            # wordcloud - all
-            self.st.write("---")
-            if ("http" not in mail_body) and ("</" not in mail_body):
-                input_text = mail_snippet + mail_body
-            else:
-                input_text = mail_snippet
-            self.visualizationTool.wordcloud(input_text)
+            # wordcloud - mail_snippet
+            with col5:
+                self.st.write("---")
+                self.visualizationTool.wordcloud(mail_snippet)
 
+            # wordcloud - mail_body
+            with col6:
+                self.st.write("---")
+                if ("http" not in mail_body) and ("</" not in mail_body):
+                    input_text = mail_body
+                else:
+                    input_text = ""
+                self.visualizationTool.wordcloud(input_text)
+
+
+
+            # text
             col1, col2 = self.st.columns((1,1))
 
             with col1:
