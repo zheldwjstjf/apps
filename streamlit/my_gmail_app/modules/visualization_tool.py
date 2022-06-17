@@ -13,12 +13,8 @@ class VisualizationTool:
 
     def wordcloud(self, mail_body_text):
 
-        mytext = """
-        Russian President Vladimir Putin has declared the end of "the era of the unipolar world" in a combative speech that lambasted Western countries at the St. Petersburg International Economic Forum on Friday.
-        """
-
         stopwords = STOPWORDS
-        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mytext)
+        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mail_body_text)
         rcParams['figure.figsize'] = 100, 200
 
 
