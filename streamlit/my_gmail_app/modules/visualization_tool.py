@@ -1,4 +1,3 @@
-import os
 import sys
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -17,22 +16,4 @@ class VisualizationTool:
 
         stopwords = STOPWORDS
         wordcloud = WordCloud(stopwords=stopwords, background_color="white", max_words=50).generate(mytext)
-        # rcParams['figure.figsize'] = 100, 200
-
-        # fig, ax = plt.subplots()
-        # plt.imshow(wordcloud)
-        # self.st.pyplot(fig)
-
-        # 
-        img_folder_path = "/app/apps/images/"
-        # Check whether the specified path exists or not
-        isExist = os.path.exists(img_folder_path)
-
-        if not isExist:        
-            # Create a new directory because it does not exist 
-            os.makedirs(img_folder_path)
-
-        # 
-        img_file_path = img_folder_path + "result.png"
-        wordcloud.to_file(img_file_path)
-        self.snippetTools.image_alignment(img_file_path, 500)
+        rcParams['figure.figsize'] = 100, 200
