@@ -350,7 +350,7 @@ class GmailPage:
                 if ("http" not in mail_body) and ("</" not in mail_body):
                     input_text = mail_body
                 else:
-                    input_text = ""
+                    input_text = mail_body
                 self.visualizationTool.wordcloud(input_text)
 
 
