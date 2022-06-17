@@ -35,10 +35,12 @@ class VisualizationTool:
         try:
             wc.to_file(img_file_path)
         except Exception as e:
-            print("Exception : " + str(e))
+            self.st.error("Exception : " + str(e))
 
-        self.st.image(img_file_path, width=500)
-
+        try:
+            self.st.image(img_file_path, width=500)
+        except Exception as e:
+            self.st.error("Exception : " + str(e))
 
 
 
