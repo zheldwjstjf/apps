@@ -335,9 +335,9 @@ class GmailPage:
             visualizationTool = VisualizationTool(self.st)
 
             if ("http" not in mail_body) and ("</" not in mail_body):
-                input_text = mail_subject + mail_snippet + mail_body
+                input_text = mail_from + mail_subject + mail_snippet + mail_body
             else:
-                input_text = mail_subject + mail_snippet
+                input_text = mail_from + mail_subject + mail_snippet
             visualizationTool.wordcloud(input_text)
 
             col1, col2 = self.st.columns((1,1))
