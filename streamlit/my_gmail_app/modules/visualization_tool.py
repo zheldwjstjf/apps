@@ -18,6 +18,10 @@ class VisualizationTool:
         wordcloud = WordCloud(stopwords=stopwords, background_color="white", max_words=50).generate(mytext)
         # rcParams['figure.figsize'] = 100, 200
 
-        fig, ax = plt.subplots()
-        plt.imshow(wordcloud)
-        self.st.pyplot(fig)
+        # fig, ax = plt.subplots()
+        # plt.imshow(wordcloud)
+        # self.st.pyplot(fig)
+
+        wordcloud.to_file("images/result.png")
+        img_path="images/result.png"
+        self.snippetTools.image_alignment(img_path, 1380)
