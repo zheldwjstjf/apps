@@ -325,11 +325,16 @@ class GmailPage:
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
-
-            # wordcloud - from
+            # wordcloud - mail_from
+            self.st.write("---")
             self.visualizationTool.wordcloud(mail_from)
 
+            # wordcloud - mail_subject
+            self.st.write("---")
+            self.visualizationTool.wordcloud(mail_subject)
+
             # wordcloud - all
+            self.st.write("---")
             if ("http" not in mail_body) and ("</" not in mail_body):
                 input_text =  mail_subject + mail_snippet + mail_body
             else:
