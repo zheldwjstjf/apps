@@ -333,7 +333,7 @@ class GmailPage:
             """)
 
             visualizationTool = VisualizationTool(self.st)
-            visualizationTool.wordcloud(mail_subject)
+            visualizationTool.wordcloud(mail_subject + mail_snippet)
 
             col1, col2 = self.st.columns((1,1))
 
