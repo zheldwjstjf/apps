@@ -37,7 +37,7 @@ class VisualizationTool:
         except Exception as e:
             print("Exception : " + str(e))
 
-        self.snippetTools.image_alignment(img_file_path, 500)
+        self.st.image(img_file_path, width=500)
 
 
 
