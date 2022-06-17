@@ -24,7 +24,7 @@ class VisualizationTool:
         # self.st.pyplot(fig)
 
         # 
-        img_path = "images/result.png"
+        img_path = "/app/apps/images/result.png"
         # Check whether the specified path exists or not
         isExist = os.path.exists(img_path)
 
