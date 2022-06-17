@@ -323,14 +323,6 @@ class GmailPage:
 
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
-            
-            # TODO
-            self.st.warning("""
-            여기에\n
-            해당 메일에서 지금까지 보내온 메일의\n 
-            본문 텍스트에 출현한 키워드의\n
-            출현 빈도 시각화 이미지를 뿌려 줄 것
-            """)
 
             visualizationTool = VisualizationTool(self.st)
 
