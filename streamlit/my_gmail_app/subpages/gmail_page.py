@@ -36,9 +36,6 @@ class GmailPage:
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
 
-        visualizationTool = VisualizationTool(self.st)
-        visualizationTool.wordcloud()
-
         self.user = "me"
 
         # select priority label
@@ -326,6 +323,7 @@ class GmailPage:
 
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
+            
             # TODO
             self.st.warning("""
             여기에\n
@@ -333,6 +331,9 @@ class GmailPage:
             본문 텍스트에 출현한 키워드의\n
             출현 빈도 시각화 이미지를 뿌려 줄 것
             """)
+
+            visualizationTool = VisualizationTool(self.st, mail_body)
+            visualizationTool.wordcloud()
 
             col1, col2 = self.st.columns((1,1))
 
