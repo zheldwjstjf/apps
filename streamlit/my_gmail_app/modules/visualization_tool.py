@@ -14,7 +14,7 @@ class VisualizationTool:
     def wordcloud(self, mail_body_text):
 
         stopwords = STOPWORDS
-        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=50).generate(mail_body_text)
+        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=100).generate(mail_body_text)
         # rcParams['figure.figsize'] = 100, 200
 
 
