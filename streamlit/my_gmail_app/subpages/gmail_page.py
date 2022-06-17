@@ -333,19 +333,19 @@ class GmailPage:
             with col5:
                 self.st.write("---")
                 self.st.write("● mail_from")
-                self.visualizationTool.wordcloud(mail_from, 300)
+                self.visualizationTool.wordcloud(mail_from, 450)
 
             # wordcloud - mail_subject
             with col6:
                 self.st.write("---")
                 self.st.write("● mail_subject")
-                self.visualizationTool.wordcloud(mail_subject, 700)
+                self.visualizationTool.wordcloud(mail_subject, 550)
 
             # wordcloud - mail_snippet
             with col5:
                 self.st.write("---")
                 self.st.write("● mail_snippet")
-                self.visualizationTool.wordcloud(mail_snippet, 300)
+                self.visualizationTool.wordcloud(mail_snippet, 450)
 
             # wordcloud - mail_body
             with col6:
@@ -355,7 +355,7 @@ class GmailPage:
                     input_text = mail_body
                 else:
                     input_text = mail_body
-                self.visualizationTool.wordcloud(input_text, 700)
+                self.visualizationTool.wordcloud(input_text, 550)
 
 
 
