@@ -11,14 +11,14 @@ class VisualizationTool:
         self.st = streamlit
         self.snippetTools = SnippetTools(self.st)
 
-    def wordcloud(self):
+    def wordcloud(self, mail_body_text):
 
         mytext = """
         Russian President Vladimir Putin has declared the end of "the era of the unipolar world" in a combative speech that lambasted Western countries at the St. Petersburg International Economic Forum on Friday.
         """
 
         stopwords = STOPWORDS
-        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=50).generate(mytext)
+        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mytext)
         rcParams['figure.figsize'] = 100, 200
 
 
@@ -32,9 +32,6 @@ class VisualizationTool:
 
         # 
         img_file_path = img_folder_path + "result_img.png"
-
-        self.st.write(type(wc))
-        self.st.write(img_file_path)
         try:
             wc.to_file(img_file_path)
         except Exception as e:
