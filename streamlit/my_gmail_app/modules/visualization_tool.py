@@ -18,7 +18,7 @@ class VisualizationTool:
         wordcloud = WordCloud(stopwords=stopwords, background_color="white", max_words=50).generate(mytext)
         rcParams['figure.figsize'] = 100, 200
 
-        # fig, ax = plt.subplots()
+        fig, ax = plt.subplots()
         # plt.imshow(wordcloud)
-        # plt.axis("off")
-        # self.st.pyplot()
+        plt.axis("off")
+        self.st.pyplot()
