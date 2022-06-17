@@ -8,7 +8,7 @@ class VisualizationTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
 
-    def wordcloud(self, mail_body_text):
+    def wordcloud(self, mail_body_text, widthsize):
 
         stopwords = STOPWORDS
         wc = WordCloud(stopwords=stopwords, background_color="white", max_words=77).generate(mail_body_text)
@@ -29,7 +29,7 @@ class VisualizationTool:
             self.st.error("Exception : " + str(e))
 
         try:
-            self.st.image(img_file_path, width=700)
+            self.st.image(img_file_path, width=widthsize)
         except Exception as e:
             self.st.error("Exception : " + str(e))
 

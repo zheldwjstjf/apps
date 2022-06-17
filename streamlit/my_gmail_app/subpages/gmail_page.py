@@ -332,26 +332,30 @@ class GmailPage:
             # wordcloud - mail_from
             with col5:
                 self.st.write("---")
-                self.visualizationTool.wordcloud(mail_from)
+                self.st.write("● mail_from")
+                self.visualizationTool.wordcloud(mail_from, 300)
 
             # wordcloud - mail_subject
             with col6:
                 self.st.write("---")
-                self.visualizationTool.wordcloud(mail_subject)
+                self.st.write("● mail_subject")
+                self.visualizationTool.wordcloud(mail_subject, 700)
 
             # wordcloud - mail_snippet
             with col5:
                 self.st.write("---")
-                self.visualizationTool.wordcloud(mail_snippet)
+                self.st.write("● mail_snippet")
+                self.visualizationTool.wordcloud(mail_snippet, 300)
 
             # wordcloud - mail_body
             with col6:
                 self.st.write("---")
+                self.st.write("● mail_body")
                 if ("http" not in mail_body) and ("</" not in mail_body):
                     input_text = mail_body
                 else:
                     input_text = mail_body
-                self.visualizationTool.wordcloud(input_text)
+                self.visualizationTool.wordcloud(input_text, 700)
 
 
 
