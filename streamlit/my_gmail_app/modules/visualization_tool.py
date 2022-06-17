@@ -24,4 +24,4 @@ class VisualizationTool:
 
         wordcloud.to_file("images/result.png")
         img_path="images/result.png"
-        self.snippetTools.image_alignment(img_path, 1380)
+        self.snippetTools.image_alignment(img_path, 500)
