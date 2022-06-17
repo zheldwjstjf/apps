@@ -4,12 +4,9 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from wordcloud import WordCloud, STOPWORDS
 
-from modules.snippet_tools import SnippetTools
-
 class VisualizationTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
-        self.snippetTools = SnippetTools(self.st)
 
     def wordcloud(self, mail_body_text):
 
@@ -32,7 +29,7 @@ class VisualizationTool:
             self.st.error("Exception : " + str(e))
 
         try:
-            self.snippetTools.image_alignment(img_file_path, 1000)
+            self.st.image(img_file_path, width=1000)
         except Exception as e:
             self.st.error("Exception : " + str(e))
 
