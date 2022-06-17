@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 from matplotlib import rcParams
 from wordcloud import WordCloud, STOPWORDS
 
+from modules.snippet_tools import SnippetTools
+
 class VisualizationTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
