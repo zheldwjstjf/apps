@@ -1,3 +1,4 @@
+import os
 import sys
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
@@ -22,6 +23,15 @@ class VisualizationTool:
         # plt.imshow(wordcloud)
         # self.st.pyplot(fig)
 
-        wordcloud.to_file("images/result.png")
-        img_path="images/result.png"
+        # 
+        img_path = "images/result.png"
+        # Check whether the specified path exists or not
+        isExist = os.path.exists(img_path)
+
+        if not isExist:        
+            # Create a new directory because it does not exist 
+            os.makedirs(img_path)
+
+        # 
+        wordcloud.to_file(img_path)
         self.snippetTools.image_alignment(img_path, 500)
