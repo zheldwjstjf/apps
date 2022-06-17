@@ -332,8 +332,8 @@ class GmailPage:
             출현 빈도 시각화 이미지를 뿌려 줄 것
             """)
 
-            visualizationTool = VisualizationTool(self.st, mail_body)
-            visualizationTool.wordcloud()
+            visualizationTool = VisualizationTool(self.st)
+            visualizationTool.wordcloud(mail_body)
 
             col1, col2 = self.st.columns((1,1))
 
