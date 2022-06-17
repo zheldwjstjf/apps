@@ -346,10 +346,11 @@ class GmailPage:
                 self.st.subheader("● mail_snippet : \n"); self.st.error(mail_snippet)
 
             with col2:
-                self.st.subheader("● mail_body : \n")
                 if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
+                    self.st.subheader("● mail_body（HTML） : \n")
                     components.html(mail_body, height=4300)
                 else:
+                    self.st.subheader("● mail_body（TXT） : \n")
                     self.st.write(mail_body)
 
 
