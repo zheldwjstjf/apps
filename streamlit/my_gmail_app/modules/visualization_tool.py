@@ -28,7 +28,7 @@ class VisualizationTool:
             os.makedirs(img_folder_path)
 
         # 
-        img_file_path = img_folder_path + "result.png"
+        img_file_path = img_folder_path + "result_img.png"
 
         self.st.write(type(wc))
         self.st.write(img_file_path)
