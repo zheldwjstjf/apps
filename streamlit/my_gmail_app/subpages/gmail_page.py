@@ -24,6 +24,7 @@ class GmailPage:
         self.st = streamlit
         self.service = service
         self.gmail_api = GmailApi(self.st, self.service)
+        self.visualizationTool = VisualizationTool(self.st)
 
         self.query = ""
 
@@ -324,13 +325,16 @@ class GmailPage:
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
-            visualizationTool = VisualizationTool(self.st)
 
+            # wordcloud - from
+            self.visualizationTool.wordcloud(mail_from)
+
+            # wordcloud - all
             if ("http" not in mail_body) and ("</" not in mail_body):
                 input_text = mail_from + mail_subject + mail_snippet + mail_body
             else:
                 input_text = mail_from + mail_subject + mail_snippet
-            visualizationTool.wordcloud(input_text)
+            self.visualizationTool.wordcloud(input_text)
 
             col1, col2 = self.st.columns((1,1))
 
