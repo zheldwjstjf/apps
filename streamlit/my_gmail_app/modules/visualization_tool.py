@@ -21,4 +21,5 @@ class VisualizationTool:
         fig = plt.figure()
         plt.imshow(wordcloud)
         plt.axis("off")
-        # self.st.pyplot(fig)
+        
+        self.st.pyplot(fig)
