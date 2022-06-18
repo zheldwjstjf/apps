@@ -78,6 +78,20 @@ class GmailFetchingSettingPage:
                 self.query_older_than = self.get_query_older_than()
                 self.query = self.query + self.query_older_than + " "
 
+        with col1:
+            # call get_list() with query
+            self.st.subheader("▶︎ Email取得")
+
+            # final query
+            self.st.code("Query : " + self.query)
+
+            # select fetch count
+            self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
+
+
+
+
+
     def get_priority_label(self):
 
         priority_label_list = [
