@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 
 import streamlit.components.v1 as components
 
-class GmailPage:
+class GmailFetchingSettingPage:
     """
     - class name : MainPage
     """
@@ -24,14 +24,9 @@ class GmailPage:
         """
 
         self.st = streamlit
-        self.service = service
-        self.gmail_api = GmailApi(self.st, self.service)
-        self.visualizationTool = VisualizationTool(self.st)
-
         self.query = ""
-        self.mail_id = None
 
-    def gmail_page(self):
+    def gmail_fetching_setting_page(self):
         """
         - method name : main_page
         - arg(s) : streamlit
