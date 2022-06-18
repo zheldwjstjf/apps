@@ -365,6 +365,7 @@ class GmailPage:
             self.st.info("[DEBUG] mail_from : " + mail_from)
             try:
                 email_address = mail_from.split("@")[1]
+                email_address = email_address.replace(">", "")
             except Exception as e:
                 self.st.info("email_address - Exception : " + str(e))
                 email_address = "email_address - Exception"
