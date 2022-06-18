@@ -1,3 +1,4 @@
+from modules.gmailapi import GmailApi
 from modules.visualization_tool import VisualizationTool
 
 import json
@@ -27,7 +28,9 @@ class GmailFetchingResultPage:
 
         self.mail_id = None
 
-    def get_mail_content(self, maillist, fetching_count, result_count):
+    def get_mail_content(self, service, maillist, fetching_count, result_count):
+
+        self.gmail_api = GmailApi(self.st, service)
 
         if result_count > fetching_count:
             pass

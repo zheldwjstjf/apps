@@ -123,7 +123,7 @@ class MyGmailApp:
                 fetching_count = self.gmailFetchingSettingPage.fetching_count
                 result_count = self.gmailFetchingPage.result_count
                 if maillist != None:
-                    self.gmailFetchingResultPage.get_mail_content(maillist, fetching_count, result_count)
+                    self.gmailFetchingResultPage.get_mail_content(service, maillist, fetching_count, result_count)
 
 
 
