@@ -365,11 +365,10 @@ class GmailPage:
             self.st.info("[DEBUG] mail_from : " + mail_from)
             try:
                 email_address = mail_from.split("@")[1]
-                # email_address = email_address.replace(">", "")
+                email_address = email_address.replace(">", "")
             except Exception as e:
                 self.st.error("email_address - Exception : " + str(e))
                 email_address = "email_address - Exception"
-            self.st.write("[DEBUG] email_address : " + email_address)
             self.st.info("[DEBUG] email_address : " + email_address)
 
             if email_address in filter_dict_str:
