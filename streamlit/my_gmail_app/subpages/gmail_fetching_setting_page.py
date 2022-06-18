@@ -25,17 +25,6 @@ class GmailFetchingSettingPage:
 
         self.user = "me"
 
-        # select priority label
-        col1, col2 = self.st.columns((1,1))
-        with col1:
-            self.st.subheader("▶︎ Select Priority Label")
-            self.priority_label = self.get_priority_label()
-
-        # select email
-        self.st.subheader("▶︎ Select Email")
-        self.query_froms = self.get_query_from(self.priority_label)
-        self.query = self.query + self.query_from + " "
-
         # get query
         self.st.subheader("▶︎ Query設定")
 
