@@ -370,6 +370,7 @@ class GmailPage:
                 self.st.error("email_address - Exception : " + str(e))
                 email_address = "email_address - Exception"
             self.st.write("[DEBUG] email_address : " + email_address)
+            self.st.info("[DEBUG] email_address : " + email_address)
 
             if email_address in filter_dict_str:
                 filter_dict = json.load(filter_dict_str)
