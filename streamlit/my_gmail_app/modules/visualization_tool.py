@@ -11,27 +11,33 @@ class VisualizationTool:
     def wordcloud(self, mail_body_text, widthsize):
 
         stopwords = STOPWORDS
-        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mail_body_text)
-
-        img_folder_path = "/app/apps/images/"
-        # Check whether the specified path exists or not
-        isExist = os.path.exists(img_folder_path)
-
-        if not isExist:        
-            # Create a new directory because it does not exist 
-            os.makedirs(img_folder_path)
-
-        # 
-        img_file_path = img_folder_path + "result_img.png"
         try:
-            wc.to_file(img_file_path)
-        except Exception as e:
-            self.st.error("Exception : " + str(e))
+            wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mail_body_text)
 
-        try:
-            self.st.image(img_file_path, width=widthsize)
+            img_folder_path = "/app/apps/images/"
+            # Check whether the specified path exists or not
+            isExist = os.path.exists(img_folder_path)
+
+            if not isExist:        
+                # Create a new directory because it does not exist 
+                os.makedirs(img_folder_path)
+
+            # 
+            img_file_path = img_folder_path + "result_img.png"
+            try:
+                wc.to_file(img_file_path)
+            except Exception as e:
+                self.st.error("Exception : " + str(e))
+
+            try:
+                self.st.image(img_file_path, width=widthsize)
+            except Exception as e:
+                self.st.error("Exception : " + str(e))
+
         except Exception as e:
-            self.st.error("Exception : " + str(e))
+            self.st.warning("NO TEXT")
+
+
 
 
 
