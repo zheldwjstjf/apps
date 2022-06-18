@@ -125,6 +125,9 @@ class MyGmailApp:
                 if maillist != None:
                     self.gmailFetchingResultPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
+                ### GmailMngPage
+                self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultPage.mail_id)
+
 
 
             def Gmail_Crawling():
