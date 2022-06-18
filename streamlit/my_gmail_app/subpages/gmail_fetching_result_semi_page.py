@@ -94,7 +94,7 @@ class GmailFetchingResultSemiPage:
                 ########################
 
                 # mail_subject
-                self.st.subheader("● mail_subject : \n"); self.st.error(mail_subject)
+                self.st.subheader("● mail_subject : \n"); self.st.success(mail_subject)
 
                 # wordcloud
                 col5, col6, col7 = self.st.columns((5,0.3,5))
