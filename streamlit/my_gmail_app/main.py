@@ -137,8 +137,11 @@ class MyGmailApp:
                     contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                 with st.sidebar.expander("[ 選択 ]"):
-                    selected_content_info = self.st.selectbox("SELECT EMAIL", contents_list[1:2], key="select_a_mail")
-                    self.st.write(selected_content_info)
+                    selected_content_info = self.st.selectbox("SELECT EMAIL", contents_list, key="select_a_mail")
+                    selected_email_id = selected_content_info[0]
+                    selected_email_title = selected_content_info[1]
+                    self.st.write(selected_email_title)
+
 
                 ### GmailFetchingResultFullPage
                 """
