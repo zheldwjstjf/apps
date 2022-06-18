@@ -104,7 +104,7 @@ class GmailPage:
             self.st.code("Query : " + self.query)
 
             # select fetch count
-            self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
+            self.fetching_count = int(self.st.number_input("最大Match 件数 (上限1000)", min_value=1, max_value=1000))
 
 
         # with col1:
@@ -128,7 +128,7 @@ class GmailPage:
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
         self.result_count = len(self.maillist)
-        self.st.write("取得件数 : " + str(self.result_count) + " 件")
+        self.st.write("Match 件数 : " + str(self.result_count) + " 件")
         # self.st.write("[DEBUG] maillist : ", self.maillist)
 
         return self.maillist
