@@ -118,7 +118,6 @@ class GmailFetchingResultFullPage:
                 col1, col2 = self.st.columns((1,1))
 
                 with col1:
-                    
                     self.st.subheader("● mail_subject : \n"); self.st.error(mail_subject)
                     self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
                     self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
