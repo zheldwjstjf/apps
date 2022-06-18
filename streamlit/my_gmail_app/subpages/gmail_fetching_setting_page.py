@@ -20,9 +20,6 @@ class GmailFetchingSettingPage:
         - arg(s) : streamlit
         """
 
-        # title
-        self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
-
         self.user = "me"
 
         # get query

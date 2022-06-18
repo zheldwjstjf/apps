@@ -102,10 +102,8 @@ class MyGmailApp:
             def Gmail():
                 service = self.auth_result
 
-                ### old
-                # self.gmailPage = GmailPage(st, service)
-                # self.gmailPage.gmail_page()
-                # self.gmailMngPage.gmail_mng_page(self.gmailPage.mail_id)
+                # title
+                self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
                 
                 ### GmailFetchingSettingPage
                 self.gmailFetchingSettingPage = GmailFetchingSettingPage(st)
