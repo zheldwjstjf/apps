@@ -84,7 +84,7 @@ class GmailFetchingSettingPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=1, key="is")
+        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=0, key="is")
         self.query_is = "is:" + selected_query_is_val
 
         return self.query_is
