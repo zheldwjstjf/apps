@@ -36,12 +36,14 @@ class GmailPage:
         """
 
         call_option = kwargs.get("callOption")
+        self.st.write("call_option : ", call_option)
         if call_option == None:
             pass
         else:
-            call_option = "skipFetching"
+            pass
 
         given_mail_id = kwargs.get("givenMailId")
+        self.st.write("given_mail_id : ", given_mail_id)
         if given_mail_id != None:
             pass
         else:
