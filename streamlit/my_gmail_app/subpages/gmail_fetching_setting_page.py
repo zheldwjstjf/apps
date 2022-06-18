@@ -28,57 +28,37 @@ class GmailFetchingSettingPage:
         # get query
         self.st.subheader("▶︎ Query設定")
 
-        col1, col2 = self.st.columns((1,1))
+        query_key_list = [
+                "is",
+                "subject",
+                "to",
+                "has",
+                "label",
+                "after",
+                "before",
+                "older",
+                "newer",
+                "older_than",
+                "newer_than"
+            ]
+        selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main")
 
-        with col1:
-            query_key_list = [
-                    "is",
-                    "subject",
-                    "to",
-                    "has",
-                    "label"
-                ]
-            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main")
+        if "is" in selected_query_keys:
+            self.query_is = self.get_query_is()
+            self.query = self.query + self.query_is + " "
 
-            if "is" in selected_query_keys:
-                self.query_is = self.get_query_is()
-                self.query = self.query + self.query_is + " "
+        if "subject" in selected_query_keys:
+            self.query_subject = self.get_query_subject()
+            self.query = self.query + self.query_subject + " "
 
-            if "subject" in selected_query_keys:
-                self.query_subject = self.get_query_subject()
-                self.query = self.query + self.query_subject + " "
+        # call get_list() with query
+        self.st.subheader("▶︎ Email取得")
 
-        with col2:
-            query_key_list = [
-                    "after",
-                    "before",
-                    "older",
-                    "newer",
-                    "older_than",
-                    "newer_than"
-                ]
-            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
+        # final query
+        self.st.code("Query : " + self.query)
 
-            if "newer_than" in selected_query_keys:
-                self.query_newer_than = self.get_query_newer_than()
-                self.query = self.query + self.query_newer_than + " "
-
-            if "older_than" in selected_query_keys:
-                self.query_older_than = self.get_query_older_than()
-                self.query = self.query + self.query_older_than + " "
-
-        with col1:
-            # call get_list() with query
-            self.st.subheader("▶︎ Email取得")
-
-            # final query
-            self.st.code("Query : " + self.query)
-
-            # select fetch count
-            self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
-
-
-
+        # select fetch count
+        self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
 
 
     def get_priority_label(self):
