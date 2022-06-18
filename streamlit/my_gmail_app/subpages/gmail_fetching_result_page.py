@@ -41,7 +41,6 @@ class GmailFetchingResultPage:
         else:
             fetching_count = 1
 
-        
         # TODO
         # for loop 대신에, 
         # id / title만 먼저 가져와서 리스트 가져와서 -> 셀렉트 박스 만들어서
