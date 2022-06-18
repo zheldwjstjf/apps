@@ -76,7 +76,7 @@ class GmailPage:
                     "has",
                     "label"
                 ]
-            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main")
+            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main" + call_option)
 
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
@@ -95,7 +95,7 @@ class GmailPage:
                     "older_than",
                     "newer_than"
                 ]
-            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
+            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub" + call_option)
 
             if "newer_than" in selected_query_keys:
                 self.query_newer_than = self.get_query_newer_than()
@@ -135,7 +135,7 @@ class GmailPage:
             "Medium",
             "Low"
         ]
-        selected_priority = self.st.multiselect("Select Email", priority_label_list, key="priority")
+        selected_priority = self.st.multiselect("Select Email", priority_label_list, key="priority" + call_option)
 
         return selected_priority     
 
