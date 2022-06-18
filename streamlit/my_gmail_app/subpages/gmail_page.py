@@ -361,9 +361,9 @@ class GmailPage:
                     pass
             
             # getFilterList
-            filter_dict_str = self.gmail_api.getFilterList(self.user, self.mail_id)
-            self.st.write("filter_dict_str type : " + str(type(filter_dict_str)))
-            self.st.info(filter_dict_str)
+            filter_dict = self.gmail_api.getFilterList(self.user, self.mail_id)
+            self.st.write("filter_dict type : " + str(type(filter_dict)))
+            self.st.info(filter_dict)
 
             self.st.info("[DEBUG] mail_from : " + mail_from)
             try:
@@ -374,8 +374,7 @@ class GmailPage:
                 email_address = "email_address - Exception"
             self.st.info("[DEBUG] email_address : " + email_address)
 
-            if email_address in filter_dict_str:
-                filter_dict = json.load(filter_dict_str)
+            if email_address in str(filter_dict):
                 filter_list = filter_dict["filters"]
                 self.st.info(filter_list)
 
