@@ -380,7 +380,7 @@ class GmailPage:
 
                 for filter in filter_list:
                     if email_address in str(filter):
-                        filtered_email = filter.get("from")
+                        filtered_email = filter.get("criteria")
                         filter_action = filter.get("action")
                         self.st.info("[DEBUG - 4] : " + str(filtered_email) + " : " + str(filter_action))
             else:
