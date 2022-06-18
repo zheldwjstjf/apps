@@ -6,7 +6,9 @@ import os
 from subpages.gmail_page import GmailPage
 from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
 from subpages.gmail_fetching_page import GmailFetchingPage
-from subpages.gmail_fetching_result_page import GmailFetchingResultPage
+# from subpages.gmail_fetching_result_page import GmailFetchingResultPage
+from subpages.gmail_fetching_result_semi_page import GmailFetchingResultSemiPage
+from subpages.gmail_fetching_result_full_page import GmailFetchingResultFullPage
 
 from subpages.gmail_crawling_page import GmailCrawlingPage
 from subpages.sidebar import SidebarPage
@@ -117,12 +119,32 @@ class MyGmailApp:
                 self.gmailFetchingPage.get_list(user, query)
 
                 ### GmailFetchingResultPage
+                """
                 self.gmailFetchingResultPage = GmailFetchingResultPage(st)
                 maillist = self.gmailFetchingPage.maillist
                 fetching_count = self.gmailFetchingSettingPage.fetching_count
                 result_count = self.gmailFetchingPage.result_count
                 if maillist != None:
                     self.gmailFetchingResultPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                """
+
+                ### GmailFetchingResultSemiPage
+                self.gmailFetchingResultSemiPage = GmailFetchingResultSemiPage(st)
+                maillist = self.gmailFetchingPage.maillist
+                fetching_count = self.gmailFetchingSettingPage.fetching_count
+                result_count = self.gmailFetchingPage.result_count
+                if maillist != None:
+                    self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+
+                ### GmailFetchingResultFullPage
+                """
+                self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+                maillist = self.gmailFetchingPage.maillist
+                fetching_count = self.gmailFetchingSettingPage.fetching_count
+                result_count = self.gmailFetchingPage.result_count
+                if maillist != None:
+                    self.gmailFetchingResultFullPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                """
 
                 ### GmailMngPage
                 with st.sidebar.expander("[ 管理 ]"):

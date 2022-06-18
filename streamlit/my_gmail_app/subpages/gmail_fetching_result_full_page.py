@@ -12,7 +12,7 @@ from email.mime.text import MIMEText
 
 import streamlit.components.v1 as components
 
-class GmailFetchingResultPage:
+class GmailFetchingResultFullPage:
     """
     - class name : MainPage
     """
