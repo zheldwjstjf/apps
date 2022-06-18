@@ -1,6 +1,7 @@
 from modules.gmailapi import GmailApi
 from modules.visualization_tool import VisualizationTool
 import json
+import datetime
 
 import base64
 from email.mime.audio import MIMEAudio
@@ -76,7 +77,7 @@ class GmailPage:
                     "has",
                     "label"
                 ]
-            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main")
+            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main" + str(datetime.datetime.now()))
 
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
@@ -95,7 +96,7 @@ class GmailPage:
                     "older_than",
                     "newer_than"
                 ]
-            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
+            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub"+ str(datetime.datetime.now()))
 
             if "newer_than" in selected_query_keys:
                 self.query_newer_than = self.get_query_newer_than()
@@ -119,7 +120,7 @@ class GmailPage:
 
         #
         if call_option != "skipFetching":
-            if self.st.button("取得", key="get_list"):
+            if self.st.button("取得", key="get_list"+ str(datetime.datetime.now())):
                 self.maillist = self.get_list()
             
                 # get_mail_contents 
@@ -135,7 +136,7 @@ class GmailPage:
             "Medium",
             "Low"
         ]
-        selected_priority = self.st.multiselect("Select Email", priority_label_list, key="priority")
+        selected_priority = self.st.multiselect("Select Email", priority_label_list, key="priority"+ str(datetime.datetime.now()))
 
         return selected_priority     
 
@@ -170,7 +171,7 @@ class GmailPage:
                 "noreply@uber.com",
             ]
 
-        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
+        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from"+ str(datetime.datetime.now()))
         selected_query_from_val = str(selected_query_from_val)
         if "@" not in selected_query_from_val:
             selected_query_from_val = ""
@@ -184,7 +185,7 @@ class GmailPage:
         ]        
         self.query_from = "from:" + selected_query_from_val
 
-        selected_info_itme = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info")
+        selected_info_itme = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info"+ str(datetime.datetime.now()))
 
         # 
         col1, col2 = self.st.columns((1,1))
@@ -200,7 +201,7 @@ class GmailPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=1, key="is")
+        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=1, key="is"+ str(datetime.datetime.now()))
         self.query_is = "is:" + selected_query_is_val
 
         return self.query_is
@@ -240,7 +241,7 @@ class GmailPage:
                 "4y",
                 "5y",
             ]
-        selected_query_newer_than_val = self.st.selectbox("Select Query Value", query_newer_than_val_list, key="newer_than")
+        selected_query_newer_than_val = self.st.selectbox("Select Query Value", query_newer_than_val_list, key="newer_than"+ str(datetime.datetime.now()))
         self.query_newer_than = "newer_than:" + selected_query_newer_than_val
 
         return self.query_newer_than
@@ -275,7 +276,7 @@ class GmailPage:
                 "4y",
                 "5y",
             ]
-        selected_query_older_than_val = self.st.selectbox("Select Query Value", query_older_than_val_list, key="older_than")
+        selected_query_older_than_val = self.st.selectbox("Select Query Value", query_older_than_val_list, key="older_than"+ str(datetime.datetime.now()))
         self.query_older_than = "older_than:" + selected_query_older_than_val
 
         return self.query_older_than
@@ -348,31 +349,31 @@ class GmailPage:
 
             # moveMailToTrash
             with col11:
-                if self.st.button("🗑", key="trash_" + self.mail_id):
+                if self.st.button("🗑", key="trash_" + self.mail_id+ str(datetime.datetime.now())):
                     # self.st.write("ゴミ箱に移動しました。")
                     pass
 
             # deleteMail
             with col12:
-                if self.st.button("削除", key="delete_" + self.mail_id):
+                if self.st.button("削除", key="delete_" + self.mail_id+ str(datetime.datetime.now())):
                     # self.st.write("削除しました。")
                     pass
 
             # markMailAsImportant
             with col13:
-                if self.st.button("重要", key="important_" + self.mail_id):
+                if self.st.button("重要", key="important_" + self.mail_id+ str(datetime.datetime.now())):
                     # self.st.write("重要なメールに指定しました。")
                     pass
 
             # markMailAsStarred
             with col14:
-                if self.st.button("⭐️", key="starred_" + self.mail_id):
+                if self.st.button("⭐️", key="starred_" + self.mail_id+ str(datetime.datetime.now())):
                     # self.st.write("星を付けました。")
                     pass
 
             # markMailAsUnread
             with col15:
-                if self.st.button("未読", key="unread_" + self.mail_id):
+                if self.st.button("未読", key="unread_" + self.mail_id+ str(datetime.datetime.now())):
                     # self.st.write("メールを未読に変更しました。")
                     pass
 
