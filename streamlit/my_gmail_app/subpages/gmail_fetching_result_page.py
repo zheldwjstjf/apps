@@ -27,14 +27,14 @@ class GmailFetchingResultPage:
 
         self.mail_id = None
 
-    def get_mail_content(self, maillist):
+    def get_mail_content(self, maillist, fetching_count):
 
-        if self.result_count > self.fetching_count:
+        if self.result_count > fetching_count:
             pass
-        elif self.result_count > self.fetching_count:
+        elif self.result_count > fetching_count:
             pass
-        elif self.result_count < self.fetching_count:
-            self.fetching_count == self.result_count
+        elif self.result_count < fetching_count:
+            fetching_count == self.result_count
         else:
             self.result_count = 1
 
@@ -45,7 +45,7 @@ class GmailFetchingResultPage:
         # 셀렉트 박스에서 하나의 [id / title]를 선택하면 -> 스닛핏 또는 본문 볼 수 있게 하고
         #  스닛핏 또는 본문을 본다음에 -> 개요 정보 입력/업데이터 / 삭제 / 쓰레기토응로 / 본문내용 저장 등등 할수 있게 한다
           
-        for i in range(self.fetching_count):
+        for i in range(fetching_count):
 
             self.mail_id = self.mail_id = maillist[i]['id']
             self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
