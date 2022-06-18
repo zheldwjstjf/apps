@@ -325,7 +325,36 @@ class GmailPage:
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
-            
+
+            ########################
+            col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,1,1,1,1,1))
+
+            # moveMailToTrash
+            with col11:
+                if self.st.button("🗑", key="trash"):
+                    self.st.write("ゴミ箱に移動しました。")
+
+            # deleteMail
+            with col12:
+                if self.st.button("削除", key="delete"):
+                    self.st.write("削除しました。")
+
+            # markMailAsImportant
+            with col13:
+                if self.st.button("重要", key="important"):
+                    self.st.write("重要なメールに指定しました。")
+
+            # markMailAsStarred
+            with col14:
+                if self.st.button("⭐️", key="starred"):
+                    self.st.write("星を付けました。")
+
+            # markMailAsUnread
+            with col15:
+                if self.st.button("未読", key="unread"):
+                    self.st.write("メールを未読に変更しました。")
+
+            ########################
             # wordcloud
             col5, col6, col7 = self.st.columns((5,0.3,5))
 
