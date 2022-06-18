@@ -376,12 +376,12 @@ class GmailPage:
 
             if email_address in str(filter_dict):
                 filter_list = filter_dict["filter"]
-                self.st.info(filter_list)
+                self.st.info("[DEBUG] : " + str(filter_list))
 
                 for filter in filter_list:
                     if email_address in str(filter):
                         filter_action = filter.get("action")
-                        self.st.info(filter_action)
+                        self.st.info("[DEBUG] : " + str(filter_action))
             else:
                 self.st.info("No Filter")
 
