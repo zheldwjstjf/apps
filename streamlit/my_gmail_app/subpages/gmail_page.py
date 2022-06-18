@@ -375,7 +375,7 @@ class GmailPage:
             self.st.info("[DEBUG] email_address : " + email_address)
 
             if email_address in str(filter_dict):
-                filter_list = filter_dict["filters"]
+                filter_list = filter_dict["filter"]
                 self.st.info(filter_list)
 
                 for filter in filter_list:
