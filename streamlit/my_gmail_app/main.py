@@ -46,6 +46,10 @@ class MyGmailApp:
         - arg(s) : None
         """
 
+        self.auth_none_time = None
+        self.auth_fail_time = None
+        self.auth_success_time = None
+
         # 
         self.sidebarPage.sidebar_page()
 
