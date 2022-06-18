@@ -360,8 +360,10 @@ class GmailPage:
                     # self.st.write("メールを未読に変更しました。")
                     pass
             
-            # getFilter
+            # getFilterList
             filter_dict_str = self.gmail_api.getFilterList(self.user, self.mail_id)
+            self.st.info(filter_dict_str)
+            
             self.st.info("[DEBUG] mail_from : " + mail_from)
             try:
                 email_address = mail_from.split("@")[1]
