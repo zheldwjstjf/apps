@@ -358,6 +358,10 @@ class GmailPage:
                 if self.st.button("未読", key="unread"):
                     # self.st.write("メールを未読に変更しました。")
                     pass
+            
+            # getFilter
+            filter_status = self.gmail_api.getFilter(self.user, self.mail_id)
+            self.st.info("filter_status: " + filter_status)
 
             ########################
             # wordcloud
