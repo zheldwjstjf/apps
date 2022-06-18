@@ -29,9 +29,11 @@ class GmailFetchingResultFullPage:
         self.mail_id = None
         self.mail_content = None
 
-    def get_mail_content(self, service, user):
+    def get_mail_content(self, service, user, mail_id):
 
         self.gmail_api = GmailApi(self.st, service)
+        
+        self.mail_id = mail_id
 
         try:
             self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
