@@ -54,7 +54,7 @@ class GmailFetchingResultSemiPage:
                 self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
 
                 # - do mail as read
-                self.gmail_api.markMailAsRead(user, self.mail_id)            
+                # self.gmail_api.markMailAsRead(user, self.mail_id)            
 
                 mail = self.parse_mail()
 
