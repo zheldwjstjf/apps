@@ -17,7 +17,7 @@ class TmpPage:
         - arg(s) : None
         """
 
-        self.mail_id = mail_id
+        self.mail_id = str(mail_id)
         self.st.write("mail_id : ", self.mail_id)
 
         col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
