@@ -1,4 +1,4 @@
-class TmpPage:
+class GmailMngPage:
     """
     - class name : TmpPage
     """
@@ -11,7 +11,7 @@ class TmpPage:
 
         self.st = streamlit
 
-    def tmp_Page(self, mail_id):
+    def gmail_mng_page(self, mail_id):
         """
         - method name : tmpPage
         - arg(s) : None
