@@ -56,7 +56,7 @@ class GmailFetchingResultSemiPage:
                 self.mail_id = self.mail_id = maillist[i]['id']
                 self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
 
-                contents_list.append(self.mail_id)
+                content_info.append(self.mail_id)
 
                 # - do mail as read
                 # self.gmail_api.markMailAsRead(user, self.mail_id)            
@@ -65,37 +65,37 @@ class GmailFetchingResultSemiPage:
 
                 try:
                     mail_subject = mail['subject']
-                    contents_list.append(mail_subject)
+                    content_info.append(mail_subject)
                 except Exception as e:
                     self.st.error("Exception- mail['subject'] : " + "e")
 
                 try:
                     mail_date = mail['date']
-                    contents_list.append(mail_date)
+                    content_info.append(mail_date)
                 except Exception as e:
                     self.st.error("Exception- mail['date'] : " + "e")
 
                 try:
                     mail_from = mail['from']
-                    contents_list.append(mail_from)
+                    content_info.append(mail_from)
                 except Exception as e:
                     self.st.error("Exception- mail['from'] : " + "e")
 
                 try:
                     mail_to = mail['to']
-                    contents_list.append(mail_to)
+                    content_info.append(mail_to)
                 except Exception as e:
                     self.st.error("Exception- mail['to'] : " + "e")
 
                 try:
                     mail_snippet = mail['snippet']
-                    contents_list.append(mail_snippet)
+                    content_info.append(mail_snippet)
                 except Exception as e:
                     self.st.error("Exception- mail['snippet'] : " + "e")
 
                 try:
                     mail_body = mail['body']
-                    contents_list.append(mail_body)
+                    content_info.append(mail_body)
                 except Exception as e:
                     self.st.error("Exception- mail['body'] : " + "e")
 
@@ -103,7 +103,7 @@ class GmailFetchingResultSemiPage:
                     self.st.write("---")
                 self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
-                contents_list.append(contents_list)
+                contents_list.append(content_info)
 
                 ########################
 
