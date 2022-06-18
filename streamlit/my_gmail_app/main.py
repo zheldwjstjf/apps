@@ -109,7 +109,8 @@ class MyGmailApp:
                 
                 ### GmailFetchingSettingPage
                 self.gmailFetchingSettingPage = GmailFetchingSettingPage(st)
-                self.gmailFetchingSettingPage.gmail_fetching_setting_page()
+                with st.sidebar.expander("[ 操作 ]"):
+                    self.gmailFetchingSettingPage.gmail_fetching_setting_page()
 
                 ### GmailFetchingPage
                 self.gmailFetchingPage = GmailFetchingPage(st, service)
@@ -126,7 +127,8 @@ class MyGmailApp:
                     self.gmailFetchingResultPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                 ### GmailMngPage
-                self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultPage.mail_id)
+                with st.sidebar.expander("[ 操作 ]"):
+                    self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultPage.mail_id)
 
             def Gmail_Crawling():
                 service = self.auth_result
