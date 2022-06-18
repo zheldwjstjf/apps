@@ -21,7 +21,7 @@ class GmailFetchingPage:
         self.result_count = None
 
     def get_list(self, user, query):
-        if self.st.button("取得", key="get_list"):
+        if True: # self.st.button("取得", key="get_list"):
             self.maillist = self.gmail_api.getMailList(user, query)
 
             if self.maillist != None:
