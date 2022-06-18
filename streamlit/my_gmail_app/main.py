@@ -112,7 +112,9 @@ class MyGmailApp:
 
                 ### GmailFetchingPage
                 self.gmailFetchingPage = GmailFetchingPage(st, service)
-                self.gmailFetchingPage.get_list()
+                user = self.gmailFetchingSettingPage.user
+                query = self.gmailFetchingSettingPage.query
+                self.gmailFetchingPage.get_list(user, query)
 
             def Gmail_Crawling():
                 service = self.auth_result

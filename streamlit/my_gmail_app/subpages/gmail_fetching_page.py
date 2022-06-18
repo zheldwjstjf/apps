@@ -17,8 +17,8 @@ class GmailFetchingPage:
         self.service = service
         self.gmail_api = GmailApi(self.st, self.service)
 
-    def get_list(self):
-        self.maillist = self.gmail_api.getMailList(self.user, self.query)
+    def get_list(self, user, query):
+        self.maillist = self.gmail_api.getMailList(user, query)
         self.result_count = len(self.maillist)
         self.st.write("取得件数 : " + str(self.result_count) + " 件")
         # self.st.write("[DEBUG] maillist : ", self.maillist)
