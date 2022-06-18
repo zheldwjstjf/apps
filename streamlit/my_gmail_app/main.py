@@ -148,7 +148,7 @@ class MyGmailApp:
 
                 ### GmailMngPage
                 with st.sidebar.expander("[ 管理 ]"):
-                    self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultPage.mail_id)
+                    self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
 
             def Gmail_Crawling():
                 service = self.auth_result
