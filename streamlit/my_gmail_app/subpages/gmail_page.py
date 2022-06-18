@@ -436,7 +436,8 @@ class GmailPage:
                 if self.st.button("未読", key="unread_" + self.mail_id):
                     self.st.balloons()
                     self.st.write("メールを未読に変更しました。")
-            self.st.stop()
+        
+        self.st.stop()
 
 
 
