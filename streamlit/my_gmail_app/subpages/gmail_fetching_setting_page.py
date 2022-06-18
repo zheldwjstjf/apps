@@ -17,7 +17,7 @@ class GmailFetchingSettingPage:
     - class name : MainPage
     """
 
-    def __init__(self, streamlit, service) -> None:
+    def __init__(self, streamlit) -> None:
         """
         - method name : __init__
         - arg(s) : streamlit
