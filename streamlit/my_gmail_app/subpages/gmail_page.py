@@ -368,6 +368,7 @@ class GmailPage:
             except Exception as e:
                 self.st.info("email_address - Exception : " + str(e))
                 email_address = "email_address - Exception"
+            self.st.info("[DEBUG] email_address : " + email_address)
 
             if email_address in filter_dict_str:
                 filter_dict = json.load(filter_dict_str)
