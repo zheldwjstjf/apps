@@ -128,8 +128,6 @@ class MyGmailApp:
                 ### GmailMngPage
                 self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultPage.mail_id)
 
-
-
             def Gmail_Crawling():
                 service = self.auth_result
                 self.gmailCrawlingPage = GmailCrawlingPage(st, service)
