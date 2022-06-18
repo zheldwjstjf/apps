@@ -362,8 +362,14 @@ class GmailPage:
             
             # getFilter
             filter_dict_str = self.gmail_api.getFilterList(self.user, self.mail_id)
-            email_address = mail_from.split("<")[1]
-            email_address = email_address.split(">")[0]
+            self.st.info("[DEBUG] mail_from : " + mail_from)
+            try:
+                email_address = mail_from.split("<")[1]
+                email_address = email_address.split(">")[0]
+            except Exception as e:
+                self.st.info("email_address - Exception : " + str(e))
+                email_address = "email_address - Exception"
+
             if email_address in filter_dict_str:
                 filter_dict = json.load(filter_dict_str)
                 filter_list = filter_dict["filters"]
