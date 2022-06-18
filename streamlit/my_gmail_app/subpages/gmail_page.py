@@ -360,8 +360,8 @@ class GmailPage:
                     pass
             
             # getFilter
-            filter_status = self.gmail_api.getFilter(self.user, self.mail_id)
-            self.st.info("filter_status: " + filter_status)
+            filter_status = self.gmail_api.getFilterList(self.user, self.mail_id)
+            self.st.info("filter_status: " + str(filter_status))
 
             ########################
             # wordcloud
