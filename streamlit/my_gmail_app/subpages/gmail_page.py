@@ -379,7 +379,7 @@ class GmailPage:
                     if email_address in str(filter):
                         filtered_email = filter.get("criteria")
                         filter_action = filter.get("action")
-                        self.st.info("[DEBUG] : " + str(filtered_email) + " : " + str(filter_action))
+                        self.st.info("Filter : " + str(filtered_email) + " : " + str(filter_action))
             else:
                 self.st.info("No Filter")
 
