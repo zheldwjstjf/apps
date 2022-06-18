@@ -39,7 +39,7 @@ class GmailFetchingSettingPage:
                 "older_than",
                 "newer_than"
             ]
-        selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0:2], key="main")
+        selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0:1], key="main")
 
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
@@ -85,7 +85,7 @@ class GmailFetchingSettingPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=0, key="is")
+        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=1, key="is")
         self.query_is = "is:" + selected_query_is_val
 
         return self.query_is
