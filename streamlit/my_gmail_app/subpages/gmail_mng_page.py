@@ -27,6 +27,7 @@ class GmailMngPage:
         # moveMailToTrash
         with col11:
             if self.st.button("🗑", key="trash" + self.mail_id):
+                self.st.balloons()
                 self.st.write("ゴミ箱に移動しました。")
 
         # deleteMail
