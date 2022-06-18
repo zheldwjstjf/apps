@@ -29,25 +29,11 @@ class GmailPage:
 
         self.query = ""
 
-    def gmail_page(self, *args, **kwargs):
+    def gmail_page(self):
         """
         - method name : main_page
         - arg(s) : streamlit
         """
-
-        call_option = kwargs.get("callOption")
-        self.st.write("call_option : ", call_option)
-        if call_option == None:
-            pass
-        else:
-            pass
-
-        given_mail_id = kwargs.get("givenMailId")
-        self.st.write("given_mail_id : ", given_mail_id)
-        if given_mail_id != None:
-            pass
-        else:
-            pass
 
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
@@ -78,7 +64,7 @@ class GmailPage:
                     "has",
                     "label"
                 ]
-            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main" + str(call_option))
+            selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0], key="main")
 
             if "is" in selected_query_keys:
                 self.query_is = self.get_query_is()
@@ -97,7 +83,7 @@ class GmailPage:
                     "older_than",
                     "newer_than"
                 ]
-            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub" + str(call_option))
+            selected_query_keys = self.st.multiselect("その他のQuery", query_key_list, key="sub")
 
             if "newer_than" in selected_query_keys:
                 self.query_newer_than = self.get_query_newer_than()
@@ -119,16 +105,12 @@ class GmailPage:
             self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
 
 
-        #
-        if call_option != "skipFetching":
-            if self.st.button("取得", key="get_list"):
-                self.maillist = self.get_list()
-            
-                # get_mail_contents 
-                self.get_mail_content(self.maillist)
-        else:
+        # with col1:
+        if self.st.button("取得", key="get_list"):
+            self.maillist = self.get_list()
+        
             # get_mail_contents 
-            self.get_mail_content(self.maillist)            
+            self.get_mail_content(self.maillist)
 
     def get_priority_label(self):
 
@@ -349,31 +331,35 @@ class GmailPage:
             col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
 
             # moveMailToTrash
-            if col11.button("🗑", key="trash_" + self.mail_id):
-                # self.st.write("ゴミ箱に移動しました。")
-                self.gmail_page(callOption="skipFetching", givenMailId=self.mail_id)
+            with col11:
+                if self.st.button("🗑", key="trash_" + self.mail_id):
+                    # self.st.write("ゴミ箱に移動しました。")
+                    pass
 
             # deleteMail
-            if col12.button("削除", key="delete_" + self.mail_id):
-                # self.st.write("削除しました。")
-                self.gmail_page(callOption="skipFetching", givenMailId=self.mail_id)
+            with col12:
+                if self.st.button("削除", key="delete_" + self.mail_id):
+                    # self.st.write("削除しました。")
+                    pass
 
             # markMailAsImportant
-            if col13.button("重要", key="important_" + self.mail_id):
-                # self.st.write("重要なメールに指定しました。")
-                self.gmail_page(callOption="skipFetching", givenMailId=self.mail_id)
+            with col13:
+                if self.st.button("重要", key="important_" + self.mail_id):
+                    # self.st.write("重要なメールに指定しました。")
+                    pass
 
             # markMailAsStarred
-            if col14.button("⭐️", key="starred_" + self.mail_id):
-                # self.st.write("星を付けました。")
-                self.gmail_page(callOption="skipFetching", givenMailId=self.mail_id)
+            with col14:
+                if self.st.button("⭐️", key="starred_" + self.mail_id):
+                    # self.st.write("星を付けました。")
+                    pass
 
             # markMailAsUnread
-            if col15.button("未読", key="unread_" + self.mail_id):
-                # self.st.write("メールを未読に変更しました。")
-                self.gmail_page(callOption="skipFetching", givenMailId=self.mail_id)
-
-
+            with col15:
+                if self.st.button("未読", key="unread_" + self.mail_id):
+                    # self.st.write("メールを未読に変更しました。")
+                    pass
+            
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(self.user, self.mail_id)
             # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
