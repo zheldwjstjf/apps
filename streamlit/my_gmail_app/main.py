@@ -75,8 +75,8 @@ class MyGmailApp:
             else:
                 self.st.error("認証失敗")
 
-            self.st.info("認証した時刻 : " + str(self.auth_success_time))
-            self.st.info("認証切れた時刻 : " + str(self.auth_none_time))
+            self.st.info("認証成功 : " + str(self.auth_success_time))
+            self.st.info("認証切れ : " + str(self.auth_none_time))
             self.st.info("[TODO] 認証維持時間 : ")
 
         # =================
