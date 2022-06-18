@@ -136,7 +136,7 @@ class MyGmailApp:
                 if maillist != None:
                     contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
-                with st.sidebar.expander("[ メール選択 ]"):
+                with st.sidebar.expander("[ 選択 ]"):
                     selected_content_info = self.st.selectbox("SELECT EMAIL", contents_list, key="select_a_mail")
                     self.st.write(selected_content_info)
 
