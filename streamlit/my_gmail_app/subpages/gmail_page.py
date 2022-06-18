@@ -409,6 +409,7 @@ class GmailPage:
             # moveMailToTrash
             with col11:
                 if self.st.button("🗑", key="trash_" + self.mail_id):
+                    self.st.balloons()
                     self.st.write("ゴミ箱に移動しました。")
                     pass
 
