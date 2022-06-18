@@ -29,11 +29,23 @@ class GmailPage:
 
         self.query = ""
 
-    def gmail_page(self):
+    def gmail_page(self, *args, **kwargs):
         """
         - method name : main_page
         - arg(s) : streamlit
         """
+
+        call_option = kwargs.get("callOption")
+        if call_option == None:
+            pass
+        else:
+            call_option = "skipFetching"
+
+        given_mail_id = kwargs.get("givenMailId")
+        if given_mail_id != None:
+            pass
+        else:
+            pass
 
         # title
         self.st.markdown("<h1 style='text-align: center; color: red;'>MY GMAIL APP</h1>", unsafe_allow_html=True)
@@ -105,12 +117,16 @@ class GmailPage:
             self.fetching_count = int(self.st.number_input("最大取得件数 (上限1000)", min_value=1, max_value=1000))
 
 
-        # with col1:
-        if self.st.button("取得", key="get_list"):
-            self.maillist = self.get_list()
-        
+        #
+        if call_option != "skipFetching":
+            if self.st.button("取得", key="get_list"):
+                self.maillist = self.get_list()
+            
+                # get_mail_contents 
+                self.get_mail_content(self.maillist)
+        else:
             # get_mail_contents 
-            self.get_mail_content(self.maillist)
+            self.get_mail_content(self.maillist)            
 
     def get_priority_label(self):
 
@@ -359,7 +375,10 @@ class GmailPage:
                 if self.st.button("未読", key="unread_" + self.mail_id):
                     # self.st.write("メールを未読に変更しました。")
                     pass
-            
+
+            self.gmail_page(callOption="skipFetching", givenMailId=self.mail_id)
+
+
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(self.user, self.mail_id)
             # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
