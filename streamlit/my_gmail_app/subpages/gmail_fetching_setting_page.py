@@ -48,6 +48,14 @@ class GmailFetchingSettingPage:
             self.query_subject = self.get_query_subject()
             self.query = self.query + self.query_subject + " "
 
+        if "older_than" in selected_query_keys:
+            self.query_older_than = self.get_query_older_than()
+            self.query = self.query + self.query_older_than + " "
+
+        if "newer_than" in selected_query_keys:
+            self.query_newer_than = self.get_query_newer_than()
+            self.query = self.query + self.query_newer_than + " "
+
         # call get_list() with query
         self.st.subheader("▶︎ Email取得")
 
@@ -69,52 +77,6 @@ class GmailFetchingSettingPage:
 
         return selected_priority     
     
-
-    def get_query_from(self, priority_label):
-
-        self.priority_label = priority_label
-        
-        #
-        col1, col2 = self.st.columns((1,1))
-
-        # TODO 데이터베이스에서 가져오도록 할 것
-        email_list = [
-                "All High priority email",
-                "editor1@kdnuggets.com",
-                "weekly@raspberrypi.com",
-                "noreply@medium.com",
-                "no-reply@m.ouraring.com",
-                "All Medium priority email",
-                "change@f.change.org",
-                "no-reply@sender.skyscanner.com",
-                "All Low priority email",
-                "reminders@facebookmail.com",
-                "noreply@uber.com",
-            ]
-
-        selected_query_from_val = col1.selectbox("Select Email", email_list, key="from")
-        selected_query_from_val = str(selected_query_from_val)
-        if "@" not in selected_query_from_val:
-            selected_query_from_val = ""
-        self.query_from = "from:" + selected_query_from_val
-
-        selected_email_info_list = [
-            "[ TODO ] 메일 제목의 주요 키워드（시각화 ）",
-            "[ TODO ] 메일 본문의 주요 키워드（시각화 ）",
-            "[ TODO ] 메일 발송 시각 분포",
-            "[ TODO ] 메일 발송 빈도",
-        ]        
-        self.query_from = "from:" + selected_query_from_val
-
-        selected_info_itme = col2.selectbox("Select Email Info Item", selected_email_info_list, key="email_info")
-
-        # 
-        col1, col2 = self.st.columns((1,1))
-        col2.write("INFO : " + str(selected_info_itme))
-        col2.code(selected_info_itme)
-
-        return self.query_from
-
     def get_query_is(self):
         query_is_val_list = [
                 "read",
