@@ -110,7 +110,7 @@ class GmailPage:
 
 
         # with col1:
-        if self.st.button("取得", key="get_list"):
+        if 1==1: # self.st.button("取得", key="get_list"):
             self.maillist = self.get_list()
         
             # get_mail_contents 
@@ -408,7 +408,7 @@ class GmailPage:
 
 
             self.tmpPage.tmp_Page(self.mail_id)
-            
+
             ########################
             """
             col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
