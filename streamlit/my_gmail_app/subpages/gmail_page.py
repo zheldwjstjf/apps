@@ -28,6 +28,7 @@ class GmailPage:
         self.visualizationTool = VisualizationTool(self.st)
 
         self.query = ""
+        self.mail_id = None
 
     def gmail_page(self):
         """
@@ -408,37 +409,48 @@ class GmailPage:
 
             # moveMailToTrash
             with col11:
+                if self.mail_id != None:
+                    self.st.write("ゴミ箱に移動しました。1")
                 if self.st.button("🗑", key="trash_" + self.mail_id):
                     self.st.balloons()
-                    self.st.write("ゴミ箱に移動しました。")
+                    self.st.write("ゴミ箱に移動しました。2")
+                    
                     pass
 
             # deleteMail
             with col12:
+                if self.mail_id != None:
+                    self.st.write("削除しました。1")
                 if self.st.button("削除", key="delete_" + self.mail_id):
                     self.st.balloons()
-                    self.st.write("削除しました。")
+                    self.st.write("削除しました。2")
                     pass
 
             # markMailAsImportant
             with col13:
+                if self.mail_id != None:
+                    self.st.write("重要なメールに指定しました。1")
                 if self.st.button("重要", key="important_" + self.mail_id):
                     self.st.balloons()
-                    self.st.write("重要なメールに指定しました。")
+                    self.st.write("重要なメールに指定しました。2")
                     pass
 
             # markMailAsStarred
             with col14:
+                if self.mail_id != None:
+                    self.st.write("星を付けました。1")
                 if self.st.button("⭐️", key="starred_" + self.mail_id):
                     self.st.balloons()
-                    self.st.write("星を付けました。")
+                    self.st.write("星を付けました。2")
                     pass
 
             # markMailAsUnread
             with col15:
+                if self.mail_id != None:
+                    self.st.write("メールを未読に変更しました。1")
                 if self.st.button("未読", key="unread_" + self.mail_id):
                     self.st.balloons()
-                    self.st.write("メールを未読に変更しました。")
+                    self.st.write("メールを未読に変更しました。2")
                     pass
 
 
