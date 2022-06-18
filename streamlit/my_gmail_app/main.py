@@ -134,7 +134,10 @@ class MyGmailApp:
                 fetching_count = self.gmailFetchingSettingPage.fetching_count
                 result_count = self.gmailFetchingPage.result_count
                 if maillist != None:
-                    self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                    contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+
+                with st.sidebar.expander("[ pp ]"):
+                    self.st.selecbox(contents_list)
 
                 ### GmailFetchingResultFullPage
                 """
