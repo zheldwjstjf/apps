@@ -365,24 +365,22 @@ class GmailPage:
             self.st.write("filter_dict type : " + str(type(filter_dict)))
             self.st.info(filter_dict)
 
-            self.st.info("[DEBUG - 1] mail_from : " + mail_from)
             try:
                 email_address = mail_from.split("@")[1]
                 email_address = email_address.replace(">", "")
             except Exception as e:
                 self.st.error("email_address - Exception : " + str(e))
                 email_address = "email_address - Exception"
-            self.st.info("[DEBUG - 2] email_address : " + email_address)
+            # self.st.info("[DEBUG] email_address : " + email_address)
 
             if email_address in str(filter_dict):
                 filter_list = filter_dict["filter"]
-                self.st.info("[DEBUG - 3] : " + str(filter_list))
 
                 for filter in filter_list:
                     if email_address in str(filter):
                         filtered_email = filter.get("criteria")
                         filter_action = filter.get("action")
-                        self.st.info("[DEBUG - 4] : " + str(filtered_email) + " : " + str(filter_action))
+                        self.st.info("[DEBUG] : " + str(filtered_email) + " : " + str(filter_action))
             else:
                 self.st.info("No Filter")
 
