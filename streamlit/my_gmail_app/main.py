@@ -146,10 +146,10 @@ class MyGmailApp:
                 ### GmailFetchingResultFullPage
                 if self.selected_email_id != None:
                     self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
-                    gmailFetchingResultFullPage_result = self.gmailFetchingResultFullPage.get_mail_content(service, user)
+                    self.gmailFetchingResultFullPage.get_mail_content(service, user)
 
                 ### GmailMngPage
-                if gmailFetchingResultFullPage_result == True:
+                if self.gmailFetchingResultFullPage != None:
                     with st.sidebar.expander("[ 管理 ]"):
                         self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
                 else:
