@@ -28,7 +28,7 @@ class GmailFetchingResultPage:
 
         self.mail_id = None
 
-    def get_mail_content(self, service, maillist, fetching_count, result_count):
+    def get_mail_content(self, maillist, fetching_count, result_count, service, usrer):
 
         self.gmail_api = GmailApi(self.st, service)
 
