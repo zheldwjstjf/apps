@@ -130,6 +130,16 @@ class GmailApi():
         query = {"removeLabelIds": ["UNREAD"]} # Mark as read
         self.service.users().messages().modify(userId=user, id=i, body=query).execute()
 
+    def markMailAsUnread(self, user, i):
+        """指定したメールのIDを既読にします
+            Keyword arguments:
+            user -- meを指定する。
+            i -- メールのId getMailList()等を使用して取得したIdを使用する
+            Returns:　なし
+        """
+        query = {"removeLabelIds": ["READ"]} # Mark as read
+        self.service.users().messages().modify(userId=user, id=i, body=query).execute()
+
     def markMailAsNotSpam(self, user, i):
         """
         """
