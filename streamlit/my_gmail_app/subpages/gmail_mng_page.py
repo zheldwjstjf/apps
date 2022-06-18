@@ -1,3 +1,5 @@
+from datetime import datetime
+
 class GmailMngPage:
     """
     - class name : TmpPage
@@ -26,8 +28,9 @@ class GmailMngPage:
         with col11:
             if self.st.button("🗑", key="trash"): # _" + self.mail_id):
                 self.st.write("col11")
+                self.st.write("ゴミ箱に移動しました。1" + str(datetime.now()))
                 self.st.balloons()
-                self.st.write("ゴミ箱に移動しました。")
+                self.st.write("ゴミ箱に移動しました。2" + str(datetime.now()))
 
         # deleteMail
         with col12:
