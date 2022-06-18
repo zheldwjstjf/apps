@@ -361,8 +361,8 @@ class GmailPage:
                     pass
             
             # getFilterList
-            self.st.write("filter_dict_str type : " + str(type(filter_dict_str)))
             filter_dict_str = self.gmail_api.getFilterList(self.user, self.mail_id)
+            self.st.write("filter_dict_str type : " + str(type(filter_dict_str)))
             self.st.info(filter_dict_str)
 
             self.st.info("[DEBUG] mail_from : " + mail_from)
