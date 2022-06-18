@@ -114,6 +114,8 @@ class GmailPage:
             # get_mail_contents 
             self.get_mail_content(self.maillist)
 
+        return self.mail_id
+
     def get_priority_label(self):
 
         priority_label_list = [

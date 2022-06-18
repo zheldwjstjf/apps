@@ -98,8 +98,8 @@ class MyGmailApp:
             def Gmail():
                 service = self.auth_result
                 self.gmailPage = GmailPage(st, service)
-                self.gmailPage.gmail_page()
-                self.gmailMngPage.gmail_mng_page(self.gmailPage.mail_id)
+                self.mail_id = self.gmailPage.gmail_page()
+                self.gmailMngPage.gmail_mng_page(self.mail_id)
 
             def Gmail_Crawling():
                 service = self.auth_result
