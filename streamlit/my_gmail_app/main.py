@@ -120,6 +120,7 @@ class MyGmailApp:
                 ### GmailFetchingResultPage
                 self.gmailFetchingResultPage = GmailFetchingResultPage(st)
                 maillist = self.gmailFetchingPage.maillist
+                fetching_count = 
                 if maillist != None:
                     self.gmailFetchingResultPage.get_mail_content(maillist)
 
