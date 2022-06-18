@@ -1,5 +1,6 @@
 from modules.gmailapi import GmailApi
 from modules.visualization_tool import VisualizationTool
+import json
 
 import base64
 from email.mime.audio import MIMEAudio
@@ -360,8 +361,18 @@ class GmailPage:
                     pass
             
             # getFilter
-            filter_status = self.gmail_api.getFilterList(self.user, self.mail_id)
-            self.st.info("filter_status: " + str(filter_status))
+            filter_dict_str = self.gmail_api.getFilterList(self.user, self.mail_id)
+            email_address = mail_from.split("<")[1]
+            email_address = email_address.split(">")[0]
+            if email_address in filter_dict_str:
+                filter_dict = json.load(filter_dict_str)
+                filter_list = filter_dict["filters"]
+                for filter in filter_list:
+                    if email_address in str(filter):
+                        filter_action = filter.get("action")
+                        self.st.info(filter_action)
+            else:
+                self.st.info("No Filter")
 
             ########################
             # wordcloud
