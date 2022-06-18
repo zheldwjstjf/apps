@@ -6,6 +6,7 @@ import os
 from subpages.gmail_page import GmailPage
 from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
 from subpages.gmail_fetching_page import GmailFetchingPage
+from subpages.gmail_fetching_result_page import GmailFetchingResultPage
 
 from subpages.gmail_crawling_page import GmailCrawlingPage
 from subpages.sidebar import SidebarPage
@@ -115,6 +116,13 @@ class MyGmailApp:
                 user = self.gmailFetchingSettingPage.user
                 query = self.gmailFetchingSettingPage.query
                 self.gmailFetchingPage.get_list(user, query)
+
+                ### GmailFetchingResultPage
+                self.gmailFetchingResultPage = GmailFetchingResultPage(st)
+                maillist = self.gmailFetchingPage.maillist
+                self.gmailFetchingResultPage.get_mail_content(maillist)
+
+
 
             def Gmail_Crawling():
                 service = self.auth_result
