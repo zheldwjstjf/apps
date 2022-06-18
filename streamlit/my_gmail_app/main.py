@@ -83,7 +83,7 @@ class MyGmailApp:
                 service = self.auth_result
                 self.gmailPage = GmailPage(st, service)
                 self.gmailPage.gmail_page()
-                self.tmpPage.tmp_Page(self.gmailPage.gmail_page.mail_id)
+                self.tmpPage.tmp_Page(self.gmailPage.mail_id)
 
             def Gmail_Crawling():
                 service = self.auth_result
