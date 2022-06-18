@@ -1,4 +1,3 @@
-from modules.gmailapi import GmailApi
 from modules.visualization_tool import VisualizationTool
 
 import json
@@ -12,23 +11,20 @@ from email.mime.text import MIMEText
 
 import streamlit.components.v1 as components
 
-class GmailPage:
+class GmailFetchingResultPage:
     """
     - class name : MainPage
     """
 
-    def __init__(self, streamlit, service) -> None:
+    def __init__(self, streamlit) -> None:
         """
         - method name : __init__
         - arg(s) : streamlit
         """
 
         self.st = streamlit
-        self.service = service
-        self.gmail_api = GmailApi(self.st, self.service)
         self.visualizationTool = VisualizationTool(self.st)
 
-        self.query = ""
         self.mail_id = None
 
     def get_mail_content(self, maillist):
