@@ -332,31 +332,31 @@ class GmailPage:
 
             # moveMailToTrash
             with col11:
-                if self.st.button("🗑", key="trash"):
+                if self.st.button("🗑", key="trash_" + self.mail_id):
                     # self.st.write("ゴミ箱に移動しました。")
                     pass
 
             # deleteMail
             with col12:
-                if self.st.button("削除", key="delete"):
+                if self.st.button("削除", key="delete_" + self.mail_id):
                     # self.st.write("削除しました。")
                     pass
 
             # markMailAsImportant
             with col13:
-                if self.st.button("重要", key="important"):
+                if self.st.button("重要", key="important_" + self.mail_id):
                     # self.st.write("重要なメールに指定しました。")
                     pass
 
             # markMailAsStarred
             with col14:
-                if self.st.button("⭐️", key="starred"):
+                if self.st.button("⭐️", key="starred_" + self.mail_id):
                     # self.st.write("星を付けました。")
                     pass
 
             # markMailAsUnread
             with col15:
-                if self.st.button("未読", key="unread"):
+                if self.st.button("未読", key="unread_" + self.mail_id):
                     # self.st.write("メールを未読に変更しました。")
                     pass
             
