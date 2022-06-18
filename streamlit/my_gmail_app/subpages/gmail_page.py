@@ -325,40 +325,6 @@ class GmailPage:
 
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
-
-
-            ########################
-            col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
-
-            # moveMailToTrash
-            with col11:
-                if self.st.button("🗑", key="trash_" + self.mail_id):
-                    # self.st.write("ゴミ箱に移動しました。")
-                    pass
-
-            # deleteMail
-            with col12:
-                if self.st.button("削除", key="delete_" + self.mail_id):
-                    # self.st.write("削除しました。")
-                    pass
-
-            # markMailAsImportant
-            with col13:
-                if self.st.button("重要", key="important_" + self.mail_id):
-                    # self.st.write("重要なメールに指定しました。")
-                    pass
-
-            # markMailAsStarred
-            with col14:
-                if self.st.button("⭐️", key="starred_" + self.mail_id):
-                    # self.st.write("星を付けました。")
-                    pass
-
-            # markMailAsUnread
-            with col15:
-                if self.st.button("未読", key="unread_" + self.mail_id):
-                    # self.st.write("メールを未読に変更しました。")
-                    pass
             
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(self.user, self.mail_id)
@@ -435,6 +401,41 @@ class GmailPage:
                 else:
                     self.st.subheader("● mail_body（TXT） : \n")
                     self.st.write(mail_body)
+
+
+            ########################
+            col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
+
+            # moveMailToTrash
+            with col11:
+                if self.st.button("🗑", key="trash_" + self.mail_id):
+                    self.st.write("ゴミ箱に移動しました。")
+                    pass
+
+            # deleteMail
+            with col12:
+                if self.st.button("削除", key="delete_" + self.mail_id):
+                    self.st.write("削除しました。")
+                    pass
+
+            # markMailAsImportant
+            with col13:
+                if self.st.button("重要", key="important_" + self.mail_id):
+                    self.st.write("重要なメールに指定しました。")
+                    pass
+
+            # markMailAsStarred
+            with col14:
+                if self.st.button("⭐️", key="starred_" + self.mail_id):
+                    self.st.write("星を付けました。")
+                    pass
+
+            # markMailAsUnread
+            with col15:
+                if self.st.button("未読", key="unread_" + self.mail_id):
+                    self.st.write("メールを未読に変更しました。")
+                    pass
+
 
 
     def parse_mail(self):
