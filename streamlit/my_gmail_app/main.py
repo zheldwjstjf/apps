@@ -55,6 +55,7 @@ class MyGmailApp:
         self.auth_none_time = None
         self.auth_fail_time = None
         self.auth_success_time = None
+        self.selected_email_id = None
 
         # 
         self.sidebarPage.sidebar_page()
@@ -138,24 +139,21 @@ class MyGmailApp:
 
                 with st.sidebar.expander("[ 選択 ]"):
                     selected_content_info = self.st.selectbox("SELECT EMAIL", contents_list, key="select_a_mail")
-                    selected_email_id = selected_content_info[0]
+                    self.selected_email_id = selected_content_info[0]
                     selected_email_title = selected_content_info[1]
                     self.st.write(selected_email_title)
 
-
                 ### GmailFetchingResultFullPage
-                """
-                self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
-                maillist = self.gmailFetchingPage.maillist
-                fetching_count = self.gmailFetchingSettingPage.fetching_count
-                result_count = self.gmailFetchingPage.result_count
-                if maillist != None:
-                    self.gmailFetchingResultFullPage.get_mail_content(maillist, fetching_count, result_count, service, user)
-                """
+                if self.selected_email_id != None:
+                    self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+                    gmailFetchingResultFullPage_result = self.gmailFetchingResultFullPage.get_mail_content(service, user)
 
                 ### GmailMngPage
-                with st.sidebar.expander("[ 管理 ]"):
-                    self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
+                if gmailFetchingResultFullPage_result == True:
+                    with st.sidebar.expander("[ 管理 ]"):
+                        self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
+                else:
+                    pass
 
             def Gmail_Crawling():
                 service = self.auth_result
