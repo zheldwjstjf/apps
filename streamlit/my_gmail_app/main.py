@@ -4,10 +4,6 @@ import time
 import os
 
 from subpages.gmail_page import GmailPage
-from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
-from subpages.gmail_fetching_page import GmailFetchingPage
-from subpages.gmail_fetching_result_page import GmailFetchingResultPage
-
 from subpages.gmail_crawling_page import GmailCrawlingPage
 from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
@@ -79,9 +75,9 @@ class MyGmailApp:
             else:
                 self.st.error("認証失敗")
 
-            # self.st.info("認証成功 : " + str(self.auth_success_time))
-            # self.st.info("認証切れ : " + str(self.auth_none_time))
-            # self.st.info("[TODO] 認証維持時間 : ")
+            self.st.info("認証成功 : " + str(self.auth_success_time))
+            self.st.info("認証切れ : " + str(self.auth_none_time))
+            self.st.info("[TODO] 認証維持時間 : ")
 
         # =================
         # main page
@@ -101,32 +97,9 @@ class MyGmailApp:
 
             def Gmail():
                 service = self.auth_result
-
-                ### old
-                # self.gmailPage = GmailPage(st, service)
-                # self.gmailPage.gmail_page()
-                # self.gmailMngPage.gmail_mng_page(self.gmailPage.mail_id)
-                
-                ### GmailFetchingSettingPage
-                self.gmailFetchingSettingPage = GmailFetchingSettingPage(st)
-                self.gmailFetchingSettingPage.gmail_fetching_setting_page()
-
-                ### GmailFetchingPage
-                self.gmailFetchingPage = GmailFetchingPage(st, service)
-                user = self.gmailFetchingSettingPage.user
-                query = self.gmailFetchingSettingPage.query
-                self.gmailFetchingPage.get_list(user, query)
-
-                ### GmailFetchingResultPage
-                self.gmailFetchingResultPage = GmailFetchingResultPage(st)
-                maillist = self.gmailFetchingPage.maillist
-                fetching_count = self.gmailFetchingSettingPage.fetching_count
-                result_count = self.gmailFetchingPage.result_count
-                if maillist != None:
-                    self.gmailFetchingResultPage.get_mail_content(maillist, fetching_count, result_count, service, user)
-
-                ### GmailMngPage
-                self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultPage.mail_id)
+                self.gmailPage = GmailPage(st, service)
+                self.gmailPage.gmail_page()
+                self.gmailMngPage.gmail_mng_page(self.gmailPage.mail_id)
 
             def Gmail_Crawling():
                 service = self.auth_result
