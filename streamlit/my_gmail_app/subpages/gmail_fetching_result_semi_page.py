@@ -88,7 +88,7 @@ class GmailFetchingResultSemiPage:
                 except Exception as e:
                     self.st.error("Exception- mail['body'] : " + "e")
 
-                for i in range(3)
+                for i in range(3):
                     self.st.write("---")
                 self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
