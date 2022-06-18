@@ -12,9 +12,6 @@ from email.mime.text import MIMEText
 
 import streamlit.components.v1 as components
 
-contents_list = []
-content_info = []
-
 class GmailFetchingResultSemiPage:
     """
     - class name : MainPage
@@ -32,6 +29,9 @@ class GmailFetchingResultSemiPage:
         self.mail_id = None
 
     def get_mail_content(self, maillist, fetching_count, result_count, service, user):
+
+        contents_list = []
+        content_info = []
 
         self.gmail_api = GmailApi(self.st, service)
 
