@@ -28,7 +28,7 @@ class GmailFetchingPage:
                 self.result_count = len(self.maillist)
             else:
                 self.result_count = 0
-            self.st.write("取得件数 : " + str(self.result_count) + " 件")
+            self.st.write("Match 件数 : " + str(self.result_count) + " 件")
             # self.st.write("[DEBUG] maillist : ", self.maillist)
 
             return self.maillist
