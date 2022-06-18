@@ -88,7 +88,8 @@ class GmailFetchingResultSemiPage:
                 except Exception as e:
                     self.st.error("Exception- mail['body'] : " + "e")
 
-                self.st.write("---")
+                for i in range(3)
+                    self.st.write("---")
                 self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
                 ########################
@@ -101,21 +102,25 @@ class GmailFetchingResultSemiPage:
 
                 # wordcloud - mail_from
                 with col5:
+                    self.st.write("---")
                     self.st.write("● mail_from")
                     self.visualizationTool.wordcloud(mail_from, 700)
 
                 # wordcloud - mail_subject
                 with col7:
+                    self.st.write("---")
                     self.st.write("● mail_subject")
                     self.visualizationTool.wordcloud(mail_subject, 700)
 
                 # wordcloud - mail_snippet
                 with col5:
+                    self.st.write("---")
                     self.st.write("● mail_snippet")
                     self.visualizationTool.wordcloud(mail_snippet, 700)
 
                 # wordcloud - mail_body
                 with col7:
+                    self.st.write("---")
                     self.st.write("● mail_body")
                     if ("http" not in mail_body) and ("</" not in mail_body):
                         input_text = mail_body
