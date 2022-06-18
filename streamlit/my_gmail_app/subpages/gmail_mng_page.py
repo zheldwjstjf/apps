@@ -22,8 +22,6 @@ class GmailMngPage:
 
         col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
 
-        self.st.balloons()
-        
         # moveMailToTrash
         with col11:
             if self.st.button("🗑", key="trash"): # _" + self.mail_id):
