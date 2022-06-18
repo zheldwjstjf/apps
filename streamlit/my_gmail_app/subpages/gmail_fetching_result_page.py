@@ -51,10 +51,10 @@ class GmailFetchingResultPage:
         for i in range(fetching_count):
 
             self.mail_id = self.mail_id = maillist[i]['id']
-            self.mail_content = self.gmail_api.getMailContent(self.user, self.mail_id)
+            self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
 
             # - do mail as read
-            self.gmail_api.markMailAsRead(self.user, self.mail_id)            
+            self.gmail_api.markMailAsRead(user, self.mail_id)            
 
             mail = self.parse_mail()
 
@@ -92,7 +92,7 @@ class GmailFetchingResultPage:
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
             
             # getFilterList
-            filter_dict = self.gmail_api.getFilterList(self.user, self.mail_id)
+            filter_dict = self.gmail_api.getFilterList(user, self.mail_id)
             # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
             
             try:
