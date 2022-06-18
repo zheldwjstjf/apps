@@ -1,15 +1,3 @@
-from modules.gmailapi import GmailApi
-from modules.visualization_tool import VisualizationTool
-
-import json
-
-import base64
-from email.mime.audio import MIMEAudio
-from email.mime.base import MIMEBase
-from email.mime.image import MIMEImage
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
 import streamlit.components.v1 as components
 
 class GmailFetchingSettingPage:
