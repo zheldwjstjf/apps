@@ -167,3 +167,37 @@ class GmailPage:
                 else:
                     self.st.subheader("● mail_body（TXT） : \n")
                     self.st.write(mail_body)
+
+    def parse_mail(self):
+        content = self.mail_content
+
+        mail = {}
+
+        if 'parts' in content['payload'].keys():
+            parts = content['payload']['parts'][0]
+            # # print("[ DEBUG 7 ] type parts : ", type(parts))
+            # print(parts)
+            if 'parts' in parts.keys():
+                try:
+                    raw_body = parts['parts'][0]['body']['data']
+                except Exception as e:
+                    raw_body = parts['parts'][0]['parts'][0]['body']['data']
+            else:
+                raw_body = parts['body']['data']
+        else:
+            raw_body = content['payload']['body']['data']
+        mail['body'] = base64.urlsafe_b64decode(raw_body).decode('utf-8')
+        mail['snippet'] = content['snippet']
+        headers = content['payload']['headers']
+        for header in headers:
+            if header['name'] == 'From':
+                mail['from'] = header['value']
+            elif header['name'] == 'To':
+                mail['to'] = header['value']
+            elif header['name'] == 'Subject':
+                mail['subject'] = header['value']
+            elif header['name'] == 'Date':
+                mail['date'] = header['value']
+
+        self.mail = mail
+        return self.mail
