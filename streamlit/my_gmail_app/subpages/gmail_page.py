@@ -363,7 +363,7 @@ class GmailPage:
             # getFilterList
             filter_dict_str = self.gmail_api.getFilterList(self.user, self.mail_id)
             self.st.info(filter_dict_str)
-            
+
             self.st.info("[DEBUG] mail_from : " + mail_from)
             try:
                 email_address = mail_from.split("@")[1]
@@ -376,6 +376,8 @@ class GmailPage:
             if email_address in filter_dict_str:
                 filter_dict = json.load(filter_dict_str)
                 filter_list = filter_dict["filters"]
+                self.st.info(filter_list)
+
                 for filter in filter_list:
                     if email_address in str(filter):
                         filter_action = filter.get("action")
