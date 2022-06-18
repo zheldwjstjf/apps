@@ -31,7 +31,6 @@ class GmailFetchingResultSemiPage:
     def get_mail_content(self, maillist, fetching_count, result_count, service, user):
 
         contents_list = []
-        content_info = []
 
         self.gmail_api = GmailApi(self.st, service)
 
@@ -51,6 +50,8 @@ class GmailFetchingResultSemiPage:
         #  스닛핏 또는 본문을 본다음에 -> 개요 정보 입력/업데이터 / 삭제 / 쓰레기토응로 / 본문내용 저장 등등 할수 있게 한다
           
         for i in range(fetching_count):
+
+            content_info = []
 
             try:
                 self.mail_id = self.mail_id = maillist[i]['id']
