@@ -4,6 +4,8 @@ import time
 import os
 
 from subpages.gmail_page import GmailPage
+from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
+
 from subpages.gmail_crawling_page import GmailCrawlingPage
 from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
@@ -97,9 +99,15 @@ class MyGmailApp:
 
             def Gmail():
                 service = self.auth_result
-                self.gmailPage = GmailPage(st, service)
-                self.gmailPage.gmail_page()
-                self.gmailMngPage.gmail_mng_page(self.gmailPage.mail_id)
+
+                ### old
+                # self.gmailPage = GmailPage(st, service)
+                # self.gmailPage.gmail_page()
+                # self.gmailMngPage.gmail_mng_page(self.gmailPage.mail_id)
+                
+                ### WIP
+                self.gmailFetchingSettingPage = GmailFetchingSettingPage(st)
+                self.gmailFetchingSettingPage.gmail_fetching_setting_page()
 
             def Gmail_Crawling():
                 service = self.auth_result
