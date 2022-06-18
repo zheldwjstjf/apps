@@ -1,3 +1,4 @@
+from email.policy import default
 import streamlit.components.v1 as components
 
 class GmailFetchingSettingPage:
@@ -90,7 +91,7 @@ class GmailFetchingSettingPage:
         return self.query_is
 
     def get_query_subject(self):
-        selected_query_subject_val = self.st.text_input("", placeholder="ここに入力")
+        selected_query_subject_val = self.st.text_input("", placeholder="ここに入力", default="python")
         self.query_subject = "subject:" + selected_query_subject_val
 
         return self.query_subject
