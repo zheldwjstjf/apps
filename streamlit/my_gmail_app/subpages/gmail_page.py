@@ -333,8 +333,6 @@ class GmailPage:
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(self.user, self.mail_id)
             # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
-
-            self.tmpPage.tmp_Page(self.mail_id)
             
             try:
                 email_address = mail_from.split("@")[1]
@@ -409,6 +407,8 @@ class GmailPage:
                     self.st.write(mail_body)
 
 
+            self.tmpPage.tmp_Page(self.mail_id)
+            
             ########################
             """
             col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
