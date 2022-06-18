@@ -1,5 +1,7 @@
 from asyncio.staggered import staggered_race
 import streamlit as st
+import time
+import os
 
 from subpages.gmail_page import GmailPage
 from subpages.gmail_crawling_page import GmailCrawlingPage
@@ -17,6 +19,10 @@ st.set_page_config( # Alternate names: setup_page, page, layout
     initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
     page_title="MyGmailApp",  # String or None. Strings get appended with "• Streamlit". 
     page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
+
+# set localtime
+os.environ['TZ'] = 'Japan'
+time.tzset()
 
 class MyGmailApp:
 
@@ -48,20 +54,26 @@ class MyGmailApp:
             self.auth_result = self.ap.auth_page()
 
             if self.auth_result == None:
+                t = time.localtime()
+                self.auth_none_time = time.strftime("%Y-%m-%d %H:%M:%S", t)
                 self.st.warning("未認証")
 
             elif self.auth_result == False:
+                t = time.localtime()
+                self.auth_fail_time = time.strftime("%Y-%m-%d %H:%M:%S", t)
                 self.st.error("認証失敗")
 
             elif (self.auth_result != None) and (self.auth_result != False):
+                t = time.localtime()
+                self.auth_success_time = time.strftime("%Y-%m-%d %H:%M:%S", t)
                 self.st.success("認証済")
             
             else:
                 self.st.error("認証失敗")
 
-            self.st.info("[ TODO ] 認証した時刻")
-            self.st.info("[ TODO ] 認証切れた時刻")
-            self.st.info("[ TODO ] 認証維持時間")
+            self.st.info("認証した時刻 : " + str(self.auth_success_time))
+            self.st.info("認証切れた時刻 : " + str(self.auth_none_time))
+            self.st.info("[TODO] 認証維持時間 : ")
 
         # =================
         # main page
