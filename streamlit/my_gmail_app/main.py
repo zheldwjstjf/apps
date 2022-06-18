@@ -7,6 +7,7 @@ from subpages.sidebar import SidebarPage
 from subpages.auth_page import AuthPage
 from subpages.admin_page import AdminPage
 from modules.snippet_tools import SnippetTools
+from subpages.tmp_page import TmpPage
 
 # ===================================
 # st config
@@ -31,6 +32,7 @@ class MyGmailApp:
         self.ap = AuthPage(st)
         self.adminPage = AdminPage(st)
         self.snippetTools = SnippetTools(st)
+        self.tmpPage = TmpPage(st)
 
     def main(self):
         """
@@ -81,6 +83,7 @@ class MyGmailApp:
                 service = self.auth_result
                 self.gmailPage = GmailPage(st, service)
                 self.gmailPage.gmail_page()
+                self.tmpPage.tmp_Page(self.gmailPage.gmail_page.mail_id)
 
             def Gmail_Crawling():
                 service = self.auth_result

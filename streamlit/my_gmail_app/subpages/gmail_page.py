@@ -1,6 +1,6 @@
 from modules.gmailapi import GmailApi
 from modules.visualization_tool import VisualizationTool
-from subpages.tmp_page import TmpPage
+# from subpages.tmp_page import TmpPage
 
 import json
 
@@ -28,7 +28,7 @@ class GmailPage:
         self.service = service
         self.gmail_api = GmailApi(self.st, self.service)
         self.visualizationTool = VisualizationTool(self.st)
-        self.tmpPage = TmpPage(self.st)
+        # self.tmpPage = TmpPage(self.st)
 
         self.query = ""
         self.mail_id = None
@@ -407,7 +407,7 @@ class GmailPage:
                     self.st.write(mail_body)
 
 
-            self.tmpPage.tmp_Page(self.mail_id)
+            # self.tmpPage.tmp_Page(self.mail_id)
 
             ########################
             """
