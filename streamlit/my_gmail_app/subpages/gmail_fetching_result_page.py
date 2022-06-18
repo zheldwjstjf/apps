@@ -34,12 +34,12 @@ class GmailFetchingResultPage:
 
         if result_count > fetching_count:
             pass
-        elif result_count > fetching_count:
-            pass
         elif result_count < fetching_count:
             fetching_count == result_count
+        elif result_count == 0:
+            fetching_count = 0
         else:
-            result_count = 1
+            fetching_count = 1
 
         
         # TODO
