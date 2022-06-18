@@ -25,26 +25,21 @@ class GmailMngPage:
         col11, col12, col13, col14, col15 = self.st.columns((1,1,1,1,1))
 
         # moveMailToTrash
-        with col11:
-            if self.st.button("🗑", key="trash" + self.mail_id):
-                self.st.write("ゴミ箱に移動しました。")
+        if col11.button("🗑", key="trash" + self.mail_id):
+            self.st.write("ゴミ箱に移動しました。")
 
         # deleteMail
-        with col12:
-            if self.st.button("削除", key="delete_" + self.mail_id):
-                self.st.write("削除しました。")
+        if col12.button("削除", key="delete_" + self.mail_id):
+            self.st.write("削除しました。")
 
         # markMailAsImportant
-        with col13:
-            if self.st.button("重要", key="important_" + self.mail_id):
-                self.st.write("重要なメールに指定しました。")
+        if col13.button("重要", key="important_" + self.mail_id):
+            self.st.write("重要なメールに指定しました。")
 
         # markMailAsStarred
-        with col14:
-            if self.st.button("⭐️", key="starred_" + self.mail_id):
-                self.st.write("星を付けました。")
+        if col14.button("⭐️", key="starred_" + self.mail_id):
+            self.st.write("星を付けました。")
 
         # markMailAsUnread
-        with col15:
-            if self.st.button("未読", key="unread_" + self.mail_id):
-                self.st.write("メールを未読に変更しました。")
+        if col15.button("未読", key="unread_" + self.mail_id):
+            self.st.write("メールを未読に変更しました。")
