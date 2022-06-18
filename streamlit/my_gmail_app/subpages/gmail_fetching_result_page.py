@@ -35,7 +35,7 @@ class GmailFetchingResultPage:
         if result_count > fetching_count:
             pass
         elif result_count < fetching_count:
-            fetching_count == result_count
+            fetching_count = result_count
         elif result_count == 0:
             fetching_count = 0
         else:
@@ -49,122 +49,127 @@ class GmailFetchingResultPage:
           
         for i in range(fetching_count):
 
-            self.mail_id = self.mail_id = maillist[i]['id']
-            self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
-
-            # - do mail as read
-            self.gmail_api.markMailAsRead(user, self.mail_id)            
-
-            mail = self.parse_mail()
-
             try:
-                mail_subject = mail['subject']
-            except Exception as e:
-                self.st.error("Exception- mail['subject'] : " + "e")
+                self.mail_id = self.mail_id = maillist[i]['id']
+                self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
 
-            try:
-                mail_date = mail['date']
-            except Exception as e:
-                self.st.error("Exception- mail['date'] : " + "e")
+                # - do mail as read
+                self.gmail_api.markMailAsRead(user, self.mail_id)            
 
-            try:
-                mail_from = mail['from']
-            except Exception as e:
-                self.st.error("Exception- mail['from'] : " + "e")
+                mail = self.parse_mail()
 
-            try:
-                mail_to = mail['to']
-            except Exception as e:
-                self.st.error("Exception- mail['to'] : " + "e")
+                try:
+                    mail_subject = mail['subject']
+                except Exception as e:
+                    self.st.error("Exception- mail['subject'] : " + "e")
 
-            try:
-                mail_snippet = mail['snippet']
-            except Exception as e:
-                self.st.error("Exception- mail['snippet'] : " + "e")
+                try:
+                    mail_date = mail['date']
+                except Exception as e:
+                    self.st.error("Exception- mail['date'] : " + "e")
 
-            try:
-                mail_body = mail['body']
-            except Exception as e:
-                self.st.error("Exception- mail['body'] : " + "e")
+                try:
+                    mail_from = mail['from']
+                except Exception as e:
+                    self.st.error("Exception- mail['from'] : " + "e")
 
-            self.st.write("---")
-            self.st.subheader("▶︎ " + str(i+1) + " 件目")
-            
-            # getFilterList
-            filter_dict = self.gmail_api.getFilterList(user, self.mail_id)
-            # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
-            
-            try:
-                email_address = mail_from.split("@")[1]
-                email_address = email_address.replace(">", "")
-            except Exception as e:
-                self.st.error("email_address - Exception : " + str(e))
-                email_address = "email_address - Exception"
-            # self.st.info("[DEBUG] email_address : " + email_address)
+                try:
+                    mail_to = mail['to']
+                except Exception as e:
+                    self.st.error("Exception- mail['to'] : " + "e")
 
-            if email_address in str(filter_dict):
-                filter_list = filter_dict["filter"]
+                try:
+                    mail_snippet = mail['snippet']
+                except Exception as e:
+                    self.st.error("Exception- mail['snippet'] : " + "e")
 
-                for filter in filter_list:
-                    if email_address in str(filter):
-                        filtered_email = filter.get("criteria")
-                        filter_action = filter.get("action")
-                        self.st.info("Filter : " + str(filtered_email) + " : " + str(filter_action))
-            else:
-                self.st.info("No Filter")
+                try:
+                    mail_body = mail['body']
+                except Exception as e:
+                    self.st.error("Exception- mail['body'] : " + "e")
 
-            ########################
-            # wordcloud
-            col5, col6, col7 = self.st.columns((5,0.3,5))
-
-            # wordcloud - mail_from
-            with col5:
                 self.st.write("---")
-                self.st.write("● mail_from")
-                self.visualizationTool.wordcloud(mail_from, 700)
-
-            # wordcloud - mail_subject
-            with col7:
-                self.st.write("---")
-                self.st.write("● mail_subject")
-                self.visualizationTool.wordcloud(mail_subject, 700)
-
-            # wordcloud - mail_snippet
-            with col5:
-                self.st.write("---")
-                self.st.write("● mail_snippet")
-                self.visualizationTool.wordcloud(mail_snippet, 700)
-
-            # wordcloud - mail_body
-            with col7:
-                self.st.write("---")
-                self.st.write("● mail_body")
-                if ("http" not in mail_body) and ("</" not in mail_body):
-                    input_text = mail_body
-                else:
-                    input_text = mail_body
-                self.visualizationTool.wordcloud(input_text, 700)
-
-
-
-            # text
-            col1, col2 = self.st.columns((1,1))
-
-            with col1:
+                self.st.subheader("▶︎ " + str(i+1) + " 件目")
                 
-                self.st.subheader("● mail_subject : \n"); self.st.error(mail_subject)
-                self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
-                self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
-                self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
-                self.st.subheader("● mail_snippet : \n"); self.st.error(mail_snippet)
+                # getFilterList
+                filter_dict = self.gmail_api.getFilterList(user, self.mail_id)
+                # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
+                
+                try:
+                    email_address = mail_from.split("@")[1]
+                    email_address = email_address.replace(">", "")
+                except Exception as e:
+                    self.st.error("email_address - Exception : " + str(e))
+                    email_address = "email_address - Exception"
+                # self.st.info("[DEBUG] email_address : " + email_address)
 
-            with col2:
-                if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
-                    self.st.subheader("● mail_body（HTML） : \n")
-                    components.html(mail_body, height=4300)
+                if email_address in str(filter_dict):
+                    filter_list = filter_dict["filter"]
+
+                    for filter in filter_list:
+                        if email_address in str(filter):
+                            filtered_email = filter.get("criteria")
+                            filter_action = filter.get("action")
+                            self.st.info("Filter : " + str(filtered_email) + " : " + str(filter_action))
                 else:
-                    self.st.subheader("● mail_body（TXT） : \n")
-                    self.st.write(mail_body)
+                    self.st.info("No Filter")
+
+                ########################
+                # wordcloud
+                col5, col6, col7 = self.st.columns((5,0.3,5))
+
+                # wordcloud - mail_from
+                with col5:
+                    self.st.write("---")
+                    self.st.write("● mail_from")
+                    self.visualizationTool.wordcloud(mail_from, 700)
+
+                # wordcloud - mail_subject
+                with col7:
+                    self.st.write("---")
+                    self.st.write("● mail_subject")
+                    self.visualizationTool.wordcloud(mail_subject, 700)
+
+                # wordcloud - mail_snippet
+                with col5:
+                    self.st.write("---")
+                    self.st.write("● mail_snippet")
+                    self.visualizationTool.wordcloud(mail_snippet, 700)
+
+                # wordcloud - mail_body
+                with col7:
+                    self.st.write("---")
+                    self.st.write("● mail_body")
+                    if ("http" not in mail_body) and ("</" not in mail_body):
+                        input_text = mail_body
+                    else:
+                        input_text = mail_body
+                    self.visualizationTool.wordcloud(input_text, 700)
+
+
+                # text
+                col1, col2 = self.st.columns((1,1))
+
+                with col1:
+                    
+                    self.st.subheader("● mail_subject : \n"); self.st.error(mail_subject)
+                    self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
+                    self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
+                    self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
+                    self.st.subheader("● mail_snippet : \n"); self.st.error(mail_snippet)
+
+                with col2:
+                    if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
+                        self.st.subheader("● mail_body（HTML） : \n")
+                        components.html(mail_body, height=4300)
+                    else:
+                        self.st.subheader("● mail_body（TXT） : \n")
+                        self.st.write(mail_body)
+
+            except Exception as e:
+                self.st.warning("No more Email")
+
+
 
     def parse_mail(self):
         content = self.mail_content
