@@ -327,7 +327,7 @@ class GmailPage:
 
 
             ########################
-            col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,1,1,1,1,1))
+            col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
 
             # moveMailToTrash
             with col11:
