@@ -27,6 +27,7 @@ class GmailFetchingResultFullPage:
         self.visualizationTool = VisualizationTool(self.st)
 
         self.mail_id = None
+        self.mail_content = None
 
     def get_mail_content(self, service, user):
 
@@ -114,13 +115,8 @@ class GmailFetchingResultFullPage:
                     self.st.subheader("● mail_body（TXT） : \n")
                     self.st.write(mail_body)
 
-            return True
-
         except Exception as e:
             self.st.warning("No more Email")
-
-            return False
-
 
 
     def parse_mail(self):
