@@ -327,7 +327,7 @@ class GmailPage:
 
             
             # wordcloud
-            col5, col6, col7 = self.st.columns((5,1,5))
+            col5, col6, col7 = self.st.columns((5,0.3,5))
 
             # wordcloud - mail_from
             with col5:
