@@ -111,13 +111,11 @@ class GmailFetchingResultSemiPage:
 
                 # wordcloud - mail_snippet
                 with col5:
-                    self.st.write("---")
                     self.st.write("● mail_snippet")
                     self.visualizationTool.wordcloud(mail_snippet, 700)
 
                 # wordcloud - mail_body
                 with col7:
-                    self.st.write("---")
                     self.st.write("● mail_body")
                     if ("http" not in mail_body) and ("</" not in mail_body):
                         input_text = mail_body
