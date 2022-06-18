@@ -11,11 +11,13 @@ class TmpPage:
 
         self.st = streamlit
 
-    def tmp_Page(self):
+    def tmp_Page(self, mail_id):
         """
         - method name : tmpPage
         - arg(s) : None
         """
+
+        self.mail_id = mail_id
 
         col11, col12, col13, col14, col15, col16, col17, col18, col19, col20 = self.st.columns((1,1,1,1,1,2,2,2,2,2))
 
