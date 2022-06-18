@@ -27,16 +27,16 @@ class GmailFetchingResultPage:
 
         self.mail_id = None
 
-    def get_mail_content(self, maillist, fetching_count):
+    def get_mail_content(self, maillist, fetching_count, result_count):
 
-        if self.result_count > fetching_count:
+        if result_count > fetching_count:
             pass
-        elif self.result_count > fetching_count:
+        elif result_count > fetching_count:
             pass
-        elif self.result_count < fetching_count:
-            fetching_count == self.result_count
+        elif result_count < fetching_count:
+            fetching_count == result_count
         else:
-            self.result_count = 1
+            result_count = 1
 
         
         # TODO
