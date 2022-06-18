@@ -334,6 +334,9 @@ class GmailPage:
                 if self.st.button("🗑", key="trash"):
                     self.st.write("ゴミ箱に移動しました。")
 
+                    if self.st.button("OK", key="trash2"):
+                        self.st.write("本当に削除しますか。")
+
             # deleteMail
             with col12:
                 if self.st.button("削除", key="delete"):
