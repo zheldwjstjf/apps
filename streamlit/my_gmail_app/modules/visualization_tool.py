@@ -11,7 +11,7 @@ class VisualizationTool:
     def wordcloud(self, mail_body_text, widthsize):
 
         stopwords = STOPWORDS
-        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=77).generate(mail_body_text)
+        wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mail_body_text)
 
         img_folder_path = "/app/apps/images/"
         # Check whether the specified path exists or not
