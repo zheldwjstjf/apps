@@ -117,8 +117,11 @@ class GmailCrawlingPage:
             except Exception as e:
                 pass
 
-            latest_iteration.text(f'{((i+1)/self.fetching_count)*100} %')
-            craw_email_address_progress_bar.progress((i+1)/self.fetching_count)
+            try:
+                latest_iteration.text(f'{((i+1)/self.fetching_count)*100} %')
+                craw_email_address_progress_bar.progress((i+1)/self.fetching_count)
+            except Exception as e:
+                pass
 
         mail_list_uniq = list(set(mail_list))
 
