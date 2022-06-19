@@ -56,7 +56,7 @@ class GmailMngPage:
         col4, col5, col6 = self.st.columns((1,1,1))
 
         # markMailAsImportant
-        if col1.button("重要", key="important_" + self.mail_id):
+        if col1.button("重要", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
             try:
                 self.st.write("重要なメールと指定しました。")
             except Exception as e:
@@ -64,7 +64,7 @@ class GmailMngPage:
                 self.st.error(str(e))
 
         # markMailAsRead
-        if col2.button("📬", key="read" + self.mail_id):
+        if col2.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
             try:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 self.st.write("メールを既読にしました。")
@@ -73,19 +73,19 @@ class GmailMngPage:
                 self.st.error(str(e))
 
         # markMailAsStarred
-        if col3.button("⭐️", key="starred_" + self.mail_id):
+        if col3.button("⭐️", help="Mark mail as STARRED", key="starred_" + self.mail_id):
             self.st.write("星を付けました。")
 
         # markMailAsUnread
-        if col4.button("📪", key="unread_" + self.mail_id):
+        if col4.button("📪", help="Mark mail as UNREAD", help="未読", key="unread_" + self.mail_id):
             self.st.write("メールを未読にしました。")
 
         # moveMailToTrash
-        if col5.button("🗑", key="trash" + self.mail_id):
+        if col5.button("🗑", help="Move mail to TRASH", key="trash" + self.mail_id):
             self.st.write("ゴミ箱に移動しました。")
 
         # deleteMail
-        if col6.button("削除", key="delete_" + self.mail_id):
+        if col6.button("削除", help="DELETE mail",  key="delete_" + self.mail_id):
             self.st.write("メールを削除しました。")
 
 
