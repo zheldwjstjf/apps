@@ -64,21 +64,20 @@ class GmailMngPage:
                 self.st.error(str(e))
 
         # markMailAsRead
-        if col2.button("🗑", key="read" + self.mail_id):
+        if col2.button("📬", key="read" + self.mail_id):
             try:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
-                self.st.write("メールを既得にしました。")
+                self.st.write("メールを既読にしました。")
             except Exception as e:
-                self.st.write("メールを既得にできませんでした。")
+                self.st.write("メールを既読にできませんでした。")
                 self.st.error(str(e))
-
 
         # markMailAsStarred
         if col3.button("⭐️", key="starred_" + self.mail_id):
             self.st.write("星を付けました。")
 
         # markMailAsUnread
-        if col4.button("未読", key="unread_" + self.mail_id):
+        if col4.button("📪", key="unread_" + self.mail_id):
             self.st.write("メールを未読にしました。")
 
         # moveMailToTrash
