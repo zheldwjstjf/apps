@@ -118,7 +118,7 @@ class GmailFetchingResultFullPage:
             self.gmail_api.markMailAsRead(user, self.mail_id)
 
         except Exception as e:
-            # self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
+            self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
             # self.st.warning("No More Email")
             pass
 
