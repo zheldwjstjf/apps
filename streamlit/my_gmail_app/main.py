@@ -133,6 +133,8 @@ class MyGmailApp:
                 ### GmailFetchingResultSemiPage
                 self.gmailFetchingResultSemiPage = GmailFetchingResultSemiPage(st)
                 maillist = self.gmailFetchingPage.maillist
+                self.st.write("maillist")
+                self.st.write(maillist)
                 fetching_count = self.gmailFetchingSettingPage.fetching_count
                 result_count = self.gmailFetchingPage.result_count
 
