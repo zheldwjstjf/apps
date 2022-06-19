@@ -141,6 +141,7 @@ class MyGmailApp:
 
                     with st.sidebar.expander("[ ▶︎ 選択 ]"):
 
+                        self.st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
                         operation_type = self.st.radio("● 処理タイプ",('個別', 'Batch'), index=0)
 
                         if operation_type == '個別':
