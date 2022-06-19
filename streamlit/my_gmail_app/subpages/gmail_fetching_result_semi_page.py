@@ -68,37 +68,37 @@ class GmailFetchingResultSemiPage:
                     mail_subject = mail['subject']
                     content_info.append(mail_subject)
                 except Exception as e:
-                    self.st.error("Exception- mail['subject'] : " + "e")
+                    self.st.error("Exception - mail['subject'] : " + "e")
 
                 try:
                     mail_date = mail['date']
                     content_info.append(mail_date)
                 except Exception as e:
-                    self.st.error("Exception- mail['date'] : " + "e")
+                    self.st.error("Exception - mail['date'] : " + "e")
 
                 try:
                     mail_from = mail['from']
                     content_info.append(mail_from)
                 except Exception as e:
-                    self.st.error("Exception- mail['from'] : " + "e")
+                    self.st.error("Exception - mail['from'] : " + "e")
 
                 try:
                     mail_to = mail['to']
                     content_info.append(mail_to)
                 except Exception as e:
-                    self.st.error("Exception- mail['to'] : " + "e")
+                    self.st.error("Exception - mail['to'] : " + "e")
 
                 try:
                     mail_snippet = mail['snippet']
                     content_info.append(mail_snippet)
                 except Exception as e:
-                    self.st.error("Exception- mail['snippet'] : " + "e")
+                    self.st.error("Exception - mail['snippet'] : " + "e")
 
                 try:
                     mail_body = mail['body']
                     content_info.append(mail_body)
                 except Exception as e:
-                    self.st.error("Exception- mail['body'] : " + "e")
+                    self.st.error("Exception - mail['body'] : " + "e")
 
                 for foo in range(3):
                     self.st.write("---")
