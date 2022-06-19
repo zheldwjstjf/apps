@@ -83,7 +83,7 @@ class GmailFetchingResultFullPage:
 
             # order num / title
             self.st.subheader(selected_email_order)
-            self.st.subheader("● mail_subject : "); self.st.info(mail_subject)
+            self.st.subheader("● mail_subject : " + mail_subject)
 
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(user, self.mail_id)
