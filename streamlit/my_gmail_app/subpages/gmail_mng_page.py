@@ -25,7 +25,7 @@ class GmailMngPage:
 
         self.user = user
         self.mail_id = str(mail_id)
-        self.st.write("mail_id : ", self.mail_id)
+        self.st.write("● mail_id : ", self.mail_id)
         
         # getFilterList
         """
