@@ -139,7 +139,11 @@ class MyGmailApp:
                     if maillist != None:
                         contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
-                    with st.sidebar.expander("[ 選択 ]"):
+
+                    with st.sidebar.expander("[ Batch処理 ]"):
+                        pass
+
+                    with st.sidebar.expander("[ 個別処理 ]"):
                         selected_content_info = self.st.selectbox("● SELECT EMAIL", contents_list, key="select_a_mail")
                         selected_email_order = selected_content_info[0]
                         self.selected_email_id = selected_content_info[1]
@@ -151,12 +155,12 @@ class MyGmailApp:
                         self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
                         self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id, selected_content_info)
 
-                    ### GmailMngPage
-                    if self.selected_email_id != None:
-                        with st.sidebar.expander("[ 管理 ]"):
+                    with st.sidebar.expander("[ 個別処理 ]"):
+                        ### GmailMngPage
+                        if self.selected_email_id != None:
                             self.gmailMngPage.gmail_mng_page(service, user, self.selected_email_id)
-                    else:
-                        pass
+                        else:
+                            pass
 
             def Gmail_Crawling():
                 service = self.auth_result
