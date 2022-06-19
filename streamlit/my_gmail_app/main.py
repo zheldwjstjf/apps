@@ -149,9 +149,9 @@ class MyGmailApp:
                         self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id)
 
                     ### GmailMngPage
-                    if self.gmailFetchingResultFullPage != None:
+                    if self.selected_email_id != None:
                         with st.sidebar.expander("[ 管理 ]"):
-                            self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
+                            self.gmailMngPage.gmail_mng_page(self.selected_email_id.mail_id)
                     else:
                         pass
 
