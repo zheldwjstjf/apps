@@ -176,8 +176,7 @@ class MyGmailApp:
                         if operation_type == 'Batch':
                             self.st.write("Batch処理")
                             if self.contents_list != None:
-                                for selected_content_info in self.contents_list:
-                                    self.gmailMngPage.gmail_mng_page(service, user, selected_content_info[1])
+                                self.gmailMngPage.gmail_mng_batch(service, user, self.contents_list)
                             else:
                                 pass
 
