@@ -118,7 +118,7 @@ class GmailApi():
         try:
             return self.service.users().messages().get(userId=user, id=i).execute()
         except errors.HttpError as error:
-            pass
+            self.st.error("getMailContent : " + str(error))
 
     def archiveMail(self, user, i):
         """
