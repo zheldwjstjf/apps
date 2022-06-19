@@ -79,7 +79,12 @@ class GmailFetchingResultFullPage:
             
             for foo in range(3):
                 self.st.write("---")
-            
+
+
+            # order num / title
+            self.st.subheader(selected_email_order)
+            self.st.subheader("● mail_subject : " + mail_subject)
+
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(user, self.mail_id)
             # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
@@ -104,8 +109,6 @@ class GmailFetchingResultFullPage:
                 self.st.info("No Filter")
 
             # text
-            self.st.info(selected_email_order)
-            self.st.info("● mail_subject : " + mail_subject)
 
             col1, col2 = self.st.columns((1,1))
             with col1:
