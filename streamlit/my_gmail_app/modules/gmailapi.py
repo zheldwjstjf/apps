@@ -104,6 +104,9 @@ class GmailApi():
             print("error [ service.users().messages().list( ) ] : ", error)
 
     def getMailContent(self, user, i):
+
+        self.st.info("id in getMailContent : " + str(i))
+
         """指定したメールのIDからメールの内容を取得します。
                 Keyword arguments:
                 user -- meを指定する。
