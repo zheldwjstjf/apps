@@ -58,7 +58,7 @@ class GmailFetchingSettingPage:
             self.query = self.query + self.query_newer_than + " "
 
         # call get_list() with query
-        self.st.subheader("▶︎ Email取得")
+        # self.st.subheader("▶︎ Email取得")
 
         # final query
         self.st.code("Query : " + self.query)
