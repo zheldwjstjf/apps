@@ -24,11 +24,11 @@ class SidebarPage:
             """
             <style>
             [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
-                width: 430px;
+                width: 399px;
             }
             [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
-                width: 430;
-                margin-left: -430px;
+                width: 399;
+                margin-left: -399px;
             }
             </style>
             """,
