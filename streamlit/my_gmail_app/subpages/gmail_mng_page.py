@@ -56,22 +56,22 @@ class GmailMngPage:
         col5, col6, col7, col8 = self.st.columns((1,1,1,1))
 
         ########################## 1st line
-        # markMailAsImportant
-        if col1.button("重要", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
-            try:
-                self.gmail_api.markMailAsImportant(user, self.mail_id)
-                self.st.write("重要なメールと指定しました。")
-            except Exception as e:
-                self.st.write("重要なメールと指定しました。")
-                self.st.error("" + str(e))
-
         # markMailAsRead
-        if col2.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
+        if col1.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
             try:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 self.st.write("メールを既読にしました。")
             except Exception as e:
                 self.st.write("メールを既読にできませんでした。")
+                self.st.error("" + str(e))
+
+        # markMailAsImportant
+        if col2.button("‼", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
+            try:
+                self.gmail_api.markMailAsImportant(user, self.mail_id)
+                self.st.write("重要なメールと指定しました。")
+            except Exception as e:
+                self.st.write("重要なメールと指定しました。")
                 self.st.error("" + str(e))
 
         # markMailAsStarred
