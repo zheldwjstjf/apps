@@ -152,6 +152,13 @@ class GmailApi():
         query = {"removeLabelIds": ["SPAM"]} # Never mark as spam
         self.service.users().messages().modify(userId=user, id=i, body=query).execute()
 
+    def markMailAsSpam(self, user, i):
+        """
+        """
+        query = {"addLabelIds": ["SPAM"]} # Mark as spam
+        self.service.users().messages().modify(userId=user, id=i, body=query).execute()
+
+
     def markMailAsImportant(self, user, i):
         """
         """
