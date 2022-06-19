@@ -38,9 +38,6 @@ class GmailFetchingResultFullPage:
         try:
             self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
 
-            # - do mail as read
-            self.gmail_api.markMailAsRead(user, self.mail_id)            
-
             mail = self.parse_mail()
 
             try:
@@ -117,11 +114,13 @@ class GmailFetchingResultFullPage:
                     self.st.subheader("● mail_body（TXT） : \n")
                     self.st.write(mail_body)
 
+            # - do mail as read
+            self.gmail_api.markMailAsRead(user, self.mail_id)
+
         except Exception as e:
             # self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
             # self.st.warning("No More Email")
             pass
-
 
     def parse_mail(self):
         content = self.mail_content
