@@ -111,7 +111,6 @@ class GmailFetchingResultSemiPage:
 
                 # order count
                 self.st.subheader("▶︎ " + str(i+1) + " 件目")
-                self.st.info(mail_date)
 
                 contents_list.append(content_info)
 
@@ -119,6 +118,7 @@ class GmailFetchingResultSemiPage:
 
                 # mail_subject
                 self.st.subheader("[ " + mail_subject + " ]")
+                self.st.info(mail_date)
 
                 # wordcloud
                 col5, col6, col7 = self.st.columns((5,0.3,5))
