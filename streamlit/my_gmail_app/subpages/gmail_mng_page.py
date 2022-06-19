@@ -159,6 +159,8 @@ class GmailMngPage:
         self.maillist = maillist
         # self.st.write("● mail_id : ", self.mail_id)
 
+        gmail_mng_batch_progress_bar = self.st.progress(0)
+
         col1, col2, col3, col4 = self.st.columns((1,1,1,1))
         col5, col6, col7, col8 = self.st.columns((1,1,1,1))
 
@@ -211,10 +213,13 @@ class GmailMngPage:
         # moveMailToTrash
         if col8.button("🗑", help="Move mail to TRASH", key="trash_"):
             try:
+                count = 0
                 for mail_id_thread in self.maillist:
                     self.gmail_api.moveMailToTrash(user, mail_id_thread["id"])
                     time.sleep(0.3)
-                self.st.balloons()
+                    count = count + 1
+                    gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
+                time.sleep(0.3); self.st.balloons()
                 self.st.write("ゴミ箱に移動しました。")
                 self.st.experimental_rerun()
             except Exception as e:
