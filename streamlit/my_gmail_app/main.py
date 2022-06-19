@@ -147,7 +147,7 @@ class MyGmailApp:
                 ### GmailFetchingResultFullPage
                 if self.selected_email_id != None:
                     self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
-                    self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id)
+                    self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id, selected_content_info)
 
                 ### GmailMngPage
                 if self.selected_email_id != None:

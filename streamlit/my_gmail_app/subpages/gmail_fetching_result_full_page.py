@@ -29,8 +29,14 @@ class GmailFetchingResultFullPage:
         self.mail_id = None
         self.mail_content = None
 
-    def get_mail_content(self, service, user, mail_id):
+    def get_mail_content(self, service, user, mail_id, selected_content_info):
 
+        # selected_content_info
+        selected_email_order = selected_content_info[0]
+        selected_email_id = selected_content_info[1]
+        selected_email_title = selected_content_info[2]
+
+        #
         self.gmail_api = GmailApi(self.st, service)
         
         self.mail_id = mail_id
@@ -98,14 +104,15 @@ class GmailFetchingResultFullPage:
                 self.st.info("No Filter")
 
             # text
-            col1, col2 = self.st.columns((1,1))
+            self.st.info(selected_email_order)
+            self.st.info("● mail_subject : " + mail_subject)
 
+            col1, col2 = self.st.columns((1,1))
             with col1:
-                self.st.subheader("● mail_subject : \n"); self.st.error(mail_subject)
                 self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
                 self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
                 self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
-                self.st.subheader("● mail_snippet : \n"); self.st.error(mail_snippet)
+                self.st.subheader("● mail_snippet : \n"); self.st.info(mail_snippet)
 
             with col2:
                 if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
