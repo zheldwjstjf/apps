@@ -117,7 +117,7 @@ class GmailFetchingSettingPage:
         return self.query_subject
 
     def get_query_from(self):
-        selected_query_from_val = self.st.text_input("● 送信元で絞る", placeholder="ここに入力", value="Machine Learning")
+        selected_query_from_val = self.st.text_input("● 送信元で絞る", placeholder="ここに入力", value="medium")
         self.query_from = "from:" + selected_query_from_val
 
         return self.query_from
