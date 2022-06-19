@@ -62,7 +62,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("メールを既読にしました。")
-                self.st.st.experimental_rerun()
+                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを既読にできませんでした。")
                 self.st.error("" + str(e))
