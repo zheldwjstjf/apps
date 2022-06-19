@@ -143,17 +143,17 @@ class MyGmailApp:
                     selected_email_title = selected_content_info[1]
                     self.st.write(selected_email_title)
 
-                ### GmailFetchingResultFullPage
-                if self.selected_email_id != None:
-                    self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
-                    self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id)
+                    ### GmailFetchingResultFullPage
+                    if self.selected_email_id != None:
+                        self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+                        self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id)
 
-                ### GmailMngPage
-                if self.gmailFetchingResultFullPage != None:
-                    with st.sidebar.expander("[ 管理 ]"):
-                        self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
-                else:
-                    pass
+                    ### GmailMngPage
+                    if self.gmailFetchingResultFullPage != None:
+                        with st.sidebar.expander("[ 管理 ]"):
+                            self.gmailMngPage.gmail_mng_page(self.gmailFetchingResultSemiPage.mail_id)
+                    else:
+                        pass
 
             def Gmail_Crawling():
                 service = self.auth_result
