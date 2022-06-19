@@ -52,16 +52,18 @@ class GmailMngPage:
             self.st.info("No Filter")
         """
 
-        col1, col2, col3 = self.st.columns((1,1,1))
-        col4, col5, col6 = self.st.columns((1,1,1))
+        col1, col2, col3, col4 = self.st.columns((1,1,1,1))
+        col5, col6, col7, col8 = self.st.columns((1,1,1,1))
 
+        ########################## 1st line
         # markMailAsImportant
         if col1.button("重要", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
             try:
+                self.gmail_api.markMailAsImportant(user, self.mail_id)
                 self.st.write("重要なメールと指定しました。")
             except Exception as e:
                 self.st.write("重要なメールと指定しました。")
-                self.st.error(str(e))
+                self.st.error("" + str(e))
 
         # markMailAsRead
         if col2.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
@@ -70,22 +72,59 @@ class GmailMngPage:
                 self.st.write("メールを既読にしました。")
             except Exception as e:
                 self.st.write("メールを既読にできませんでした。")
-                self.st.error(str(e))
+                self.st.error("" + str(e))
 
         # markMailAsStarred
         if col3.button("⭐️", help="Mark mail as STARRED", key="starred_" + self.mail_id):
-            self.st.write("星を付けました。")
+            try:
+                self.gmail_api.markMailAsStarred(user, self.mail_id)
+                self.st.write("星を付けました。")
+            except Exception as e:
+                self.st.write("星が付けられませんでした。")
+                self.st.error("" + str(e))
 
         # markMailAsUnread
         if col4.button("📪", help="Mark mail as UNREAD", key="unread_" + self.mail_id):
-            self.st.write("メールを未読にしました。")
+            try:
+                self.gmail_api.markMailAsUnread(user, self.mail_id)
+                self.st.write("メールを未読にしました。")
+            except Exception as e:
+                self.st.write("メールを未読にできませんでした。")
+                self.st.error("" + str(e))
 
+        ########################## 2nd line
         # moveMailToTrash
         if col5.button("🗑", help="Move mail to TRASH", key="trash" + self.mail_id):
-            self.st.write("ゴミ箱に移動しました。")
+            try:
+                self.gmail_api.moveMailToTrash(user, self.mail_id)
+                self.st.write("ゴミ箱に移動しました。")
+            except Exception as e:
+                self.st.write("ゴミ箱に移動できませんでした。")
+                self.st.error("" + str(e))
 
         # deleteMail
         if col6.button("削除", help="DELETE mail",  key="delete_" + self.mail_id):
-            self.st.write("メールを削除しました。")
+            try:
+                self.gmail_api.deleteMail(user, self.mail_id)
+                self.st.write("メールを削除しました。")
+            except Exception as e:
+                self.st.write("メールを削除できませんでした。")
+                self.st.error("" + str(e))
 
+        # markMailAsSpam
+        if col7.button("SPAM", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
+            try:
+                self.gmail_api.markMailAsSpam(user, self.mail_id)
+                self.st.write("SPAMメールに指定しました。")
+            except Exception as e:
+                self.st.write("メールを削除できませんでした。")
+                self.st.error("" + str(e))
 
+        # markMailAsNotSpam
+        if col8.button("NoSPAM", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
+            try:
+                self.gmail_api.markMailAsNotSpam(user, self.mail_id)
+                self.st.write("SPAMメールの指定を解除しました。")
+            except Exception as e:
+                self.st.write("メールを削除できませんでした。")
+                self.st.error("" + str(e))
