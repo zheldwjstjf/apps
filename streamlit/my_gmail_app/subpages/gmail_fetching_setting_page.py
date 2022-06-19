@@ -142,6 +142,11 @@ class GmailFetchingSettingPage:
                 "3y",
                 "4y",
                 "5y",
+                "6y",
+                "7y",
+                "8y",
+                "9y",
+                "10y",
             ]
         selected_query_newer_than_val = self.st.selectbox("Select Query Value - newer_than", query_newer_than_val_list, index=6, key="newer_than")
         self.query_newer_than = "newer_than:" + selected_query_newer_than_val
@@ -183,6 +188,11 @@ class GmailFetchingSettingPage:
                 "3y",
                 "4y",
                 "5y",
+                "6y",
+                "7y",
+                "8y",
+                "9y",
+                "10y",
             ]
         selected_query_older_than_val = self.st.selectbox("Select Query Value - older_than", query_older_than_val_list, key="older_than")
         self.query_older_than = "older_than:" + selected_query_older_than_val
