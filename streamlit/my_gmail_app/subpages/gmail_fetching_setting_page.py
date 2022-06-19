@@ -14,6 +14,7 @@ class GmailFetchingSettingPage:
 
         self.st = streamlit
         self.query = ""
+        self.query_is = ""
 
     def gmail_fetching_setting_page(self):
         """
@@ -95,13 +96,13 @@ class GmailFetchingSettingPage:
             self.query_is = "is:" + "read"
 
         if "unread" in selected_query_is_val:
-            self.query_is = self.query_is+ " is:" + "unread"
+            self.query_is = self.query_is + " is:" + "unread"
 
         if "starred" in selected_query_is_val:
-            self.query_is = self.query_is+ " is:" + "starred"
+            self.query_is = self.query_is + " is:" + "starred"
 
         if "snoozed" in selected_query_is_val:
-            self.query_is = self.query_is+ " is:" + "snoozed"
+            self.query_is = self.query_is + " is:" + "snoozed"
 
         return self.query_is
 
