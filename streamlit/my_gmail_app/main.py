@@ -154,7 +154,7 @@ class MyGmailApp:
                     with st.sidebar.expander("[ Batch処理設定 ]"):
                         self.st.write("Batch処理設定")
 
-                    with st.sidebar.expander("[ ▶︎ 処理 ]"):
+                    with st.sidebar.expander("[ ▶︎  処理 ]"):
                         ### GmailMngPage
                         if self.selected_email_id != None:
                             self.gmailMngPage.gmail_mng_page(service, user, self.selected_email_id)
