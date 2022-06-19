@@ -58,7 +58,7 @@ class GmailMngPage:
 
         ########################## 1st line
         # markMailAsRead
-        if col1.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
+        if col4.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
             try:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 self.st.balloons()
@@ -91,7 +91,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsUnread
-        if col4.button("📪", help="Mark mail as UNREAD", key="unread_" + self.mail_id):
+        if col1.button("📪", help="Mark mail as UNREAD", key="unread_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsUnread(user, self.mail_id)
                 self.st.balloons()
@@ -103,7 +103,7 @@ class GmailMngPage:
 
         ########################## 2nd line
         # moveMailToTrash
-        if col5.button("🗑", help="Move mail to TRASH", key="trash" + self.mail_id):
+        if col8.button("🗑", help="Move mail to TRASH", key="trash" + self.mail_id):
             try:
                 self.gmail_api.moveMailToTrash(user, self.mail_id)
                 self.st.balloons()
@@ -114,7 +114,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # deleteMail
-        if col6.button("🧨", help="DELETE mail",  key="delete_" + self.mail_id):
+        if col7.button("🧨", help="DELETE mail",  key="delete_" + self.mail_id):
             try:
                 self.gmail_api.deleteMail(user, self.mail_id)
                 self.st.balloons()
@@ -125,7 +125,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsSpam
-        if col7.button("⛔", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
+        if col6.button("⛔", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
                 self.st.balloons()
@@ -136,7 +136,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsNotSpam
-        if col8.button("🔙", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
+        if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsNotSpam(user, self.mail_id)
                 self.st.balloons()
