@@ -20,7 +20,7 @@ class AuthPage:
 
         else:
             if self.auth_status == None:
-                uploaded_file = self.st.file_uploader("▶︎ 認証キーを選択してください。")
+                uploaded_file = self.st.file_uploader("● 認証キーを選択してください。")
                 # self.st.write("[DEBUG] uploaded_file info type : ", type(uploaded_file))
                 # self.st.write("[DEBUG] uploaded_file info : ", uploaded_file)
 
