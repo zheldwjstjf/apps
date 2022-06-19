@@ -116,7 +116,7 @@ class GmailFetchingResultFullPage:
                     self.st.write(mail_body)
 
             # - do mail as read
-            self.gmail_api.markMailAsRead(user, self.mail_id)
+            # self.gmail_api.markMailAsRead(user, self.mail_id)
 
         except Exception as e:
             self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
