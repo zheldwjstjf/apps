@@ -107,8 +107,7 @@ class GmailFetchingResultSemiPage:
                 except Exception as e:
                     self.st.error("Exception - mail['body'] : " + "e")
 
-                for foo in range(3):
-                    self.st.write("---")
+                # order count
                 self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
                 contents_list.append(content_info)
@@ -151,6 +150,10 @@ class GmailFetchingResultSemiPage:
 
             except Exception as e:
                 self.st.warning("No more Email")
+
+            # line
+            for foo in range(3):
+                self.st.write("---")
 
         self.st.success("Fetching Done")
         return contents_list
