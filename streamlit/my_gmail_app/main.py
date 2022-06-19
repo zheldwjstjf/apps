@@ -167,9 +167,10 @@ class MyGmailApp:
                         if operation_type == 'Batch':
                             pass
 
-                    with st.sidebar.expander("[ ▶︎ 個別処理 ]"):
+                    with st.sidebar.expander("[ ▶︎ 処理 ]"):
                         ### GmailMngPage
                         if operation_type == '個別':
+                            self.st.write("個別処理")
                             if self.selected_email_id != None:
                                 self.gmailMngPage.gmail_mng_page(service, user, self.selected_email_id)
                             else:
