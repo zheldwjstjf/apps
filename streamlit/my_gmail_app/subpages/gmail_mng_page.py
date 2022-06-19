@@ -220,7 +220,7 @@ class GmailMngPage:
                     count = count + 1
                     gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
                 self.st.write("すべての対象メールをゴミ箱に移動しました。")
-                time.sleep(1); self.st.balloons()
+                time.sleep(1); self.st.balloons(); time.sleep(1);
                 self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("ゴミ箱に移動できませんでした。")
