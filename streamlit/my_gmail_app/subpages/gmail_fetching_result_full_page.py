@@ -36,13 +36,9 @@ class GmailFetchingResultFullPage:
         self.mail_id = mail_id
 
         try:
-            self.st.info(111)
             self.mail_content = self.gmail_api.getMailContent(user, self.mail_id)
-            self.st.info(222)
 
-            self.st.info(333)
             mail = self.parse_mail()
-            self.st.info(444)
 
             try:
                 mail_subject = mail['subject']
