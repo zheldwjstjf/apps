@@ -143,7 +143,7 @@ class GmailApi():
             i -- メールのId getMailList()等を使用して取得したIdを使用する
             Returns:　なし
         """
-        query = {"removeLabelIds": ["READ"]} # Mark as read
+        query = {"addLabelIds": ["UNREAD"]} # Mark as read
         self.service.users().messages().modify(userId=user, id=i, body=query).execute()
 
     def markMailAsNotSpam(self, user, i):
