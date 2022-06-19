@@ -49,19 +49,19 @@ class GmailFetchingSettingPage:
 
         if "subject" in selected_query_keys:
             self.query_subject = self.get_query_subject()
-            self.query = self.query + self.query_subject + " "
+            self.query = self.query + " OR " + self.query_subject + " "
 
         if "from" in selected_query_keys:
             self.query_from = self.get_query_from()
-            self.query = self.query + self.query_from + " "
+            self.query = self.query + " OR " + self.query_from + " "
 
         if "older_than" in selected_query_keys:
             self.query_older_than = self.get_query_older_than()
-            self.query = self.query + self.query_older_than + " "
+            self.query = self.query + " OR " + self.query_older_than + " "
 
         if "newer_than" in selected_query_keys:
             self.query_newer_than = self.get_query_newer_than()
-            self.query = self.query + self.query_newer_than + " "
+            self.query = self.query + " OR " + self.query_newer_than + " "
 
         # call get_list() with query
         # self.st.subheader("▶︎ Email取得")
