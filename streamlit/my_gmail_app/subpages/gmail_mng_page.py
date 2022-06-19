@@ -147,7 +147,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
 
-    def gmail_mng_batch(self, service, user, contents_list):
+    def gmail_mng_batch(self, service, user, maillist):
         """
         - method name : tmpPage
         - arg(s) : None
@@ -156,7 +156,7 @@ class GmailMngPage:
         self.gmail_api = GmailApi(self.st, service)
 
         self.user = user
-        self.contents_list = contents_list
+        self.maillist = maillist
         # self.st.write("● mail_id : ", self.mail_id)
 
         col1, col2, col3, col4 = self.st.columns((1,1,1,1))
@@ -211,8 +211,8 @@ class GmailMngPage:
         # moveMailToTrash
         if col8.button("🗑", help="Move mail to TRASH", key="trash_"):
             try:
-                for selected_content_info in self.contents_list:
-                    self.gmail_api.moveMailToTrash(user, selected_content_info[1])
+                for mail_id_thread in self.maillist:
+                    self.gmail_api.moveMailToTrash(user, mail_id_thread["id"])
                     time.sleep(0.3)
                 self.st.balloons()
                 self.st.write("ゴミ箱に移動しました。")

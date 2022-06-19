@@ -133,8 +133,8 @@ class MyGmailApp:
                 ### GmailFetchingResultSemiPage
                 self.gmailFetchingResultSemiPage = GmailFetchingResultSemiPage(st)
                 maillist = self.gmailFetchingPage.maillist
-                self.st.write("maillist")
-                self.st.write(maillist)
+                # self.st.write("maillist")
+                # self.st.write(maillist)
                 fetching_count = self.gmailFetchingSettingPage.fetching_count
                 result_count = self.gmailFetchingPage.result_count
 
@@ -177,9 +177,9 @@ class MyGmailApp:
 
                         if operation_type == 'Batch':
                             self.st.write("Batch処理")
-                            self.st.write(self.contents_list)
-                            if self.contents_list != None:
-                                self.gmailMngPage.gmail_mng_batch(service, user, self.contents_list)
+                            # self.st.write(maillist)
+                            if maillist != None:
+                                self.gmailMngPage.gmail_mng_batch(service, user, maillist)
                             else:
                                 pass
 
