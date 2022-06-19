@@ -116,8 +116,11 @@ class GmailApi():
                 http://developers.google.com/apis-explorer/#p/gmail/v1/gmail.users.messages.get
         """
         try:
+            self.st.info(111)
             return self.service.users().messages().get(userId=user, id=i).execute()
+            self.st.info(222)
         except errors.HttpError as error:
+            self.st.info(333)
             self.st.error("getMailContent : " + str(error))
 
     def archiveMail(self, user, i):
