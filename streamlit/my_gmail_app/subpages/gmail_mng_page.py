@@ -77,7 +77,7 @@ class GmailMngPage:
             self.st.write("星を付けました。")
 
         # markMailAsUnread
-        if col4.button("📪", help="Mark mail as UNREAD", help="未読", key="unread_" + self.mail_id):
+        if col4.button("📪", help="Mark mail as UNREAD", key="unread_" + self.mail_id):
             self.st.write("メールを未読にしました。")
 
         # moveMailToTrash
