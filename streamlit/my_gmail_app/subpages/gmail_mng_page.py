@@ -164,7 +164,7 @@ class GmailMngPage:
 
         ########################## 1st line
         # markMailAsRead
-        if col4.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
+        if col4.button("📬", help="Mark mail as READ", key="read_"):
             try:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 # self.st.balloons()
@@ -175,7 +175,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsImportant
-        if col2.button("🚩", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
+        if col2.button("🚩", help="Mark mail as IMPORTANT", key="important_"):
             try:
                 self.gmail_api.markMailAsImportant(user, self.mail_id)
                 # self.st.balloons()
@@ -186,7 +186,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsStarred
-        if col3.button("⭐️", help="Mark mail as STARRED", key="starred_" + self.mail_id):
+        if col3.button("⭐️", help="Mark mail as STARRED", key="starred_"):
             try:
                 self.gmail_api.markMailAsStarred(user, self.mail_id)
                 # self.st.balloons()
@@ -197,7 +197,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsUnread
-        if col1.button("📪", help="Mark mail as UNREAD", key="unread_" + self.mail_id):
+        if col1.button("📪", help="Mark mail as UNREAD", key="unread_"):
             try:
                 self.gmail_api.markMailAsUnread(user, self.mail_id)
                 # self.st.balloons()
@@ -209,7 +209,7 @@ class GmailMngPage:
 
         ########################## 2nd line
         # moveMailToTrash
-        if col8.button("🗑", help="Move mail to TRASH", key="trash" + self.mail_id):
+        if col8.button("🗑", help="Move mail to TRASH", key="trash_"):
             try:
                 for selected_content_info in self.contents_list:
                     self.gmail_api.moveMailToTrash(user, selected_content_info[1])
@@ -222,7 +222,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # deleteMail
-        if col7.button("🧨", help="DELETE mail",  key="delete_" + self.mail_id):
+        if col7.button("🧨", help="DELETE mail",  key="delete_"):
             try:
                 self.gmail_api.deleteMail(user, self.mail_id)
                 # self.st.balloons()
@@ -233,7 +233,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsSpam
-        if col6.button("⛔", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
+        if col6.button("⛔", help="Mark mail as SPAM",  key="spam_"):
             try:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
                 # self.st.balloons()
@@ -244,7 +244,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsNotSpam
-        if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
+        if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_"):
             try:
                 self.gmail_api.markMailAsNotSpam(user, self.mail_id)
                 # self.st.balloons()
