@@ -77,6 +77,7 @@ class GmailFetchingResultFullPage:
             self.st.write("---")
             self.st.subheader("▶︎ " + str(i+1) + " 件目")
             
+            """
             # getFilterList
             filter_dict = self.gmail_api.getFilterList(user, self.mail_id)
             # self.st.info("[DEBUG] filter_dict : " + str(filter_dict))
@@ -99,6 +100,7 @@ class GmailFetchingResultFullPage:
                         self.st.info("Filter : " + str(filtered_email) + " : " + str(filter_action))
             else:
                 self.st.info("No Filter")
+            """
 
             # text
             col1, col2 = self.st.columns((1,1))
