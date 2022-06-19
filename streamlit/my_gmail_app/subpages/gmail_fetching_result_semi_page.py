@@ -111,6 +111,7 @@ class GmailFetchingResultSemiPage:
 
                 # order count
                 self.st.subheader("▶︎ " + str(i+1) + " 件目")
+                self.st.info(mail_date)
 
                 contents_list.append(content_info)
 
