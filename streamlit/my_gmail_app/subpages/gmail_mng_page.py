@@ -1,4 +1,5 @@
 from datetime import datetime
+import time
 
 from modules.gmailapi import GmailApi
 
@@ -62,6 +63,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("メールを既読にしました。")
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを既読にできませんでした。")
                 self.st.error("" + str(e))
@@ -72,6 +74,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsImportant(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("重要なメールと指定しました。")
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("重要なメールと指定しました。")
                 self.st.error("" + str(e))
@@ -82,6 +85,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsStarred(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("星を付けました。")
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("星が付けられませんでした。")
                 self.st.error("" + str(e))
@@ -92,6 +96,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsUnread(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("メールを未読にしました。")
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを未読にできませんでした。")
                 self.st.error("" + str(e))
@@ -103,7 +108,7 @@ class GmailMngPage:
                 self.gmail_api.moveMailToTrash(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("ゴミ箱に移動しました。")
-                self.st.experimental_rerun()
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("ゴミ箱に移動できませんでした。")
                 self.st.error("" + str(e))
@@ -114,6 +119,7 @@ class GmailMngPage:
                 self.gmail_api.deleteMail(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("メールを削除しました。")
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを削除できませんでした。")
                 self.st.error("" + str(e))
@@ -124,7 +130,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("SPAMメールに指定しました。")
-                self.st.experimental_rerun()
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを削除できませんでした。")
                 self.st.error("" + str(e))
@@ -135,6 +141,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsNotSpam(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("SPAMメールの指定を解除しました。")
+                time.sleep(3); self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを削除できませんでした。")
                 self.st.error("" + str(e))
