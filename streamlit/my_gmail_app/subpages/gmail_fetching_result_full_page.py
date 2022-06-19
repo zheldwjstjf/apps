@@ -76,10 +76,10 @@ class GmailFetchingResultFullPage:
             except Exception as e:
                 self.st.error("Exception- mail['body'] : " + "e")
 
-            
-            for foo in range(3):
-                self.st.write("---")
-
+            # sub title
+            self.st.write("---")
+            self.st.markdown("<h2 style='text-align: center; color: red;'>選択したメールの詳細</h2>", unsafe_allow_html=True)
+            self.st.write("---")
 
             # order num / title
             self.st.subheader(selected_email_order)

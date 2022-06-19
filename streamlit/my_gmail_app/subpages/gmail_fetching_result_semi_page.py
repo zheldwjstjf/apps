@@ -49,6 +49,11 @@ class GmailFetchingResultSemiPage:
         # 셀렉트 박스에서 하나의 [id / title]를 선택하면 -> 스닛핏 또는 본문 볼 수 있게 하고
         #  스닛핏 또는 본문을 본다음에 -> 개요 정보 입력/업데이터 / 삭제 / 쓰레기토응로 / 본문내용 저장 등등 할수 있게 한다
           
+        # sub title
+        self.st.write("---")
+        self.st.markdown("<h2 style='text-align: center; color: red;'>マッチしたメールのKeyword情報</h2>", unsafe_allow_html=True)
+        self.st.write("---")
+
         for i in range(fetching_count):
 
             content_info = []
