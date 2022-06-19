@@ -56,6 +56,7 @@ class MyGmailApp:
         self.auth_fail_time = None
         self.auth_success_time = None
         self.selected_email_id = None
+        self.contents_list = None
 
         # 
         self.sidebarPage.sidebar_page()
@@ -137,7 +138,7 @@ class MyGmailApp:
 
                 if result_count > 0:
                     if maillist != None:
-                        contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                        self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                     with st.sidebar.expander("[ ▶︎ 選択 ]"):
 
@@ -145,7 +146,7 @@ class MyGmailApp:
                         operation_type = self.st.radio("● 処理タイプ",('個別', 'Batch'), index=0)
 
                         if operation_type == '個別':
-                            selected_content_info = self.st.selectbox("● SELECT EMAIL", contents_list, key="select_a_mail")
+                            selected_content_info = self.st.selectbox("● SELECT EMAIL", self.contents_list, key="select_a_mail")
                             selected_email_order = selected_content_info[0]
                             self.selected_email_id = selected_content_info[1]
                             selected_email_title = selected_content_info[2]
@@ -154,10 +155,12 @@ class MyGmailApp:
                         if operation_type == 'Batch':
                             self.st.write("Batch設定")
 
+                    ###
+                    self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+
                     ### GmailFetchingResultFullPage
                     if operation_type == '個別':
                         if self.selected_email_id != None:
-                            self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
                             self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id, selected_content_info)
                         if operation_type == 'Batch':
                             pass
@@ -169,9 +172,14 @@ class MyGmailApp:
                                 self.gmailMngPage.gmail_mng_page(service, user, self.selected_email_id)
                             else:
                                 pass
+
                         if operation_type == 'Batch':
                             self.st.write("Batch処理")
-
+                            if self.contents_list != None:
+                                for selected_content_info in self.contents_list:
+                                    self.gmailMngPage.gmail_mng_page(service, user, selected_content_info[1])
+                            else:
+                                pass
 
 
             def Gmail_Crawling():
