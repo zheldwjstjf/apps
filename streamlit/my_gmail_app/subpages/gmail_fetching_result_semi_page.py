@@ -53,7 +53,7 @@ class GmailFetchingResultSemiPage:
 
             content_info = []
 
-            content_info.append("▶︎ " + str(i) + " 件目")
+            content_info.append("▶︎ " + str(i+1) + " 件目")
 
             try:
                 self.mail_id = self.mail_id = maillist[i]['id']
