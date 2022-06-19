@@ -154,9 +154,12 @@ class MyGmailApp:
                             self.st.write("Batch処理設定")
 
                     ### GmailFetchingResultFullPage
-                    if self.selected_email_id != None:
-                        self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
-                        self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id, selected_content_info)
+                    if operation_type == '個別':
+                        if self.selected_email_id != None:
+                            self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+                            self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id, selected_content_info)
+                        if operation_type == 'Batch':
+                            pass
 
                     with st.sidebar.expander("[ ▶︎ 処理 ]"):
                         ### GmailMngPage
