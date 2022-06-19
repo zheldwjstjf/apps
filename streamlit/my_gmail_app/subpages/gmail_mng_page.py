@@ -61,7 +61,7 @@ class GmailMngPage:
         if col4.button("📬", help="Mark mail as READ", key="read" + self.mail_id):
             try:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("メールを既読にしました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -72,7 +72,7 @@ class GmailMngPage:
         if col2.button("🚩", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsImportant(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("重要なメールと指定しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -83,7 +83,7 @@ class GmailMngPage:
         if col3.button("⭐️", help="Mark mail as STARRED", key="starred_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsStarred(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("星を付けました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -94,7 +94,7 @@ class GmailMngPage:
         if col1.button("📪", help="Mark mail as UNREAD", key="unread_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsUnread(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("メールを未読にしました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -106,7 +106,7 @@ class GmailMngPage:
         if col8.button("🗑", help="Move mail to TRASH", key="trash" + self.mail_id):
             try:
                 self.gmail_api.moveMailToTrash(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("ゴミ箱に移動しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -117,7 +117,7 @@ class GmailMngPage:
         if col7.button("🧨", help="DELETE mail",  key="delete_" + self.mail_id):
             try:
                 self.gmail_api.deleteMail(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("メールを削除しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -128,7 +128,7 @@ class GmailMngPage:
         if col6.button("⛔", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("SPAMメールに指定しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
@@ -139,7 +139,7 @@ class GmailMngPage:
         if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsNotSpam(user, self.mail_id)
-                self.st.balloons()
+                # self.st.balloons()
                 self.st.write("SPAMメールの指定を解除しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
