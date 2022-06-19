@@ -124,6 +124,7 @@ class GmailMngPage:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("SPAMメールに指定しました。")
+                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを削除できませんでした。")
                 self.st.error("" + str(e))
