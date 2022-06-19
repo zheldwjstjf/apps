@@ -145,6 +145,7 @@ class GmailFetchingResultSemiPage:
             except Exception as e:
                 self.st.warning("No more Email")
 
+        self.st.success("Fetching Done")
         return contents_list
 
 
