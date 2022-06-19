@@ -62,7 +62,6 @@ class GmailMngPage:
                 self.gmail_api.markMailAsRead(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("メールを既読にしました。")
-                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを既読にできませんでした。")
                 self.st.error("" + str(e))
@@ -104,6 +103,7 @@ class GmailMngPage:
                 self.gmail_api.moveMailToTrash(user, self.mail_id)
                 self.st.balloons()
                 self.st.write("ゴミ箱に移動しました。")
+                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("ゴミ箱に移動できませんでした。")
                 self.st.error("" + str(e))
