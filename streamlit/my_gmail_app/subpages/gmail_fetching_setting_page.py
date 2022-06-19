@@ -88,6 +88,7 @@ class GmailFetchingSettingPage:
         query_is_val_list = [
                 "read",
                 "unread",
+                "read + unread",
                 "starred",
                 "snoozed",
             ]
