@@ -13,15 +13,15 @@ class GmailMngPage:
 
         self.st = streamlit
 
-    def gmail_mng_page(self, mail_id):
+    def gmail_mng_page(self, user, mail_id):
         """
         - method name : tmpPage
         - arg(s) : None
         """
 
+        self.user = user
         self.mail_id = str(mail_id)
         self.st.write("mail_id : ", self.mail_id)
-
         
         # getFilterList
         """
@@ -48,24 +48,41 @@ class GmailMngPage:
             self.st.info("No Filter")
         """
 
-        col11, col12, col13, col14, col15 = self.st.columns((1,1,1,1,1))
-
-        # moveMailToTrash
-        if col11.button("🗑", key="trash" + self.mail_id):
-            self.st.write("ゴミ箱に移動しました。")
-
-        # deleteMail
-        if col12.button("削除", key="delete_" + self.mail_id):
-            self.st.write("削除しました。")
+        col1, col2, col3 = self.st.columns((1,1,1))
+        col4, col5, col6 = self.st.columns((1,1,1))
 
         # markMailAsImportant
-        if col13.button("重要", key="important_" + self.mail_id):
-            self.st.write("重要なメールに指定しました。")
+        if col1.button("重要", key="important_" + self.mail_id):
+            try:
+                self.st.write("重要なメールと指定しました。")
+            except Exception as e:
+                self.st.write("重要なメールと指定しました。")
+                self.st.error(str(e))
+
+        # markMailAsRead
+        if col2.button("🗑", key="read" + self.mail_id):
+            try:
+                self.gmail_api.markMailAsRead(user, self.mail_id)
+                self.st.write("メールを既得にしました。")
+            except Exception as e:
+                self.st.write("メールを既得にできませんでした。")
+                self.st.error(str(e))
+
 
         # markMailAsStarred
-        if col14.button("⭐️", key="starred_" + self.mail_id):
+        if col3.button("⭐️", key="starred_" + self.mail_id):
             self.st.write("星を付けました。")
 
         # markMailAsUnread
-        if col15.button("未読", key="unread_" + self.mail_id):
-            self.st.write("メールを未読に変更しました。")
+        if col4.button("未読", key="unread_" + self.mail_id):
+            self.st.write("メールを未読にしました。")
+
+        # moveMailToTrash
+        if col5.button("🗑", key="trash" + self.mail_id):
+            self.st.write("ゴミ箱に移動しました。")
+
+        # deleteMail
+        if col6.button("削除", key="delete_" + self.mail_id):
+            self.st.write("メールを削除しました。")
+
+
