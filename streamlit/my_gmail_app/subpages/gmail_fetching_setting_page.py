@@ -121,7 +121,7 @@ class GmailFetchingSettingPage:
                 "5m",
                 "6m",
                 "7m",
-                "8m"7
+                "8m",
                 "9m",
                 "10m",
                 "11m",
