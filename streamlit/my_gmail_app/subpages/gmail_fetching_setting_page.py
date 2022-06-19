@@ -39,7 +39,7 @@ class GmailFetchingSettingPage:
                 "older_than",
                 "newer_than"
             ]
-        selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=query_key_list[0:1], key="main")
+        selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=["is", "newer_than"], key="main")
 
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
@@ -121,7 +121,7 @@ class GmailFetchingSettingPage:
                 "5m",
                 "6m",
                 "7m",
-                "8m",
+                "8m"7
                 "9m",
                 "10m",
                 "11m",
@@ -131,7 +131,7 @@ class GmailFetchingSettingPage:
                 "4y",
                 "5y",
             ]
-        selected_query_newer_than_val = self.st.selectbox("Select Query Value - newer_than", query_newer_than_val_list, key="newer_than")
+        selected_query_newer_than_val = self.st.selectbox("Select Query Value - newer_than", query_newer_than_val_list, index=6, key="newer_than")
         self.query_newer_than = "newer_than:" + selected_query_newer_than_val
 
         return self.query_newer_than
