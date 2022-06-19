@@ -151,7 +151,7 @@ class MyGmailApp:
                     ### GmailMngPage
                     if self.selected_email_id != None:
                         with st.sidebar.expander("[ 管理 ]"):
-                            self.gmailMngPage.gmail_mng_page(self.selected_email_id.mail_id)
+                            self.gmailMngPage.gmail_mng_page(self.selected_email_id)
                     else:
                         pass
 
