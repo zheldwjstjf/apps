@@ -40,7 +40,7 @@ class GmailFetchingSettingPage:
                 "older_than",
                 "newer_than"
             ]
-        selected_query_keys = self.st.multiselect("主なQuery", query_key_list, default=["is", "newer_than"], key="main")
+        selected_query_keys = self.st.multiselect("● 主なQuery", query_key_list, default=["is", "newer_than"], key="main")
 
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
@@ -69,7 +69,7 @@ class GmailFetchingSettingPage:
         self.st.code("Query : " + self.query)
 
         # select fetch count
-        self.fetching_count = int(self.st.number_input("最大Match 件数 (上限1000)", min_value=1, max_value=1000))
+        self.fetching_count = int(self.st.number_input("● 最大Match 件数 (上限1000)", min_value=1, max_value=1000))
 
 
     def get_priority_label(self):
@@ -79,7 +79,7 @@ class GmailFetchingSettingPage:
             "Medium",
             "Low"
         ]
-        selected_priority = self.st.multiselect("Select Email", priority_label_list, key="priority")
+        selected_priority = self.st.multiselect("● Select Email", priority_label_list, key="priority")
 
         return selected_priority     
     
@@ -90,19 +90,19 @@ class GmailFetchingSettingPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = self.st.selectbox("Select Query Value", query_is_val_list, index=1, key="is")
+        selected_query_is_val = self.st.multiselect("● Select Query Value", query_is_val_list, default=["unread"], key="is")
         self.query_is = "is:" + selected_query_is_val
 
         return self.query_is
 
     def get_query_subject(self):
-        selected_query_subject_val = self.st.text_input("", placeholder="ここに入力", value="Machine Learning")
+        selected_query_subject_val = self.st.text_input("● タイトルで絞る", placeholder="ここに入力", value="Machine Learning")
         self.query_subject = "subject:" + selected_query_subject_val
 
         return self.query_subject
 
     def get_query_from(self):
-        selected_query_from_val = self.st.text_input("", placeholder="ここに入力", value="Machine Learning")
+        selected_query_from_val = self.st.text_input("● 送信元で絞る", placeholder="ここに入力", value="Machine Learning")
         self.query_from = "from:" + selected_query_from_val
 
         return self.query_from
@@ -148,7 +148,7 @@ class GmailFetchingSettingPage:
                 "9y",
                 "10y",
             ]
-        selected_query_newer_than_val = self.st.selectbox("Select Query Value - newer_than", query_newer_than_val_list, index=6, key="newer_than")
+        selected_query_newer_than_val = self.st.selectbox("● Select Query Value - newer_than", query_newer_than_val_list, index=6, key="newer_than")
         self.query_newer_than = "newer_than:" + selected_query_newer_than_val
 
         return self.query_newer_than
@@ -194,7 +194,7 @@ class GmailFetchingSettingPage:
                 "9y",
                 "10y",
             ]
-        selected_query_older_than_val = self.st.selectbox("Select Query Value - older_than", query_older_than_val_list, key="older_than")
+        selected_query_older_than_val = self.st.selectbox("● Select Query Value - older_than", query_older_than_val_list, key="older_than")
         self.query_older_than = "older_than:" + selected_query_older_than_val
 
         return self.query_older_than
