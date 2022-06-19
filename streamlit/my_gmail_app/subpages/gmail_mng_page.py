@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from modules.gmailapi import GmailApi
+
 class GmailMngPage:
     """
     - class name : TmpPage
@@ -13,11 +15,13 @@ class GmailMngPage:
 
         self.st = streamlit
 
-    def gmail_mng_page(self, user, mail_id):
+    def gmail_mng_page(self, service, user, mail_id):
         """
         - method name : tmpPage
         - arg(s) : None
         """
+
+        self.gmail_api = GmailApi(self.st, service)
 
         self.user = user
         self.mail_id = str(mail_id)
