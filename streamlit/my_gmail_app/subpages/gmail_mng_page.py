@@ -66,7 +66,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsImportant
-        if col2.button("‼", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
+        if col2.button("🚩", help="Mark mail as IMPORTANT", key="important_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsImportant(user, self.mail_id)
                 self.st.write("重要なメールと指定しました。")
