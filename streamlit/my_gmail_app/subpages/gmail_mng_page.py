@@ -103,7 +103,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # deleteMail
-        if col6.button("削除", help="DELETE mail",  key="delete_" + self.mail_id):
+        if col6.button("🧨", help="DELETE mail",  key="delete_" + self.mail_id):
             try:
                 self.gmail_api.deleteMail(user, self.mail_id)
                 self.st.write("メールを削除しました。")
@@ -112,7 +112,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsSpam
-        if col7.button("SPAM", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
+        if col7.button("⛔", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
                 self.st.write("SPAMメールに指定しました。")
@@ -121,7 +121,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsNotSpam
-        if col8.button("NoSPAM", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
+        if col8.button("🔙", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsNotSpam(user, self.mail_id)
                 self.st.write("SPAMメールの指定を解除しました。")
