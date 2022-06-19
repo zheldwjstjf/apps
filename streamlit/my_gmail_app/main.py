@@ -139,10 +139,10 @@ class MyGmailApp:
 
                 with st.sidebar.expander("[ 選択 ]"):
                     selected_content_info = self.st.selectbox("SELECT EMAIL", contents_list, key="select_a_mail")
-                    self.selected_email_order = selected_content_info[0]
+                    selected_email_order = selected_content_info[0]
                     self.selected_email_id = selected_content_info[1]
                     selected_email_title = selected_content_info[2]
-                    self.st.write("SELECTED EMAIL : "selected_email_order + " : " + selected_email_title)
+                    self.st.write("SELECTED EMAIL : [ " + selected_email_order + " ] " + selected_email_title)
 
                 ### GmailFetchingResultFullPage
                 if self.selected_email_id != None:
