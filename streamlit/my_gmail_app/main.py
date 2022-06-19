@@ -140,19 +140,23 @@ class MyGmailApp:
                         contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                     with st.sidebar.expander("[ ▶︎ 選択 ]"):
-                        selected_content_info = self.st.selectbox("● SELECT EMAIL", contents_list, key="select_a_mail")
-                        selected_email_order = selected_content_info[0]
-                        self.selected_email_id = selected_content_info[1]
-                        selected_email_title = selected_content_info[2]
-                        self.st.write("SELECTED EMAIL : [ " + selected_email_order + " ] " + selected_email_title)
+
+                        operation_type = self.st.radio("● 処理タイプ",('個別', 'Batch'), index=0)
+
+                        if operation_type == '個別':
+                            selected_content_info = self.st.selectbox("● SELECT EMAIL", contents_list, key="select_a_mail")
+                            selected_email_order = selected_content_info[0]
+                            self.selected_email_id = selected_content_info[1]
+                            selected_email_title = selected_content_info[2]
+                            self.st.write("SELECTED EMAIL : [ " + selected_email_order + " ] " + selected_email_title)
+
+                        if operation_type == 'Batch':
+                            self.st.write("Batch処理設定")
 
                     ### GmailFetchingResultFullPage
                     if self.selected_email_id != None:
                         self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
                         self.gmailFetchingResultFullPage.get_mail_content(service, user, self.selected_email_id, selected_content_info)
-
-                    with st.sidebar.expander("[ ▶︎ Batch処理設定 ]"):
-                        self.st.write("Batch処理設定")
 
                     with st.sidebar.expander("[ ▶︎ 処理 ]"):
                         ### GmailMngPage
