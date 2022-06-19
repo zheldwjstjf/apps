@@ -96,13 +96,13 @@ class GmailFetchingSettingPage:
             self.query_is = "is:" + "read"
 
         if "unread" in selected_query_is_val:
-            self.query_is = self.query_is + " is:" + "unread"
+            self.query_is = self.query_is + " OR is:" + "unread"
 
         if "starred" in selected_query_is_val:
-            self.query_is = self.query_is + " is:" + "starred"
+            self.query_is = self.query_is + " OR s:" + "starred"
 
         if "snoozed" in selected_query_is_val:
-            self.query_is = self.query_is + " is:" + "snoozed"
+            self.query_is = self.query_is + " OR is:" + "snoozed"
 
         return self.query_is
 
