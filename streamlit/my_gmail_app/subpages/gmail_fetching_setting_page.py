@@ -91,7 +91,17 @@ class GmailFetchingSettingPage:
                 "snoozed",
             ]
         selected_query_is_val = self.st.multiselect("● Select Query Value", query_is_val_list, default=["unread"], key="is")
-        self.query_is = "is:" + selected_query_is_val
+        if "read" in selected_query_is_val:
+            self.query_is = "is:" + "read"
+
+        if "unread" in selected_query_is_val:
+            self.query_is = self.query_is+ " is:" + "unread"
+
+        if "starred" in selected_query_is_val:
+            self.query_is = self.query_is+ " is:" + "starred"
+
+        if "snoozed" in selected_query_is_val:
+            self.query_is = self.query_is+ " is:" + "snoozed"
 
         return self.query_is
 
