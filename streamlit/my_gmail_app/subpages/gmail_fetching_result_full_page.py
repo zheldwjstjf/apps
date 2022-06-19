@@ -120,7 +120,7 @@ class GmailFetchingResultFullPage:
         except Exception as e:
             # self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
             # self.st.warning("No More Email")
-            self.st.success("Fetching Done")
+            pass
 
 
     def parse_mail(self):
