@@ -121,35 +121,34 @@ class GmailFetchingResultSemiPage:
                 self.st.info(mail_date)
 
                 # wordcloud
-                col5, col6, col7 = self.st.columns((5,0.3,5))
+                col5, col6, col7 = self.st.columns((1,1,1))
 
                 # wordcloud - mail_from
                 with col5:
                     self.st.write("---")
                     self.st.write("● mail_from")
-                    self.visualizationTool.wordcloud(mail_from, 700, 30)
+                    self.visualizationTool.wordcloud(mail_from, 1500, 30)
 
                 # wordcloud - mail_subject
-                with col7:
+                with col6:
                     self.st.write("---")
                     self.st.write("● mail_subject")
-                    self.visualizationTool.wordcloud(mail_subject, 700, 30)
+                    self.visualizationTool.wordcloud(mail_subject, 1500, 30)
 
                 # wordcloud - mail_snippet
-                with col5:
-                    self.st.write("---")
-                    self.st.write("● mail_snippet")
-                    self.visualizationTool.wordcloud(mail_snippet, 700, 100)
-
-                # wordcloud - mail_body
                 with col7:
                     self.st.write("---")
-                    self.st.write("● mail_body")
-                    if ("http" not in mail_body) and ("</" not in mail_body):
-                        input_text = mail_body
-                    else:
-                        input_text = mail_body
-                    self.visualizationTool.wordcloud(input_text, 700, 300)
+                    self.st.write("● mail_snippet")
+                    self.visualizationTool.wordcloud(mail_snippet, 1500, 100)
+
+                # wordcloud - mail_body
+                self.st.write("---")
+                self.st.write("● mail_body")
+                if ("http" not in mail_body) and ("</" not in mail_body):
+                    input_text = mail_body
+                else:
+                    input_text = mail_body
+                self.visualizationTool.wordcloud(input_text, 1500, 300)
 
             except Exception as e:
                 self.st.warning("No more Email")
