@@ -120,7 +120,7 @@ class GmailFetchingResultFullPage:
                     self.st.write("---")
                     self.st.write("● URL : " + target_url)
                     self.visualizationTool.wordcloud(resutl_text, 1400, 500)
-                    with self.st.expander("See explanation"):
+                    with self.st.expander("テキストを見る"):
                         self.st.write(resutl_text)
             except Exception as e:
                 self.st.error(str(e))
