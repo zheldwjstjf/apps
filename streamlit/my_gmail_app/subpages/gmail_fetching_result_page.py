@@ -114,39 +114,6 @@ class GmailFetchingResultPage:
                 else:
                     self.st.info("No Filter")
 
-                ########################
-                # wordcloud
-                col5, col6, col7 = self.st.columns((5,0.3,5))
-
-                # wordcloud - mail_from
-                with col5:
-                    self.st.write("---")
-                    self.st.write("● mail_from")
-                    self.visualizationTool.wordcloud(mail_from, 700, 30)
-
-                # wordcloud - mail_subject
-                with col7:
-                    self.st.write("---")
-                    self.st.write("● mail_subject")
-                    self.visualizationTool.wordcloud(mail_subject, 700, 30)
-
-                # wordcloud - mail_snippet
-                with col5:
-                    self.st.write("---")
-                    self.st.write("● mail_snippet")
-                    self.visualizationTool.wordcloud(mail_snippet, 700, 100)
-
-                # wordcloud - mail_body
-                with col7:
-                    self.st.write("---")
-                    self.st.write("● mail_body")
-                    if ("http" not in mail_body) and ("</" not in mail_body):
-                        input_text = mail_body
-                    else:
-                        input_text = mail_body
-                    self.visualizationTool.wordcloud(input_text, 700, 300)
-
-
                 # text
                 col1, col2 = self.st.columns((1,1))
 
