@@ -115,12 +115,15 @@ class GmailFetchingResultFullPage:
                 self.st.error(str(e))
 
             try:
+                count = 1
                 for target_url in target_urls:
                     resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
                     self.st.write("---")
-                    self.st.write("● text_from_url_in_mail_body")
+                    self.st.write("● URL : " + target_url)
                     self.visualizationTool.wordcloud(resutl_text, 1400, 500)
-                    self.st.write(resutl_text)
+                    with self.st.expander("See explanation", key=count):
+                        self.st.write(resutl_text)
+                    count = count + 1
             except Exception as e:
                 self.st.error(str(e))
 
