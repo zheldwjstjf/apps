@@ -77,7 +77,7 @@ class GetTextFromURL:
         link_regex = re.compile('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)', re.DOTALL)
         self.url_list = re.findall(link_regex, input_text)
 
-        print(self.url_list)
+        self.st.write(self.url_list)
 
         return self.url_list
             
