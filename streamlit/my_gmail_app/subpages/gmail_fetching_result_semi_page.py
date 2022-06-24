@@ -155,7 +155,7 @@ class GmailFetchingResultSemiPage:
                 # wordcloud - text from url in mail body
                 try:
                     target_url = "https://www.python.org/"
-                    resutl_text = self.getTextFromURL.get_text_from_url(url=target_url)
+                    resutl_text = self.getTextFromURL.get_text_from_url(target_url)
                     self.st.write("---")
                     self.st.write("● text_from_url_in_mail_body")
                     self.st.write(resutl_text)
