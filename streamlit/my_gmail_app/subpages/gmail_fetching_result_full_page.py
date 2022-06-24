@@ -126,6 +126,8 @@ class GmailFetchingResultFullPage:
                     resutl_url_text_list.append(resutl_url_text_str)
                 resutl_url_text_list = list(set(resutl_url_text_list))
 
+                self.st.write(resutl_url_text_list)
+
                 for resutl_url_text_str in resutl_url_text_list:
                     target_url = resutl_url_text_str.split("$$$$$$$")[0]
                     resutl_text = resutl_url_text_str.split("$$$$$$$")[1]
