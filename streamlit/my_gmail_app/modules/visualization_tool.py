@@ -8,11 +8,11 @@ class VisualizationTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
 
-    def wordcloud(self, mail_body_text, widthsize):
+    def wordcloud(self, mail_body_text, widthsize, maxWords):
 
         stopwords = STOPWORDS
         try:
-            wc = WordCloud(stopwords=stopwords, background_color="white", max_words=30).generate(mail_body_text)
+            wc = WordCloud(stopwords=stopwords, background_color="white", max_words=maxWords).generate(mail_body_text)
 
             img_folder_path = "/app/apps/images/"
             # Check whether the specified path exists or not
