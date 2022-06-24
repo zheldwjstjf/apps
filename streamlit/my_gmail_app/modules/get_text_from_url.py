@@ -3,6 +3,7 @@ import requests
 from requests.models import MissingSchema
 from bs4 import BeautifulSoup
 import numpy as np
+import re
 
 class GetTextFromURL:
     """
@@ -17,10 +18,9 @@ class GetTextFromURL:
 
         self.st = streamlit
 
-        self.result_text = ""
+        self.url_list = []
 
     def beautifulsoup_extract_text_fallback(self, response_content):
-        
         '''
         This is a fallback function, so that we can always return a value for text content.
         Even for when both Trafilatura and BeautifulSoup are unable to extract the text from a 
@@ -69,3 +69,7 @@ class GetTextFromURL:
         # Handling for any URLs that don't have the correct protocol
         except MissingSchema:
             return np.nan
+    
+    def get_url_from_text(self, input_text):
+        self.url_list = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', input_text)
+            
