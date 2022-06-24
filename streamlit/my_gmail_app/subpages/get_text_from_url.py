@@ -15,7 +15,7 @@ class GetTextFromURL:
 
         self.result_text = ""
 
-    def get_mail_content(self, target_url):
+    def get_text_from_url(self, target_url):
 
         url = target_url
         file = urllib.request.urlopen(url)
