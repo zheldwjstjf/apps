@@ -157,6 +157,7 @@ class GmailFetchingResultSemiPage:
                 resutl_text = self.getTextFromURL.get_text_from_url(target_url)
                 self.st.write("---")
                 self.st.write("● text_from_url_in_mail_body")
+                self.st.write(resutl_text)
                 self.visualizationTool.wordcloud(resutl_text, 1400, 500)
 
 
