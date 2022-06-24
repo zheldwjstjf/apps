@@ -71,8 +71,11 @@ class GetTextFromURL:
             return np.nan
     
     def get_url_from_text(self, input_text):
-        self.url_list = re.findall('https?://(?:[-w.]|(?:%[da-fA-F]{2}))+', input_text)
+        # self.url_list = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', input_text)
         # self.url_list = re.findall(r'(https?://\S+)', input_text)
+
+        link_regex = re.compile('((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)', re.DOTALL)
+        self.url_list = re.findall(link_regex, input_text)
 
         return self.url_list
             
