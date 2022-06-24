@@ -116,8 +116,18 @@ class GmailFetchingResultFullPage:
                 self.st.error(str(e))
 
             try:
+                resutl_url_text_list_list = []
+                resutl_url_text_list = []
                 for target_url in target_urls:
                     resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
+                    resutl_url_text_list.append(target_url)
+                    resutl_url_text_list.append(resutl_text)
+                    resutl_url_text_list_list.append(resutl_url_text_list)
+                resutl_url_text_list_list = list(set(resutl_url_text_list_list))
+
+                for resutl_url_text_list in resutl_url_text_list_list:
+                    target_url = resutl_url_text_list[0]
+                    resutl_text = resutl_url_text_list[1]
                     self.st.write("---")
                     self.st.write("● URL : " + target_url)
                     self.visualizationTool.wordcloud(resutl_text, 1400, 500)
