@@ -59,32 +59,15 @@ class GetTextFromURL:
         return cleaned_text.strip()
         
 
-    def extract_text_from_single_web_page(self, url):
-        
-        downloaded_url = trafilatura.fetch_url(url)
+    def extract_text_from_single_web_page(self, url):        
         try:
-            self.st.info(111)
-            try:
-                a = trafilatura.extract(downloaded_url, output_format="json", with_metadata=True, include_comments = False,date_extraction_params={'extensive_search': True, 'original_date': True})
-            except Exception as e:
-                self.st.error(str(e))
-            self.st.info(222)
-        except AttributeError:
-            self.st.info(333)
-            a = trafilatura.extract(downloaded_url, output_format="json", with_metadata=True, date_extraction_params={'extensive_search': True, 'original_date': True})
-            self.st.info(444)
-        if a:
-            json_output = json.loads(a)
-            return json_output['text']
-        else:
-            try:
-                resp = requests.get(url)
-                # We will only extract the text from successful requests:
-                if resp.status_code == 200:
-                    return self.beautifulsoup_extract_text_fallback(resp.content)
-                else:
-                    # This line will handle for any failures in both the Trafilature and BeautifulSoup4 functions:
-                    return np.nan
-            # Handling for any URLs that don't have the correct protocol
-            except MissingSchema:
+            resp = requests.get(url)
+            # We will only extract the text from successful requests:
+            if resp.status_code == 200:
+                return self.beautifulsoup_extract_text_fallback(resp.content)
+            else:
+                # This line will handle for any failures in both the Trafilature and BeautifulSoup4 functions:
                 return np.nan
+        # Handling for any URLs that don't have the correct protocol
+        except MissingSchema:
+            return np.nan
