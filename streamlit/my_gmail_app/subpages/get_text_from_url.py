@@ -59,7 +59,7 @@ class GetTextFromURL:
         return cleaned_text.strip()
         
 
-    def get_text_from_url(self, url):
+    def extract_text_from_single_web_page(self, url):
         
         downloaded_url = trafilatura.fetch_url(url)
         try:
