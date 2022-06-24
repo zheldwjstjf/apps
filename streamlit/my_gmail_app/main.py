@@ -3,7 +3,6 @@ import streamlit as st
 import time
 import os
 
-from subpages.gmail_page import GmailPage
 from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
 from subpages.gmail_fetching_page import GmailFetchingPage
 # from subpages.gmail_fetching_result_page import GmailFetchingResultPage
