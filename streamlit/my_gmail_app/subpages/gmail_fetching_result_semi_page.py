@@ -121,7 +121,7 @@ class GmailFetchingResultSemiPage:
                 self.st.info(mail_date)
 
                 # wordcloud
-                col5, col6, col7, col8, col9 = self.st.columns((1,0.2,1.5,0.2,2.5))
+                col5, col6, col7, col8, col9 = self.st.columns((1,0.1,1.5,0.1,2.5))
 
                 # wordcloud - mail_from
                 with col5:
