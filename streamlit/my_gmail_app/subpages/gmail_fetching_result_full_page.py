@@ -104,6 +104,25 @@ class GmailFetchingResultFullPage:
             # - do mail as read
             # self.gmail_api.markMailAsRead(user, self.mail_id)
 
+
+            # wordcloud - text from url in mail body
+            try:
+                target_urls = self.getTextFromURL.get_url_from_text(mail_body)
+            except Exception as e:
+                target_urls = []
+                self.st.error(str(e))
+
+            try:
+                for target_url in target_urls:
+                    resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
+                    self.st.write("---")
+                    self.st.write("● text_from_url_in_mail_body")
+                    self.visualizationTool.wordcloud(resutl_text, 1400, 500)
+                    self.st.write(resutl_text)
+            except Exception as e:
+                self.st.error(str(e))
+
+
         except Exception as e:
             self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
             # self.st.warning("No More Email")
