@@ -155,7 +155,11 @@ class GmailFetchingResultSemiPage:
                 # wordcloud - text from url in mail body
                 try:
                     target_urls = self.getTextFromURL.get_url_from_text(mail_body)
-                    
+                except Exception as e:
+                    target_urls = []
+                    self.st.error(str(e))
+
+                try:
                     for target_url in target_urls:
                         resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
                         self.st.write("---")
