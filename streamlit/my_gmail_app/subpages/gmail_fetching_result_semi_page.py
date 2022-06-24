@@ -139,7 +139,7 @@ class GmailFetchingResultSemiPage:
                 with col9:
                     self.st.write("---")
                     self.st.write("● mail_snippet")
-                    self.visualizationTool.wordcloud(mail_snippet, 600, 200)
+                    self.visualizationTool.wordcloud(mail_snippet, 600, 300)
 
                 # wordcloud - mail_body
                 self.st.write("---")
@@ -148,7 +148,7 @@ class GmailFetchingResultSemiPage:
                     input_text = mail_body
                 else:
                     input_text = mail_body
-                self.visualizationTool.wordcloud(input_text, 1400, 300)
+                self.visualizationTool.wordcloud(input_text, 1400, 500)
 
             except Exception as e:
                 self.st.warning("No more Email")
