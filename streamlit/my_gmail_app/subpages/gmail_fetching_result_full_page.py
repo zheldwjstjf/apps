@@ -31,6 +31,9 @@ class GmailFetchingResultFullPage:
         self.mail_id = None
         self.mail_content = None
 
+        self.resutl_url_text_list = []
+        self.resutl_url_text_str = ""
+
     def get_mail_content(self, service, user, mail_id, selected_content_info):
 
         # selected_content_info
@@ -116,21 +119,19 @@ class GmailFetchingResultFullPage:
                 self.st.error(str(e))
 
             try:
-                resutl_url_text_list = []
-                resutl_url_text_str = ""
                 for target_url in target_urls:
                     resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
-                    resutl_url_text_str = resutl_url_text_str + target_url
-                    resutl_url_text_str = resutl_url_text_str + "$$$$$$$"
-                    resutl_url_text_str = resutl_url_text_str + resutl_text
-                    resutl_url_text_list.append(resutl_url_text_str)
-                resutl_url_text_list = list(set(resutl_url_text_list))
+                    self.resutl_url_text_str = self.resutl_url_text_str + target_url
+                    self.resutl_url_text_str = self.resutl_url_text_str + "$$$$$$$"
+                    self.resutl_url_text_str = self.resutl_url_text_str + resutl_text
+                    self.resutl_url_text_list.append(self.resutl_url_text_str)
+                self.resutl_url_text_list = list(set(self.resutl_url_text_list))
 
-                self.st.write(resutl_url_text_list)
+                self.st.write(self.resutl_url_text_list)
 
-                for resutl_url_text_str in resutl_url_text_list:
-                    target_url = resutl_url_text_str.split("$$$$$$$")[0]
-                    resutl_text = resutl_url_text_str.split("$$$$$$$")[1]
+                for self.resutl_url_text_str in self.resutl_url_text_list:
+                    target_url = self.resutl_url_text_str.split("$$$$$$$")[0]
+                    resutl_text = self.resutl_url_text_str.split("$$$$$$$")[1]
                     self.st.write("---")
                     self.st.write("● URL : " + target_url)
                     self.visualizationTool.wordcloud(resutl_text, 1400, 500)
