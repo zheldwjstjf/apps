@@ -110,6 +110,7 @@ class GmailFetchingResultFullPage:
             # wordcloud - text from url in mail body
             try:
                 target_urls = self.getTextFromURL.get_url_from_text(mail_body)
+                target_urls = list(set.target_urls)
             except Exception as e:
                 target_urls = []
                 self.st.error(str(e))
