@@ -9,6 +9,7 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from get_text_from_url import GetTextFromURL
 
 import streamlit.components.v1 as components
 
@@ -25,6 +26,7 @@ class GmailFetchingResultSemiPage:
 
         self.st = streamlit
         self.visualizationTool = VisualizationTool(self.st)
+        self.getTextFromURL = GetTextFromURL(self.st)
 
         self.mail_id = None
 
@@ -149,6 +151,14 @@ class GmailFetchingResultSemiPage:
                 else:
                     input_text = mail_body
                 self.visualizationTool.wordcloud(input_text, 1400, 500)
+
+                # wordcloud - text from url in mail body
+                target_url = "http://textfiles.com/adventure/aencounter.txt"
+                resutl_text = self.getTextFromURL.get_mail_content(target_url)
+                self.st.write("---")
+                self.st.write("● text_from_url_in_mail_body")
+                self.visualizationTool.wordcloud(resutl_text, 1400, 500)
+
 
             except Exception as e:
                 self.st.warning("No more Email")
