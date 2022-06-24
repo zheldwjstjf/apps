@@ -127,19 +127,19 @@ class GmailFetchingResultSemiPage:
                 with col5:
                     self.st.write("---")
                     self.st.write("● mail_from")
-                    self.visualizationTool.wordcloud(mail_from, 1500, 30)
+                    self.visualizationTool.wordcloud(mail_from, 500, 30)
 
                 # wordcloud - mail_subject
                 with col6:
                     self.st.write("---")
                     self.st.write("● mail_subject")
-                    self.visualizationTool.wordcloud(mail_subject, 1500, 30)
+                    self.visualizationTool.wordcloud(mail_subject, 500, 30)
 
                 # wordcloud - mail_snippet
                 with col7:
                     self.st.write("---")
                     self.st.write("● mail_snippet")
-                    self.visualizationTool.wordcloud(mail_snippet, 1500, 100)
+                    self.visualizationTool.wordcloud(mail_snippet, 500, 100)
 
                 # wordcloud - mail_body
                 self.st.write("---")
