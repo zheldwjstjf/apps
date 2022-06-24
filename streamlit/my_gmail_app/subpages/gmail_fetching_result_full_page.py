@@ -140,6 +140,8 @@ class GmailFetchingResultFullPage:
             except Exception as e:
                 self.st.error(str(e))
 
+            self.resutl_url_text_list = []
+            self.resutl_url_text_str = ""
 
         except Exception as e:
             self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
