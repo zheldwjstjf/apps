@@ -81,7 +81,7 @@ class GetTextFromURL:
             url = url_list[0]
             url = url[:-1]
             self.url_list.append(url)
-        self.st.write(self.url_list)
+        # self.st.write(self.url_list)
 
         return self.url_list
             
