@@ -78,8 +78,8 @@ class GetTextFromURL:
         urlList_list = re.findall(link_regex, input_text)
 
         for url_list in urlList_list:
-            self.url_list.append(url_list[0])
-        
+            url = url_list[:-1]
+            self.url_list.append(url)
         self.st.write(self.url_list)
 
         return self.url_list
