@@ -79,7 +79,7 @@ class GetTextFromURL:
 
         for url_list in urlList_list:
             url = url_list[0]
-            if url[-1] = ":":
+            if url[-1] == ":":
                 url = url[:-1]
             self.url_list.append(url)
         # self.st.write(self.url_list)
