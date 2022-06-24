@@ -3,8 +3,6 @@ import requests
 from requests.models import MissingSchema
 from bs4 import BeautifulSoup
 import numpy as np
-import spacy
-import trafilatura
 
 class GetTextFromURL:
     """
