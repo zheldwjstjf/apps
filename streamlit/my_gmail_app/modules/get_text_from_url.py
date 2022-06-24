@@ -63,11 +63,13 @@ class GetTextFromURL:
         
         downloaded_url = trafilatura.fetch_url(url)
         try:
-            a = trafilatura.extract(downloaded_url, output_format="json", with_metadata=True, include_comments = False,
-                                date_extraction_params={'extensive_search': True, 'original_date': True})
+            self.st.info(111)
+            a = trafilatura.extract(downloaded_url, output_format="json", with_metadata=True, include_comments = False,date_extraction_params={'extensive_search': True, 'original_date': True})
+            self.st.info(222)
         except AttributeError:
-            a = trafilatura.extract(downloaded_url, output_format="json", with_metadata=True,
-                                date_extraction_params={'extensive_search': True, 'original_date': True})
+            self.st.info(333)
+            a = trafilatura.extract(downloaded_url, output_format="json", with_metadata=True, date_extraction_params={'extensive_search': True, 'original_date': True})
+            self.st.info(444)
         if a:
             json_output = json.loads(a)
             return json_output['text']
