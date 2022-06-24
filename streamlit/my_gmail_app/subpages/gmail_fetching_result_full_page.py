@@ -1,6 +1,3 @@
-from modules.gmailapi import GmailApi
-from modules.visualization_tool import VisualizationTool
-
 import json
 
 import base64
@@ -9,6 +6,10 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+
+from modules.gmailapi import GmailApi
+from modules.visualization_tool import VisualizationTool
+from modules.get_text_from_url import GetTextFromURL
 
 import streamlit.components.v1 as components
 
@@ -25,6 +26,7 @@ class GmailFetchingResultFullPage:
 
         self.st = streamlit
         self.visualizationTool = VisualizationTool(self.st)
+        self.getTextFromURL = GetTextFromURL(self.st)
 
         self.mail_id = None
         self.mail_content = None
