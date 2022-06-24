@@ -31,9 +31,6 @@ class GmailFetchingResultFullPage:
         self.mail_id = None
         self.mail_content = None
 
-        self.resutl_url_text_list = []
-        self.resutl_url_text_str = ""
-
     def get_mail_content(self, service, user, mail_id, selected_content_info):
 
         # selected_content_info
@@ -118,22 +115,9 @@ class GmailFetchingResultFullPage:
                 target_urls = []
                 self.st.error(str(e))
 
-            self.st.write(target_urls)
-            
             try:
                 for target_url in target_urls:
                     resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
-                    self.resutl_url_text_str = self.resutl_url_text_str + target_url
-                    self.resutl_url_text_str = self.resutl_url_text_str + "$$$$$$$"
-                    self.resutl_url_text_str = self.resutl_url_text_str + resutl_text
-                    self.resutl_url_text_list.append(self.resutl_url_text_str)
-                self.resutl_url_text_list = list(set(self.resutl_url_text_list))
-
-                # self.st.write(self.resutl_url_text_list)
-
-                for self.resutl_url_text_str in self.resutl_url_text_list:
-                    target_url = self.resutl_url_text_str.split("$$$$$$$")[0]
-                    resutl_text = self.resutl_url_text_str.split("$$$$$$$")[1]
                     self.st.write("---")
                     self.st.write("● URL : " + target_url)
                     self.visualizationTool.wordcloud(resutl_text, 1400, 500)
@@ -142,8 +126,6 @@ class GmailFetchingResultFullPage:
             except Exception as e:
                 self.st.error(str(e))
 
-            self.resutl_url_text_list = []
-            self.resutl_url_text_str = ""
 
         except Exception as e:
             self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
