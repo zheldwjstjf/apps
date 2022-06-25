@@ -6,31 +6,35 @@ import json
 from io import StringIO
 import os
 
+
+try:
+    data_folder_path = "/app/apps/data/"
+    # Check whether the specified path exists or not
+    isExist = os.path.exists(data_folder_path)
+
+    if not isExist:        
+        # Create a new directory because it does not exist 
+        os.makedirs(data_folder_path)
+
+    csv_data_file = data_folder_path + "utility_costs.csv"
+    
+    st.info("111")
+    f = open(csv_data_file, "w+")
+    f.write("111")
+    f.close()
+    st.info("222")
+
+except Exception as e:
+    st.error(str(e))
+
+
 class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        try:
-            self.data_folder_path = "/app/apps/data/"
-            # Check whether the specified path exists or not
-            isExist = os.path.exists(self.data_folder_path)
-
-            if not isExist:        
-                # Create a new directory because it does not exist 
-                os.makedirs(self.data_folder_path)
-
-            self.csv_data_file = self.data_folder_path + "utility_costs.csv"
-            
-            self.st.info("111")
-            f = open(self.csv_data_file, "w+")
-            f.write("111")
-            f.close()
-            self.st.info("222")
-
-        except Exception as e:
-            self.st.error(str(e))
-
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
+
+        self.csv_data_file = csv_data_file
     
     # @st.cache(suppress_st_warning=True)
     def load_data(self):
