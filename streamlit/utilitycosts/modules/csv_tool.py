@@ -21,33 +21,6 @@ class CSVTool:
         """
 
         try:
-            data_folder_path = "/app/apps/data/"
-            # Check whether the specified path exists or not
-            
-            isExist = os.path.exists(data_folder_path)
-            self.st.info("isExist : " + str(isExist))
-
-            if not isExist:        
-                # Create a new directory because it does not exist 
-                os.makedirs(data_folder_path)
-
-            csv_data_file = data_folder_path + "utility_costs.csv"
-            
-            st.info("111")
-            f = open(csv_data_file, "w+")
-            f.write("111")
-            f.close()
-            st.info("222")
-
-            f = open(csv_data_file, "r")
-            lines = f.readlines()
-            self.st.info(lines)
-
-        except Exception as e:
-            st.error(str(e))
-
-
-        try:
             df = pd.read_csv(self.csv_data_file)
             self.st.warning('ローカルデータを取得しました。')
 
@@ -72,6 +45,42 @@ class CSVTool:
 
                 df = pd.read_csv(csvDATA)
                 # self.st.warning('クラウドデータを取得しました。')
+
+
+
+
+
+
+                try:
+                    data_folder_path = "/app/apps/data/"
+                    # Check whether the specified path exists or not
+                    
+                    isExist = os.path.exists(data_folder_path)
+                    self.st.info("isExist : " + str(isExist))
+
+                    if not isExist:        
+                        # Create a new directory because it does not exist 
+                        os.makedirs(data_folder_path)
+
+                    csv_data_file = data_folder_path + "utility_costs.csv"
+                    
+                    f = open(csv_data_file, "w+")
+                    f.write(str(content))
+                    f.close()
+
+                    f = open(csv_data_file, "r")
+                    lines = f.readlines()
+                    self.st.info(lines)
+
+                except Exception as e:
+                    st.error(str(e))
+
+
+
+
+
+
+
 
                 return df
             else:
