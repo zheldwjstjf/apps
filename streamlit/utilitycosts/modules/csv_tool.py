@@ -10,9 +10,18 @@ class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        self.csv_data_file = "utility_costs.csv"
+        self.csv_data_file = "data/utility_costs.csv"
 
         try:
+
+            img_folder_path = "/app/apps/data/"
+            # Check whether the specified path exists or not
+            isExist = os.path.exists(img_folder_path)
+
+            if not isExist:        
+                # Create a new directory because it does not exist 
+                os.makedirs(img_folder_path)
+
             current_path = os.getcwd()
             self.st.info("current_path : " + current_path)
             self.st.info("csv_data_file : " + self.csv_data_file)
