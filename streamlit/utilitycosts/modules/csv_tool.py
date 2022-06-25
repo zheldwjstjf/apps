@@ -25,6 +25,8 @@ class CSVTool:
             # Check whether the specified path exists or not
             isExist = os.path.exists(data_folder_path)
 
+            self.st.info("isExist : " + str(isExist))
+
             if not isExist:        
                 # Create a new directory because it does not exist 
                 os.makedirs(data_folder_path)
