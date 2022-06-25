@@ -14,7 +14,7 @@ class SeleniumTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
 
-    # @st.experimental_singleton
+    @st.experimental_singleton
     def main(self):
         URL = "https://www.python.org/"
 
