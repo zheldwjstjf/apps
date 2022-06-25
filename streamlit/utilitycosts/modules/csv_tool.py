@@ -69,7 +69,7 @@ class CSVTool:
                     f.close()
 
                     f = open(csv_data_file, "r")
-                    lines = f.read()
+                    lines = f.readlines().splitlines()
                     self.st.info(lines)
 
                 except Exception as e:
