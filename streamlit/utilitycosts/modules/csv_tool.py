@@ -4,6 +4,7 @@ import base64
 import requests
 import json
 from io import StringIO
+import os
 
 class CSVTool:
     def __init__(self, streamlit):
@@ -43,6 +44,8 @@ class CSVTool:
 
                 df = pd.read_csv(csvDATA)
 
+                current_path = os.system("pwd")
+                self.st.info("current_path : current_path")
                 f = open(self.csv_data_file, "w")
                 f.write(csvDATA)
                 f.close() 
