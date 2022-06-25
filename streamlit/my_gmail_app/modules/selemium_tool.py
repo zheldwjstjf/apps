@@ -16,7 +16,7 @@ class SeleniumTool:
     from selenium.webdriver import FirefoxOptions
     opts = FirefoxOptions()
     opts.add_argument("--headless")
-    browser = webdriver.Firefox(options=opts)
+    browser = webdriver.Firefox("/home/appuser/venv/lib/python3.9/site-packages/seleniumbase/drivers/geckodriver", options=opts)
 
     browser.get('https://www.python.org/')
     st.write(browser.page_source)
