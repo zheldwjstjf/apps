@@ -26,6 +26,8 @@ class CSVTool:
 
             return df
         except Exception as e:
+            self.st.error(str(e))
+            
             req = requests.get(self.url)
             # self.st.error(req.status_code)
             
