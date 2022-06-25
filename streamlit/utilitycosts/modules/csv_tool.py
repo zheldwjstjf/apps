@@ -62,15 +62,20 @@ class CSVTool:
                         # Create a new directory because it does not exist 
                         os.makedirs(data_folder_path)
 
+                    csv_data_file_tmp = data_folder_path + "utility_costs_tmp.csv"
                     csv_data_file = data_folder_path + "utility_costs.csv"
                     
-                    f = open(csv_data_file, "w")
+                    f = open(csv_data_file_tmp, "w")
                     f.write(content)
                     f.close()
 
-                    f = open(csv_data_file, "r")
+                    f = open(csv_data_file_tmp, "r")
                     lines = f.readlines()
                     self.st.info(lines)
+
+                    f = open(csv_data_file, "w")
+                    for line in lines:
+                        f.write(line)
 
                 except Exception as e:
                     st.error(str(e))
