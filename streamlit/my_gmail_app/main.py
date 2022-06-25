@@ -15,7 +15,7 @@ from subpages.auth_page import AuthPage
 from subpages.admin_page import AdminPage
 from modules.snippet_tools import SnippetTools
 from subpages.gmail_mng_page import GmailMngPage
-from modules.selemium_tool import SeleniumTool
+# from modules.selemium_tool import SeleniumTool
 
 # ===================================
 # st config
@@ -93,7 +93,7 @@ class MyGmailApp:
         # =================
         # main page
 
-        self.seleniumTool = SeleniumTool(st)
+        # self.seleniumTool = SeleniumTool(st)
 
         if self.auth_result == None:
             # self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
