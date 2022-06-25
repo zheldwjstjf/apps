@@ -38,6 +38,8 @@ class AuthFactory:
             else:
                 self.auth_check_result.append(False)
 
+            self.st.info(self.auth_check_result)
+
             if False in self.auth_check_result:
                 return False
             else:
