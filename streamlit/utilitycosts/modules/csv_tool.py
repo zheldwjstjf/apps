@@ -10,7 +10,7 @@ class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        self.csv_data_file = "utility_costs2.csv"
+        self.csv_data_file = "data/utility_costs.csv"
 
         current_path = os.getcwd()
         self.st.info("current_path : " + current_path)
