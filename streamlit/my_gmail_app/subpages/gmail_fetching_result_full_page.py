@@ -126,7 +126,6 @@ class GmailFetchingResultFullPage:
             except Exception as e:
                 self.st.error(str(e))
 
-
         except Exception as e:
             self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
             # self.st.warning("No More Email")
