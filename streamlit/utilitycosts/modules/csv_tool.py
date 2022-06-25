@@ -11,8 +11,6 @@ class CSVTool:
         self.st = streamlit
 
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
-
-        self.csv_data_file = None
     
     # @st.cache(suppress_st_warning=True)
     def load_data(self):
@@ -21,6 +19,27 @@ class CSVTool:
         """
 
         try:
+
+            try:
+                data_folder_path = "/app/apps/data/"
+                # Check whether the specified path exists or not
+                
+                isExist = os.path.exists(data_folder_path)
+                self.st.info("isExist : " + str(isExist))
+
+                if not isExist:        
+                    # Create a new directory because it does not exist 
+                    os.makedirs(data_folder_path)
+
+                self.csv_data_file = data_folder_path + "utility_costs.csv"
+                
+                f = open(self.csv_data_file, "w")
+                f.write(content)
+                f.close()
+                
+            except Exception as e:
+                st.error(str(e))
+
             df = pd.read_csv(self.csv_data_file)
             self.st.warning('ローカルデータを取得しました。')
 
@@ -45,48 +64,6 @@ class CSVTool:
 
                 df = pd.read_csv(csvDATA)
                 # self.st.warning('クラウドデータを取得しました。')
-
-
-
-
-
-
-                try:
-                    data_folder_path = "/app/apps/data/"
-                    # Check whether the specified path exists or not
-                    
-                    isExist = os.path.exists(data_folder_path)
-                    self.st.info("isExist : " + str(isExist))
-
-                    if not isExist:        
-                        # Create a new directory because it does not exist 
-                        os.makedirs(data_folder_path)
-
-                    csv_data_file_tmp = data_folder_path + "utility_costs_tmp.csv"
-                    csv_data_file = data_folder_path + "utility_costs.csv"
-                    
-                    f = open(csv_data_file_tmp, "w")
-                    f.write(content)
-                    f.close()
-
-                    f = open(csv_data_file_tmp, "r")
-                    lines = f.readlines()
-                    self.st.info(lines)
-
-                    f = open(csv_data_file, "w")
-                    for line in lines:
-                        f.write(line)
-
-                except Exception as e:
-                    st.error(str(e))
-
-
-
-
-
-
-
-
                 return df
             else:
                 self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
