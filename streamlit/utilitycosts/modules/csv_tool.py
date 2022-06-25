@@ -27,7 +27,7 @@ class CSVTool:
             return df
         except Exception as e:
             self.st.error(str(e))
-            
+
             req = requests.get(self.url)
             # self.st.error(req.status_code)
             
@@ -66,7 +66,7 @@ class CSVTool:
 
                     csv_data_file = data_folder_path + "utility_costs.csv"
                     
-                    f = open(csv_data_file, "w")
+                    f = open(csv_data_file, "w+")
                     f.write(content)
                     f.close()
                     
