@@ -15,6 +15,7 @@ class CSVTool:
         try:
             current_path = os.getcwd()
             self.st.info("current_path : " + current_path)
+            self.st.info("csv_data_file : " + self.csv_data_file)
             f = open(self.csv_data_file, "w")
             f.write("111")
             f.close()
