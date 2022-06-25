@@ -23,8 +23,8 @@ class CSVTool:
         try:
             data_folder_path = "/app/apps/data/"
             # Check whether the specified path exists or not
+            
             isExist = os.path.exists(data_folder_path)
-
             self.st.info("isExist : " + str(isExist))
 
             if not isExist:        
@@ -38,6 +38,10 @@ class CSVTool:
             f.write("111")
             f.close()
             st.info("222")
+
+            f = open(csv_data_file, "r")
+            lines = f.readlines()
+            self.st.info(lines)
 
         except Exception as e:
             st.error(str(e))
