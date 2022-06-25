@@ -23,7 +23,7 @@ class AuthFactory:
         auth_info = json.load(stringio)
 
         try:
-            if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
+            if auth_info['installed']["project_id"] == self.st.secrets["project_id"]:
                 self.auth_check_result.append(True)
             else:
                 self.auth_check_result.append(False)
@@ -48,5 +48,5 @@ class AuthFactory:
                 else:
                     return False
         except Exception as e:
-            self.st.error(str(e))
+            self.st.error("createService : " + str(e))
             return False
