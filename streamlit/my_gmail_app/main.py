@@ -20,13 +20,11 @@ from subpages.gmail_mng_page import GmailMngPage
 # ===================================
 # st config
 # ===================================
-"""
 st.set_page_config( # Alternate names: setup_page, page, layout
     layout="wide",  # Can be "centered" or "wide". In the future also "dashboard", etc.
     initial_sidebar_state="expanded",  # Can be "auto", "expanded", "collapsed"
     page_title="MyGmailApp",  # String or None. Strings get appended with "• Streamlit". 
     page_icon="resources/gmail_icon")  # String, anything supported by st.image, or None.
-"""
 
 # set localtime
 os.environ['TZ'] = 'Japan'
