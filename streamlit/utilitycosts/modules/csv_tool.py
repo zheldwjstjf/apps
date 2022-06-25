@@ -9,6 +9,7 @@ class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
+        self.csv_data_file = "./data/utilitycosts/utility_costs.csv"
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
     @st.cache(suppress_st_warning=True)
@@ -18,7 +19,7 @@ class CSVTool:
         """
 
         try:
-            df = pd.read_csv("data/utility_costs.csv")
+            df = pd.read_csv(self.csv_data_file)
             self.st.warning('ローカルデータを取得しました。')
 
             return df
@@ -55,7 +56,7 @@ class CSVTool:
         if auth_status == True:
             try:
                 # add input amount to selected row
-                df = pd.read_csv("data/utility_costs.csv")
+                df = pd.read_csv(self.csv_data_file)
                 df.at[row, selected_date] = amount
 
                 # add 0 to unselected rows
@@ -65,7 +66,7 @@ class CSVTool:
                     df.at[row, selected_date] = 0
 
                 # update csv
-                df.to_csv("data/utility_costs.csv", index=None)
+                df.to_csv(self.csv_data_file, index=None)
                 self.st.warning('ローカルデータを変更しました。')
 
             except Exception as e:
