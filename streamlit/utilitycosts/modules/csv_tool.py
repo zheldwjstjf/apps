@@ -10,7 +10,7 @@ class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        self.csv_data_file = "./data/utilitycosts/utility_costs.csv"
+        self.csv_data_file = "/app/apps/data/utilitycosts/utility_costs.csv"
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
     @st.cache(suppress_st_warning=True)
