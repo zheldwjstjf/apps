@@ -76,10 +76,6 @@ class CSVTool:
 
 
 
-
-
-
-
                 return df
             else:
                 self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
