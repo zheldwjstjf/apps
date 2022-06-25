@@ -6,28 +6,6 @@ import json
 from io import StringIO
 import os
 
-
-try:
-    data_folder_path = "/app/apps/data/"
-    # Check whether the specified path exists or not
-    isExist = os.path.exists(data_folder_path)
-
-    if not isExist:        
-        # Create a new directory because it does not exist 
-        os.makedirs(data_folder_path)
-
-    csv_data_file = data_folder_path + "utility_costs.csv"
-    
-    st.info("111")
-    f = open(csv_data_file, "w+")
-    f.write("111")
-    f.close()
-    st.info("222")
-
-except Exception as e:
-    st.error(str(e))
-
-
 class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
@@ -41,6 +19,29 @@ class CSVTool:
         """
         load spreadsheet with data to be annotated
         """
+
+        try:
+            data_folder_path = "/app/apps/data/"
+            # Check whether the specified path exists or not
+            isExist = os.path.exists(data_folder_path)
+
+            if not isExist:        
+                # Create a new directory because it does not exist 
+                os.makedirs(data_folder_path)
+
+            csv_data_file = data_folder_path + "utility_costs.csv"
+            
+            st.info("111")
+            f = open(csv_data_file, "w+")
+            f.write("111")
+            f.close()
+            st.info("222")
+
+        except Exception as e:
+            st.error(str(e))
+
+
+
 
         try:
             df = pd.read_csv(self.csv_data_file)
