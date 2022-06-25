@@ -23,6 +23,8 @@ class SeleniumTool:
         firefoxOptions = Options()
         firefoxOptions.add_argument("--headless")
         service = Service(GeckoDriverManager().install())
-        driver = webdriver.Firefox(options=firefoxOptions, service=service)
+        # driver = webdriver.Firefox(options=firefoxOptions, service=service)
+        driver = webdriver.Firefox(executable_path="/home/appuser/.wdm/drivers/geckodriver/linux64/v0.31.0/geckodriver", options=firefoxOptions)
+        
         driver.get(URL)
 
