@@ -11,6 +11,7 @@ class SeleniumTool:
         os.system('sbase install geckodriver')
         os.system('ln -s /home/appuser/venv/lib/python3.9/site-packages/seleniumbase/drivers/geckodriver /home/appuser/venv/bin/geckodriver')
 
+    """
     _ = installff()
     from selenium import webdriver
     from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
@@ -21,3 +22,4 @@ class SeleniumTool:
 
     browser.get('https://www.python.org/')
     st.write(browser.page_source)
+    """
