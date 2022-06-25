@@ -5,3 +5,4 @@ beautifulsoup4
 numpy
 requests
 seleniumbase
+webdriver_manager
