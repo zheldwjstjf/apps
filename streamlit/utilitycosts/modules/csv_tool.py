@@ -10,8 +10,9 @@ class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        self.csv_data_file = "/app/apps/data/utility_costs.csv"
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
+
+        self.csv_data_file = None
     
     # @st.cache(suppress_st_warning=True)
     def load_data(self):
@@ -24,10 +25,7 @@ class CSVTool:
             self.st.warning('ローカルデータを取得しました。')
 
             return df
-
         except Exception as e:
-            self.st.error(str(e))
-
             req = requests.get(self.url)
             # self.st.error(req.status_code)
             
@@ -47,6 +45,39 @@ class CSVTool:
 
                 df = pd.read_csv(csvDATA)
                 # self.st.warning('クラウドデータを取得しました。')
+
+
+
+
+
+
+                try:
+                    data_folder_path = "/app/apps/data/"
+                    # Check whether the specified path exists or not
+                    
+                    isExist = os.path.exists(data_folder_path)
+                    self.st.info("isExist : " + str(isExist))
+
+                    if not isExist:        
+                        # Create a new directory because it does not exist 
+                        os.makedirs(data_folder_path)
+
+                    csv_data_file = data_folder_path + "utility_costs.csv"
+                    
+                    f = open(csv_data_file, "w")
+                    f.write(content)
+                    f.close()
+                    
+                except Exception as e:
+                    st.error(str(e))
+
+
+
+
+
+
+
+
                 return df
             else:
                 self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
