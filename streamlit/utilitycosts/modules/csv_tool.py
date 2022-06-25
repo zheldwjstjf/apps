@@ -64,12 +64,12 @@ class CSVTool:
 
                     csv_data_file = data_folder_path + "utility_costs.csv"
                     
-                    f = open(csv_data_file, "w+")
-                    f.write(str(content))
+                    f = open(csv_data_file, "w")
+                    f.write(content)
                     f.close()
 
                     f = open(csv_data_file, "r")
-                    lines = f.read()
+                    lines = f.readlines()
                     self.st.info(lines)
 
                 except Exception as e:
