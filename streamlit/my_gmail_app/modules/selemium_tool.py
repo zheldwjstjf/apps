@@ -20,9 +20,12 @@ class SeleniumTool:
     opts = FirefoxOptions()
     opts.add_argument("--headless")
     
-    """
-    browser = webdriver.Firefox(firefox_binary=r"/home/appuser/venv/lib/python3.9/site-packages/seleniumbase/drivers/geckodriver", options=opts)
+    try:
+        browser = webdriver.Firefox(firefox_binary=r"/home/appuser/venv/lib/python3.9/site-packages/seleniumbase/drivers/geckodriver", options=opts)
+    except Exception as e:
+        st.error(e)
 
+    """
     browser.get('https://www.python.org/')
     st.write(browser.page_source)
     """
