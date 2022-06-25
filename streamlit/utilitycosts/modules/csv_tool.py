@@ -12,7 +12,7 @@ class CSVTool:
 
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
 
-        self.csv_data_file = csv_data_file
+        self.csv_data_file = None
     
     # @st.cache(suppress_st_warning=True)
     def load_data(self):
@@ -39,8 +39,6 @@ class CSVTool:
 
         except Exception as e:
             st.error(str(e))
-
-
 
 
         try:
