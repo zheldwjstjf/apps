@@ -13,6 +13,8 @@ class SeleniumTool:
 
     """
     _ = installff()
+    """
+    
     from selenium import webdriver
     from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
     from selenium.webdriver import FirefoxOptions
@@ -22,4 +24,4 @@ class SeleniumTool:
 
     browser.get('https://www.python.org/')
     st.write(browser.page_source)
-    """
+
