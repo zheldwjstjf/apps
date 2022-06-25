@@ -39,7 +39,13 @@ class CSVTool:
 
                 content = content.decode('utf-8')
                 csvDATA = StringIO(str(content))
+
+
                 df = pd.read_csv(csvDATA)
+
+                f = open(self.csv_data_file, "W")
+                f.write(csvDATA)
+                f.close() 
 
                 # self.st.warning('クラウドデータを取得しました。')
 
