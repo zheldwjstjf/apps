@@ -13,19 +13,15 @@ class CSVTool:
         self.csv_data_file = "data/utility_costs.csv"
 
         try:
-
-            img_folder_path = "/app/apps/data/utility_costs.csv"
+            self.data_folder_path = "/app/apps/data/"
             # Check whether the specified path exists or not
-            isExist = os.path.exists(img_folder_path)
+            isExist = os.path.exists(self.data_folder_path)
 
             if not isExist:        
                 # Create a new directory because it does not exist 
-                os.makedirs(img_folder_path)
+                os.makedirs(self.data_folder_path)
 
-            current_path = os.getcwd()
-            self.st.info("current_path : " + current_path)
-            self.st.info("csv_data_file : " + self.csv_data_file)
-            f = open(self.csv_data_file, "w")
+            f = open(self.data_folder_path + "utility_costs.csv", "w")
             f.write("111")
             f.close()
         except Exception as e:
