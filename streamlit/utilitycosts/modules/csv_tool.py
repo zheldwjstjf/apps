@@ -44,14 +44,9 @@ class CSVTool:
 
                 # update csv
                 df.to_csv(self.csv_data_file, index=None)
-                self.st.warning('ローカルデータを変更しました。')
+                self.st.success("登録しました。")
 
             except Exception as e:
-                # print("Exception - save input : ", e)
-                # TODO
-                # df => StringIO => content => push to github
-                # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
-                pass
-                self.st.success("登録しました。")
+                self.st.error(str(e))
         else:    
             self.st.warning("認証が必要です。")
