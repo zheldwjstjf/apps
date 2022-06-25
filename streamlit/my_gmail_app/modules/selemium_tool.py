@@ -15,7 +15,7 @@ class SeleniumTool:
         self.st = streamlit
 
     # @st.experimental_singleton
-    def main():
+    def main(self):
         URL = "https://www.python.org/"
 
         st.title("Test Selenium")
