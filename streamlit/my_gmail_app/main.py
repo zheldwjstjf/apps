@@ -93,7 +93,8 @@ class MyGmailApp:
         # =================
         # main page
 
-        # self.seleniumTool = SeleniumTool(st)
+        self.seleniumTool = SeleniumTool(st)
+        self.seleniumTool.main()
 
         if self.auth_result == None:
             # self.st.markdown("<h1 style='text-align: center; color: red;'>NOT AUTHORIZED</h1>", unsafe_allow_html=True)
