@@ -47,7 +47,7 @@ class CSVTool:
                 current_path = os.getcwd()
                 self.st.info("current_path : " + current_path)
                 f = open(self.csv_data_file, "w")
-                f.write(csvDATA)
+                f.write(str(content))
                 f.close() 
 
                 # self.st.warning('クラウドデータを取得しました。')
