@@ -40,7 +40,10 @@ class CSVTool:
                 row_list = [0,1,2]
                 row_list.pop(row)
                 for row in row_list:
-                    df.at[row, selected_date] = 0
+                    if df.at[row, selected_date] > 0:
+                        pass
+                    else:
+                        df.at[row, selected_date] = 0
 
                 # update csv
                 df.to_csv(self.csv_data_file, index=None)
