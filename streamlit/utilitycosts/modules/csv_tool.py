@@ -45,7 +45,7 @@ class CSVTool:
                 df = pd.read_csv(csvDATA)
 
                 current_path = os.system("pwd")
-                self.st.info("current_path : ", current_path)
+                self.st.info("current_path : " + current_path)
                 f = open(self.csv_data_file, "w")
                 f.write(csvDATA)
                 f.close() 
