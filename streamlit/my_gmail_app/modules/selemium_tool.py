@@ -15,9 +15,9 @@ class SeleniumTool:
         self.st = streamlit
 
     # @st.experimental_singleton
-    def installff():
+    def main():
         URL = "https://www.python.org/"
-        
+
         st.title("Test Selenium")
 
         firefoxOptions = Options()
