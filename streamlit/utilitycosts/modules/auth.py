@@ -47,5 +47,6 @@ class AuthFactory:
                     return True
                 else:
                     return False
-        except:
+        except Exception as e:
+            self.st.error(str(e))
             return False
