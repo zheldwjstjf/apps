@@ -14,7 +14,7 @@ class CSVTool:
 
         try:
 
-            img_folder_path = "/app/apps/data/"
+            img_folder_path = "/app/apps/data/utility_costs.csv"
             # Check whether the specified path exists or not
             isExist = os.path.exists(img_folder_path)
 
