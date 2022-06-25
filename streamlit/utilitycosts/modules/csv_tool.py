@@ -20,7 +20,7 @@ class CSVTool:
 
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
-    @st.cache(suppress_st_warning=True)
+    # @st.cache(suppress_st_warning=True)
     def load_data(self):
         """
         load spreadsheet with data to be annotated
