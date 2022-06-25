@@ -11,6 +11,13 @@ class CSVTool:
         self.st = streamlit
 
         self.csv_data_file = "utility_costs2.csv"
+
+        current_path = os.getcwd()
+        self.st.info("current_path : " + current_path)
+        f = open(self.csv_data_file, "w")
+        f.write("111")
+        f.close() 
+
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
     @st.cache(suppress_st_warning=True)
@@ -43,13 +50,6 @@ class CSVTool:
 
 
                 df = pd.read_csv(csvDATA)
-
-                current_path = os.getcwd()
-                self.st.info("current_path : " + current_path)
-                f = open(self.csv_data_file, "w")
-                f.write(str(content))
-                f.close() 
-
                 # self.st.warning('クラウドデータを取得しました。')
 
                 return df
