@@ -21,7 +21,7 @@ class CSVTool:
                 # Create a new directory because it does not exist 
                 os.makedirs(self.data_folder_path)
 
-            f = open(self.data_folder_path + "utility_costs.csv", "w")
+            f = open(self.data_folder_path + "utility_costs.csv", "w+")
             f.write("111")
             f.close()
         except Exception as e:
