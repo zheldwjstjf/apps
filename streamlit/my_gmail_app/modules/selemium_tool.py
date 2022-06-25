@@ -21,7 +21,7 @@ class SeleniumTool:
     opts.add_argument("--headless")
     
     try:
-        browser = webdriver.Firefox(firefox_binary=r"/home/appuser/venv/lib/python3.9/site-packages/seleniumbase/drivers/geckodriver", options=opts)
+        browser = webdriver.Firefox(executable_path="/home/appuser/venv/lib/python3.9/site-packages/seleniumbase/drivers/geckodriver", options=opts)
     except Exception as e:
         st.error(e)
 
