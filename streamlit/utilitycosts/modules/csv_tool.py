@@ -10,8 +10,6 @@ class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        self.csv_data_file = "data/utility_costs.csv"
-
         try:
             self.data_folder_path = "/app/apps/data/"
             # Check whether the specified path exists or not
@@ -21,11 +19,16 @@ class CSVTool:
                 # Create a new directory because it does not exist 
                 os.makedirs(self.data_folder_path)
 
-            f = open(self.data_folder_path + "utility_costs.csv", "w+")
+            self.csv_data_file = self.data_folder_path + "utility_costs.csv"
+            
+            self.st.info("111")
+            f = open(self.csv_data_file, "w+")
             f.write("111")
             f.close()
+            self.st.info("222")
+
         except Exception as e:
-            self.st.error(str(e)) 
+            self.st.error(str(e))
 
         self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
