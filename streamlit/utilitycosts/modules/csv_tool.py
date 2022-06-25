@@ -11,9 +11,8 @@ class CSVTool:
         self.st = streamlit
 
         self.csv_data_file = "/app/apps/data/utility_costs.csv"
-        self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
     
-    # @st.cache(suppress_st_warning=True)
+    @st.cache(suppress_st_warning=True)
     def load_data(self):
         """
         load spreadsheet with data to be annotated
@@ -21,36 +20,10 @@ class CSVTool:
 
         try:
             df = pd.read_csv(self.csv_data_file)
-            self.st.warning('ローカルデータを取得しました。')
-
             return df
 
         except Exception as e:
             self.st.error(str(e))
-
-            req = requests.get(self.url)
-            # self.st.error(req.status_code)
-            
-            if req.status_code == requests.codes.ok:
-                req = req.json()  # the response is a JSON
-                # req is now a dict with keys: name, encoding, url, size ...
-                # and content. But it is encoded with base64.
-                try:
-                    content = base64.b64decode(req['content'])
-                except Exception as e:
-                    print("Exception - load-data : ", e)
-                # self.st.write(content)
-
-                content = content.decode('utf-8')
-                csvDATA = StringIO(str(content))
-
-
-                df = pd.read_csv(csvDATA)
-                # self.st.warning('クラウドデータを取得しました。')
-                return df
-            else:
-                self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
-
 
     def save_input(self, df, row, amount, selected_date, auth_status):
         """
