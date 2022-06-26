@@ -4,48 +4,26 @@ import base64
 import requests
 import json
 from io import StringIO
+import os
 
 class CSVTool:
     def __init__(self, streamlit):
         self.st = streamlit
 
-        self.url = "https://api.github.com/repos/zheldwjstjf/apps/contents/streamlit/utilitycosts/data/utility_costs.csv"
+        self.csv_data_file = "/app/apps/data/utility_costs.csv"
     
-    @st.cache(suppress_st_warning=True)
+    # @st.cache(suppress_st_warning=True)
     def load_data(self):
         """
         load spreadsheet with data to be annotated
         """
 
         try:
-            df = pd.read_csv("data/utility_costs.csv")
-            self.st.warning('ローカルデータを取得しました。')
-
+            df = pd.read_csv(self.csv_data_file)
             return df
+
         except Exception as e:
-            req = requests.get(self.url)
-            # self.st.error(req.status_code)
-            
-            if req.status_code == requests.codes.ok:
-                req = req.json()  # the response is a JSON
-                # req is now a dict with keys: name, encoding, url, size ...
-                # and content. But it is encoded with base64.
-                try:
-                    content = base64.b64decode(req['content'])
-                except Exception as e:
-                    print("Exception - load-data : ", e)
-                # self.st.write(content)
-
-                content = content.decode('utf-8')
-                csvDATA = StringIO(str(content))
-                df = pd.read_csv(csvDATA)
-
-                # self.st.warning('クラウドデータを取得しました。')
-
-                return df
-            else:
-                self.st.warning('クラウドデータの取得ができませんでした。しばらく待って再度お試しください。')
-
+            self.st.error(str(e))
 
     def save_input(self, df, row, amount, selected_date, auth_status):
         """
@@ -55,25 +33,23 @@ class CSVTool:
         if auth_status == True:
             try:
                 # add input amount to selected row
-                df = pd.read_csv("data/utility_costs.csv")
+                df = pd.read_csv(self.csv_data_file)
                 df.at[row, selected_date] = amount
 
                 # add 0 to unselected rows
                 row_list = [0,1,2]
                 row_list.pop(row)
                 for row in row_list:
-                    df.at[row, selected_date] = 0
+                    if df.at[row, selected_date] > 0:
+                        pass
+                    else:
+                        df.at[row, selected_date] = 0
 
                 # update csv
-                df.to_csv("data/utility_costs.csv", index=None)
-                self.st.warning('ローカルデータを変更しました。')
+                df.to_csv(self.csv_data_file, index=None)
+                self.st.success("登録しました。")
 
             except Exception as e:
-                # print("Exception - save input : ", e)
-                # TODO
-                # df => StringIO => content => push to github
-                # https://gist.github.com/avullo/b8153522f015a8b908072833b95c3408
-                pass
-                self.st.success("登録しました。")
+                self.st.error(str(e))
         else:    
             self.st.warning("認証が必要です。")

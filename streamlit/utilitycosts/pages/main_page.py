@@ -41,7 +41,7 @@ class MainPage:
             # stack option
             graph_stack_type = col1.selectbox(
                 '▶︎ 金額のタイプ',
-                ('個別金額', '合計金額')
+                ('個別金額', '合計金額'), index=1
             )
             if graph_stack_type == "個別金額":
                 stack_val = False
@@ -97,7 +97,7 @@ class MainPage:
 
             graph_type = col2.selectbox(
                 '▶︎ グラフのタイプ',
-                ('LINE', 'AREA', 'BAR')
+                ('LINE', 'AREA', 'BAR'), index=2
             )
             if graph_type == "LINE":
                 chart = line

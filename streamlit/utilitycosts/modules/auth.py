@@ -14,7 +14,7 @@ class AuthFactory:
         self.st = streamlit
         self.auth_check_result = []
 
-    @st.cache(suppress_st_warning=True)
+    # @st.cache(suppress_st_warning=True)
     def createService(self, stringio):
         """
         createService
@@ -23,7 +23,7 @@ class AuthFactory:
         auth_info = json.load(stringio)
 
         try:
-            if auth_info['installed']["product_id"] == self.st.secrets["product_id"]:
+            if auth_info['installed']["project_id"] == self.st.secrets["project_id"]:
                 self.auth_check_result.append(True)
             else:
                 self.auth_check_result.append(False)
@@ -45,5 +45,6 @@ class AuthFactory:
                     return True
                 else:
                     return False
-        except:
+        except Exception as e:
+            self.st.error("createService : " + str(e))
             return False
