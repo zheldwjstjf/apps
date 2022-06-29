@@ -66,7 +66,6 @@ class SummarizationTool:
     def generate_summary(self, sentences_text, top_n=5):
         stop_words = stopwords.words('english')
 
-        
         sentences = []
         summarize_text = []
 
