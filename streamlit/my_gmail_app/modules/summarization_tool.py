@@ -11,19 +11,6 @@ class SummarizationTool:
     def __init__(self, streamlit) -> None:
         self.st = streamlit
 
-    def read_article(self, file_name):
-        file = open(file_name, "r")
-        filedata = file.readlines()
-        article = filedata[0].split(". ")
-        sentences = []
-
-        for sentence in article:
-            print(sentence)
-            sentences.append(sentence.replace("[^a-zA-Z]", " ").split(" "))
-        sentences.pop() 
-        
-        return sentences
-
     def sentence_similarity(self, sent1, sent2, stopwords=None):
         if stopwords is None:
             stopwords = []
@@ -49,6 +36,7 @@ class SummarizationTool:
             vector2[all_words.index(w)] += 1
     
         return 1 - cosine_distance(vector1, vector2)
+    
     
     def build_similarity_matrix(self, sentences, stop_words):
         # Create an empty similarity matrix
