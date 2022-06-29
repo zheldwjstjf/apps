@@ -6,3 +6,5 @@ numpy
 requests
 seleniumbase
 webdriver_manager
+nltk
+networkx
