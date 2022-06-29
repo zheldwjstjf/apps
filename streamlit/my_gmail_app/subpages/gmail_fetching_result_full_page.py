@@ -85,9 +85,6 @@ class GmailFetchingResultFullPage:
             self.st.markdown("<h2 style='text-align: center; color: red;'>選択したメールの詳細</h2>", unsafe_allow_html=True)
             self.st.write("---")
 
-            # tmp
-            self.summarizationTool.generate_summary("tmp", top_n=5)
-
             # order num / title
             self.st.subheader(selected_email_order)
             self.st.subheader("● mail_subject : " + mail_subject)
@@ -125,7 +122,14 @@ class GmailFetchingResultFullPage:
                     resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
                     self.st.write("---")
                     self.st.write("● URL : " + target_url)
+
+                    # visualization
                     self.visualizationTool.wordcloud(resutl_text, 1400, 100)
+
+                    # summarization
+                    self.summarizationTool.generate_summary(resutl_text, top_n=5)
+
+                    # full text
                     with self.st.expander("テキストを見る"):
                         self.st.write(resutl_text)
             except Exception as e:

@@ -63,28 +63,13 @@ class SummarizationTool:
         return similarity_matrix
 
 
-    def generate_summary(self, file_name, top_n=5):
+    def generate_summary(self, sentences_text, top_n=5):
         stop_words = stopwords.words('english')
 
         
         sentences = []
         summarize_text = []
 
-        # Step 1 - Read text anc split it
-        # sentences =  read_article(file_name)
-        sentences_text = """組み込み型
-        以下のセクションでは、インタプリタに組み込まれている標準型について記述します。
-        主要な組み込み型は、数値、シーケンス、マッピング、クラス、インスタンス、および例外です。
-        コレクションクラスには、ミュータブルなものがあります。コレクションのメンバをインプレースに足し、引き、または並べ替えて、特定の要素を返さないメソッドは、コレクション自身ではなく None を返します。
-        演算には、複数の型でサポートされているものがあります; 特に、ほぼ全てのオブジェクトは、等価比較でき、真理値を判定でき、 (repr() 関数や、わずかに異なる str() 関数によって) 文字列に変換できます。オブジェクトが print() 関数で印字されるとき、文字列に変換する関数が暗黙に使われます。
-        真理値判定
-        どのようなオブジェクトでも真理値として判定でき、 if や while の条件あるいは以下のブール演算の被演算子として使えます。
-        オブジェクトは、デフォルトでは真と判定されます。ただしそのクラスが __bool__() メソッドを定義していて、それが False を返す場合、または __len__() メソッドを定義していて、それが 0 を返す場合は偽と判定されます。 1 主な組み込みオブジェクトで偽と判定されるものを次に示します:
-        偽であると定義されている定数: None と False
-        数値型におけるゼロ: 0, 0.0, 0j, Decimal(0), Fraction(0, 1)
-        空のシーケンスまたはコレクション: '', (), [], {}, set(), range(0)
-        ブール値の結果を返す演算および組み込み関数は、特に注釈のない限り常に偽値として 0 または False を返し、真値として 1 または True を返します。 (重要な例外: ブール演算 or および and は常に被演算子のうちの一つを返します。)
-        """
         sentences_list_tmp = sentences_text.splitlines()
         for line in sentences_list_tmp:
             if len(line) > 0:
