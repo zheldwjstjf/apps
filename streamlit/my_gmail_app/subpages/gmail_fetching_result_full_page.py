@@ -124,7 +124,7 @@ class GmailFetchingResultFullPage:
                     self.st.write("● URL : " + target_url)
 
                     # visualization
-                    self.visualizationTool.wordcloud(resutl_text, 1400, 100)
+                    # self.visualizationTool.wordcloud(resutl_text, 1400, 100)
 
                     # full text
                     with self.st.expander("テキストを見る"):
