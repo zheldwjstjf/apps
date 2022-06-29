@@ -8,3 +8,4 @@ seleniumbase
 webdriver_manager
 nltk
 networkx
+scipy
