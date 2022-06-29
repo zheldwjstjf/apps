@@ -30,9 +30,6 @@ class GmailFetchingResultFullPage:
         self.getTextFromURL = GetTextFromURL(self.st)
         self.summarizationTool = SummarizationTool(self.st)
 
-        # tmp
-        self.summarizationTool.generate_summary("tmp", top_n=5)
-
         self.mail_id = None
         self.mail_content = None
 
@@ -87,6 +84,9 @@ class GmailFetchingResultFullPage:
             self.st.write("---")
             self.st.markdown("<h2 style='text-align: center; color: red;'>選択したメールの詳細</h2>", unsafe_allow_html=True)
             self.st.write("---")
+
+            # tmp
+            self.summarizationTool.generate_summary("tmp", top_n=5)
 
             # order num / title
             self.st.subheader(selected_email_order)
