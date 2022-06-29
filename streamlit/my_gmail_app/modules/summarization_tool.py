@@ -103,4 +103,5 @@ class SummarizationTool:
             summarize_text.append(" ".join(ranked_sentence[i][1]))
 
         # Step 5 - Offcourse, output the summarize texr
-        print("Summarize Text: \n", ". ".join(summarize_text))
+        # print("Summarize Text: \n", ". ".join(summarize_text))
+        self.st.write("Summarize Text: \n", ". ".join(summarize_text))

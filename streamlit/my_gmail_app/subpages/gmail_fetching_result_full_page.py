@@ -30,6 +30,9 @@ class GmailFetchingResultFullPage:
         self.getTextFromURL = GetTextFromURL(self.st)
         self.summarizationTool = SummarizationTool(self.st)
 
+        # tmp
+        self.summarizationTool.generate_summary("tmp", top_n=5)
+
         self.mail_id = None
         self.mail_content = None
 
