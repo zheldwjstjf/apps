@@ -126,12 +126,13 @@ class GmailFetchingResultFullPage:
                     # visualization
                     self.visualizationTool.wordcloud(resutl_text, 1400, 100)
 
-                    # summarization
-                    self.summarizationTool.generate_summary(resutl_text, top_n=5)
-
                     # full text
                     with self.st.expander("テキストを見る"):
                         self.st.write(resutl_text)
+
+                    # summarization
+                    self.summarizationTool.generate_summary(resutl_text, top_n=5)
+
             except Exception as e:
                 self.st.error(str(e))
 
