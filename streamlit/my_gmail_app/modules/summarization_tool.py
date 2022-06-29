@@ -104,7 +104,3 @@ class SummarizationTool:
 
         # Step 5 - Offcourse, output the summarize texr
         print("Summarize Text: \n", ". ".join(summarize_text))
-
-
-    # let's begin
-    generate_summary("/Users/jack/msft.txt", 2)
