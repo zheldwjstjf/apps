@@ -10,6 +10,7 @@ from email.mime.text import MIMEText
 from modules.gmailapi import GmailApi
 from modules.visualization_tool import VisualizationTool
 from modules.get_text_from_url import GetTextFromURL
+from modules.summarization_tool import SummarizationTool
 
 import streamlit.components.v1 as components
 
@@ -27,6 +28,7 @@ class GmailFetchingResultFullPage:
         self.st = streamlit
         self.visualizationTool = VisualizationTool(self.st)
         self.getTextFromURL = GetTextFromURL(self.st)
+        self.summarizationTool = SummarizationTool(self.st)
 
         self.mail_id = None
         self.mail_content = None
