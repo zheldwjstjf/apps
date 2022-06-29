@@ -3,6 +3,9 @@ from nltk.cluster.util import cosine_distance
 import numpy as np
 import networkx as nx
 
+import nltk
+nltk.download('stopwords')
+
 class SummarizationTool:
 
     def __init__(self, streamlit) -> None:
