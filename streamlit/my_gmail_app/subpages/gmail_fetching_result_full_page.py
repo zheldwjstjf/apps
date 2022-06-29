@@ -128,6 +128,7 @@ class GmailFetchingResultFullPage:
 
                     # full text
                     with self.st.expander("テキストを見る"):
+                        self.st.write(type(resutl_text))
                         self.st.write(resutl_text)
 
                     # summarization
