@@ -37,7 +37,7 @@ class SummarizationTool:
     
         return 1 - cosine_distance(vector1, vector2)
     
-    
+
     def build_similarity_matrix(self, sentences, stop_words):
         # Create an empty similarity matrix
         similarity_matrix = np.zeros((len(sentences), len(sentences)))
@@ -51,7 +51,7 @@ class SummarizationTool:
         return similarity_matrix
 
 
-    def generate_summary(self, sentences_text, top_n=5):
+    def generate_summary(self, sentences_text, top_n):
         stop_words = stopwords.words('english')
 
         sentences = []
