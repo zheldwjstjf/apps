@@ -132,7 +132,7 @@ class GmailFetchingResultFullPage:
                         self.st.write(resutl_text)
 
                     # summarization
-                    self.summarizationTool.generate_summary(resutl_text, top_n=5)
+                    # self.summarizationTool.generate_summary(resutl_text, top_n=5)
 
             except Exception as e:
                 self.st.error(str(e))
