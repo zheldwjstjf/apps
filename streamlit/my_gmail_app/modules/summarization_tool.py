@@ -63,7 +63,7 @@ class SummarizationTool:
         return similarity_matrix
 
 
-    def generate_summary(self, sentences_text, top_n=1):
+    def generate_summary(self, sentences_text, top_n=50):
         stop_words = stopwords.words('english')
 
         sentences = []
