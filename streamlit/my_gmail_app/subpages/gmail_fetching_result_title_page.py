@@ -13,7 +13,7 @@ from modules.get_text_from_url import GetTextFromURL
 
 import streamlit.components.v1 as components
 
-class GmailFetchingResultSemiPage:
+class GmailFetchingResultTitlePage:
     """
     - class name : MainPage
     """
@@ -47,15 +47,10 @@ class GmailFetchingResultSemiPage:
         else:
             fetching_count = 1
 
-        # TODO
-        # for loop 대신에, 
-        # id / title만 먼저 가져와서 리스트 가져와서 -> 셀렉트 박스 만들어서
-        # 셀렉트 박스에서 하나의 [id / title]를 선택하면 -> 스닛핏 또는 본문 볼 수 있게 하고
-        #  스닛핏 또는 본문을 본다음에 -> 개요 정보 입력/업데이터 / 삭제 / 쓰레기토응로 / 본문내용 저장 등등 할수 있게 한다
           
         # sub title
         self.st.write("---")
-        self.st.markdown("<h2 style='text-align: center; color: red;'>マッチしたメールのKeyword情報</h2>", unsafe_allow_html=True)
+        self.st.markdown("<h2 style='text-align: center; color: red;'>マッチしたメールのLIST</h2>", unsafe_allow_html=True)
         self.st.write("---")
 
         for i in range(fetching_count):
@@ -121,36 +116,6 @@ class GmailFetchingResultSemiPage:
                 # mail_subject
                 self.st.subheader("[ " + mail_subject + " ]")
                 self.st.info(mail_date)
-
-                # wordcloud
-                col5, col6, col7, col8, col9 = self.st.columns((1,0.1,1.5,0.1,2.5))
-
-                # wordcloud - mail_from
-                with col5:
-                    self.st.write("---")
-                    self.st.write("● mail_from")
-                    self.visualizationTool.wordcloud(mail_from, 240, 10)
-
-                # wordcloud - mail_subject
-                with col7:
-                    self.st.write("---")
-                    self.st.write("● mail_subject")
-                    self.visualizationTool.wordcloud(mail_subject, 370, 30)
-
-                # wordcloud - mail_snippet
-                with col9:
-                    self.st.write("---")
-                    self.st.write("● mail_snippet")
-                    self.visualizationTool.wordcloud(mail_snippet, 640, 300)
-
-                # wordcloud - mail_body
-                self.st.write("---")
-                self.st.write("● mail_body")
-                if ("http" not in mail_body) and ("</" not in mail_body):
-                    input_text = mail_body
-                else:
-                    input_text = mail_body
-                self.visualizationTool.wordcloud(input_text, 1400, 500)
 
             except Exception as e:
                 self.st.warning("No more Email")

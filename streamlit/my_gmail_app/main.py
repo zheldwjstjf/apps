@@ -5,6 +5,7 @@ import os
 
 from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
 from subpages.gmail_fetching_page import GmailFetchingPage
+from subpages.gmail_fetching_result_title_page import GmailFetchingResultTitlePage
 from subpages.gmail_fetching_result_semi_page import GmailFetchingResultSemiPage
 from subpages.gmail_fetching_result_full_page import GmailFetchingResultFullPage
 
@@ -132,6 +133,9 @@ class MyGmailApp:
                     self.gmailFetchingResultPage.get_mail_content(maillist, fetching_count, result_count, service, user)
                 """
 
+                ### GmailFetchingResultTitlePage
+                self.gmailFetchingResultTitlePage = GmailFetchingResultTitlePage(st)
+
                 ### GmailFetchingResultSemiPage
                 self.gmailFetchingResultSemiPage = GmailFetchingResultSemiPage(st)
                 maillist = self.gmailFetchingPage.maillist
@@ -142,7 +146,10 @@ class MyGmailApp:
 
                 if result_count > 0:
                     if maillist != None:
-                        self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+
+                        self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
+
+                        # self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                     with st.sidebar.expander("[ ▶︎ 選択 ]"):
 
