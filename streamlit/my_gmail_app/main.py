@@ -5,7 +5,6 @@ import os
 
 from subpages.gmail_fetching_setting_page import GmailFetchingSettingPage
 from subpages.gmail_fetching_page import GmailFetchingPage
-# from subpages.gmail_fetching_result_page import GmailFetchingResultPage
 from subpages.gmail_fetching_result_semi_page import GmailFetchingResultSemiPage
 from subpages.gmail_fetching_result_full_page import GmailFetchingResultFullPage
 
