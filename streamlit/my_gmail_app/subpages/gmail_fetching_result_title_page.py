@@ -121,8 +121,7 @@ class GmailFetchingResultTitlePage:
                 self.st.warning("No more Email")
 
             # line
-            for foo in range(3):
-                self.st.write("---")
+            self.st.write("---")
 
         self.st.success("Fetching Done")
         return contents_list
