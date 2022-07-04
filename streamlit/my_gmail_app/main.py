@@ -162,10 +162,10 @@ class MyGmailApp:
                         operation_type = self.st.radio("● 処理タイプ",('個別', 'Batch'), index=0)
 
                         if operation_type == '個別':
-                            selected_order_title_list = self.st.selectbox("● SELECT EMAIL", self.order_title_list, key="select_a_mail")
+                            selected_order_title_info_list = self.st.selectbox("● SELECT EMAIL", self.order_title_list, key="select_a_mail")
 
                             for content_list in self.contents_list:
-                                if selected_order_title_list[1] in content_list:
+                                if selected_order_title_info_list[1] in content_list:
                                     selected_content_info = content_list
                             
                             selected_email_order = selected_content_info[0]

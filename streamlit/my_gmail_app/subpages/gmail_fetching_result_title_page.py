@@ -57,8 +57,9 @@ class GmailFetchingResultTitlePage:
         for i in range(fetching_count):
 
             content_info = []
+            order_title_info = []
 
-            order_title_list.append("▶︎ " + str(i+1) + " 件目")
+            order_title_info.append("▶︎ " + str(i+1) + " 件目")
             content_info.append("▶︎ " + str(i+1) + " 件目")
 
             try:
@@ -75,7 +76,7 @@ class GmailFetchingResultTitlePage:
                 try:
                     mail_subject = mail['subject']
                     content_info.append(mail_subject)
-                    order_title_list.append(mail_subject)
+                    order_title_info.append(mail_subject)
                 except Exception as e:
                     self.st.error("Exception - mail['subject'] : " + "e")
 
@@ -109,6 +110,7 @@ class GmailFetchingResultTitlePage:
                 except Exception as e:
                     self.st.error("Exception - mail['body'] : " + "e")
 
+                order_title_list.append(content_info)
                 contents_list.append(content_info)
 
                 ########################
