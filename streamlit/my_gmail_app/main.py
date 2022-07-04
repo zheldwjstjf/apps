@@ -144,12 +144,16 @@ class MyGmailApp:
                 fetching_count = self.gmailFetchingSettingPage.fetching_count
                 result_count = self.gmailFetchingPage.result_count
 
+                
+                col1, col2 = self.st.columns((1,1))
+
                 if result_count > 0:
                     if maillist != None:
 
-                        self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                        with col1:
+                            self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
-                        # self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                            # self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                     with st.sidebar.expander("[ ▶︎ 選択 ]"):
 
@@ -167,7 +171,8 @@ class MyGmailApp:
                             self.st.write("Batch設定")
 
                     ###
-                    self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+                    with col2:
+                        self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
 
                     ### GmailFetchingResultFullPage
                     if operation_type == '個別':
