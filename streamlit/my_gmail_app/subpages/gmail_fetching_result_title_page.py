@@ -33,6 +33,7 @@ class GmailFetchingResultTitlePage:
     def get_mail_content(self, maillist, fetching_count, result_count, service, user):
 
         contents_list = []
+        title_list = []
 
         self.gmail_api = GmailApi(self.st, service)
 
@@ -73,6 +74,7 @@ class GmailFetchingResultTitlePage:
                 try:
                     mail_subject = mail['subject']
                     content_info.append(mail_subject)
+                    title_list.append(mail_subject)
                 except Exception as e:
                     self.st.error("Exception - mail['subject'] : " + "e")
 
@@ -121,7 +123,7 @@ class GmailFetchingResultTitlePage:
             self.st.write("---")
 
         self.st.success("Fetching Done")
-        return contents_list
+        return title_list, contents_list
 
 
     def parse_mail(self):

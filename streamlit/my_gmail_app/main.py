@@ -57,6 +57,7 @@ class MyGmailApp:
         self.auth_fail_time = None
         self.auth_success_time = None
         self.selected_email_id = None
+        self.title_list = None
         self.contents_list = None
 
         # 
@@ -151,7 +152,7 @@ class MyGmailApp:
                     if maillist != None:
 
                         with col1:
-                            self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                            self.title_list, self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                             # self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
@@ -161,7 +162,12 @@ class MyGmailApp:
                         operation_type = self.st.radio("● 処理タイプ",('個別', 'Batch'), index=0)
 
                         if operation_type == '個別':
-                            selected_content_info = self.st.selectbox("● SELECT EMAIL", self.contents_list, key="select_a_mail")
+                            selected_title = self.st.selectbox("● SELECT EMAIL", self.title_list, key="select_a_mail")
+
+                            for content_list in self.contents_list:
+                                if selected_title in content_list:
+                                    selected_content_info = content_list
+                            
                             selected_email_order = selected_content_info[0]
                             self.selected_email_id = selected_content_info[1]
                             selected_email_title = selected_content_info[2]
@@ -170,7 +176,6 @@ class MyGmailApp:
                         if operation_type == 'Batch':
                             self.st.write("Batch設定")
 
-                    ###
                     with col2:
                         self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
 
