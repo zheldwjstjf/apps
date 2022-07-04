@@ -190,13 +190,19 @@ class GmailMngPage:
         # markMailAsStarred
         if col3.button("⭐️", help="Mark mail as STARRED", key="starred_"):
             try:
-                self.gmail_api.markMailAsStarred(user, self.mail_id)
-                # self.st.balloons()
-                self.st.write("星を付けました。")
-                time.sleep(0.3); self.st.experimental_rerun()
+                count = 0
+                for mail_id_thread in self.maillist:
+                    self.gmail_api.markMailAsStarred(user, mail_id_thread["id"])
+                    time.sleep(0.3)
+                    count = count + 1
+                    gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
+                self.st.write("すべての対象メールに星を付けました。")
+                time.sleep(1); self.st.balloons(); time.sleep(1);
+                self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("星が付けられませんでした。")
+                self.st.write("Batch処理が失敗しました。")
                 self.st.error("" + str(e))
+
 
         # markMailAsUnread
         if col1.button("📪", help="Mark mail as UNREAD", key="unread_"):
