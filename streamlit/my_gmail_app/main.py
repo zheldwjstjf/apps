@@ -155,6 +155,10 @@ class MyGmailApp:
 
                             # self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
+                        with col2:
+                            self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
+
+
                     with st.sidebar.expander("[ ▶︎ 選択 ]"):
 
                         self.st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
@@ -170,9 +174,6 @@ class MyGmailApp:
                         if operation_type == 'Batch':
                             self.st.write("Batch設定")
 
-                    ###
-                    with col2:
-                        self.gmailFetchingResultFullPage = GmailFetchingResultFullPage(st)
 
                     ### GmailFetchingResultFullPage
                     if operation_type == '個別':
