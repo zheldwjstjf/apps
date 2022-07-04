@@ -57,7 +57,7 @@ class MyGmailApp:
         self.auth_fail_time = None
         self.auth_success_time = None
         self.selected_email_id = None
-        self.title_list = None
+        self.order_title_list = None
         self.contents_list = None
 
         # 
@@ -152,7 +152,7 @@ class MyGmailApp:
                     if maillist != None:
 
                         with col1:
-                            self.title_list, self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
+                            self.order_title_list, self.contents_list = self.gmailFetchingResultTitlePage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
                             # self.contents_list = self.gmailFetchingResultSemiPage.get_mail_content(maillist, fetching_count, result_count, service, user)
 
@@ -162,10 +162,10 @@ class MyGmailApp:
                         operation_type = self.st.radio("● 処理タイプ",('個別', 'Batch'), index=0)
 
                         if operation_type == '個別':
-                            selected_title = self.st.selectbox("● SELECT EMAIL", self.title_list, key="select_a_mail")
+                            selected_order_title_list = self.st.selectbox("● SELECT EMAIL", self.order_title_list, key="select_a_mail")
 
                             for content_list in self.contents_list:
-                                if selected_title in content_list:
+                                if selected_order_title_list[1] in content_list:
                                     selected_content_info = content_list
                             
                             selected_email_order = selected_content_info[0]

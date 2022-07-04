@@ -33,7 +33,7 @@ class GmailFetchingResultTitlePage:
     def get_mail_content(self, maillist, fetching_count, result_count, service, user):
 
         contents_list = []
-        title_list = []
+        order_title_list = []
 
         self.gmail_api = GmailApi(self.st, service)
 
@@ -58,6 +58,7 @@ class GmailFetchingResultTitlePage:
 
             content_info = []
 
+            order_title_list.append("▶︎ " + str(i+1) + " 件目")
             content_info.append("▶︎ " + str(i+1) + " 件目")
 
             try:
@@ -74,7 +75,7 @@ class GmailFetchingResultTitlePage:
                 try:
                     mail_subject = mail['subject']
                     content_info.append(mail_subject)
-                    title_list.append(mail_subject)
+                    order_title_list.append(mail_subject)
                 except Exception as e:
                     self.st.error("Exception - mail['subject'] : " + "e")
 
@@ -123,7 +124,7 @@ class GmailFetchingResultTitlePage:
             self.st.write("---")
 
         self.st.success("Fetching Done")
-        return title_list, contents_list
+        return order_title_list, contents_list
 
 
     def parse_mail(self):
