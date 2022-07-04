@@ -90,10 +90,10 @@ class GmailFetchingResultFullPage:
             self.st.subheader("● mail_subject : " + mail_subject)
 
             # text
-            # self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
-            # self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
-            # self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
-            # self.st.subheader("● mail_snippet : \n"); self.st.info(mail_snippet)
+            self.st.info("● mail_date : \n"); self.st.code(mail_date)
+            self.st.info("● mail_from : \n"); self.st.code(mail_from)
+            self.st.info("● mail_to : \n"); self.st.code(mail_to)
+            self.st.info("● mail_snippet : \n"); self.st.info(mail_snippet)
 
             if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
                 self.st.subheader("● mail_body（HTML） : \n")
