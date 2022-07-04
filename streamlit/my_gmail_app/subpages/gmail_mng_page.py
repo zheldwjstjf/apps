@@ -114,7 +114,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # deleteMail
-        if col7.button("🧨", help="DELETE mail",  key="delete_" + self.mail_id):
+        if col7.button("🧨", help="DELETE mail", key="delete_" + self.mail_id):
             try:
                 self.gmail_api.deleteMail(user, self.mail_id)
                 # self.st.balloons()
@@ -125,7 +125,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsSpam
-        if col6.button("⛔", help="Mark mail as SPAM",  key="spam_" + self.mail_id):
+        if col6.button("⛔", help="Mark mail as SPAM", key="spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsSpam(user, self.mail_id)
                 # self.st.balloons()
@@ -136,7 +136,7 @@ class GmailMngPage:
                 self.st.error("" + str(e))
 
         # markMailAsNotSpam
-        if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_" + self.mail_id):
+        if col5.button("🔙", help="Mark mail as not SPAM", key="not_spam_" + self.mail_id):
             try:
                 self.gmail_api.markMailAsNotSpam(user, self.mail_id)
                 # self.st.balloons()
@@ -201,13 +201,19 @@ class GmailMngPage:
         # markMailAsUnread
         if col1.button("📪", help="Mark mail as UNREAD", key="unread_"):
             try:
-                self.gmail_api.markMailAsUnread(user, self.mail_id)
-                # self.st.balloons()
-                self.st.write("メールを未読にしました。")
-                time.sleep(0.3); self.st.experimental_rerun()
+                count = 0
+                for mail_id_thread in self.maillist:
+                    self.gmail_api.markMailAsUnread(user, mail_id_thread["id"])
+                    time.sleep(0.3)
+                    count = count + 1
+                    gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
+                self.st.write("すべての対象メールを未読にしました。")
+                time.sleep(1); self.st.balloons(); time.sleep(1);
+                self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("メールを未読にできませんでした。")
+                self.st.write("Batch処理が失敗しました。")
                 self.st.error("" + str(e))
+
 
 
         ########################## 2nd line
@@ -224,15 +230,15 @@ class GmailMngPage:
                 time.sleep(1); self.st.balloons(); time.sleep(1);
                 self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("ゴミ箱に移動できませんでした。")
+                self.st.write("Batch処理が失敗しました。")
                 self.st.error("" + str(e))
 
         # deleteMail
-        if col7.button("🧨", help="DELETE mail",  key="delete_"):
+        if col7.button("🧨", help="DELETE mail", key="delete_"):
             try:
                 count = 0
                 for mail_id_thread in self.maillist:
-                    self.gmail_api.deleteMail(user, self.mail_id)
+                    self.gmail_api.deleteMail(user, mail_id_thread["id"])
                     time.sleep(0.3)
                     count = count + 1
                     gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
@@ -240,15 +246,15 @@ class GmailMngPage:
                 time.sleep(1); self.st.balloons(); time.sleep(1);
                 self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("メールを削除できませんでした。")
+                self.st.write("Batch処理が失敗しました。")
                 self.st.error("" + str(e))
 
         # markMailAsSpam
-        if col6.button("⛔", help="Mark mail as SPAM",  key="spam_"):
+        if col6.button("⛔", help="Mark mail as SPAM", key="spam_"):
             try:
                 count = 0
                 for mail_id_thread in self.maillist:
-                    self.gmail_api.markMailAsSpam(user, self.mail_id)
+                    self.gmail_api.markMailAsSpam(user, mail_id_thread["id"])
                     time.sleep(0.3)
                     count = count + 1
                     gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
@@ -256,15 +262,15 @@ class GmailMngPage:
                 time.sleep(1); self.st.balloons(); time.sleep(1);
                 self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("SPAMメールに指定できませんでした。")
+                self.st.write("Batch処理が失敗しました。")
                 self.st.error("" + str(e))
 
         # markMailAsNotSpam
-        if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_"):
+        if col5.button("🔙", help="Mark mail as not SPAM", key="not_spam_"):
             try:
                 count = 0
                 for mail_id_thread in self.maillist:
-                    self.gmail_api.markMailAsNotSpam(user, self.mail_id)
+                    self.gmail_api.markMailAsNotSpam(user, mail_id_thread["id"])
                     time.sleep(0.3)
                     count = count + 1
                     gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
@@ -272,5 +278,5 @@ class GmailMngPage:
                 time.sleep(1); self.st.balloons(); time.sleep(1);
                 self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("SPAMメールの指定を解除できませんでした。")
+                self.st.write("Batch処理が失敗しました。")
                 self.st.error("" + str(e))
