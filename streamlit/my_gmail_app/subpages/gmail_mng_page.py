@@ -245,7 +245,7 @@ class GmailMngPage:
                 self.st.write("SPAMメールに指定しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("メールを削除できませんでした。")
+                self.st.write("SPAMメールに指定できませんでした。")
                 self.st.error("" + str(e))
 
         # markMailAsNotSpam
@@ -256,5 +256,5 @@ class GmailMngPage:
                 self.st.write("SPAMメールの指定を解除しました。")
                 time.sleep(0.3); self.st.experimental_rerun()
             except Exception as e:
-                self.st.write("メールを削除できませんでした。")
+                self.st.write("SPAMメールの指定を解除できませんでした。")
                 self.st.error("" + str(e))
