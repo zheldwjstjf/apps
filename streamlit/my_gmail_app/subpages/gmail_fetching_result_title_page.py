@@ -110,7 +110,7 @@ class GmailFetchingResultTitlePage:
                 except Exception as e:
                     self.st.error("Exception - mail['body'] : " + "e")
 
-                order_title_list.append(content_info)
+                order_title_list.append(order_title_info)
                 contents_list.append(content_info)
 
                 ########################
