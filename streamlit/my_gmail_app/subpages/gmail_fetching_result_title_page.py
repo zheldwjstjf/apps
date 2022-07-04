@@ -107,7 +107,7 @@ class GmailFetchingResultTitlePage:
                     self.st.error("Exception - mail['body'] : " + "e")
 
                 # order count
-                self.st.subheader("▶︎ " + str(i+1) + " 件目")
+                # self.st.subheader("▶︎ " + str(i+1) + " 件目")
 
                 contents_list.append(content_info)
 
@@ -115,7 +115,7 @@ class GmailFetchingResultTitlePage:
 
                 # mail_subject
                 # self.st.subheader("[ " + mail_subject + " ]")
-                self.st.write("[ " + mail_subject + " ]")
+                self.st.write("▶︎ " + str(i+1) + " 件目 : [ " + mail_subject + " ]")
                 self.st.info(mail_from + " / " + mail_date)
 
             except Exception as e:
