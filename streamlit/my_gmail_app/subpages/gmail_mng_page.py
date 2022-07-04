@@ -229,10 +229,15 @@ class GmailMngPage:
         # deleteMail
         if col7.button("🧨", help="DELETE mail",  key="delete_"):
             try:
-                self.gmail_api.deleteMail(user, self.mail_id)
-                # self.st.balloons()
-                self.st.write("メールを削除しました。")
-                time.sleep(0.3); self.st.experimental_rerun()
+                count = 0
+                for mail_id_thread in self.maillist:
+                    self.gmail_api.deleteMail(user, self.mail_id)
+                    time.sleep(0.3)
+                    count = count + 1
+                    gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
+                self.st.write("すべての対象メールを削除しました。")
+                time.sleep(1); self.st.balloons(); time.sleep(1);
+                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("メールを削除できませんでした。")
                 self.st.error("" + str(e))
