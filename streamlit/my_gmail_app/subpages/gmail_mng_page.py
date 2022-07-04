@@ -209,6 +209,7 @@ class GmailMngPage:
                 self.st.write("メールを未読にできませんでした。")
                 self.st.error("" + str(e))
 
+
         ########################## 2nd line
         # moveMailToTrash
         if col8.button("🗑", help="Move mail to TRASH", key="trash_"):
@@ -245,10 +246,15 @@ class GmailMngPage:
         # markMailAsSpam
         if col6.button("⛔", help="Mark mail as SPAM",  key="spam_"):
             try:
-                self.gmail_api.markMailAsSpam(user, self.mail_id)
-                # self.st.balloons()
-                self.st.write("SPAMメールに指定しました。")
-                time.sleep(0.3); self.st.experimental_rerun()
+                count = 0
+                for mail_id_thread in self.maillist:
+                    self.gmail_api.markMailAsSpam(user, self.mail_id)
+                    time.sleep(0.3)
+                    count = count + 1
+                    gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
+                self.st.write("すべての対象メールをSPAMメールに指定しました。")
+                time.sleep(1); self.st.balloons(); time.sleep(1);
+                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("SPAMメールに指定できませんでした。")
                 self.st.error("" + str(e))
@@ -256,10 +262,15 @@ class GmailMngPage:
         # markMailAsNotSpam
         if col5.button("🔙", help="Mark mail as not SPAM",  key="not_spam_"):
             try:
-                self.gmail_api.markMailAsNotSpam(user, self.mail_id)
-                # self.st.balloons()
-                self.st.write("SPAMメールの指定を解除しました。")
-                time.sleep(0.3); self.st.experimental_rerun()
+                count = 0
+                for mail_id_thread in self.maillist:
+                    self.gmail_api.markMailAsNotSpam(user, self.mail_id)
+                    time.sleep(0.3)
+                    count = count + 1
+                    gmail_mng_batch_progress_bar.progress(count/len(self.maillist))
+                self.st.write("すべての対象メールをSPAMメールの指定を解除しました。")
+                time.sleep(1); self.st.balloons(); time.sleep(1);
+                self.st.experimental_rerun()
             except Exception as e:
                 self.st.write("SPAMメールの指定を解除できませんでした。")
                 self.st.error("" + str(e))
