@@ -90,20 +90,17 @@ class GmailFetchingResultFullPage:
             self.st.subheader("● mail_subject : " + mail_subject)
 
             # text
-            col1, col2 = self.st.columns((1,1))
-            with col1:
-                self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
-                self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
-                self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
-                self.st.subheader("● mail_snippet : \n"); self.st.info(mail_snippet)
+            # self.st.subheader("● mail_date : \n"); self.st.code(mail_date)
+            # self.st.subheader("● mail_from : \n"); self.st.code(mail_from)
+            # self.st.subheader("● mail_to : \n"); self.st.code(mail_to)
+            # self.st.subheader("● mail_snippet : \n"); self.st.info(mail_snippet)
 
-            with col2:
-                if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
-                    self.st.subheader("● mail_body（HTML） : \n")
-                    components.html(mail_body, height=4300)
-                else:
-                    self.st.subheader("● mail_body（TXT） : \n")
-                    self.st.write(mail_body)
+            if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
+                self.st.subheader("● mail_body（HTML） : \n")
+                components.html(mail_body, height=4300)
+            else:
+                self.st.subheader("● mail_body（TXT） : \n")
+                self.st.write(mail_body)
 
             # - do mail as read
             # self.gmail_api.markMailAsRead(user, self.mail_id)
