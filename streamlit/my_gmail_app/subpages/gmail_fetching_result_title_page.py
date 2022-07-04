@@ -114,7 +114,8 @@ class GmailFetchingResultTitlePage:
                 ########################
 
                 # mail_subject
-                self.st.subheader("[ " + mail_subject + " ]")
+                # self.st.subheader("[ " + mail_subject + " ]")
+                self.st.write("[ " + mail_subject + " ]")
                 self.st.info(mail_date)
 
             except Exception as e:
