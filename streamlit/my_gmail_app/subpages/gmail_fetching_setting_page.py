@@ -67,6 +67,7 @@ class GmailFetchingSettingPage:
         # self.st.subheader("▶︎ Email取得")
 
         # final query
+        self.st.write("● クエリー")
         self.st.code("Query :" + self.query)
 
         # select fetch count
