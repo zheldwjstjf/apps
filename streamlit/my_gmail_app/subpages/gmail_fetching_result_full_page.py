@@ -93,46 +93,53 @@ class GmailFetchingResultFullPage:
             self.st.info("● mail_date : " + mail_date)
             self.st.info("● mail_from : " + mail_from)
             self.st.info("● mail_to : " + mail_to)
-            self.st.info("● mail_snippet : " + mail_snippet)
 
-            if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
-                self.st.subheader("● mail_body（HTML） : \n")
-                components.html(mail_body, height=4300)
-            else:
-                self.st.subheader("● mail_body（TXT） : \n")
-                self.st.write(mail_body)
+            selected_item = self.st.radio(
+                "表示したい内容を選択してください。",
+                ("Snippet", "Mail_body", "Linked page info", "All"), index=0)
+
+            if (selected_item == "Snippet") or (selected_item == "All"):
+                self.st.info("● mail_snippet : " + mail_snippet)
+
+            if (selected_item == "Mail_body") or (selected_item == "All"):
+                if (("<html") in mail_body) and (("/html>") in mail_body) and (("<head") in mail_body) and (("/body>") in mail_body) and (("/body>") in mail_body) or ("<table" in mail_body) and ("/table>" in mail_body) or ("<div" in mail_body) and ("/div>" in mail_body):
+                    self.st.subheader("● mail_body（HTML） : \n")
+                    components.html(mail_body, height=4300)
+                else:
+                    self.st.subheader("● mail_body（TXT） : \n")
+                    self.st.write(mail_body)
 
             # - do mail as read
             # self.gmail_api.markMailAsRead(user, self.mail_id)
 
+            if (selected_item == "Linked page info") or (selected_item == "All"):
+                # wordcloud - text from url in mail body
+                try:
+                    target_urls = self.getTextFromURL.get_url_from_text(mail_body)
+                    target_urls = list(set(target_urls))
+                except Exception as e:
+                    target_urls = []
+                    self.st.error(str(e))
 
-            # wordcloud - text from url in mail body
-            try:
-                target_urls = self.getTextFromURL.get_url_from_text(mail_body)
-                target_urls = list(set(target_urls))
-            except Exception as e:
-                target_urls = []
-                self.st.error(str(e))
+                try:
+                    for target_url in target_urls:
+                        resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
+                        self.st.write("---")
+                        self.st.write("● URL : " + target_url)
 
-            try:
-                for target_url in target_urls:
-                    resutl_text = self.getTextFromURL.extract_text_from_single_web_page(url=target_url)
-                    self.st.write("---")
-                    self.st.write("● URL : " + target_url)
+                        # visualization
+                        self.visualizationTool.wordcloud(resutl_text, 1400, 100)
 
-                    # visualization
-                    self.visualizationTool.wordcloud(resutl_text, 1400, 100)
+                        # full text
+                        with self.st.expander("テキストを見る"):
+                            self.st.write(type(resutl_text))
+                            self.st.write(resutl_text)
 
-                    # full text
-                    with self.st.expander("テキストを見る"):
-                        self.st.write(type(resutl_text))
-                        self.st.write(resutl_text)
+                        # summarization
+                        # self.summarizationTool.generate_summary(resutl_text, top_n=5)
 
-                    # summarization
-                    # self.summarizationTool.generate_summary(resutl_text, top_n=5)
-
-            except Exception as e:
-                self.st.error(str(e))
+                except Exception as e:
+                    self.st.error(str(e))
 
         except Exception as e:
             self.st.error("[DEBUG] Exception - get_mail_content : " + str(e))
