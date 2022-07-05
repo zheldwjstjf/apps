@@ -115,7 +115,7 @@ class MyGmailApp:
                 
                 ### GmailFetchingSettingPage
                 self.gmailFetchingSettingPage = GmailFetchingSettingPage(st)
-                with st.sidebar.expander("[ ▶︎ フィルタ ]"):
+                with st.sidebar.expander("[ ▶︎ Query設定 ]"):
                     self.gmailFetchingSettingPage.gmail_fetching_setting_page()
 
                 ### GmailFetchingPage
