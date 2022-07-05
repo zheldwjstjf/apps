@@ -99,7 +99,7 @@ class GmailFetchingResultFullPage:
             self.st.subheader("🚩 表示したい内容を選択してください。")
             selected_item = self.st.radio(
                 "SELECT",
-                ("Snippet", "Mail_body", "Linked page info", "All"), index=0)
+                ("Snippet", "Mail_body", "Linked Pages", "All"), index=0)
 
             if (selected_item == "Snippet") or (selected_item == "All"):
                 self.st.info("● mail_snippet : " + mail_snippet)
@@ -115,7 +115,7 @@ class GmailFetchingResultFullPage:
             # - do mail as read
             # self.gmail_api.markMailAsRead(user, self.mail_id)
 
-            if (selected_item == "Linked page info") or (selected_item == "All"):
+            if (selected_item == "Linked Pages") or (selected_item == "All"):
                 # wordcloud - text from url in mail body
                 try:
                     target_urls = self.getTextFromURL.get_url_from_text(mail_body)
