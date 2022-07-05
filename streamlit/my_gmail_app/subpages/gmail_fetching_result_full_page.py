@@ -94,8 +94,10 @@ class GmailFetchingResultFullPage:
             self.st.info("● mail_from : " + mail_from)
             self.st.info("● mail_to : " + mail_to)
 
+            
+            self.st.subheader("🚩 表示したい内容を選択してください。")
             selected_item = self.st.radio(
-                "表示したい内容を選択してください。",
+                "SELECT",
                 ("Snippet", "Mail_body", "Linked page info", "All"), index=0)
 
             if (selected_item == "Snippet") or (selected_item == "All"):
