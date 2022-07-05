@@ -67,7 +67,7 @@ class GmailFetchingSettingPage:
         # self.st.subheader("▶︎ Email取得")
 
         # final query
-        self.st.code("Query : " + self.query)
+        self.st.code("Query :" + self.query)
 
         # select fetch count
         self.fetching_count = int(self.st.number_input("● 最大Match 件数 (上限1000)", min_value=10, max_value=1000))
