@@ -95,6 +95,7 @@ class GmailFetchingResultFullPage:
             self.st.info("● mail_to : " + mail_to)
 
             
+            self.st.write("---")
             self.st.subheader("🚩 表示したい内容を選択してください。")
             selected_item = self.st.radio(
                 "SELECT",
