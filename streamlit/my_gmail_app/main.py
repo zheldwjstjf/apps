@@ -146,7 +146,7 @@ class MyGmailApp:
                 result_count = self.gmailFetchingPage.result_count
 
                 
-                col1, col2 = self.st.columns((1,1))
+                col1, col2 = self.st.columns((1,1.5))
 
                 if result_count > 0:
                     if maillist != None:
