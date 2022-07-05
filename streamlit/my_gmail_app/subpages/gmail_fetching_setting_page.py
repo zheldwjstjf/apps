@@ -25,8 +25,6 @@ class GmailFetchingSettingPage:
         self.user = "me"
 
         # get query
-        self.st.header("▶︎ Query設定")
-
         query_key_list = [
                 "is",
                 "subject",
