@@ -41,7 +41,7 @@ class GmailFetchingSettingPage:
                 "older_than",
                 "newer_than"
             ]
-        selected_query_keys = self.st.multiselect("●", query_key_list, default=["is", "newer_than"], key="main")
+        selected_query_keys = self.st.multiselect("", query_key_list, default=["is", "newer_than"], key="main")
 
         if "is" in selected_query_keys:
             self.query_is = self.get_query_is()
