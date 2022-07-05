@@ -91,7 +91,7 @@ class GmailFetchingSettingPage:
                 "starred",
                 "snoozed",
             ]
-        selected_query_is_val = self.st.multiselect("● Select Query Value", query_is_val_list, default=["unread"], key="is")
+        selected_query_is_val = self.st.multiselect("● Query Value - is", query_is_val_list, default=["unread"], key="is")
         if "read" in selected_query_is_val:
             self.query_is = "is:read"
 
@@ -162,7 +162,7 @@ class GmailFetchingSettingPage:
                 "9y",
                 "10y",
             ]
-        selected_query_newer_than_val = self.st.selectbox("● Select Query Value - newer_than", query_newer_than_val_list, index=6, key="newer_than")
+        selected_query_newer_than_val = self.st.selectbox("● Query Value - newer_than", query_newer_than_val_list, index=6, key="newer_than")
         self.query_newer_than = "newer_than:" + selected_query_newer_than_val
 
         return self.query_newer_than
@@ -208,7 +208,7 @@ class GmailFetchingSettingPage:
                 "9y",
                 "10y",
             ]
-        selected_query_older_than_val = self.st.selectbox("● Select Query Value - older_than", query_older_than_val_list, key="older_than")
+        selected_query_older_than_val = self.st.selectbox("● Query Value - older_than", query_older_than_val_list, key="older_than")
         self.query_older_than = "older_than:" + selected_query_older_than_val
 
         return self.query_older_than
