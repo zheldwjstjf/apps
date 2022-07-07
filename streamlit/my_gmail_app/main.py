@@ -109,10 +109,6 @@ class MyGmailApp:
         self.st.download_button('Download CSV', text_contents, 'text/csv')
         self.st.download_button('Download CSV', text_contents)  # Defaults to 'text/plain'
 
-        with open('myfile.csv') as f:
-            self.st.download_button('Download CSV', f)  # Defaults to 'text/plain'
-
-
 
 
 
