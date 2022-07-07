@@ -142,8 +142,13 @@ class GmailApi():
             getMailList_progress_bar = self.st.progress(0)
 
             count = 0
-            paging_count = 0
-            while ('nextPageToken' in result) and (paging_count<1):
+            paging_count = 1
+            
+            self.fetching_count = int(self.st.number_input("● 100単位で入力", min_value=100))
+
+            self.fetching_count = int(self.fetching_count/100)
+
+            while ('nextPageToken' in result) and (paging_count<self.fetching_count):
                 page_token = result['nextPageToken']
                 result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
                 if 'messages' in result:
