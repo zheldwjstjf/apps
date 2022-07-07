@@ -65,10 +65,12 @@ class GmailApi():
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
             # return self.service.users().messages().list(userId=user, q=qu).execute()
 
+            """
             result = self.service.users().messages().list(userId=user, q=qu).execute()
             if 'messages' in result:
                 maillist.extend(result['messages'])
                 maillist_count_1st = len(maillist)
+            """
             
             self.st.subheader("▶︎ Fetching Email ID Progress")
             latest_iteration = self.st.empty()
@@ -80,6 +82,7 @@ class GmailApi():
                 result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
                 if 'messages' in result:
                     maillist.extend(result['messages'])
+                    maillist_count_1st = len(maillist)
 
                 try:
                     latest_iteration.text(f'{(count+maillist_count_1st)/len(maillist)*100} %')
