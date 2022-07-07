@@ -75,6 +75,73 @@ class GmailApi():
             getMailList_progress_bar = self.st.progress(0)
 
             count = 0
+            while ('nextPageToken' in result):
+                page_token = result['nextPageToken']
+                result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
+                if 'messages' in result:
+                    maillist.extend(result['messages'])
+
+                try:
+                    latest_iteration.text(f'{(count+maillist_count_1st)/len(maillist)*100} %')
+                    getMailList_progress_bar.progress(count/len(maillist))
+                except Exception as e:
+                    self.st.error("Exception - getMailList_progress_bar" + str(e))
+
+                try:                
+                    count = count + len(result['messages'])
+                except Exception as e:
+                    pass
+
+            try:
+                latest_iteration.text(f'{(count+maillist_count_1st)/len(maillist)*100} %')
+                getMailList_progress_bar.progress((count+maillist_count_1st)/len(maillist))
+            except Exception as e:
+                pass
+
+            return maillist
+
+        except errors.HttpError as error:
+            print("error [ service.users().messages().list( ) ] : ", error)
+
+
+
+
+    def getMailList2(self, user, qu):
+        ''' メールの情報をリストで取得します
+          quの内容でフィルタリングする事が出来ます
+           Keyword arguments:
+           user -- me又はgoogleDevloperに登録されたアドレスを指定します。
+           qu -- queryを設定します
+                 例えばexample@gmail.comから送られてきた未読のメールの一覧を取得するには以下のように指定すればよい
+                "from: example@gmail.com is:unread"
+           Returns: メール情報の一覧　idとThreadIdをKeyとした辞書型のリストになる
+             "messages": [
+                  {
+                   "id": "nnnnnnnnnnnn",
+                   "threadId": "zzzzzzzzzzz"
+                  },
+                  {
+                   "id": "aaaaaa",
+                   "threadId": "bbbbbb"
+                  },,,,
+              }
+        '''
+        maillist = []
+
+        try:
+            # self.st.write("[DEBUG] Query in getMailList method : ", qu)
+            # return self.service.users().messages().list(userId=user, q=qu).execute()
+
+            result = self.service.users().messages().list(userId=user, q=qu).execute()
+            if 'messages' in result:
+                maillist.extend(result['messages'])
+                maillist_count_1st = len(maillist)
+            
+            self.st.subheader("▶︎ Fetching Email ID Progress")
+            latest_iteration = self.st.empty()
+            getMailList_progress_bar = self.st.progress(0)
+
+            count = 0
             paging_count = 0
             while ('nextPageToken' in result) and (paging_count<1):
                 page_token = result['nextPageToken']
@@ -105,6 +172,10 @@ class GmailApi():
 
         except errors.HttpError as error:
             print("error [ service.users().messages().list( ) ] : ", error)
+
+
+
+
 
     def getMailContent(self, user, i):
 

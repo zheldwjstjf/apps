@@ -89,7 +89,7 @@ class GmailCrawlingPage:
             self.st.download_button('Download TXT', self.email_address)  # Defaults to 'text/plain'
 
     def get_list(self):
-        self.maillist = self.gmail_api.getMailList(self.user, self.query)
+        self.maillist = self.gmail_api.getMailList2(self.user, self.query)
 
         return self.maillist
 
