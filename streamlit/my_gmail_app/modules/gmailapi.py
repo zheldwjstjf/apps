@@ -128,6 +128,9 @@ class GmailApi():
         '''
         maillist = []
 
+        self.fetching_count = int(self.st.number_input("● 100単位で入力", min_value=100))
+        self.fetching_count = int(self.fetching_count/100)
+
         try:
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
             # return self.service.users().messages().list(userId=user, q=qu).execute()
@@ -143,10 +146,6 @@ class GmailApi():
 
             count = 0
             paging_count = 1
-            
-            self.fetching_count = int(self.st.number_input("● 100単位で入力", min_value=100))
-
-            self.fetching_count = int(self.fetching_count/100)
 
             while ('nextPageToken' in result) and (paging_count<self.fetching_count):
                 page_token = result['nextPageToken']
