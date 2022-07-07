@@ -68,7 +68,7 @@ class GmailCrawlingPage:
             # ユニークなメールアドレスを取得
             col3, col4 = self.st.columns((1,1))
             with col3:
-                mail_list_uniq = self.craw_email_address(maillist, self.result_count)
+                mail_list_uniq = self.craw_email_address(self.maillist, self.result_count)
 
             # 取得したユニークなメールアドレスの件数
             with col4:
