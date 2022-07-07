@@ -75,7 +75,8 @@ class GmailApi():
             getMailList_progress_bar = self.st.progress(0)
 
             count = 0
-            while 'nextPageToken' in result:
+            paging_count = 0
+            while ('nextPageToken' in result) and (paging_count<1):
                 page_token = result['nextPageToken']
                 result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
                 if 'messages' in result:
@@ -92,7 +93,7 @@ class GmailApi():
                 except Exception as e:
                     pass
 
-                count = count + 100
+                paging_count = paging_count + 1
 
             try:
                 latest_iteration.text(f'{(count+maillist_count_1st)/len(maillist)*100} %')
