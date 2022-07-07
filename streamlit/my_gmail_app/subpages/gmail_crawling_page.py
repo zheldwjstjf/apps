@@ -59,7 +59,7 @@ class GmailCrawlingPage:
             with col2:
                 self.st.subheader("▶︎ Fatched Email ID Count")
                 self.result_count = len(self.maillist)
-                self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
+                self.st.write("取得したメールID件数 : " + str(self.result_count) + " 件")
 
             self.st.write("---")
 
@@ -78,7 +78,7 @@ class GmailCrawlingPage:
             with col4:
                 self.st.subheader("▶︎ Crawled Email Address Count")
                 uniq_mail_count = len(mail_list_uniq)
-                self.st.write("取得したメールアドレスの件数 : " + str(uniq_mail_count) + " 件")
+                self.st.write("取得したメールアドレス件数 : " + str(uniq_mail_count) + " 件")
 
             # 取得したユニークなメールアドレス
             self.st.write("---")
