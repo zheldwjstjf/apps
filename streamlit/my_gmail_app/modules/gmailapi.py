@@ -92,7 +92,7 @@ class GmailApi():
                 except Exception as e:
                     pass
 
-                count = count + 1
+                count = count + 100
 
             try:
                 latest_iteration.text(f'{(count+maillist_count_1st)/len(maillist)*100} %')
