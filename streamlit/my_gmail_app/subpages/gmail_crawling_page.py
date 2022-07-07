@@ -51,7 +51,7 @@ class GmailCrawlingPage:
             # すでに読んでるメールを取得
             col1, col2 = self.st.columns((1,1))
             with col1:
-                self.maillist = self.get_list()
+                maillist = self.get_list()
             with col2:
                 self.st.subheader("▶︎ Fatched Email ID Count")
                 self.result_count = len(self.maillist)
@@ -68,7 +68,7 @@ class GmailCrawlingPage:
             # ユニークなメールアドレスを取得
             col3, col4 = self.st.columns((1,1))
             with col3:
-                mail_list_uniq = self.craw_email_address(self.maillist, self.result_count)
+                mail_list_uniq = self.craw_email_address(maillist, self.result_count)
 
             # 取得したユニークなメールアドレスの件数
             with col4:
