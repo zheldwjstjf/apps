@@ -98,8 +98,6 @@ class GmailApi():
             except Exception as e:
                 pass
 
-            self.st.write(maillist)
-            
             return maillist
 
         except errors.HttpError as error:
