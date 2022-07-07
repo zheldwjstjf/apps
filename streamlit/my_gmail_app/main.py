@@ -92,6 +92,37 @@ class MyGmailApp:
         # =================
         # main page
 
+
+
+
+
+        # Text files
+
+        text_contents = '''
+        Foo, Bar
+        123, 456
+        789, 000
+        '''
+
+        # Different ways to use the API
+
+        self.st.download_button('Download CSV', text_contents, 'text/csv')
+        self.st.download_button('Download CSV', text_contents)  # Defaults to 'text/plain'
+
+        with open('myfile.csv') as f:
+            self.st.download_button('Download CSV', f)  # Defaults to 'text/plain'
+
+
+
+
+
+
+
+
+
+
+
+
         # self.seleniumTool = SeleniumTool(st)
 
         if self.auth_result == None:
