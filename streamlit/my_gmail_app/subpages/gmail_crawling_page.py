@@ -42,7 +42,11 @@ class GmailCrawlingPage:
 
         # Set Email Crawling Count
         self.st.subheader("▶︎ Set Email Crawling Count")
-        self.fetching_count = int(self.st.number_input("", min_value=1))
+
+        self.fetching_count = int(self.st.number_input("● Email ID取得件数 (100単位)", min_value=100))
+        self.fetching_count = int(self.fetching_count/100)
+
+        self.fetching_count = int(self.st.number_input("● Email 取得件数", min_value=1))
 
         if self.st.button("取得", key="get_list"):
 
