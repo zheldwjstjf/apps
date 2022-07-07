@@ -63,8 +63,8 @@ class GmailCrawlingPage:
 
             self.st.write("---")
 
-            #
-            self.maillist = self.maillist[10]
+            # [TODO] 取得したEmail IDをリストで表示して、そ子から選べるようにして、選んだ範囲のIDに対して、Crawlingをするようにする。
+            # self.maillist = self.maillist[10]
 
 
             self.st.write("---")
