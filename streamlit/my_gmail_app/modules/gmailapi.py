@@ -132,7 +132,7 @@ class GmailApi():
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
             # return self.service.users().messages().list(userId=user, q=qu).execute()
 
-            result = self.service.users().messages().list(userId=user, q=qu).execute()
+            result = self.service.users().messages().list(userId=user, q=qu, maxResults=10).execute()
             if 'messages' in result:
                 maillist.extend(result['messages'])
                 maillist_count_1st = len(maillist)
