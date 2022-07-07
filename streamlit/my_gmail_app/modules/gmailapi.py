@@ -74,8 +74,6 @@ class GmailApi():
             latest_iteration = self.st.empty()
             getMailList_progress_bar = self.st.progress(0)
 
-            self.st.write(maillist)
-
             count = 0
             while 'nextPageToken' in result:
                 page_token = result['nextPageToken']
@@ -100,6 +98,8 @@ class GmailApi():
             except Exception as e:
                 pass
 
+            self.st.write(maillist)
+            
             return maillist
 
         except errors.HttpError as error:
