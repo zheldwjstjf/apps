@@ -51,11 +51,17 @@ class GmailCrawlingPage:
             # すでに読んでるメールを取得
             col1, col2 = self.st.columns((1,1))
             with col1:
-                maillist = self.get_list()
+                self.maillist = self.get_list()
             with col2:
                 self.st.subheader("▶︎ Fatched Email ID Count")
                 self.result_count = len(self.maillist)
                 self.st.write("取得したメールの件数 : " + str(self.result_count) + " 件")
+
+            self.st.write("---")
+
+            #
+            self.maillist = self.maillist[10]
+
 
             self.st.write("---")
 
