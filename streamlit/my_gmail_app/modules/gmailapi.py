@@ -106,7 +106,8 @@ class GmailApi():
 
 
 
-    def getMailList2(self, user, qu, email_id_fetching_count):
+    def getMailList2(self, user, qu, max_results_count):
+        max_results_count = 17
         ''' メールの情報をリストで取得します
           quの内容でフィルタリングする事が出来ます
            Keyword arguments:
@@ -132,7 +133,7 @@ class GmailApi():
             # self.st.write("[DEBUG] Query in getMailList method : ", qu)
             # return self.service.users().messages().list(userId=user, q=qu).execute()
 
-            result = self.service.users().messages().list(userId=user, q=qu, maxResults=10).execute()
+            result = self.service.users().messages().list(userId=user, q=qu, maxResults=max_results_count).execute()
             if 'messages' in result:
                 maillist.extend(result['messages'])
                 maillist_count_1st = len(maillist)
@@ -144,7 +145,7 @@ class GmailApi():
             count = 0
             paging_count = 1
 
-            while ('nextPageToken' in result) and (paging_count < email_id_fetching_count):
+            while ('nextPageToken' in result):
                 page_token = result['nextPageToken']
                 result = self.service.users().messages().list(userId=user,q=qu, pageToken=page_token).execute()
                 if 'messages' in result:
