@@ -85,8 +85,8 @@ class GmailCrawlingPage:
                 self.email_address = self.email_address + email_address + "\n"
                 count = count + 1
 
-            self.st.download_button('Download CSV', mail_list_uniq, 'text/csv')
-            # self.st.download_button('Download TXT', self.email_address)  # Defaults to 'text/plain'
+            # self.st.download_button('Download CSV', mail_list_uniq, 'text/csv')
+            self.st.download_button('Download TXT', self.email_address)  # Defaults to 'text/plain'
 
     def get_list(self):
         self.maillist = self.gmail_api.getMailList(self.user, self.query)
