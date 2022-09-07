@@ -20,6 +20,8 @@ class MainPage:
         if (start_date!=None) and (end_date!=None):
 
             sleep = sleep["sleep"]
+            self.st.write(sleep)
+
             sleep_str = str(sleep)
 
             ##################
@@ -51,7 +53,10 @@ class MainPage:
             ##################
             # get df
             ##################
-            df = pd.read_json(sleep_str)
+            try:
+                df = pd.read_json(sleep_str)
+            except Exception as e:
+                self.st.write(e)
             df = df.set_index("summary_date")
 
 
