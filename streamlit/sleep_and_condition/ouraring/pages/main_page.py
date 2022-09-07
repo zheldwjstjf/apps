@@ -45,7 +45,7 @@ class MainPage:
 
 
             sleep_str = sleep_str.replace("'", '"')
-            self.st.write("[DEBUG] sleep_str : ", sleep_str)
+            # self.st.write("[DEBUG] sleep_str : ", sleep_str)
 
 
             ##################
@@ -70,6 +70,9 @@ class MainPage:
             sleep_end = []
 
             for i in range(sleep_data_count):
+                self.st.write(sleep[i].get("横になってた時間"))
+
+
                 # summary_date
                 sleep_data = sleep[i].get("summary_date")
                 date_list.append(sleep_data)
