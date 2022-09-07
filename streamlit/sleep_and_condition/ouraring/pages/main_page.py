@@ -113,18 +113,17 @@ class MainPage:
             self.st.markdown("<h2 style='text-align: left; color: black;'>[ " + user.upper() + " ]</h2>", unsafe_allow_html=True)
             self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
-            for i, r in enumerate(df['睡眠時間']):  
-                self.st.write(i)
-                self.st.write(r)
-                r1 = r/60/60
-                df.loc['睡眠時間', i] = r1             
-
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
             self.st.line_chart(chart_data, height=365)
 
             options2 = self.st.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
             chart_data = pd.DataFrame(df, columns=options2)
+
+            for i, r in enumerate(chart_data['睡眠時間']):  
+                r1 = r/60/60
+                chart_data.at[i, '睡眠時間'] = r1
+
             self.st.line_chart(chart_data, height=365)
 
             options3 = self.st.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
