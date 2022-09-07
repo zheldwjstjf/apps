@@ -70,7 +70,7 @@ class MainPage:
             sleep_end = []
 
             for i in range(sleep_data_count):
-                self.st.write(sleep[i].get("横になってた時間"))
+                sleep[i]["横になってた時間"] = (sleep[i].get("横になってた時間")/60/60)
 
 
                 # summary_date
