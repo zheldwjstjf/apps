@@ -114,6 +114,10 @@ class MainPage:
             self.st.markdown("<h2 style='text-align: left; color: red;'>睡眠グラフ : " + str(start_date) + " ~ " + str(end_date) + "</h2>", unsafe_allow_html=True)
 
             for i, r in enumerate(df['睡眠時間']):  
+                self.st.write(111)
+                self.st.write(i)
+                self.st.write(222)
+                self.st.write(r)
                 r1 = r/60/60
                 df.loc[i, '睡眠時間'] = r1             
 
