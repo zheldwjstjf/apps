@@ -117,7 +117,7 @@ class MainPage:
                 self.st.write(i)
                 self.st.write(r)
                 r1 = r/60/60
-                df.at['睡眠時間', i] = r1             
+                df.loc['睡眠時間', i] = r1             
 
             options1 = self.st.multiselect('', key_word_list1, default="総合スコア")
             chart_data = pd.DataFrame(df, columns=options1)
