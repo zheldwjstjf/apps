@@ -20,7 +20,7 @@ class MainPage:
         if (start_date!=None) and (end_date!=None):
 
             sleep = sleep["sleep"]
-            self.st.write(sleep)
+            # self.st.write(sleep)
 
             sleep_str = str(sleep)
 
@@ -48,7 +48,7 @@ class MainPage:
 
             sleep_str = sleep_str.replace("'", '"')
 
-            # self.st.write("[DEBUG] sleep_str : ", sleep_str)
+            self.st.write("[DEBUG] sleep_str : ", sleep_str)
 
 
             ##################
