@@ -122,7 +122,7 @@ class MainPage:
 
             for i, r in enumerate(chart_data['睡眠時間']):  
                 r1 = r/60/60
-                chart_data.loc[i, '睡眠時間'] = r1
+                chart_data.at['睡眠時間', i] = r1
 
             self.st.line_chart(chart_data, height=365)
 
