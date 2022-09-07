@@ -71,7 +71,11 @@ class MainPage:
 
             for i in range(sleep_data_count):
                 sleep[i]["横になってた時間"] = (sleep[i].get("横になってた時間")/60/60)
-
+                sleep[i]["睡眠時間"] = (sleep[i].get("睡眠時間")/60/60)
+                sleep[i]["覚醒"] = (sleep[i].get("覚醒")/60/60)
+                sleep[i]["レム"] = (sleep[i].get("レム")/60/60)
+                sleep[i]["深い睡眠"] = (sleep[i].get("深い睡眠")/60/60)
+                sleep[i]["浅眠"] = (sleep[i].get("浅眠")/60/60)
 
                 # summary_date
                 sleep_data = sleep[i].get("summary_date")
