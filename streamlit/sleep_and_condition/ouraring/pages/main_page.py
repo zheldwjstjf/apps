@@ -43,13 +43,13 @@ class MainPage:
 
             sleep_str = sleep_str.replace("'bedtime_start'", "'就寝時刻'")
             sleep_str = sleep_str.replace("'bedtime_end'", "'起床時刻'")
-            sleep_str = sleep_str.replace("NULL", "0")
+            sleep_str = sleep_str.replace("None", "0")
 
 
             sleep_str = sleep_str.replace("'", '"')
 
             self.st.write("#"*100)
-            self.st.write("[DEBUG] sleep_str : ", sleep_str)
+            # self.st.write("[DEBUG] sleep_str : ", sleep_str)
 
 
             ##################
