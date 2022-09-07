@@ -119,11 +119,6 @@ class MainPage:
 
             options2 = self.st.multiselect('▶︎ 項目を選択', key_word_list2, default="睡眠時間")
             chart_data = pd.DataFrame(df, columns=options2)
-
-            for i, r in enumerate(chart_data['睡眠時間']):  
-                r1 = r/60/60
-                chart_data.at['睡眠時間', i] = r1
-
             self.st.line_chart(chart_data, height=365)
 
             options3 = self.st.multiselect('▶︎ 項目を選択', key_word_list3, default="temperature_deviation")
