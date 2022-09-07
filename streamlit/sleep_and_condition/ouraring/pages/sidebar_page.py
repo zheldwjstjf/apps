@@ -25,9 +25,9 @@ class SidebarPage:
 
         # select data
         if self.user == "rieko":
-            start_date = datetime(2021, 7, 2)
+            start_date = datetime(2021, 1, 1)
         if self.user == "jack":
-            start_date = datetime(2022, 1, 1)
+            start_date = datetime(2021, 1, 1)
         end_data = datetime.today()
         
         self.start_date = self.st.sidebar.date_input("▶︎ いつからを選択", start_date)
